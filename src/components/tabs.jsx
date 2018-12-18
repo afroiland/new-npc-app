@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Tabs, Tab } from "react-bootstrap";
 import SearchBar from "./searchbar";
 import Columns from "./columns";
+import ViewContent from "./viewContent";
+import GenerateContent from "./generateContent";
 
 class NavTabs extends Component {
   render() {
@@ -9,10 +11,10 @@ class NavTabs extends Component {
       <div>
         <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
           <Tab eventKey={1} title="View">
-            Tab 1 content
+            <ViewContent />
           </Tab>
           <Tab eventKey={2} title="Generate">
-            Tab 2 content
+            <GenerateContent />
           </Tab>
           <Tab eventKey={3} title="Fight">
             <SearchBar />
