@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Tabs, Tab } from "react-bootstrap";
 import SearchBar from "./searchbar";
+import Columns from "./columns";
 
 class NavTabs extends Component {
   render() {
@@ -15,6 +16,7 @@ class NavTabs extends Component {
           </Tab>
           <Tab eventKey={3} title="Fight">
             <SearchBar />
+            <Columns />
           </Tab>
         </Tabs>
       </div>
