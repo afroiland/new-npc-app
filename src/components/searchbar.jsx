@@ -13,6 +13,9 @@ class SearchBar extends Component {
             <FormGroup>
               <FormControl type="text" placeholder="Search" />
             </FormGroup>{" "}
+            <Button>Add to Group A</Button>
+            <Button>Add to Group B</Button>
+            <Button>Fight</Button>
           </Navbar.Form>
         </Navbar.Collapse>
       </Navbar>

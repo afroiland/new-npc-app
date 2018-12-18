@@ -9,13 +9,13 @@ class Columns extends Component {
         <Grid>
           <Row>
             <Col md={4}>
-              <Column />
+              <Column name="Group A" />
             </Col>
             <Col md={4}>
-              <Column />
+              <Column name="Group B" />
             </Col>
             <Col md={4}>
-              <Column />
+              <Column name="Combat Log" />
             </Col>
           </Row>
         </Grid>
