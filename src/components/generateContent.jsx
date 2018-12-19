@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Column from "./column";
 import { Button, Col, Grid, Row } from "react-bootstrap";
+import NPCDetails from "./NPCDetails";
 
 class GenerateContent extends Component {
   render() {
@@ -12,6 +13,7 @@ class GenerateContent extends Component {
           <Row>
             <Col md={12}>
               <Column name="New NPC" />
+              {/* <NPCDetails /> */}
             </Col>
           </Row>
         </Grid>
