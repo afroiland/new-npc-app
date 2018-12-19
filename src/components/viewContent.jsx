@@ -41,7 +41,7 @@ class ViewContent extends Component {
               <Column name="NPCs" />
             </Col>
             <Col sm={6}>
-              <NPCDetails selectedNPC={this.state.selectedNPC} />
+              <NPCDetails npc={this.state.selectedNPC} />
             </Col>
           </Row>
         </Grid>
