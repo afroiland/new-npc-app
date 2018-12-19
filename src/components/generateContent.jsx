@@ -5,7 +5,6 @@ import NPCDetails from "./NPCDetails";
 
 class GenerateContent extends Component {
   render() {
-    console.log("generateContent rendering");
     return (
       <div>
         <Button>Generate</Button>
@@ -14,7 +13,7 @@ class GenerateContent extends Component {
           <Row>
             <Col md={12}>
               <Column name="New NPC" />
-              <NPCDetails />
+              {/* <NPCDetails /> */}
             </Col>
           </Row>
         </Grid>

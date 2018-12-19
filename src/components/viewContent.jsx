@@ -4,7 +4,8 @@ import NPCDetails from "./NPCDetails";
 import { Col, Grid, Row } from "react-bootstrap";
 
 var npc1 = {
-  name: "",
+  id: 1,
+  name: "Test Name",
   title: "",
   level: 0,
   class: "",
@@ -32,7 +33,6 @@ class ViewContent extends Component {
   };
 
   render() {
-    console.log("viewContent rendering");
     return (
       <div>
         <Grid>
