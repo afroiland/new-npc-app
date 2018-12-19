@@ -8,13 +8,13 @@ class Columns extends Component {
       <div>
         <Grid>
           <Row>
-            <Col md={4}>
+            <Col sm={4}>
               <Column name="Group A" />
             </Col>
-            <Col md={4}>
+            <Col sm={4}>
               <Column name="Group B" />
             </Col>
-            <Col md={4}>
+            <Col sm={4}>
               <Column name="Combat Log" />
             </Col>
           </Row>
