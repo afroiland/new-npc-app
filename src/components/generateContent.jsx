@@ -5,6 +5,7 @@ import NPCDetails from "./NPCDetails";
 
 class GenerateContent extends Component {
   render() {
+    console.log("generateContent rendering");
     return (
       <div>
         <Button>Generate</Button>

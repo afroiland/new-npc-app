@@ -32,6 +32,7 @@ class ViewContent extends Component {
   };
 
   render() {
+    console.log("viewContent rendering");
     return (
       <div>
         <Grid>

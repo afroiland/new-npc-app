@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Tabs, Tab } from "react-bootstrap";
+import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import SearchBar from "./searchbar";
 import Columns from "./columns";
 import ViewContent from "./viewContent";
@@ -7,19 +7,27 @@ import GenerateContent from "./generateContent";
 
 class NavTabs extends Component {
   render() {
+    console.log("tabs rendering");
     return (
       <div>
-        <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-          <Tab eventKey={1} title="View">
+        <Tabs>
+          <TabList>
+            <Tab>View</Tab>
+            <Tab>Generate</Tab>
+            <Tab>Fight</Tab>
+          </TabList>
+          <TabPanel>
             <ViewContent />
-          </Tab>
-          <Tab eventKey={2} title="Generate">
+          </TabPanel>
+          <TabPanel>
             <GenerateContent />
-          </Tab>
-          <Tab eventKey={3} title="Fight">
-            <SearchBar />
-            <Columns />
-          </Tab>
+          </TabPanel>
+          <TabPanel>
+            <div>
+              <SearchBar />
+              <Columns />
+            </div>
+          </TabPanel>
         </Tabs>
       </div>
     );
