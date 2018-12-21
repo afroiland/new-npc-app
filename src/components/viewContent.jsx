@@ -28,7 +28,7 @@ var npc1 = {
 
 class ViewContent extends Component {
   state = {
-    NPCList: {},
+    NPCList: [],
     selectedNPC: npc1
   };
 
