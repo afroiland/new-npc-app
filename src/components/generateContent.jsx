@@ -28,12 +28,16 @@ var npc1 = {
 };
 
 class GenerateContent extends Component {
-  state = {};
+  state = {
+    npc: npc1
+  };
 
-  handleGenerate() {
+  handleGenerate = () => {
     let info = "info";
     let info2 = "info2";
-    generate(info, info2);
+    let newNPC = generate(info, info2);
+    console.log("newNPC: ", newNPC);
+    this.setState({npc: newNPC});
   }
 
   render() {
@@ -45,7 +49,7 @@ class GenerateContent extends Component {
           <Row>
             <Col md={12}>
               <Column name="New NPC" />
-              <NPCDetails npc={npc1} />
+              <NPCDetails npc={this.state.npc} />
             </Col>
           </Row>
         </Grid>
