@@ -4,7 +4,8 @@ import NPCDetails from "./NPCDetails";
 import { Col, Grid, Row } from "react-bootstrap";
 
 var npc1 = {
-  name: "",
+  id: 1,
+  name: "Test Name",
   title: "",
   level: 0,
   class: "",
@@ -27,12 +28,11 @@ var npc1 = {
 
 class ViewContent extends Component {
   state = {
-    NPCList: {},
+    NPCList: [],
     selectedNPC: npc1
   };
 
   render() {
-    console.log("viewContent rendering");
     return (
       <div>
         <Grid>
@@ -41,7 +41,7 @@ class ViewContent extends Component {
               <Column name="NPCs" />
             </Col>
             <Col sm={6}>
-              <NPCDetails selectedNPC={this.state.selectedNPC} />
+              <NPCDetails npc={this.state.selectedNPC} />
             </Col>
           </Row>
         </Grid>

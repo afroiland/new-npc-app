@@ -7,7 +7,6 @@ import GenerateContent from "./generateContent";
 
 class NavTabs extends Component {
   render() {
-    console.log("tabs rendering");
     return (
       <div>
         <Tabs>

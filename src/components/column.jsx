@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class Column extends Component {
-  render(props) {
+  render() {
     return <p>{this.props.name}</p>;
   }
 }
