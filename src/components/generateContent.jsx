@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Column from "./column";
 import { Button, Col, Grid, Row } from "react-bootstrap";
 import NPCDetails from "./NPCDetails";
+import { generate } from "./../functions/generate";
 
 var npc1 = {
   id: 1,
@@ -29,10 +30,16 @@ var npc1 = {
 class GenerateContent extends Component {
   state = {};
 
+  handleGenerate() {
+    let info = "info";
+    let info2 = "info2";
+    generate(info, info2);
+  }
+
   render() {
     return (
       <div>
-        <Button>Generate</Button>
+        <Button onClick={this.handleGenerate}>Generate</Button>
         <Button>Save</Button>
         <Grid>
           <Row>
