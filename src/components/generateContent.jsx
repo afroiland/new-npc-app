@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Column from "./column";
-import { Button, Col, Grid, Row } from "react-bootstrap";
+import { Button, Col, Form, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate";
 
@@ -43,7 +43,19 @@ class GenerateContent extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.handleGenerate}>Generate</Button>
+        <Form>
+          <FormGroup controlId="formControlsSelect">
+            <FormControl componentClass="select" placeholder="select">
+              <option value="fighter">fighter</option>
+              <option value="thief">thief</option>
+            </FormControl>
+            <FormControl componentClass="select" placeholder="select">
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+            </FormControl>
+          </FormGroup>
+          <Button onClick={this.handleGenerate}>Generate</Button>
+        </Form>
         <Button>Save</Button>
         <Grid>
           <Row>
