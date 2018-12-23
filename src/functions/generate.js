@@ -37,8 +37,11 @@ export function generate(level, pcClass) {
   //Set starting gold
   let gold = setStartingGold(pcClass);
 
+  pc.maxHP = hp;
+  //pc.gold = gold;
+
   console.log("pc: ", pc);
-  return npc2;
+  return pc;
 }
 
 function setAttributes(pcClass) {
@@ -52,8 +55,30 @@ function setAttributes(pcClass) {
 
 function setHP(level, pcClass) {
   let hp;
-
+    switch (pcClass) {
+      case 'fighter':
+      console.log('fighter', level, pcClass);
+        hp = calcPerLevel(level, 10);
+        break;
+      case 'thief':
+        hp = calcPerLevel(level, 6);
+        break;
+    }
   return hp;
+}
+
+function calcPerLevel(level, die) {
+  console.log("ok", level, die);
+  let hp = die;
+    if (level == 1) {
+      return hp;
+    } else {
+      for (let i = 1; i < level; i++) {
+        hp = hp + Math.floor(Math.random() * die + 1);
+      }
+      console.log("deepest: ", hp);
+      return hp;
+    }
 }
 
 function setStartingGold(pcClass) {

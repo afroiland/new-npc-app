@@ -33,8 +33,8 @@ class GenerateContent extends Component {
   };
 
   handleGenerate = () => {
-    let info = "info";
-    let info2 = "info2";
+    let info = 2;
+    let info2 = "fighter";
     let newNPC = generate(info, info2);
     console.log("newNPC: ", newNPC);
     this.setState({npc: newNPC});
