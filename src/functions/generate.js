@@ -38,7 +38,7 @@ export function generate(level, pcClass) {
   let gold = setStartingGold(pcClass);
 
   pc.maxHP = hp;
-  //pc.gold = gold;
+  pc.gold = gold;
 
   console.log("pc: ", pc);
   return pc;
@@ -57,7 +57,7 @@ function setHP(level, pcClass) {
   let hp;
     switch (pcClass) {
       case 'fighter':
-      console.log('fighter', level, pcClass);
+      //console.log('fighter', level, pcClass);
         hp = calcPerLevel(level, 10);
         break;
       case 'thief':
@@ -70,11 +70,11 @@ function setHP(level, pcClass) {
 function calcPerLevel(level, die) {
   console.log("ok", level, die);
   let hp = die;
-    if (level == 1) {
+    if (level === 1) {
       return hp;
     } else {
       for (let i = 1; i < level; i++) {
-        hp = hp + Math.floor(Math.random() * die + 1);
+        hp = hp + getRandom(1, die);
       }
       console.log("deepest: ", hp);
       return hp;
@@ -83,6 +83,22 @@ function calcPerLevel(level, die) {
 
 function setStartingGold(pcClass) {
   let gold;
+    switch (pcClass) {
+      case 'fighter':
+      gold = getRandom(5, 4) * 10;
+      break;
+      case 'thief':
+      gold = getRandom(2, 6) * 10;
+      break;
+    }
 
   return gold;
+}
+
+function getRandom(number, die) {
+  let result = 0;
+  for (let i = 0; i < number; i++) {
+    result = result + Math.floor(Math.random() * die + 1);
+  }
+  return result;
 }

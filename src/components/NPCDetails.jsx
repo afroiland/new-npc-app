@@ -13,6 +13,7 @@ class NPCDetails extends Component {
         <p>AC: {this.props.npc.ac}</p>
         {/* attributes */}
         {/* <p>Items: {this.props.npc.items}</p> */}
+        <p>Gold: {this.props.npc.gold}</p>
         <p>Ranking: {this.props.npc.ranking}</p>
         <p>Affiliation: {this.props.npc.affiliation}</p>
         {/* <p>Notes: {this.props.npc.notes}</p> */}
