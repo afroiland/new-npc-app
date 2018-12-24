@@ -37,6 +37,7 @@ export function generate(level, pcClass) {
   //Set starting gold
   let gold = setStartingGold(pcClass);
 
+  pc.class = pcClass.charAt(0).toUpperCase() + pcClass.slice(1);
   pc.maxHP = hp;
   pc.gold = gold;
 
@@ -68,7 +69,7 @@ function setHP(level, pcClass) {
 }
 
 function calcPerLevel(level, die) {
-  console.log("ok", level, die);
+  //console.log("ok", level, die);
   let hp = die;
   if (level === 1) {
     return hp;
@@ -76,7 +77,7 @@ function calcPerLevel(level, die) {
     for (let i = 1; i < level; i++) {
       hp = hp + getRandom(1, die);
     }
-    console.log("deepest: ", hp);
+    //console.log("deepest: ", hp);
     return hp;
   }
 }
