@@ -30,14 +30,14 @@ export function generate(level, pcClass) {
   //Set HP
   let hp = setHP(level, pcClass);
 
-  //Set armor/AC
+  //Adjust HP and AC based on attributes
 
   //Set spells if necessary
 
   //Set starting gold
   let gold = setStartingGold(pcClass);
 
-  pc.class = pcClass.charAt(0).toUpperCase() + pcClass.slice(1);
+  pc.class = pcClass;
   pc.maxHP = hp;
   pc.gold = gold;
 
@@ -57,12 +57,22 @@ function setAttributes(pcClass) {
 function setHP(level, pcClass) {
   let hp;
   switch (pcClass) {
-    case 'fighter':
+    case 'Fighter':
     //console.log('fighter', level, pcClass);
       hp = calcPerLevel(level, 10);
       break;
-    case 'thief':
+    case 'Thief':
+    case 'Assassin':
       hp = calcPerLevel(level, 6);
+      break;
+    case 'Cleric':
+      hp = calcPerLevel(level, 8);
+      break;
+    case 'Magic-User':
+      hp = calcPerLevel(level, 4);
+      break;
+    case 'Monk':
+      hp = calcPerLevel(level, 4) + 4;
       break;
   }
   return hp;
@@ -85,11 +95,21 @@ function calcPerLevel(level, die) {
 function setStartingGold(pcClass) {
   let gold;
   switch (pcClass) {
-    case 'fighter':
+    case 'Fighter':
       gold = getRandom(5, 4) * 10;
       break;
-    case 'thief':
+    case 'Thief':
+    case 'Assassin':
       gold = getRandom(2, 6) * 10;
+      break;
+    case 'Cleric':
+      gold = getRandom(3, 6) * 10;
+      break;
+    case 'Magic-User':
+      gold = getRandom(2, 4) * 10;
+      break;
+    case 'Monk':
+      gold = getRandom(5, 4);
       break;
   }
   return gold;

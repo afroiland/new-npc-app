@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import Column from "./column";
-import { Button, Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
+import { Button, Col, FormControl, Grid, Row } from "react-bootstrap";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate";
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
 
 class GenerateContent extends Component {
   state = {
     npc: {},
     level: 1,
-    pcClass: 'fighter'
+    pcClass: 'Fighter'
   };
 
   handleGenerate = (level, pcClass) => {
@@ -26,8 +27,7 @@ class GenerateContent extends Component {
           <Row>
             <Col md={6}>
               <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ pcClass: e.target.value })}>
-                <option value="fighter">Fighter</option>
-                <option value="thief">Thief</option>
+                {classes.map(pcClass => <option key={pcClass} value={pcClass}>{pcClass}</option>)}
               </FormControl>
             </Col>
             <Col md={6}>
