@@ -29,13 +29,13 @@ var npc1 = {
 
 class GenerateContent extends Component {
   state = {
-    npc: npc1
+    npc: npc1,
+    level: 2,
+    pcClass: 'fighter'
   };
 
-  handleGenerate = () => {
-    let info = 3;
-    let info2 = "fighter";
-    let newNPC = generate(info, info2);
+  handleGenerate = (level, pcClass) => {
+    let newNPC = generate(level, pcClass);
     console.log("newNPC: ", newNPC);
     this.setState({npc: newNPC});
   }
@@ -45,16 +45,16 @@ class GenerateContent extends Component {
       <div>
         <Form>
           <FormGroup controlId="formControlsSelect">
-            <FormControl componentClass="select" placeholder="select">
+            <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({pcClass: e.target.value})}>
               <option value="fighter">fighter</option>
               <option value="thief">thief</option>
             </FormControl>
-            <FormControl componentClass="select" placeholder="select">
+            <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({level: e.target.value})}>
               <option value={1}>1</option>
               <option value={2}>2</option>
             </FormControl>
           </FormGroup>
-          <Button onClick={this.handleGenerate}>Generate</Button>
+          <Button onClick={() => this.handleGenerate(this.state.level, this.state.pcClass)}>Generate</Button>
         </Form>
         <Button>Save</Button>
         <Grid>

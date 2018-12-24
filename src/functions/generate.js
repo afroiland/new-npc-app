@@ -55,43 +55,42 @@ function setAttributes(pcClass) {
 
 function setHP(level, pcClass) {
   let hp;
-    switch (pcClass) {
-      case 'fighter':
-      //console.log('fighter', level, pcClass);
-        hp = calcPerLevel(level, 10);
-        break;
-      case 'thief':
-        hp = calcPerLevel(level, 6);
-        break;
-    }
+  switch (pcClass) {
+    case 'fighter':
+    //console.log('fighter', level, pcClass);
+      hp = calcPerLevel(level, 10);
+      break;
+    case 'thief':
+      hp = calcPerLevel(level, 6);
+      break;
+  }
   return hp;
 }
 
 function calcPerLevel(level, die) {
   console.log("ok", level, die);
   let hp = die;
-    if (level === 1) {
-      return hp;
-    } else {
-      for (let i = 1; i < level; i++) {
-        hp = hp + getRandom(1, die);
-      }
-      console.log("deepest: ", hp);
-      return hp;
+  if (level === 1) {
+    return hp;
+  } else {
+    for (let i = 1; i < level; i++) {
+      hp = hp + getRandom(1, die);
     }
+    console.log("deepest: ", hp);
+    return hp;
+  }
 }
 
 function setStartingGold(pcClass) {
   let gold;
-    switch (pcClass) {
-      case 'fighter':
+  switch (pcClass) {
+    case 'fighter':
       gold = getRandom(5, 4) * 10;
       break;
-      case 'thief':
+    case 'thief':
       gold = getRandom(2, 6) * 10;
       break;
-    }
-
+  }
   return gold;
 }
 
