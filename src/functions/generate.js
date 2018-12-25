@@ -22,11 +22,14 @@ var npc2 = {
 };
 
 export function generate(level, pcClass) {
-  let pc = {class: pcClass};
+  let pc = {level: level, class: pcClass};
 
   //Set attributes
   let attributes = setAttributes(pcClass);
   pc.str = attributes.str;
+  if (pc.class === "Fighter" && pc.str === 18) {
+    pc.ex_str = getRandom(1, 100);
+  }
   pc.int = attributes.int;
   pc.dex = attributes.dex;
   pc.con = attributes.con;
@@ -35,9 +38,11 @@ export function generate(level, pcClass) {
 
   //Set HP
   let hp = setHP(level, pcClass);
-  pc.maxHP = hp;
-
+  
   //Adjust HP and AC based on attributes
+
+  pc.currentHP = hp;
+  pc.maxHP = hp;
 
   //Set spells if necessary
 
