@@ -1,13 +1,26 @@
 import React, { Component } from "react";
+import { Button, Col, Form, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
 
 class NPCDetails extends Component {
   render() {
     return (
       <div>
-        <p>Name: {this.props.npc.name}</p>
+        <Form horizontal>
+          <FormGroup>
+            <Col sm={2} style={{marginTop:7}}>Name: </Col>
+            <Col sm={10}><FormControl defaultValue={this.props.npc.name} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Level: </Col>
+            <Col sm={10}><FormControl defaultValue={this.props.npc.level} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Class: </Col>
+            <Col sm={10}><FormControl defaultValue={this.props.npc.class} /></Col>
+          </FormGroup>
+        
+
         <p>Title: {this.props.npc.title}</p>
-        <p>Level: {this.props.npc.level}</p>
-        <p>Class: {this.props.npc.class}</p>
 
         {this.props.npc.ex_str ? (<p>Str: {this.props.npc.str}/{this.props.npc.ex_str}</p>
           ) : (
@@ -27,6 +40,7 @@ class NPCDetails extends Component {
         <p>Ranking: {this.props.npc.ranking}</p>
         <p>Affiliation: {this.props.npc.affiliation}</p>
         {/* <p>Notes: {this.props.npc.notes}</p> */}
+        </Form>
       </div>
     );
   }
