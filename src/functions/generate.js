@@ -24,6 +24,9 @@ var npc2 = {
 export function generate(level, pcClass) {
   let pc = {level: level, class: pcClass};
 
+  //Set name
+  pc.name = getName();
+
   //Set attributes
   let attributes = setAttributes(pcClass);
   pc.str = attributes.str;
@@ -50,8 +53,18 @@ export function generate(level, pcClass) {
   let gold = setStartingGold(pcClass);
   pc.gold = gold;
 
-  console.log("pc: ", pc);
+  //console.log("pc: ", pc);
   return pc;
+}
+
+function getName() {
+  let chars = "abcdefghijklmnopqrstuvwxyz"
+  let name = "";
+  let nameLength = getRandom(3, 4);
+  for (let i  = 0; i < nameLength; i++) {
+    name += chars.charAt(getRandom(1, 26));
+  }
+  return name;
 }
 
 function setAttributes(pcClass) {
@@ -82,6 +95,7 @@ function setAttributes(pcClass) {
   }
 
   attributes.str = setAttribute(mins.str);
+  //attributes.str = 18;
   attributes.int = setAttribute(mins.int);
   attributes.dex = setAttribute(mins.dex);
   attributes.con = setAttribute(mins.con);
