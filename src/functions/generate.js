@@ -22,36 +22,96 @@ var npc2 = {
 };
 
 export function generate(level, pcClass) {
-  let pc = {};
+  let pc = {level: level, class: pcClass};
+
+  //Set name
+  pc.name = getName();
 
   //Set attributes
   let attributes = setAttributes(pcClass);
+  pc.str = attributes.str;
+  if (pc.class === "Fighter" && pc.str === 18) {
+    pc.ex_str = getRandom(1, 100);
+  }
+  pc.int = attributes.int;
+  pc.dex = attributes.dex;
+  pc.con = attributes.con;
+  pc.wis = attributes.wis;
+  pc.cha = attributes.cha;
 
   //Set HP
   let hp = setHP(level, pcClass);
-
+  
   //Adjust HP and AC based on attributes
+
+  pc.currentHP = hp;
+  pc.maxHP = hp;
 
   //Set spells if necessary
 
   //Set starting gold
   let gold = setStartingGold(pcClass);
-
-  pc.class = pcClass;
-  pc.maxHP = hp;
   pc.gold = gold;
 
-  console.log("pc: ", pc);
+  //console.log("pc: ", pc);
   return pc;
+}
+
+function getName() {
+  let chars = "abcdefghijklmnopqrstuvwxyz"
+  let name = "";
+  let nameLength = getRandom(3, 4);
+  for (let i  = 0; i < nameLength; i++) {
+    name += chars.charAt(getRandom(1, 26));
+  }
+  name = name.charAt(0).toUpperCase() + name.slice(1);
+  return name;
 }
 
 function setAttributes(pcClass) {
   let attributes = {};
-  // switch (pcClass) {
-  //     case fighter
-  // }
 
+  // Set minimums for class
+  let mins = {};
+  switch (pcClass) {
+    case 'Fighter':
+      mins.str = 9;
+      break;
+    case 'Thief':
+    case 'Assassin':
+      mins.dex = 9;
+      break;
+    case 'Cleric':
+      mins.wis = 9;
+      break;
+    case 'Magic-User':
+      mins.int = 9;
+      break;
+    case 'Monk':
+      mins.str = 15;
+      mins.wis = 15;
+      mins.dex = 15;
+      mins.con = 11;
+      break;
+  }
+
+  //attributes.str = setAttribute(mins.str);
+  attributes.str = 18;
+  attributes.int = setAttribute(mins.int);
+  attributes.dex = setAttribute(mins.dex);
+  attributes.con = setAttribute(mins.con);
+  attributes.wis = setAttribute(mins.wis);
+  attributes.cha = setAttribute(mins.cha);
+  
   return attributes;
+}
+
+function setAttribute(minimum) {
+  let score = getRandom(3, 6);
+  while (score < minimum) {
+    score = getRandom(3, 6);
+  }
+  return score;
 }
 
 function setHP(level, pcClass) {
@@ -87,7 +147,6 @@ function calcPerLevel(level, die) {
     for (let i = 1; i < level; i++) {
       hp = hp + getRandom(1, die);
     }
-    //console.log("deepest: ", hp);
     return hp;
   }
 }
