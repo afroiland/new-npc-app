@@ -64,6 +64,7 @@ function getName() {
   for (let i  = 0; i < nameLength; i++) {
     name += chars.charAt(getRandom(1, 26));
   }
+  name = name.charAt(0).toUpperCase() + name.slice(1);
   return name;
 }
 
@@ -94,8 +95,8 @@ function setAttributes(pcClass) {
       break;
   }
 
-  attributes.str = setAttribute(mins.str);
-  //attributes.str = 18;
+  //attributes.str = setAttribute(mins.str);
+  attributes.str = 18;
   attributes.int = setAttribute(mins.int);
   attributes.dex = setAttribute(mins.dex);
   attributes.con = setAttribute(mins.con);

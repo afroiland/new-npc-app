@@ -20,56 +20,60 @@ class NPCDetails extends Component {
             <Col sm={2}>Title: </Col>
             <Col sm={10}><FormControl defaultValue={this.props.npc.title} /></Col>
           </FormGroup>
-          {this.props.npc.ex_str ? (
+          {/* {this.props.npc.ex_str ? ( */}
             <FormGroup>
               <Col sm={2}>Str: </Col>
               <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
               <Col sm={1}><FormControl defaultValue={this.props.npc.ex_str} /></Col>
             </FormGroup>
-          ) : (
-              <FormGroup>
-                <Col sm={2}>Str: </Col>
-                <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
-              </FormGroup>
-            )}
-          {/* {this.props.npc.ex_str ? (<p>Str: {this.props.npc.str}/{this.props.npc.ex_str}</p>
-          ) : (
-            <p>Str: {this.props.npc.str}</p>
-          )} */}
-
+       {/*  ) : (
+             <FormGroup>
+               <Col sm={2}>Str: </Col>
+               <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
+            </FormGroup>
+          )}*/}
           <FormGroup>
             <Col sm={2}>Int: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.int} /></Col>
           </FormGroup>
           <FormGroup>
-                <Col sm={2}>Dex: </Col>
-                <Col sm={1}><FormControl defaultValue={this.props.npc.dex} /></Col>
-              </FormGroup>
-              <FormGroup>
-                <Col sm={2}>Con: </Col>
-                <Col sm={1}><FormControl defaultValue={this.props.npc.con} /></Col>
-              </FormGroup>
-              <FormGroup>
-                <Col sm={2}>Wis: </Col>
-                <Col sm={1}><FormControl defaultValue={this.props.npc.wis} /></Col>
-              </FormGroup>
-              <FormGroup>
-                <Col sm={2}>Cha: </Col>
-                <Col sm={1}><FormControl defaultValue={this.props.npc.cha} /></Col>
-              </FormGroup>
-          {/* <p>Int: {this.props.npc.int}</p>
-          <p>Dex: {this.props.npc.dex}</p>
-          <p>Con: {this.props.npc.con}</p>
-          <p>Wis: {this.props.npc.wis}</p>
-          <p>Cha: {this.props.npc.cha}</p> */}
-
-          <p>Current HP: {this.props.npc.currentHP}</p>
-          <p>Max HP: {this.props.npc.maxHP}</p>
-          <p>AC: {this.props.npc.ac}</p>
+            <Col sm={2}>Dex: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.dex} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Con: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.con} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Wis: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.wis} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Cha: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.cha} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>HP: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.currentHP} /></Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.maxHP} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>AC: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.ac} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Gold: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.gold} /></Col>
+          </FormGroup>
           {/* <p>Items: {this.props.npc.items}</p> */}
-          <p>Gold: {this.props.npc.gold}</p>
-          <p>Ranking: {this.props.npc.ranking}</p>
-          <p>Affiliation: {this.props.npc.affiliation}</p>
+          <FormGroup>
+            <Col sm={2}>Ranking: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.ranking} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Affiliation: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.affiliation} /></Col>
+          </FormGroup>
           {/* <p>Notes: {this.props.npc.notes}</p> */}
         </Form>
       </div>
