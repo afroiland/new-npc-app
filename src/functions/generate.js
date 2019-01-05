@@ -1,25 +1,25 @@
-var npc2 = {
-  id: 1,
-  name: "npc2",
-  title: "",
-  level: 0,
-  class: "",
-  currentHP: 0,
-  maxHP: 0,
-  ac: 0,
-  str: 0,
-  ex_str: 0,
-  int: 0,
-  dex: 0,
-  con: 0,
-  wis: 0,
-  cha: 0,
-  spells: {},
-  items: {},
-  ranking: 0,
-  affiliation: "",
-  notes: {}
-};
+// var npc2 = {
+//   id: 1,
+//   name: "npc2",
+//   title: "",
+//   level: 0,
+//   class: "",
+//   currentHP: 0,
+//   maxHP: 0,
+//   ac: 0,
+//   str: 0,
+//   ex_str: 0,
+//   int: 0,
+//   dex: 0,
+//   con: 0,
+//   wis: 0,
+//   cha: 0,
+//   spells: {},
+//   items: {},
+//   ranking: 0,
+//   affiliation: "",
+//   notes: {}
+// };
 
 export function generate(level, pcClass) {
   let pc = {level: level, class: pcClass};
@@ -93,6 +93,7 @@ function setAttributes(pcClass) {
       mins.dex = 15;
       mins.con = 11;
       break;
+    default:
   }
 
   //attributes.str = setAttribute(mins.str);
@@ -134,6 +135,7 @@ function setHP(level, pcClass) {
     case 'Monk':
       hp = calcPerLevel(level, 4) + 4;
       break;
+    default:
   }
   return hp;
 }
@@ -170,6 +172,7 @@ function setStartingGold(pcClass) {
     case 'Monk':
       gold = getRandom(5, 4);
       break;
+    default:
   }
   return gold;
 }
