@@ -2,18 +2,18 @@ import React, { Component } from "react";
 import { Button, Col, Form, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
 
 class NPCDetails extends Component {
-  state = {
-    npc: this.props.npc
-  }
+  // state = {
+  //   npc: this.props.npc
+  // }
 
   render() {
-    console.log("this.state: ", this.state);
+    //console.log("this.state: ", this.state);
     return (
       <div>
         <Form horizontal>
           <FormGroup>
             <Col sm={1} style={{ marginTop: 7 }}>Name: </Col>
-            <Col sm={5}><FormControl defaultValue={this.state.npc.name} /></Col>
+            <Col sm={5}><FormControl defaultValue={this.props.npc.name} /></Col>
             <Col sm={1}>Level: </Col>
             <Col sm={5}><FormControl defaultValue={this.props.npc.level} /></Col>
           </FormGroup>
