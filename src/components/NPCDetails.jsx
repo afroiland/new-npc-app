@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Col, Form, FormControl, FormGroup } from "react-bootstrap";
 
 class NPCDetails extends Component {
-  // state = {
-  //   hasEx_str: false
-  // }
+  state = {
+    hasEx_str: false,
+    hasSpells: false
+  }
 
   render() {
     //console.log("this.state: ", this.state);
