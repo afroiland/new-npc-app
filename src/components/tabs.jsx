@@ -9,7 +9,7 @@ class NavTabs extends Component {
   render() {
     return (
       <div>
-        <Tabs>
+        <Tabs defaultIndex={1}>
           <TabList>
             <Tab>View</Tab>
             <Tab>Generate</Tab>
