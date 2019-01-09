@@ -2,14 +2,9 @@ import React, { Component } from "react";
 import { Col, Form, FormControl, FormGroup } from "react-bootstrap";
 
 class NPCDetails extends Component {
-  state = {
-    hasEx_str: this.props.hasEx_str,
-    hasSpells: this.props.hasSpells
-  };
 
   render() {
-    console.log("this.props: ", this.props);
-    console.log("this.state: ", this.state);
+    console.log("this.props.npc.ex_str: ", this.props.npc.ex_str);
     return (
       <div>
         <Form horizontal>
@@ -31,15 +26,15 @@ class NPCDetails extends Component {
           <FormGroup>
             <Col sm={2}>Str: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.ex_str} /></Col>
+            {this.props.npc.ex_str ?
+              <Col sm={1}><FormControl defaultValue={this.props.npc.ex_str} /></Col>
+              : <div></div>}
           </FormGroup>
 
           {/* <FormGroup>
             <Col sm={2}>Str: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
-            {this.props.npc.ex_str ?
-              <Col sm={1}><FormControl defaultValue={this.props.npc.ex_str} /></Col>
-              : <div></div>}
+            <Col sm={1}><FormControl defaultValue={this.props.npc.ex_str} /></Col>
           </FormGroup> */}
 
           <FormGroup>
