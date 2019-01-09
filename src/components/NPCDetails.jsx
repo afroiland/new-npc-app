@@ -2,12 +2,9 @@ import React, { Component } from "react";
 import { Col, Form, FormControl, FormGroup } from "react-bootstrap";
 
 class NPCDetails extends Component {
-  // state = {
-  //   npc: this.props.npc
-  // }
 
   render() {
-    //console.log("this.state: ", this.state);
+    console.log("this.props.npc.ex_str: ", this.props.npc.ex_str);
     return (
       <div>
         <Form horizontal>
@@ -25,20 +22,21 @@ class NPCDetails extends Component {
             <Col sm={2}>Title: </Col>
             <Col sm={10}><FormControl defaultValue={this.props.npc.title} /></Col>
           </FormGroup>
-          {/* {this.props.npc.ex_str ? ( */}
-            <FormGroup>
-              <Col sm={2}>Str: </Col>
-              <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
+
+          <FormGroup>
+            <Col sm={2}>Str: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
             {this.props.npc.ex_str ?
               <Col sm={1}><FormControl defaultValue={this.props.npc.ex_str} /></Col>
               : <div></div>}
-            </FormGroup>
-       {/*  ) : (
-             <FormGroup>
-               <Col sm={2}>Str: </Col>
-               <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
-            </FormGroup>
-          )}*/}
+          </FormGroup>
+
+          {/* <FormGroup>
+            <Col sm={2}>Str: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.ex_str} /></Col>
+          </FormGroup> */}
+
           <FormGroup>
             <Col sm={2}>Int: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.int} /></Col>

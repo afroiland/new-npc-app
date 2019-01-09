@@ -31,7 +31,7 @@ export function generate(level, pcClass) {
   let attributes = setAttributes(pcClass);
   pc.str = attributes.str;
   if (pc.class === "Fighter" && pc.str === 18) {
-    pc.ex_str = getRandom(1, 100);
+    pc.ex_str = rollDice(1, 100);
   }
   pc.int = attributes.int;
   pc.dex = attributes.dex;
@@ -60,9 +60,9 @@ export function generate(level, pcClass) {
 function getName() {
   let chars = "abcdefghijklmnopqrstuvwxyz"
   let name = "";
-  let nameLength = getRandom(3, 4);
+  let nameLength = rollDice(3, 4);
   for (let i  = 0; i < nameLength; i++) {
-    name += chars.charAt(getRandom(1, 26));
+    name += chars.charAt(rollDice(1, 26));
   }
   name = name.charAt(0).toUpperCase() + name.slice(1);
   return name;
@@ -108,9 +108,9 @@ function setAttributes(pcClass) {
 }
 
 function setAttribute(minimum) {
-  let score = getRandom(3, 6);
+  let score = rollDice(3, 6);
   while (score < minimum) {
-    score = getRandom(3, 6);
+    score = rollDice(3, 6);
   }
   return score;
 }
@@ -147,7 +147,7 @@ function calcPerLevel(level, die) {
     return hp;
   } else {
     for (let i = 1; i < level; i++) {
-      hp = hp + getRandom(1, die);
+      hp = hp + rollDice(1, die);
     }
     return hp;
   }
@@ -157,27 +157,27 @@ function setStartingGold(pcClass) {
   let gold;
   switch (pcClass) {
     case 'Fighter':
-      gold = getRandom(5, 4) * 10;
+      gold = rollDice(5, 4) * 10;
       break;
     case 'Thief':
     case 'Assassin':
-      gold = getRandom(2, 6) * 10;
+      gold = rollDice(2, 6) * 10;
       break;
     case 'Cleric':
-      gold = getRandom(3, 6) * 10;
+      gold = rollDice(3, 6) * 10;
       break;
     case 'Magic-User':
-      gold = getRandom(2, 4) * 10;
+      gold = rollDice(2, 4) * 10;
       break;
     case 'Monk':
-      gold = getRandom(5, 4);
+      gold = rollDice(5, 4);
       break;
     default:
   }
   return gold;
 }
 
-function getRandom(number, die) {
+function rollDice(number, die) {
   let result = 0;
   for (let i = 0; i < number; i++) {
     result = result + Math.floor(Math.random() * die + 1);

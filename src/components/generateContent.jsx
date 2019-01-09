@@ -16,7 +16,7 @@ class GenerateContent extends Component {
 
   handleGenerate = (level, pcClass) => {
     let newNPC = generate(level, pcClass);
-    console.log("newNPC: ", newNPC);
+    //console.log("newNPC: ", newNPC);
     this.setState({ npc: newNPC });
   }
 
