@@ -96,8 +96,8 @@ function setAttributes(pcClass) {
     default:
   }
 
-  attributes.str = setAttribute(mins.str);
-  //attributes.str = 18;
+  //attributes.str = setAttribute(mins.str);
+  attributes.str = 18;
   attributes.int = setAttribute(mins.int);
   attributes.dex = setAttribute(mins.dex);
   attributes.con = setAttribute(mins.con);

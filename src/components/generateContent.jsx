@@ -11,12 +11,16 @@ class GenerateContent extends Component {
   state = {
     npc: {},
     level: 1,
-    pcClass: 'Fighter'
+    pcClass: 'Fighter',
+    hasEx_str: false,
+    hasSpells: false
   };
 
   handleGenerate = (level, pcClass) => {
     let newNPC = generate(level, pcClass);
     console.log("newNPC: ", newNPC);
+    if(newNPC.ex_str) {this.setState({ hasEx_str: true });}
+    if(newNPC.spells) {this.setState({ hasSpells: true });}
     this.setState({ npc: newNPC });
   }
 
@@ -41,7 +45,7 @@ class GenerateContent extends Component {
           <Row>
             <Col md={12}>
               <Column name="New NPC" />
-              <NPCDetails npc={this.state.npc} />
+              <NPCDetails npc={this.state.npc} hasEx_str={this.state.hasEx_str} hasSpells={this.state.hasSpells}/>
             </Col>
           </Row>
         </Grid>

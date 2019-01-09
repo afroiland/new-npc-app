@@ -3,12 +3,13 @@ import { Col, Form, FormControl, FormGroup } from "react-bootstrap";
 
 class NPCDetails extends Component {
   state = {
-    hasEx_str: false,
-    hasSpells: false
-  }
+    hasEx_str: this.props.hasEx_str,
+    hasSpells: this.props.hasSpells
+  };
 
   render() {
-    //console.log("this.state: ", this.state);
+    console.log("this.props: ", this.props);
+    console.log("this.state: ", this.state);
     return (
       <div>
         <Form horizontal>
