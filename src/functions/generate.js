@@ -1,4 +1,4 @@
-import { generateSpellbook, getSpells } from "./spells";
+import { generateSpellbook, getMemdSpells } from "./spells";
 import { rollDice } from "./dice";
 
 // var npc2 = {
@@ -88,7 +88,7 @@ export function generate(level, pcClass) {
   }
 
   if (pcClass === "Magic-User" || pcClass === "Cleric") {
-    pc.memorized = getSpells(level, pcClass);
+    pc.memorized = getMemdSpells(level, pcClass);
   }
 
   //Set starting gold
