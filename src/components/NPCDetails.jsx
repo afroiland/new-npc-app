@@ -4,7 +4,7 @@ import { Col, Form, FormControl, FormGroup } from "react-bootstrap";
 class NPCDetails extends Component {
 
   render() {
-    console.log("this.props.npc.ex_str: ", this.props.npc.ex_str);
+    //console.log("this.props.npc.ex_str: ", this.props.npc.ex_str);
     return (
       <div>
         <Form horizontal>

@@ -1,4 +1,4 @@
-import { getSpells } from "./spells";
+//import { getSpells } from "./spells";
 import { rollDice } from "./dice";
 
 // var npc2 = {
@@ -45,13 +45,44 @@ export function generate(level, pcClass) {
   //Set HP
   let hp = setHP(level, pcClass);
 
-  //Adjust HP and AC based on attributes
+  //Adjust HP based on con
+  if (pcClass === "Fighter") {
+    switch (pc.con) {
+      case 15:
+        hp += (level);
+        break;
+      case 16:
+        hp += (level * 2);
+        break;
+      case 17:
+        hp += (level * 3);
+        break;
+      case 18:
+        hp += (level * 4);
+        break;
+      default:
+    }
+  } else {
+    switch (pc.con) {
+      case 15:
+        hp += (level);
+        break;
+      case 16:
+      case 17:
+      case 18:
+        hp += (level * 2);
+        break;
+      default:
+  }
+}
 
   pc.currentHP = hp;
   pc.maxHP = hp;
 
+  pc.ac = 10;
+
   //Set spells if necessary
-  pc.spells = getSpells(level, pcClass);
+  //pc.spells = getSpells(level, pcClass);
 
   //Set starting gold
   let gold = setStartingGold(pcClass);
@@ -152,6 +183,7 @@ function calcPerLevel(level, die) {
   } else {
     for (let i = 1; i < level; i++) {
       hp = hp + rollDice(1, die);
+      console.log("hp ish: ", hp);
     }
     return hp;
   }

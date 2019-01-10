@@ -16,7 +16,7 @@ class GenerateContent extends Component {
 
   handleGenerate = (level, pcClass) => {
     let newNPC = generate(level, pcClass);
-    //console.log("newNPC: ", newNPC);
+    console.log("newNPC: ", newNPC);
     this.setState({ npc: newNPC });
   }
 
@@ -31,7 +31,7 @@ class GenerateContent extends Component {
               </FormControl>
             </Col>
             <Col md={6}>
-              <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ level: e.target.value })}>
+              <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ level: parseInt(e.target.value) })}>
                 {levelRange.map(level => <option key={level} value={level}>{level}</option>)}
               </FormControl>
             </Col>
