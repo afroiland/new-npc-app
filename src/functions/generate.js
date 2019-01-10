@@ -1,3 +1,6 @@
+import { getSpells } from "./spells";
+import { rollDice } from "./dice";
+
 // var npc2 = {
 //   id: 1,
 //   name: "npc2",
@@ -14,15 +17,15 @@
 //   con: 0,
 //   wis: 0,
 //   cha: 0,
-//   spells: {},
-//   items: {},
+//   spells: [],
+//   items: [],
 //   ranking: 0,
 //   affiliation: "",
-//   notes: {}
+//   notes: []
 // };
 
 export function generate(level, pcClass) {
-  let pc = {level: level, class: pcClass};
+  let pc = { level: level, class: pcClass };
 
   //Set name
   pc.name = getName();
@@ -41,13 +44,14 @@ export function generate(level, pcClass) {
 
   //Set HP
   let hp = setHP(level, pcClass);
-  
+
   //Adjust HP and AC based on attributes
 
   pc.currentHP = hp;
   pc.maxHP = hp;
 
   //Set spells if necessary
+  pc.spells = getSpells(level, pcClass);
 
   //Set starting gold
   let gold = setStartingGold(pcClass);
@@ -61,7 +65,7 @@ function getName() {
   let chars = "abcdefghijklmnopqrstuvwxyz"
   let name = "";
   let nameLength = rollDice(3, 4);
-  for (let i  = 0; i < nameLength; i++) {
+  for (let i = 0; i < nameLength; i++) {
     name += chars.charAt(rollDice(1, 26));
   }
   name = name.charAt(0).toUpperCase() + name.slice(1);
@@ -96,14 +100,14 @@ function setAttributes(pcClass) {
     default:
   }
 
-  //attributes.str = setAttribute(mins.str);
-  attributes.str = 18;
+  attributes.str = setAttribute(mins.str);
+  //attributes.str = 18;
   attributes.int = setAttribute(mins.int);
   attributes.dex = setAttribute(mins.dex);
   attributes.con = setAttribute(mins.con);
   attributes.wis = setAttribute(mins.wis);
   attributes.cha = setAttribute(mins.cha);
-  
+
   return attributes;
 }
 
@@ -119,7 +123,7 @@ function setHP(level, pcClass) {
   let hp;
   switch (pcClass) {
     case 'Fighter':
-    //console.log('fighter', level, pcClass);
+      //console.log('fighter', level, pcClass);
       hp = calcPerLevel(level, 10);
       break;
     case 'Thief':
@@ -175,12 +179,4 @@ function setStartingGold(pcClass) {
     default:
   }
   return gold;
-}
-
-function rollDice(number, die) {
-  let result = 0;
-  for (let i = 0; i < number; i++) {
-    result = result + Math.floor(Math.random() * die + 1);
-  }
-  return result;
 }

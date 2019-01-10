@@ -22,21 +22,11 @@ class NPCDetails extends Component {
             <Col sm={2}>Title: </Col>
             <Col sm={10}><FormControl defaultValue={this.props.npc.title} /></Col>
           </FormGroup>
-
           <FormGroup>
             <Col sm={2}>Str: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
-            {this.props.npc.ex_str ?
-              <Col sm={1}><FormControl defaultValue={this.props.npc.ex_str} /></Col>
-              : <div></div>}
+            <Col sm={1}><FormControl style={{display: this.props.npc.ex_str ? 'block': 'none'}} defaultValue={this.props.npc.ex_str} /></Col>
           </FormGroup>
-
-          {/* <FormGroup>
-            <Col sm={2}>Str: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.ex_str} /></Col>
-          </FormGroup> */}
-
           <FormGroup>
             <Col sm={2}>Int: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.int} /></Col>
