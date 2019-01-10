@@ -18,11 +18,44 @@ const level_3_spellsCleric = [];
 const level_4_spellsCleric = [];
 const level_5_spellsCleric = [];
 
-export function generateSpellbook(level) {
+export function generateSpellbook(pcLevel) {
   let spellbook = {};
   let firstLvlSpells = ["Read Magic"];
+  switch (pcLevel) {
+    case 1:
+      while (firstLvlSpells.length < 4) {
+        addSpell(1);
+        console.log("firstLvlSpells: ", firstLvlSpells);
+      }
+    case 2:
+    //
+    case 3:
+    //
+    case 4:
+    //
+    case 5:
+    //
+    case 6:
+    //
+    case 7:
+    //
+    default:
+  }
 
+  function addSpell(spellLevel) {
+    switch(spellLevel) {
+      case 1:
+        let randomIndex = rollDice(1, level_1_spellsMU.length) - 1;
+        if (firstLvlSpells.includes(level_1_spellsMU[randomIndex])) {
+          return;
+        } else {
+          firstLvlSpells.push(level_1_spellsMU[randomIndex]);
+        }
+    }
+  }
 }
+
+
 
 export function getSpells(level, pcClass) {
 

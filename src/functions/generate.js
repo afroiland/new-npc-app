@@ -1,4 +1,4 @@
-//import { generateSpellbook, getSpells } from "./spells";
+import { generateSpellbook, getSpells } from "./spells";
 import { rollDice } from "./dice";
 
 // var npc2 = {
