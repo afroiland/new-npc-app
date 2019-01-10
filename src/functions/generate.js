@@ -1,4 +1,4 @@
-//import { getSpells } from "./spells";
+//import { generateSpellbook, getSpells } from "./spells";
 import { rollDice } from "./dice";
 
 // var npc2 = {
@@ -17,7 +17,8 @@ import { rollDice } from "./dice";
 //   con: 0,
 //   wis: 0,
 //   cha: 0,
-//   spells: [],
+//   spellbook: {},
+//   memorized: [],
 //   items: [],
 //   ranking: 0,
 //   affiliation: "",
@@ -81,12 +82,17 @@ export function generate(level, pcClass) {
 
   pc.ac = 10;
 
-  //Set spells if necessary
-  //pc.spells = getSpells(level, pcClass);
+  //Spell stuff
+  if (pcClass === "Magic-User") {
+    pc.spellbook = generateSpellbook(level);
+  }
+
+  if (pcClass === "Magic-User" || pcClass === "Cleric") {
+    pc.memorized = getSpells(level, pcClass);
+  }
 
   //Set starting gold
-  let gold = setStartingGold(pcClass);
-  pc.gold = gold;
+  pc.gold = setStartingGold(pcClass);
 
   //console.log("pc: ", pc);
   return pc;
