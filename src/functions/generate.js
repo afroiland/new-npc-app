@@ -72,6 +72,8 @@ export function generate(level, pcClass) {
 
   pc.probity = 0;
 
+  pc.affiliation = getAffiliation();
+
   //console.log("pc: ", pc);
   return pc;
 }
@@ -194,4 +196,10 @@ function setStartingGold(pcClass) {
     default:
   }
   return gold;
+}
+
+function getAffiliation() {
+  const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Business", "Church",
+    "Crown", "Street", "Inmate", "Dwarf", "Burquone", "Tellerue"];
+  return affiliations[rollDice(1, affiliations.length)];
 }

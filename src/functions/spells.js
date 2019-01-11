@@ -38,95 +38,95 @@ export function generateSpellbook(pcLevel) {
   switch (pcLevel) {
     case 1:
       while (firstLvlSpells.length < 4) {
-        addSpell(1);
+        addSpell(firstLvlSpells, level_1_spellsMU);
       }
       break;
     case 2:
       while (firstLvlSpells.length < 5) {
-        addSpell(1);
+        addSpell(firstLvlSpells, level_1_spellsMU);
       }
       break;
     case 3:
       while (firstLvlSpells.length < 5) {
-        addSpell(1);
+        addSpell(firstLvlSpells, level_1_spellsMU);
       }
       while (secondLvlSpells.length < 1) {
-        addSpell(2);
+        addSpell(secondLvlSpells, level_2_spellsMU);
       }
       break;
     case 4:
       while (firstLvlSpells.length < 6) {
-        addSpell(1);
+        addSpell(firstLvlSpells, level_1_spellsMU);
       }
       while (secondLvlSpells.length < 2) {
-        addSpell(2);
+        addSpell(secondLvlSpells, level_2_spellsMU);
       }
       break;
     case 5:
       while (firstLvlSpells.length < 6) {
-        addSpell(1);
+        addSpell(firstLvlSpells, level_1_spellsMU);
       }
       while (secondLvlSpells.length < 2) {
-        addSpell(2);
+        addSpell(secondLvlSpells, level_2_spellsMU);
       }
       while (thirdLvlSpells.length < 1) {
-        addSpell(3);
+        addSpell(thirdLvlSpells, level_3_spellsMU);
       }
       break;
     case 6:
       while (firstLvlSpells.length < 7) {
-        addSpell(1);
+        addSpell(firstLvlSpells, level_1_spellsMU);
       }
       while (secondLvlSpells.length < 3) {
-        addSpell(2);
+        addSpell(secondLvlSpells, level_2_spellsMU);
       }
       while (thirdLvlSpells.length < 2) {
-        addSpell(3);
+        addSpell(thirdLvlSpells, level_3_spellsMU);
       }
       break;
     case 7:
       while (firstLvlSpells.length < 7) {
-        addSpell(1);
+        addSpell(firstLvlSpells, level_1_spellsMU);
       }
       while (secondLvlSpells.length < 3) {
-        addSpell(2);
+        addSpell(secondLvlSpells, level_2_spellsMU);
       }
       while (thirdLvlSpells.length < 2) {
-        addSpell(3);
+        addSpell(thirdLvlSpells, level_3_spellsMU);
       }
       while (fourthLvlSpells.length < 1) {
-        addSpell(4);
+        addSpell(fourthLvlSpells, level_4_spellsMU);
       }
       break;
     case 8:
       while (firstLvlSpells.length < 8) {
-        addSpell(1);
+        addSpell(firstLvlSpells, level_1_spellsMU);
       }
       while (secondLvlSpells.length < 4) {
-        addSpell(2);
+        addSpell(secondLvlSpells, level_2_spellsMU);
       }
       while (thirdLvlSpells.length < 3) {
-        addSpell(3);
+        addSpell(thirdLvlSpells, level_3_spellsMU);
       }
       while (fourthLvlSpells.length < 2) {
-        addSpell(4);
+        addSpell(fourthLvlSpells, level_4_spellsMU);
       }
       break;
     case 9:
       while (firstLvlSpells.length < 8) {
-        addSpell(1);
+        addSpell(firstLvlSpells, level_1_spellsMU);
       }
       while (secondLvlSpells.length < 4) {
-        addSpell(2);
+        addSpell(secondLvlSpells, level_2_spellsMU);
       }
       while (thirdLvlSpells.length < 3) {
-        addSpell(3);
+        addSpell(thirdLvlSpells, level_3_spellsMU);
       }
       while (fourthLvlSpells.length < 2) {
-        addSpell(4);
+        addSpell(fourthLvlSpells, level_4_spellsMU);
       }
       while (fifthLvlSpells.length < 1) {
-        addSpell(5);
+        addSpell(fifthLvlSpells, level_5_spellsMU);
       }
       break;
     default:
@@ -140,49 +140,12 @@ export function generateSpellbook(pcLevel) {
 
   return spellbook;
 
-  function addSpell(spellLevel) {
-    switch(spellLevel) {
-      case 1:
-        let randomIndex = rollDice(1, level_1_spellsMU.length) - 1;
-        if (firstLvlSpells.includes(level_1_spellsMU[randomIndex])) {
-          return;
-        } else {
-          firstLvlSpells.push(level_1_spellsMU[randomIndex]);
-        }
-        break;
-      case 2:
-        let randomIndex2 = rollDice(1, level_2_spellsMU.length) - 1;
-        if (secondLvlSpells.includes(level_2_spellsMU[randomIndex2])) {
-          return;
-        } else {
-          secondLvlSpells.push(level_2_spellsMU[randomIndex2]);
-        }
-        break;
-      case 3:
-        let randomIndex3 = rollDice(1, level_3_spellsMU.length) - 1;
-        if (thirdLvlSpells.includes(level_3_spellsMU[randomIndex3])) {
-          return;
-        } else {
-          thirdLvlSpells.push(level_3_spellsMU[randomIndex3]);
-        }
-        break;
-      case 4:
-        let randomIndex4 = rollDice(1, level_4_spellsMU.length) - 1;
-        if (fourthLvlSpells.includes(level_4_spellsMU[randomIndex4])) {
-          return;
-        } else {
-          fourthLvlSpells.push(level_4_spellsMU[randomIndex4]);
-        }
-        break;
-      case 5:
-        let randomIndex5 = rollDice(1, level_5_spellsMU.length) - 1;
-        if (fifthLvlSpells.includes(level_5_spellsMU[randomIndex5])) {
-          return;
-        } else {
-          fifthLvlSpells.push(level_5_spellsMU[randomIndex5]);
-        }
-        break;
-      default:
+  function addSpell(sbLevel, masterListLevel) {
+    let randomIndex = rollDice(1, masterListLevel.length) - 1;
+    if (sbLevel.includes(masterListLevel[randomIndex])) {
+      return;
+    } else {
+      sbLevel.push(masterListLevel[randomIndex]);
     }
   }
 }
