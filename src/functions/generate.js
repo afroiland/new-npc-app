@@ -118,7 +118,6 @@ function setAttributes(pcClass) {
   }
 
   attributes.str = setAttribute(mins.str);
-  //attributes.str = 18;
   attributes.int = setAttribute(mins.int);
   attributes.dex = setAttribute(mins.dex);
   attributes.con = setAttribute(mins.con);
@@ -140,7 +139,6 @@ function setHP(level, pcClass) {
   let hp;
   switch (pcClass) {
     case 'Fighter':
-      //console.log('fighter', level, pcClass);
       hp = calcPerLevel(level, 10);
       break;
     case 'Thief':
@@ -162,7 +160,6 @@ function setHP(level, pcClass) {
 }
 
 function calcPerLevel(level, die) {
-  //console.log("ok", level, die);
   let hp = die;
   if (level === 1) {
     return hp;
@@ -201,5 +198,5 @@ function setStartingGold(pcClass) {
 function getAffiliation() {
   const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Business", "Church",
     "Crown", "Street", "Inmate", "Dwarf", "Burquone", "Tellerue"];
-  return affiliations[rollDice(1, affiliations.length)];
+  return affiliations[rollDice(1, affiliations.length) -1];
 }
