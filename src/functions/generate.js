@@ -70,6 +70,8 @@ export function generate(level, pcClass) {
   //Set starting gold
   pc.gold = setStartingGold(pcClass);
 
+  pc.probity = 0;
+
   //console.log("pc: ", pc);
   return pc;
 }

@@ -63,8 +63,8 @@ class NPCDetails extends Component {
             <Col sm={10}><FormControl defaultValue={this.props.npc.notes} /></Col>
           </FormGroup>
           <FormGroup>
-            <Col sm={2}>Ranking: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.ranking} /></Col>
+            <Col sm={2}>Probity Score: </Col>
+            <Col sm={1}><FormControl defaultValue={this.props.npc.probity} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Affiliation: </Col>
@@ -87,6 +87,10 @@ class NPCDetails extends Component {
           <FormGroup>
             <Col sm={2}>Lv 4: </Col>
             <Col sm={10}><FormControl defaultValue={this.listSpells(4)} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Lv 5: </Col>
+            <Col sm={10}><FormControl defaultValue={this.listSpells(5)} /></Col>
           </FormGroup>
         </Form>
       </div>
@@ -111,6 +115,9 @@ class NPCDetails extends Component {
       break;
       case 4:
         list = listify(spellbook.fourthLvlSpells);
+      break;
+      case 5:
+        list = listify(spellbook.fifthLvlSpells);
       break;
       default:
     }

@@ -15,7 +15,10 @@ const level_4_spellsMU = ["Charm Monster", "Confusion", "Dig", "Dimension Door",
   "Fire Charm", "Fire Shield", "Fire Trap", "Fumble", "Hallucinatory Terrain", "Ice Storm", "Massmorph",
   "Minor Globe of Invulnerability", "Monster Summoning II", "Plant Growth", "Polymorph Other", "Polymorph Self",
   "Rary's Mnemonic Enhancer", "Remove Curse", "Wall of Fire", "Wall of Ice", "Wizard Eye"];
-// const level_5_spellsMU = [];
+const level_5_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby's Interposing Hand", "Cloudkill", "Conjure Elemental",
+  "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
+  "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
+  "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
 
 // // Cleric spells
 // const level_1_spellsCleric = [];
@@ -30,6 +33,8 @@ export function generateSpellbook(pcLevel) {
   let secondLvlSpells = [];
   let thirdLvlSpells = [];
   let fourthLvlSpells = [];
+  let fifthLvlSpells = [];
+
   switch (pcLevel) {
     case 1:
       while (firstLvlSpells.length < 4) {
@@ -93,6 +98,37 @@ export function generateSpellbook(pcLevel) {
         addSpell(4);
       }
       break;
+    case 8:
+      while (firstLvlSpells.length < 8) {
+        addSpell(1);
+      }
+      while (secondLvlSpells.length < 4) {
+        addSpell(2);
+      }
+      while (thirdLvlSpells.length < 3) {
+        addSpell(3);
+      }
+      while (fourthLvlSpells.length < 2) {
+        addSpell(4);
+      }
+      break;
+    case 9:
+      while (firstLvlSpells.length < 8) {
+        addSpell(1);
+      }
+      while (secondLvlSpells.length < 4) {
+        addSpell(2);
+      }
+      while (thirdLvlSpells.length < 3) {
+        addSpell(3);
+      }
+      while (fourthLvlSpells.length < 2) {
+        addSpell(4);
+      }
+      while (fifthLvlSpells.length < 1) {
+        addSpell(5);
+      }
+      break;
     default:
   }
 
@@ -100,6 +136,7 @@ export function generateSpellbook(pcLevel) {
   spellbook.secondLvlSpells = secondLvlSpells;
   spellbook.thirdLvlSpells = thirdLvlSpells;
   spellbook.fourthLvlSpells = fourthLvlSpells;
+  spellbook.fifthLvlSpells = fifthLvlSpells;
 
   return spellbook;
 
@@ -135,6 +172,14 @@ export function generateSpellbook(pcLevel) {
           return;
         } else {
           fourthLvlSpells.push(level_4_spellsMU[randomIndex4]);
+        }
+        break;
+      case 5:
+        let randomIndex5 = rollDice(1, level_5_spellsMU.length) - 1;
+        if (fifthLvlSpells.includes(level_5_spellsMU[randomIndex5])) {
+          return;
+        } else {
+          fifthLvlSpells.push(level_5_spellsMU[randomIndex5]);
         }
         break;
       default:
