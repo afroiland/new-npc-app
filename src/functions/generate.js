@@ -1,3 +1,6 @@
+import { generateSpellbook, getMemdSpells } from "./spells";
+import { rollDice } from "./dice";
+
 // var npc2 = {
 //   id: 1,
 //   name: "npc2",
@@ -14,15 +17,16 @@
 //   con: 0,
 //   wis: 0,
 //   cha: 0,
-//   spells: {},
-//   items: {},
+//   spellbook: {},
+//   memorized: [],
+//   items: [],
 //   ranking: 0,
 //   affiliation: "",
-//   notes: {}
+//   notes: []
 // };
 
 export function generate(level, pcClass) {
-  let pc = {level: level, class: pcClass};
+  let pc = { level: level, class: pcClass };
 
   //Set name
   pc.name = getName();
@@ -41,17 +45,54 @@ export function generate(level, pcClass) {
 
   //Set HP
   let hp = setHP(level, pcClass);
-  
-  //Adjust HP and AC based on attributes
+
+  //Adjust HP based on con
+  if (pcClass === "Fighter") {
+    switch (pc.con) {
+      case 15:
+        hp += (level);
+        break;
+      case 16:
+        hp += (level * 2);
+        break;
+      case 17:
+        hp += (level * 3);
+        break;
+      case 18:
+        hp += (level * 4);
+        break;
+      default:
+    }
+  } else {
+    switch (pc.con) {
+      case 15:
+        hp += (level);
+        break;
+      case 16:
+      case 17:
+      case 18:
+        hp += (level * 2);
+        break;
+      default:
+  }
+}
 
   pc.currentHP = hp;
   pc.maxHP = hp;
 
-  //Set spells if necessary
+  pc.ac = 10;
+
+  //Spell stuff
+  if (pcClass === "Magic-User") {
+    pc.spellbook = generateSpellbook(level);
+  }
+
+  if (pcClass === "Magic-User" || pcClass === "Cleric") {
+    pc.memorized = getMemdSpells(level, pcClass);
+  }
 
   //Set starting gold
-  let gold = setStartingGold(pcClass);
-  pc.gold = gold;
+  pc.gold = setStartingGold(pcClass);
 
   //console.log("pc: ", pc);
   return pc;
@@ -61,7 +102,7 @@ function getName() {
   let chars = "abcdefghijklmnopqrstuvwxyz"
   let name = "";
   let nameLength = rollDice(3, 4);
-  for (let i  = 0; i < nameLength; i++) {
+  for (let i = 0; i < nameLength; i++) {
     name += chars.charAt(rollDice(1, 26));
   }
   name = name.charAt(0).toUpperCase() + name.slice(1);
@@ -96,14 +137,14 @@ function setAttributes(pcClass) {
     default:
   }
 
-  //attributes.str = setAttribute(mins.str);
-  attributes.str = 18;
+  attributes.str = setAttribute(mins.str);
+  //attributes.str = 18;
   attributes.int = setAttribute(mins.int);
   attributes.dex = setAttribute(mins.dex);
   attributes.con = setAttribute(mins.con);
   attributes.wis = setAttribute(mins.wis);
   attributes.cha = setAttribute(mins.cha);
-  
+
   return attributes;
 }
 
@@ -119,7 +160,7 @@ function setHP(level, pcClass) {
   let hp;
   switch (pcClass) {
     case 'Fighter':
-    //console.log('fighter', level, pcClass);
+      //console.log('fighter', level, pcClass);
       hp = calcPerLevel(level, 10);
       break;
     case 'Thief':
@@ -148,6 +189,7 @@ function calcPerLevel(level, die) {
   } else {
     for (let i = 1; i < level; i++) {
       hp = hp + rollDice(1, die);
+      console.log("hp ish: ", hp);
     }
     return hp;
   }
@@ -175,12 +217,4 @@ function setStartingGold(pcClass) {
     default:
   }
   return gold;
-}
-
-function rollDice(number, die) {
-  let result = 0;
-  for (let i = 0; i < number; i++) {
-    result = result + Math.floor(Math.random() * die + 1);
-  }
-  return result;
 }
