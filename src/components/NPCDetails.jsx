@@ -4,7 +4,7 @@ import { Col, Form, FormControl, FormGroup } from "react-bootstrap";
 class NPCDetails extends Component {
 
   render() {
-    //console.log("this.props.npc.ex_str: ", this.props.npc.ex_str);
+    console.log("this.props.npc: ", this.props.npc);
     return (
       <div>
         <Form horizontal>
@@ -69,10 +69,42 @@ class NPCDetails extends Component {
             <Col sm={2}>Affiliation: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.affiliation} /></Col>
           </FormGroup>
+
+          <p>Spellbook</p>
+          <FormGroup>
+            <Col sm={2}>Lv 1: </Col>
+            <Col sm={10}><FormControl defaultValue={this.listSpells(1)} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Lv 2: </Col>
+            <Col sm={10}><FormControl defaultValue={this.listSpells(2)} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Lv 3: </Col>
+            <Col sm={10}><FormControl defaultValue={this.listSpells(3)} /></Col>
+          </FormGroup>
+
           {/* <p>Notes: {this.props.npc.notes}</p> */}
         </Form>
       </div>
     );
+  }
+
+  listSpells(level) {
+    let spellbook = this.props.npc.spellbook;
+    console.log("spellbook: ", spellbook);
+    switch (level) {
+      case 1:
+
+      break;
+      case 2:
+
+      break;
+      case 3:
+
+      break;
+      default:
+    }
   }
 }
 

@@ -11,15 +11,15 @@ const level_3_spellsMU = ["Blink", "Clairaudience", "Clairvoyance", "Dispel Magi
   "Flame Arrow", "Fly", "Gust of Wind", "Haste", "Hold Person", "Infravision", "Invisibility 10' Radius", "Leomund's Tiny Hut",
   "Lightning Bolt", "Monster Summoning I", "Phantasmal Force", "Protectino from Evil 10' Radius", "Slow", "Suggestion", "Tongues",
   "Water Breathing"];
-const level_4_spellsMU = [];
-const level_5_spellsMU = [];
+// const level_4_spellsMU = [];
+// const level_5_spellsMU = [];
 
-// Cleric spells
-const level_1_spellsCleric = [];
-const level_2_spellsCleric = [];
-const level_3_spellsCleric = [];
-const level_4_spellsCleric = [];
-const level_5_spellsCleric = [];
+// // Cleric spells
+// const level_1_spellsCleric = [];
+// const level_2_spellsCleric = [];
+// const level_3_spellsCleric = [];
+// const level_4_spellsCleric = [];
+// const level_5_spellsCleric = [];
 
 export function generateSpellbook(pcLevel) {
   let spellbook = {};
@@ -30,12 +30,13 @@ export function generateSpellbook(pcLevel) {
     case 1:
       while (firstLvlSpells.length < 4) {
         addSpell(1);
-        //console.log("firstLvlSpells: ", firstLvlSpells);
       }
+      break;
     case 2:
       while (firstLvlSpells.length < 5) {
         addSpell(1);
       }
+      break;
     case 3:
       while (firstLvlSpells.length < 5) {
         addSpell(1);
@@ -43,15 +44,15 @@ export function generateSpellbook(pcLevel) {
       while (secondLvlSpells.length < 1) {
         addSpell(2);
       }
+      break;
     case 4:
       while (firstLvlSpells.length < 6) {
         addSpell(1);
       }
       while (secondLvlSpells.length < 2) {
         addSpell(2);
-        console.log("firstLvlSpells: ", firstLvlSpells);
-        console.log("secondLvlSpells: ", secondLvlSpells);
       }
+      break;
     case 5:
       while (firstLvlSpells.length < 6) {
         addSpell(1);
@@ -61,16 +62,25 @@ export function generateSpellbook(pcLevel) {
       }
       while (thirdLvlSpells.length < 1) {
         addSpell(3);
-        console.log("firstLvlSpells: ", firstLvlSpells);
-        console.log("secondLvlSpells: ", secondLvlSpells);
-        console.log("thirdLvlSpells: ", thirdLvlSpells);
+        // console.log("firstLvlSpells: ", firstLvlSpells);
+        // console.log("secondLvlSpells: ", secondLvlSpells);
+        // console.log("thirdLvlSpells: ", thirdLvlSpells);
       }
+      break;
     case 6:
     //
+      break;
     case 7:
     //
+      break;
     default:
   }
+
+  spellbook.firstLvlSpells = firstLvlSpells;
+  spellbook.secondLvlSpells = secondLvlSpells;
+  spellbook.thirdLvlSpells = thirdLvlSpells;
+
+  return spellbook;
 
   function addSpell(spellLevel) {
     switch(spellLevel) {

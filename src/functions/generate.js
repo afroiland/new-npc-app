@@ -74,8 +74,8 @@ export function generate(level, pcClass) {
         hp += (level * 2);
         break;
       default:
+    }
   }
-}
 
   pc.currentHP = hp;
   pc.maxHP = hp;
@@ -189,7 +189,6 @@ function calcPerLevel(level, die) {
   } else {
     for (let i = 1; i < level; i++) {
       hp = hp + rollDice(1, die);
-      console.log("hp ish: ", hp);
     }
     return hp;
   }
