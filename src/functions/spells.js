@@ -7,7 +7,10 @@ const level_1_spellsMU = ["Burning Hands", "Charm Person", "Comprehend Languages
 const level_2_spellsMU = ["Continual Light", "Darkness 15' Radius", "Detect Evil", "Detect Invisibility", "ESP", "Forget",
   "Invisibility", "Knock", "Leomund's Trap", "Levitate", "Magic Mouth", "Mirror Image", "Pyrotechnics", "Ray of Enfeeblement",
   "Rope Trick", "Scare", "Shatter", "Stinking Cloud", "Strength", "Web", "Wizard Lock"];
-const level_3_spellsMU = [];
+const level_3_spellsMU = ["Blink", "Clairaudience", "Clairvoyance", "Dispel Magic", "Explosive Runes", "Feign Death", "Fireball",
+  "Flame Arrow", "Fly", "Gust of Wind", "Haste", "Hold Person", "Infravision", "Invisibility 10' Radius", "Leomund's Tiny Hut",
+  "Lightning Bolt", "Monster Summoning I", "Phantasmal Force", "Protectino from Evil 10' Radius", "Slow", "Suggestion", "Tongues",
+  "Water Breathing"];
 const level_4_spellsMU = [];
 const level_5_spellsMU = [];
 
@@ -22,6 +25,7 @@ export function generateSpellbook(pcLevel) {
   let spellbook = {};
   let firstLvlSpells = ["Read Magic"];
   let secondLvlSpells = [];
+  let thirdLvlSpells = [];
   switch (pcLevel) {
     case 1:
       while (firstLvlSpells.length < 4) {
@@ -33,18 +37,34 @@ export function generateSpellbook(pcLevel) {
         addSpell(1);
       }
     case 3:
-    while (firstLvlSpells.length < 5) {
-      addSpell(1);
-    }
-    while (secondLvlSpells.length < 1) {
-      addSpell(2);
-      console.log("firstLvlSpells: ", firstLvlSpells);
-      console.log("secondLvlSpells: ", secondLvlSpells);
-    }
+      while (firstLvlSpells.length < 5) {
+        addSpell(1);
+      }
+      while (secondLvlSpells.length < 1) {
+        addSpell(2);
+      }
     case 4:
-    //
+      while (firstLvlSpells.length < 6) {
+        addSpell(1);
+      }
+      while (secondLvlSpells.length < 2) {
+        addSpell(2);
+        console.log("firstLvlSpells: ", firstLvlSpells);
+        console.log("secondLvlSpells: ", secondLvlSpells);
+      }
     case 5:
-    //
+      while (firstLvlSpells.length < 6) {
+        addSpell(1);
+      }
+      while (secondLvlSpells.length < 2) {
+        addSpell(2);
+      }
+      while (thirdLvlSpells.length < 1) {
+        addSpell(3);
+        console.log("firstLvlSpells: ", firstLvlSpells);
+        console.log("secondLvlSpells: ", secondLvlSpells);
+        console.log("thirdLvlSpells: ", thirdLvlSpells);
+      }
     case 6:
     //
     case 7:
@@ -68,6 +88,14 @@ export function generateSpellbook(pcLevel) {
           return;
         } else {
           secondLvlSpells.push(level_2_spellsMU[randomIndex2]);
+        }
+        break;
+      case 3:
+        let randomIndex3 = rollDice(1, level_3_spellsMU.length) - 1;
+        if (thirdLvlSpells.includes(level_3_spellsMU[randomIndex3])) {
+          return;
+        } else {
+          thirdLvlSpells.push(level_3_spellsMU[randomIndex3]);
         }
         break;
       default:
