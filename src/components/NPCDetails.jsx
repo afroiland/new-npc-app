@@ -4,7 +4,7 @@ import { Col, Form, FormControl, FormGroup } from "react-bootstrap";
 class NPCDetails extends Component {
 
   render() {
-    console.log("this.props.npc: ", this.props.npc);
+    //console.log("this.props.npc: ", this.props.npc);
     return (
       <div>
         <Form horizontal>
@@ -15,12 +15,10 @@ class NPCDetails extends Component {
             <Col sm={5}><FormControl defaultValue={this.props.npc.level} /></Col>
           </FormGroup>
           <FormGroup>
-            <Col sm={2}>Class: </Col>
-            <Col sm={10}><FormControl defaultValue={this.props.npc.class} /></Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={2}>Title: </Col>
-            <Col sm={10}><FormControl defaultValue={this.props.npc.title} /></Col>
+            <Col sm={1}>Class: </Col>
+            <Col sm={5}><FormControl defaultValue={this.props.npc.class} /></Col>
+            <Col sm={1}>Title: </Col>
+            <Col sm={5}><FormControl defaultValue={this.props.npc.title} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Str: </Col>
@@ -60,14 +58,21 @@ class NPCDetails extends Component {
             <Col sm={2}>Gold: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.gold} /></Col>
           </FormGroup>
-          {/* <p>Items: {this.props.npc.items}</p> */}
+          <FormGroup>
+            <Col sm={2}>Items: </Col>
+            <Col sm={10}><FormControl defaultValue={this.props.npc.items} /></Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Notes: </Col>
+            <Col sm={10}><FormControl defaultValue={this.props.npc.notes} /></Col>
+          </FormGroup>
           <FormGroup>
             <Col sm={2}>Ranking: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.ranking} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Affiliation: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.affiliation} /></Col>
+            <Col sm={4}><FormControl defaultValue={this.props.npc.affiliation} /></Col>
           </FormGroup>
 
           <p>Spellbook</p>
@@ -83,8 +88,6 @@ class NPCDetails extends Component {
             <Col sm={2}>Lv 3: </Col>
             <Col sm={10}><FormControl defaultValue={this.listSpells(3)} /></Col>
           </FormGroup>
-
-          {/* <p>Notes: {this.props.npc.notes}</p> */}
         </Form>
       </div>
     );
@@ -95,7 +98,6 @@ class NPCDetails extends Component {
       return;
     }
     let spellbook = this.props.npc.spellbook;
-    console.log("spellbook: ", spellbook);
     let list = "";
     switch (level) {
       case 1:
@@ -109,16 +111,13 @@ class NPCDetails extends Component {
       break;
       default:
     }
-    console.log("list: ", list);
     return list;
 
     function listify(spellLevel) {
       for (let i = 0; i < spellLevel.length; i++) {
         list += spellLevel[i] + ", ";
       }
-      console.log("list.length: ", list.length);
       return list.slice(0, (list.length - 2));
-      console.log("list (in listify): ", list);
     }
   }
 }

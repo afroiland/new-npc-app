@@ -9,7 +9,7 @@ const level_2_spellsMU = ["Continual Light", "Darkness 15' Radius", "Detect Evil
   "Rope Trick", "Scare", "Shatter", "Stinking Cloud", "Strength", "Web", "Wizard Lock"];
 const level_3_spellsMU = ["Blink", "Clairaudience", "Clairvoyance", "Dispel Magic", "Explosive Runes", "Feign Death", "Fireball",
   "Flame Arrow", "Fly", "Gust of Wind", "Haste", "Hold Person", "Infravision", "Invisibility 10' Radius", "Leomund's Tiny Hut",
-  "Lightning Bolt", "Monster Summoning I", "Phantasmal Force", "Protectino from Evil 10' Radius", "Slow", "Suggestion", "Tongues",
+  "Lightning Bolt", "Monster Summoning I", "Phantasmal Force", "Protection from Evil 10' Radius", "Slow", "Suggestion", "Tongues",
   "Water Breathing"];
 // const level_4_spellsMU = [];
 // const level_5_spellsMU = [];
@@ -112,8 +112,6 @@ export function generateSpellbook(pcLevel) {
     }
   }
 }
-
-
 
 export function getMemdSpells(level, pcClass) {
 
