@@ -11,7 +11,10 @@ const level_3_spellsMU = ["Blink", "Clairaudience", "Clairvoyance", "Dispel Magi
   "Flame Arrow", "Fly", "Gust of Wind", "Haste", "Hold Person", "Infravision", "Invisibility 10' Radius", "Leomund's Tiny Hut",
   "Lightning Bolt", "Monster Summoning I", "Phantasmal Force", "Protection from Evil 10' Radius", "Slow", "Suggestion", "Tongues",
   "Water Breathing"];
-// const level_4_spellsMU = [];
+const level_4_spellsMU = ["Charm Monster", "Confusion", "Dig", "Dimension Door", "Enchanted Weapon", "Extension I", "Fear",
+  "Fire Charm", "Fire Shield", "Fire Trap", "Fumble", "Hallucinatory Terrain", "Ice Storm", "Massmorph",
+  "Minor Globe of Invulnerability", "Monster Summoning II", "Plant Growth", "Polymorph Other", "Polymorph Self",
+  "Rary's Mnemonic Enhancer", "Remove Curse", "Wall of Fire", "Wall of Ice", "Wizard Eye"];
 // const level_5_spellsMU = [];
 
 // // Cleric spells
@@ -26,6 +29,7 @@ export function generateSpellbook(pcLevel) {
   let firstLvlSpells = ["Read Magic"];
   let secondLvlSpells = [];
   let thirdLvlSpells = [];
+  let fourthLvlSpells = [];
   switch (pcLevel) {
     case 1:
       while (firstLvlSpells.length < 4) {
@@ -62,16 +66,32 @@ export function generateSpellbook(pcLevel) {
       }
       while (thirdLvlSpells.length < 1) {
         addSpell(3);
-        // console.log("firstLvlSpells: ", firstLvlSpells);
-        // console.log("secondLvlSpells: ", secondLvlSpells);
-        // console.log("thirdLvlSpells: ", thirdLvlSpells);
       }
       break;
     case 6:
-    //
+      while (firstLvlSpells.length < 7) {
+        addSpell(1);
+      }
+      while (secondLvlSpells.length < 3) {
+        addSpell(2);
+      }
+      while (thirdLvlSpells.length < 2) {
+        addSpell(3);
+      }
       break;
     case 7:
-    //
+      while (firstLvlSpells.length < 7) {
+        addSpell(1);
+      }
+      while (secondLvlSpells.length < 3) {
+        addSpell(2);
+      }
+      while (thirdLvlSpells.length < 2) {
+        addSpell(3);
+      }
+      while (fourthLvlSpells.length < 1) {
+        addSpell(4);
+      }
       break;
     default:
   }
@@ -79,6 +99,7 @@ export function generateSpellbook(pcLevel) {
   spellbook.firstLvlSpells = firstLvlSpells;
   spellbook.secondLvlSpells = secondLvlSpells;
   spellbook.thirdLvlSpells = thirdLvlSpells;
+  spellbook.fourthLvlSpells = fourthLvlSpells;
 
   return spellbook;
 
@@ -106,6 +127,14 @@ export function generateSpellbook(pcLevel) {
           return;
         } else {
           thirdLvlSpells.push(level_3_spellsMU[randomIndex3]);
+        }
+        break;
+      case 4:
+        let randomIndex4 = rollDice(1, level_4_spellsMU.length) - 1;
+        if (fourthLvlSpells.includes(level_4_spellsMU[randomIndex4])) {
+          return;
+        } else {
+          fourthLvlSpells.push(level_4_spellsMU[randomIndex4]);
         }
         break;
       default:

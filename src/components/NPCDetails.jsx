@@ -49,12 +49,8 @@ class NPCDetails extends Component {
             <Col sm={2}>HP: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.currentHP} /></Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.maxHP} /></Col>
-          </FormGroup>
-          <FormGroup>
             <Col sm={2}>AC: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.ac} /></Col>
-          </FormGroup>
-          <FormGroup>
             <Col sm={2}>Gold: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.gold} /></Col>
           </FormGroup>
@@ -88,6 +84,10 @@ class NPCDetails extends Component {
             <Col sm={2}>Lv 3: </Col>
             <Col sm={10}><FormControl defaultValue={this.listSpells(3)} /></Col>
           </FormGroup>
+          <FormGroup>
+            <Col sm={2}>Lv 4: </Col>
+            <Col sm={10}><FormControl defaultValue={this.listSpells(4)} /></Col>
+          </FormGroup>
         </Form>
       </div>
     );
@@ -108,6 +108,9 @@ class NPCDetails extends Component {
       break;
       case 3:
         list = listify(spellbook.thirdLvlSpells);
+      break;
+      case 4:
+        list = listify(spellbook.fourthLvlSpells);
       break;
       default:
     }
