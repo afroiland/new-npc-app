@@ -91,19 +91,34 @@ class NPCDetails extends Component {
   }
 
   listSpells(level) {
+    if (!this.props.npc.spellbook) {
+      return;
+    }
     let spellbook = this.props.npc.spellbook;
     console.log("spellbook: ", spellbook);
+    let list = "";
     switch (level) {
       case 1:
-
+        list = listify(spellbook.firstLvlSpells);
       break;
       case 2:
-
+        list = listify(spellbook.secondLvlSpells);
       break;
       case 3:
-
+        list = listify(spellbook.thirdLvlSpells);
       break;
       default:
+    }
+    console.log("list: ", list);
+    return list;
+
+    function listify(spellLevel) {
+      for (let i = 0; i < spellLevel.length; i++) {
+        list += spellLevel[i] + ", ";
+      }
+      console.log("list.length: ", list.length);
+      return list.slice(0, (list.length - 2));
+      console.log("list (in listify): ", list);
     }
   }
 }
