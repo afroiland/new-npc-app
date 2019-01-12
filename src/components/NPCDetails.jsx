@@ -23,7 +23,7 @@ class NPCDetails extends Component {
           <FormGroup>
             <Col sm={2}>Str: </Col>
             <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
-            <Col sm={1}><FormControl style={{display: this.props.npc.ex_str ? 'block': 'none'}} defaultValue={this.props.npc.ex_str} /></Col>
+            <Col sm={1}><FormControl style={{ display: this.props.npc.ex_str ? 'block' : 'none' }} defaultValue={this.props.npc.ex_str} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Int: </Col>
@@ -70,34 +70,37 @@ class NPCDetails extends Component {
             <Col sm={2}>Affiliation: </Col>
             <Col sm={4}><FormControl defaultValue={this.props.npc.affiliation} /></Col>
           </FormGroup>
-
-          <p>Spellbook</p>
+          <div style={{ display: this.props.npc.spellbook ? 'block' : 'none' }}>
+            <p>Spellbook</p>
+            <FormGroup style={{ display: this.spellbookExists(this.props.npc, 1) ? 'block' : 'none' }}>
+              <Col sm={2}>Lv 1: </Col>
+              <Col sm={10}><FormControl defaultValue={this.listSpells(1)} /></Col>
+            </FormGroup>
+            <FormGroup style={{ display: this.spellbookExists(this.props.npc, 2) ? 'block' : 'none' }}>
+              <Col sm={2}>Lv 2: </Col>
+              <Col sm={10}><FormControl defaultValue={this.listSpells(2)} /></Col>
+            </FormGroup>
+            <FormGroup style={{ display: this.spellbookExists(this.props.npc, 3) ? 'block' : 'none' }}>
+              <Col sm={2}>Lv 3: </Col>
+              <Col sm={10}><FormControl defaultValue={this.listSpells(3)} /></Col>
+            </FormGroup>
+            <FormGroup style={{ display: this.spellbookExists(this.props.npc, 4) ? 'block' : 'none' }}>
+              <Col sm={2}>Lv 4: </Col>
+              <Col sm={10}><FormControl defaultValue={this.listSpells(4)} /></Col>
+            </FormGroup>
+            <FormGroup style={{ display: this.spellbookExists(this.props.npc, 5) ? 'block' : 'none' }}>
+              <Col sm={2}>Lv 5: </Col>
+              <Col sm={10}><FormControl defaultValue={this.listSpells(5)} /></Col>
+            </FormGroup>
+          </div>
+        
+        <div style={{ display: this.props.npc.memorized ? 'block' : 'none' }}>
+          <p>Memorized Spells</p>
           <FormGroup>
-            <Col sm={2}>Lv 1: </Col>
-            <Col sm={10}><FormControl defaultValue={this.listSpells(1)} /></Col>
+            <Col sm={12}><FormControl style={{ marginBottom: 20 }} defaultValue={this.listMemdSpells()} /></Col>
           </FormGroup>
-          <FormGroup>
-            <Col sm={2}>Lv 2: </Col>
-            <Col sm={10}><FormControl defaultValue={this.listSpells(2)} /></Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={2}>Lv 3: </Col>
-            <Col sm={10}><FormControl defaultValue={this.listSpells(3)} /></Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={2}>Lv 4: </Col>
-            <Col sm={10}><FormControl defaultValue={this.listSpells(4)} /></Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={2}>Lv 5: </Col>
-            <Col sm={10}><FormControl defaultValue={this.listSpells(5)} /></Col>
-          </FormGroup>
+        </div>
         </Form>
-
-        <p>Memorized Spells</p>
-        <FormGroup>
-          <Col sm={12}><FormControl defaultValue={this.listMemdSpells()} /></Col>
-        </FormGroup>
       </div>
     );
   }
@@ -111,19 +114,19 @@ class NPCDetails extends Component {
     switch (level) {
       case 1:
         list = listify(spellbook.firstLvlSpells);
-      break;
+        break;
       case 2:
         list = listify(spellbook.secondLvlSpells);
-      break;
+        break;
       case 3:
         list = listify(spellbook.thirdLvlSpells);
-      break;
+        break;
       case 4:
         list = listify(spellbook.fourthLvlSpells);
-      break;
+        break;
       case 5:
         list = listify(spellbook.fifthLvlSpells);
-      break;
+        break;
       default:
     }
     return list;
@@ -137,7 +140,6 @@ class NPCDetails extends Component {
   }
 
   listMemdSpells() {
-    console.log("this.props.npc.memorized: ", this.props.npc.memorized);
     let temp = this.props.npc.memorized;
     if (!temp) {
       return;
@@ -152,6 +154,41 @@ class NPCDetails extends Component {
       }
       return list.slice(0, (list.length - 2));
     }
+  }
+
+  spellbookExists(npc, level) {
+    if (!npc.spellbook) {
+      return false;
+    }
+    switch (level) {
+      case 1:
+        if (npc.spellbook.firstLvlSpells.length < 1) {
+          return false;
+        }
+        break;
+      case 2:
+        if (npc.spellbook.secondLvlSpells.length < 1) {
+          return false;
+        }
+        break;
+      case 3:
+        if (npc.spellbook.thirdLvlSpells.length < 1) {
+          return false;
+        }
+        break;
+      case 4:
+        if (npc.spellbook.fourthLvlSpells.length < 1) {
+          return false;
+        }
+        break;
+      case 5:
+        if (npc.spellbook.fifthLvlSpells.length < 1) {
+          return false;
+        }
+        break;
+      default:
+    }
+    return true;
   }
 }
 
