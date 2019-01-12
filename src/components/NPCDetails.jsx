@@ -93,6 +93,11 @@ class NPCDetails extends Component {
             <Col sm={10}><FormControl defaultValue={this.listSpells(5)} /></Col>
           </FormGroup>
         </Form>
+
+        <p>Memorized Spells</p>
+        <FormGroup>
+          {/* <Col sm={12}><FormControl defaultValue={this.listMemdSpells()} /></Col> */}
+        </FormGroup>
       </div>
     );
   }

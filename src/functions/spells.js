@@ -150,6 +150,28 @@ export function generateSpellbook(pcLevel) {
   }
 }
 
-export function getMemdSpells(level, pcClass) {
+export function getMemdSpells(spellbook, level, pcClass) {
+  console.log("here");
+  let memdList = [];
+  let spellsByLevel = {};
+  switch(level) {
+    case 1:
+      spellsByLevel.one = 1;
+      break;
+    case 2:
+      spellsByLevel.one = 2;
+      break;
+    case 3:
+      spellsByLevel.one = 2;
+      spellsByLevel.two = 1;
+      break;
+    default:
+  }
 
+  for (let i = 0; i < spellsByLevel.one; i++) {
+    memdList.push(spellbook.firstLvlSpells[rollDice(1, spellbook.firstLvlSpells.length - 1)]);
+    console.log("memdList: ", memdList);
+  }
+
+  return memdList;
 }

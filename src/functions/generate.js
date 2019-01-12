@@ -64,7 +64,7 @@ export function generate(level, pcClass) {
   }
 
   if (pcClass === "Magic-User" || pcClass === "Cleric") {
-    pc.memorized = getMemdSpells(level, pcClass);
+    pc.memorized = getMemdSpells(pc.spellbook, level, pcClass);
   }
 
   //Set starting gold
