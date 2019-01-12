@@ -151,10 +151,9 @@ export function generateSpellbook(pcLevel) {
 }
 
 export function getMemdSpells(spellbook, level, pcClass) {
-  console.log("here");
   let memdList = [];
   let spellsByLevel = {};
-  switch(level) {
+  switch (level) {
     case 1:
       spellsByLevel.one = 1;
       break;
@@ -165,12 +164,52 @@ export function getMemdSpells(spellbook, level, pcClass) {
       spellsByLevel.one = 2;
       spellsByLevel.two = 1;
       break;
+    case 4:
+      spellsByLevel.one = 3;
+      spellsByLevel.two = 2;
+      break;
+    case 5:
+      spellsByLevel.one = 4;
+      spellsByLevel.two = 2;
+      spellsByLevel.three = 1;
+      break;
+    case 6:
+      spellsByLevel.one = 4;
+      spellsByLevel.two = 2;
+      spellsByLevel.three = 2;
+      break;
+    case 7:
+      spellsByLevel.one = 4;
+      spellsByLevel.two = 3;
+      spellsByLevel.three = 2;
+      spellsByLevel.four = 1;
+      break;
+    case 8:
+      spellsByLevel.one = 4;
+      spellsByLevel.two = 3;
+      spellsByLevel.three = 3;
+      spellsByLevel.four = 2;
+      break;
+    case 9:
+      spellsByLevel.one = 4;
+      spellsByLevel.two = 3;
+      spellsByLevel.three = 3;
+      spellsByLevel.four = 2;
+      spellsByLevel.five = 1;
+      break;
     default:
   }
 
-  for (let i = 0; i < spellsByLevel.one; i++) {
-    memdList.push(spellbook.firstLvlSpells[rollDice(1, spellbook.firstLvlSpells.length - 1)]);
-    console.log("memdList: ", memdList);
+  addByLevel(spellsByLevel.one, spellbook.firstLvlSpells);
+  addByLevel(spellsByLevel.two, spellbook.secondLvlSpells);
+  addByLevel(spellsByLevel.three, spellbook.thirdLvlSpells);
+  addByLevel(spellsByLevel.four, spellbook.fourthLvlSpells);
+  addByLevel(spellsByLevel.five, spellbook.fifthLvlSpells);
+
+  function addByLevel(level, listName) {
+    for (let i = 0; i < level; i++) {
+      memdList.push(listName[rollDice(1, listName.length) - 1]);
+    }
   }
 
   return memdList;

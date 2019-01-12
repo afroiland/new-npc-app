@@ -96,7 +96,7 @@ class NPCDetails extends Component {
 
         <p>Memorized Spells</p>
         <FormGroup>
-          {/* <Col sm={12}><FormControl defaultValue={this.listMemdSpells()} /></Col> */}
+          <Col sm={12}><FormControl defaultValue={this.listMemdSpells()} /></Col>
         </FormGroup>
       </div>
     );
@@ -131,6 +131,24 @@ class NPCDetails extends Component {
     function listify(spellLevel) {
       for (let i = 0; i < spellLevel.length; i++) {
         list += spellLevel[i] + ", ";
+      }
+      return list.slice(0, (list.length - 2));
+    }
+  }
+
+  listMemdSpells() {
+    console.log("this.props.npc.memorized: ", this.props.npc.memorized);
+    let temp = this.props.npc.memorized;
+    if (!temp) {
+      return;
+    }
+    let list = "";
+    list = listify(temp);
+    return list;
+
+    function listify() {
+      for (let i = 0; i < temp.length; i++) {
+        list += temp[i] + ", ";
       }
       return list.slice(0, (list.length - 2));
     }
