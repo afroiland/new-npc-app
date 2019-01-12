@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Column from "./column";
 import { Button, Col, FormControl, Grid, Row } from "react-bootstrap";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate";
@@ -40,7 +39,6 @@ class GenerateContent extends Component {
           <Button>Save</Button>
           <Row>
             <Col md={12}>
-              <Column name="New NPC" />
               <NPCDetails npc={this.state.npc} />
             </Col>
           </Row>

@@ -1,30 +1,6 @@
 import { generateSpellbook, getMemdSpells } from "./spells";
 import { rollDice } from "./dice";
 
-// var npc2 = {
-//   id: 1,
-//   name: "npc2",
-//   title: "",
-//   level: 0,
-//   class: "",
-//   currentHP: 0,
-//   maxHP: 0,
-//   ac: 0,
-//   str: 0,
-//   ex_str: 0,
-//   int: 0,
-//   dex: 0,
-//   con: 0,
-//   wis: 0,
-//   cha: 0,
-//   spellbook: {},
-//   memorized: [],
-//   items: [],
-//   ranking: 0,
-//   affiliation: "",
-//   notes: []
-// };
-
 export function generate(level, pcClass) {
   let pc = { level: level, class: pcClass };
 
@@ -74,8 +50,8 @@ export function generate(level, pcClass) {
         hp += (level * 2);
         break;
       default:
+    }
   }
-}
 
   pc.currentHP = hp;
   pc.maxHP = hp;
@@ -88,11 +64,15 @@ export function generate(level, pcClass) {
   }
 
   if (pcClass === "Magic-User" || pcClass === "Cleric") {
-    pc.memorized = getMemdSpells(level, pcClass);
+    pc.memorized = getMemdSpells(pc.spellbook, level, pcClass);
   }
 
   //Set starting gold
   pc.gold = setStartingGold(pcClass);
+
+  pc.probity = 0;
+
+  pc.affiliation = getAffiliation();
 
   //console.log("pc: ", pc);
   return pc;
@@ -138,7 +118,6 @@ function setAttributes(pcClass) {
   }
 
   attributes.str = setAttribute(mins.str);
-  //attributes.str = 18;
   attributes.int = setAttribute(mins.int);
   attributes.dex = setAttribute(mins.dex);
   attributes.con = setAttribute(mins.con);
@@ -160,7 +139,6 @@ function setHP(level, pcClass) {
   let hp;
   switch (pcClass) {
     case 'Fighter':
-      //console.log('fighter', level, pcClass);
       hp = calcPerLevel(level, 10);
       break;
     case 'Thief':
@@ -182,14 +160,12 @@ function setHP(level, pcClass) {
 }
 
 function calcPerLevel(level, die) {
-  //console.log("ok", level, die);
   let hp = die;
   if (level === 1) {
     return hp;
   } else {
     for (let i = 1; i < level; i++) {
       hp = hp + rollDice(1, die);
-      console.log("hp ish: ", hp);
     }
     return hp;
   }
@@ -217,4 +193,10 @@ function setStartingGold(pcClass) {
     default:
   }
   return gold;
+}
+
+function getAffiliation() {
+  const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Business", "Church",
+    "Crown", "Street", "Inmate", "Dwarf", "Burquone", "Tellerue"];
+  return affiliations[rollDice(1, affiliations.length) -1];
 }
