@@ -97,7 +97,7 @@ class NPCDetails extends Component {
         <div style={{ display: this.props.npc.memorized ? 'block' : 'none' }}>
           <p>Memorized Spells</p>
           <FormGroup>
-            <Col sm={12}><FormControl style={{ marginBottom: 20 }} defaultValue={this.listMemdSpells()} /></Col>
+            <Col sm={12}><FormControl style={{ marginBottom: 20 }} defaultValue={this.props.npc.memorized ? this.listMemdSpells() : ""} /></Col>
           </FormGroup>
         </div>
         </Form>

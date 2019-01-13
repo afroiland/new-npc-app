@@ -19,11 +19,11 @@ const level_5_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby'
   "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
   "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
 
-// const level_1_spellsCleric = [];
-// const level_2_spellsCleric = [];
-// const level_3_spellsCleric = [];
-// const level_4_spellsCleric = [];
-// const level_5_spellsCleric = [];
+const level_1_spellsCleric = ["test1a", "test1b"];
+const level_2_spellsCleric = ["test2a", "test2b"];
+const level_3_spellsCleric = ["test3a", "test3b"];
+const level_4_spellsCleric = ["test4a", "test4b"];
+const level_5_spellsCleric = ["test5a", "test5b"];
 
 export function generateSpellbook(pcLevel) {
   let spellbook = {};
@@ -226,11 +226,20 @@ export function getMemdSpells(spellbook, level, pcClass) {
     default:
   }
 
-  addByLevel(spellsByLevel.one, spellbook.firstLvlSpells);
-  addByLevel(spellsByLevel.two, spellbook.secondLvlSpells);
-  addByLevel(spellsByLevel.three, spellbook.thirdLvlSpells);
-  addByLevel(spellsByLevel.four, spellbook.fourthLvlSpells);
-  addByLevel(spellsByLevel.five, spellbook.fifthLvlSpells);
+  if (pcClass === "Magic-User") {
+    addByLevel(spellsByLevel.one, spellbook.firstLvlSpells);
+    addByLevel(spellsByLevel.two, spellbook.secondLvlSpells);
+    addByLevel(spellsByLevel.three, spellbook.thirdLvlSpells);
+    addByLevel(spellsByLevel.four, spellbook.fourthLvlSpells);
+    addByLevel(spellsByLevel.five, spellbook.fifthLvlSpells);
+  }
+  if (pcClass === "Cleric") {
+    addByLevel(spellsByLevel.one, level_1_spellsCleric);
+    addByLevel(spellsByLevel.two, level_2_spellsCleric);
+    addByLevel(spellsByLevel.three, level_3_spellsCleric);
+    addByLevel(spellsByLevel.four, level_4_spellsCleric);
+    addByLevel(spellsByLevel.five, level_5_spellsCleric);
+  }
 
   function addByLevel(level, listName) {
     for (let i = 0; i < level; i++) {
