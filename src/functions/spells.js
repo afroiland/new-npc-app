@@ -1,6 +1,5 @@
 import { rollDice } from "./dice";
 
-// MU spells
 const level_1_spellsMU = ["Burning Hands", "Charm Person", "Comprehend Languages", "Dancing Lights", "Detect Magic", "Enlarge",
   "Feather Fall", "Find Familiar", "Hold Portal", "Identify", "Light", "Magic Missile", "Message", "Nystul's Magc Aura",
   "Protection from Evil", "Push", "Shield", "Shocking Grasp", "Sleep", "Spider Climb", "Unseen Servant"];
@@ -20,7 +19,6 @@ const level_5_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby'
   "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
   "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
 
-// // Cleric spells
 // const level_1_spellsCleric = [];
 // const level_2_spellsCleric = [];
 // const level_3_spellsCleric = [];
@@ -169,30 +167,58 @@ export function getMemdSpells(spellbook, level, pcClass) {
       spellsByLevel.two = 2;
       break;
     case 5:
-      spellsByLevel.one = 4;
-      spellsByLevel.two = 2;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 4;
+        spellsByLevel.two = 2;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 3;
+        spellsByLevel.two = 3;
+      }
       spellsByLevel.three = 1;
       break;
     case 6:
-      spellsByLevel.one = 4;
-      spellsByLevel.two = 2;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 4;
+        spellsByLevel.two = 2;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 3;
+        spellsByLevel.two = 3;
+      }
       spellsByLevel.three = 2;
       break;
     case 7:
-      spellsByLevel.one = 4;
-      spellsByLevel.two = 3;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 4;
+        spellsByLevel.two = 2;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 3;
+        spellsByLevel.two = 3;
+      }
       spellsByLevel.three = 2;
       spellsByLevel.four = 1;
       break;
     case 8:
-      spellsByLevel.one = 4;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 4;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 3;
+      }
       spellsByLevel.two = 3;
       spellsByLevel.three = 3;
       spellsByLevel.four = 2;
       break;
     case 9:
       spellsByLevel.one = 4;
-      spellsByLevel.two = 3;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.two = 3;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.two = 4;
+      }
       spellsByLevel.three = 3;
       spellsByLevel.four = 2;
       spellsByLevel.five = 1;
