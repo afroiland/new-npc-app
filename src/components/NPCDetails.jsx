@@ -4,13 +4,14 @@ import { Col, Form, FormControl, FormGroup } from "react-bootstrap";
 class NPCDetails extends Component {
 
   render() {
-    //console.log("this.props.npc: ", this.props.npc);
+    console.log("this.props: ", this.props);
+    console.log("this.props.npc: ", this.props.npc);
     return (
       <div>
         <Form horizontal>
           <FormGroup>
             <Col sm={1} style={{ marginTop: 7 }}>Name: </Col>
-            <Col sm={5}><FormControl defaultValue={this.props.npc.name} /></Col>
+            <Col sm={5}><FormControl name="name" defaultValue={this.props.npc.name} onChange={this.props.changeFunc} /></Col>
             <Col sm={1}>Level: </Col>
             <Col sm={5}><FormControl defaultValue={this.props.npc.level} /></Col>
           </FormGroup>

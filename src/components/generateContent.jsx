@@ -19,6 +19,19 @@ class GenerateContent extends Component {
     this.setState({ npc: newNPC });
   }
 
+  handleSave = (state) => {
+    console.log("handleSave state: ", state);
+  }
+
+  handleChange = (e) => {
+    console.log("e.target.name: ", e.target.name);
+    console.log("e.target.value: ", e.target.value);
+    let name = e.target.name;
+    let newStateNPC = {...this.state.npc};
+    newStateNPC.name = e.target.value;
+    this.setState({ npc: newStateNPC });
+  }
+
   render() {
     return (
       <div>
@@ -36,10 +49,10 @@ class GenerateContent extends Component {
             </Col>
           </Row>
           <Button onClick={() => this.handleGenerate(this.state.level, this.state.pcClass)}>Generate</Button>
-          <Button>Save</Button>
+          <Button onClick={() => this.handleSave(this.state)}>Save</Button>
           <Row>
             <Col md={12}>
-              <NPCDetails npc={this.state.npc} />
+              <NPCDetails npc={this.state.npc} changeFunc={this.handleChange} />
             </Col>
           </Row>
         </Grid>
