@@ -19,11 +19,16 @@ const level_5_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby'
   "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
   "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
 
-const level_1_spellsCleric = ["test1a", "test1b"];
-const level_2_spellsCleric = ["test2a", "test2b"];
-const level_3_spellsCleric = ["test3a", "test3b"];
-const level_4_spellsCleric = ["test4a", "test4b"];
-const level_5_spellsCleric = ["test5a", "test5b"];
+const level_1_spellsCleric = ["Bless", "Command", "Create Water", "Cure Light Wounds", "Detect Evil", "Detect Magic",
+  "Light", "Protection from Evil", "Purify Food and Drink", "Remove Fear", "Resist Cold", "Sanctuary"];
+const level_2_spellsCleric = ["Augury", "Chant", "Detect Charm", "Find Traps", "Hold Person", "Know Alignment",
+  "Resist Fire", "Silence 15' Radius", "Slow Poison", "Snake Charm", "Speak with Animals", "Spiritual Hammer"];
+const level_3_spellsCleric = ["Animate Dead", "Continual Light", "Create Food and Water", "Cure Blindness", "Cure Disease",
+  "Dispel Magic", "Feign Death", "Glyph of Warding", "Locate Object", "Prayer", "Remove Curse", "Speak with Dead"];
+const level_4_spellsCleric = ["Cure Serious Wounds", "Detect Lie", "Divination", "Exorcise", "Lower Water", "Neutralize Poison",
+  "Protection from Evil 15' Radius", "Speak with Plants", "Sticks to Snakes", "Tongues"];
+const level_5_spellsCleric = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
+  "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
 
 export function generateSpellbook(pcLevel) {
   let spellbook = {};
