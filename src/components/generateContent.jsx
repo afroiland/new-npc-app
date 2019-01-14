@@ -24,11 +24,8 @@ class GenerateContent extends Component {
   }
 
   handleChange = (e) => {
-    console.log("e.target.name: ", e.target.name);
-    console.log("e.target.value: ", e.target.value);
-    let name = e.target.name;
     let newStateNPC = {...this.state.npc};
-    newStateNPC.name = e.target.value;
+    newStateNPC[e.target.name] = e.target.value;
     this.setState({ npc: newStateNPC });
   }
 

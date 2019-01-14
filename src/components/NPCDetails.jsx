@@ -13,63 +13,64 @@ class NPCDetails extends Component {
             <Col sm={1} style={{ marginTop: 7 }}>Name: </Col>
             <Col sm={5}><FormControl name="name" defaultValue={this.props.npc.name} onChange={this.props.changeFunc} /></Col>
             <Col sm={1}>Level: </Col>
-            <Col sm={5}><FormControl defaultValue={this.props.npc.level} /></Col>
+            <Col sm={5}><FormControl name="level" defaultValue={this.props.npc.level} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={1}>Class: </Col>
-            <Col sm={5}><FormControl defaultValue={this.props.npc.class} /></Col>
+            <Col sm={5}><FormControl name="class" defaultValue={this.props.npc.class} onChange={this.props.changeFunc} /></Col>
             <Col sm={1}>Title: </Col>
-            <Col sm={5}><FormControl defaultValue={this.props.npc.title} /></Col>
+            <Col sm={5}><FormControl name="title" defaultValue={this.props.npc.title} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Str: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.str} /></Col>
-            <Col sm={1}><FormControl style={{ display: this.props.npc.ex_str ? 'block' : 'none' }} defaultValue={this.props.npc.ex_str} /></Col>
+            <Col sm={1}><FormControl name="str" defaultValue={this.props.npc.str} onChange={this.props.changeFunc} /></Col>
+            <Col sm={1}><FormControl style={{ display: this.props.npc.ex_str ? 'block' : 'none' }}
+              name="ex_str" defaultValue={this.props.npc.ex_str} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Int: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.int} /></Col>
+            <Col sm={1}><FormControl name="int" defaultValue={this.props.npc.int} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Dex: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.dex} /></Col>
+            <Col sm={1}><FormControl name="dex" defaultValue={this.props.npc.dex} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Con: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.con} /></Col>
+            <Col sm={1}><FormControl name="con" defaultValue={this.props.npc.con} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Wis: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.wis} /></Col>
+            <Col sm={1}><FormControl name="wis" defaultValue={this.props.npc.wis} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Cha: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.cha} /></Col>
+            <Col sm={1}><FormControl name="cha" defaultValue={this.props.npc.cha} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>HP: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.currentHP} /></Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.maxHP} /></Col>
+            <Col sm={1}><FormControl name="currentHP" defaultValue={this.props.npc.currentHP} onChange={this.props.changeFunc} /></Col>
+            <Col sm={1}><FormControl name="maxHP" defaultValue={this.props.npc.maxHP} onChange={this.props.changeFunc} /></Col>
             <Col sm={2}>AC: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.ac} /></Col>
+            <Col sm={1}><FormControl name="ac" defaultValue={this.props.npc.ac} onChange={this.props.changeFunc} /></Col>
             <Col sm={2}>Gold: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.gold} /></Col>
+            <Col sm={1}><FormControl name="gold" defaultValue={this.props.npc.gold} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Items: </Col>
-            <Col sm={10}><FormControl defaultValue={this.props.npc.items} /></Col>
+            <Col sm={10}><FormControl name="items" defaultValue={this.props.npc.items} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Notes: </Col>
-            <Col sm={10}><FormControl defaultValue={this.props.npc.notes} /></Col>
+            <Col sm={10}><FormControl name="notes" defaultValue={this.props.npc.notes} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Probity Score: </Col>
-            <Col sm={1}><FormControl defaultValue={this.props.npc.probity} /></Col>
+            <Col sm={1}><FormControl name="probity" defaultValue={this.props.npc.probity} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <FormGroup>
             <Col sm={2}>Affiliation: </Col>
-            <Col sm={4}><FormControl defaultValue={this.props.npc.affiliation} /></Col>
+            <Col sm={4}><FormControl name="affiliation" defaultValue={this.props.npc.affiliation} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
           <div style={{ display: this.props.npc.spellbook ? 'block' : 'none' }}>
             <p>Spellbook</p>
@@ -98,7 +99,8 @@ class NPCDetails extends Component {
         <div style={{ display: this.props.npc.memorized ? 'block' : 'none' }}>
           <p>Memorized Spells</p>
           <FormGroup>
-            <Col sm={12}><FormControl style={{ marginBottom: 20 }} defaultValue={this.props.npc.memorized ? this.listMemdSpells() : ""} /></Col>
+            <Col sm={12}><FormControl style={{ marginBottom: 20 }} name="memorized"
+            defaultValue={this.props.npc.memorized ? this.listMemdSpells() : ""} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
         </div>
         </Form>
