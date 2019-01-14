@@ -72,27 +72,27 @@ class NPCDetails extends Component {
             <Col sm={2}>Affiliation: </Col>
             <Col sm={4}><FormControl name="affiliation" defaultValue={this.props.npc.affiliation} onChange={this.props.changeFunc} /></Col>
           </FormGroup>
-          <div style={{ display: this.props.npc.spellbook ? 'block' : 'none' }}>
+          <div style={{ display: this.spellbookExists() ? 'block' : 'none' }}>
             <p>Spellbook</p>
-            <FormGroup style={{ display: this.spellbookExists(this.props.npc, 1) ? 'block' : 'none' }}>
+            <FormGroup style={{ display: this.props.npc.spellbookLvl_1 ? 'block' : 'none' }}>
               <Col sm={2}>Lv 1: </Col>
-              <Col sm={10}><FormControl defaultValue={this.listSpells(1)} /></Col>
+              <Col sm={10}><FormControl defaultValue={this.listify(this.props.npc.spellbookLvl_1)} /></Col>
             </FormGroup>
-            <FormGroup style={{ display: this.spellbookExists(this.props.npc, 2) ? 'block' : 'none' }}>
+            <FormGroup style={{ display: this.props.npc.spellbookLvl_2 ? 'block' : 'none' }}>
               <Col sm={2}>Lv 2: </Col>
-              <Col sm={10}><FormControl defaultValue={this.listSpells(2)} /></Col>
+              <Col sm={10}><FormControl defaultValue={this.listify(this.props.npc.spellbookLvl_2)} /></Col>
             </FormGroup>
-            <FormGroup style={{ display: this.spellbookExists(this.props.npc, 3) ? 'block' : 'none' }}>
+            <FormGroup style={{ display: this.props.npc.spellbookLvl_3 ? 'block' : 'none' }}>
               <Col sm={2}>Lv 3: </Col>
-              <Col sm={10}><FormControl defaultValue={this.listSpells(3)} /></Col>
+              <Col sm={10}><FormControl defaultValue={this.listify(this.props.npc.spellbookLvl_3)} /></Col>
             </FormGroup>
-            <FormGroup style={{ display: this.spellbookExists(this.props.npc, 4) ? 'block' : 'none' }}>
+            <FormGroup style={{ display: this.props.npc.spellbookLvl_4 ? 'block' : 'none' }}>
               <Col sm={2}>Lv 4: </Col>
-              <Col sm={10}><FormControl defaultValue={this.listSpells(4)} /></Col>
+              <Col sm={10}><FormControl defaultValue={this.listify(this.props.npc.spellbookLvl_4)} /></Col>
             </FormGroup>
-            <FormGroup style={{ display: this.spellbookExists(this.props.npc, 5) ? 'block' : 'none' }}>
+            <FormGroup style={{ display: this.props.npc.spellbookLvl_5 ? 'block' : 'none' }}>
               <Col sm={2}>Lv 5: </Col>
-              <Col sm={10}><FormControl defaultValue={this.listSpells(5)} /></Col>
+              <Col sm={10}><FormControl defaultValue={this.listify(this.props.npc.spellbookLvl_5)} /></Col>
             </FormGroup>
           </div>
         
@@ -108,39 +108,50 @@ class NPCDetails extends Component {
     );
   }
 
-  listSpells(level) {
-    if (!this.props.npc.spellbook) {
+  listify(spellLevel) {
+    if (!spellLevel) {
       return;
     }
-    let spellbook = this.props.npc.spellbook;
     let list = "";
-    switch (level) {
-      case 1:
-        list = listify(spellbook.firstLvlSpells);
-        break;
-      case 2:
-        list = listify(spellbook.secondLvlSpells);
-        break;
-      case 3:
-        list = listify(spellbook.thirdLvlSpells);
-        break;
-      case 4:
-        list = listify(spellbook.fourthLvlSpells);
-        break;
-      case 5:
-        list = listify(spellbook.fifthLvlSpells);
-        break;
-      default:
+    for (let i = 0; i < spellLevel.length; i++) {
+      list += spellLevel[i] + ", ";
     }
-    return list;
-
-    function listify(spellLevel) {
-      for (let i = 0; i < spellLevel.length; i++) {
-        list += spellLevel[i] + ", ";
-      }
-      return list.slice(0, (list.length - 2));
-    }
+    return list.slice(0, (list.length - 2));
   }
+
+  // listSpells(level) {
+  //   if (!this.props.npc.spellbook) {
+  //     return;
+  //   }
+  //   let spellbook = this.props.npc.spellbook;
+  //   let list = "";
+  //   switch (level) {
+  //     case 1:
+  //       list = listify(spellbook.firstLvlSpells);
+  //       break;
+  //     case 2:
+  //       list = listify(spellbook.secondLvlSpells);
+  //       break;
+  //     case 3:
+  //       list = listify(spellbook.thirdLvlSpells);
+  //       break;
+  //     case 4:
+  //       list = listify(spellbook.fourthLvlSpells);
+  //       break;
+  //     case 5:
+  //       list = listify(spellbook.fifthLvlSpells);
+  //       break;
+  //     default:
+  //   }
+  //   return list;
+
+  //   function listify(spellLevel) {
+  //     for (let i = 0; i < spellLevel.length; i++) {
+  //       list += spellLevel[i] + ", ";
+  //     }
+  //     return list.slice(0, (list.length - 2));
+  //   }
+  // }
 
   listMemdSpells() {
     let temp = this.props.npc.memorized;
@@ -159,40 +170,51 @@ class NPCDetails extends Component {
     }
   }
 
-  spellbookExists(npc, level) {
-    if (!npc.spellbook) {
+  spellbookExists() {
+    let temp = this.props.npc
+    if (!temp) {
       return false;
     }
-    switch (level) {
-      case 1:
-        if (npc.spellbook.firstLvlSpells.length < 1) {
-          return false;
-        }
-        break;
-      case 2:
-        if (npc.spellbook.secondLvlSpells.length < 1) {
-          return false;
-        }
-        break;
-      case 3:
-        if (npc.spellbook.thirdLvlSpells.length < 1) {
-          return false;
-        }
-        break;
-      case 4:
-        if (npc.spellbook.fourthLvlSpells.length < 1) {
-          return false;
-        }
-        break;
-      case 5:
-        if (npc.spellbook.fifthLvlSpells.length < 1) {
-          return false;
-        }
-        break;
-      default:
+    if (!temp.spellbookLvl_1 && !temp.spellbookLvl_2 && !temp.spellbookLvl_3 && !temp.spellbookLvl_4 && !temp.spellbookLvl_5) {
+      return false;
     }
     return true;
   }
+
+  // spellbookExists(npc, level) {
+  //   if (!npc.spellbook) {
+  //     return false;
+  //   }
+    // switch (level) {
+    //   case 1:
+    //     if (npc.spellbook.firstLvlSpells.length < 1) {
+    //       return false;
+    //     }
+    //     break;
+    //   case 2:
+    //     if (npc.spellbook.secondLvlSpells.length < 1) {
+    //       return false;
+    //     }
+    //     break;
+    //   case 3:
+    //     if (npc.spellbook.thirdLvlSpells.length < 1) {
+    //       return false;
+    //     }
+    //     break;
+    //   case 4:
+    //     if (npc.spellbook.fourthLvlSpells.length < 1) {
+    //       return false;
+    //     }
+    //     break;
+    //   case 5:
+    //     if (npc.spellbook.fifthLvlSpells.length < 1) {
+    //       return false;
+    //     }
+    //     break;
+    //   default:
+    // }
+    //return true;
+  //}
 }
 
 export default NPCDetails;
