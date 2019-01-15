@@ -4,14 +4,16 @@ import { rollDice } from "./dice";
 export function generate(level, pcClass) {
   let pc = { level: level, class: pcClass };
 
-  //Set name
   pc.name = getName();
+  pc.title = "";
 
   //Set attributes
   let attributes = setAttributes(pcClass);
   pc.str = attributes.str;
   if (pc.class === "Fighter" && pc.str === 18) {
     pc.ex_str = rollDice(1, 100);
+  } else {
+    pc.ex_str = 0;
   }
   pc.int = attributes.int;
   pc.dex = attributes.dex;
@@ -19,7 +21,6 @@ export function generate(level, pcClass) {
   pc.wis = attributes.wis;
   pc.cha = attributes.cha;
 
-  //Set HP
   let hp = setHP(level, pcClass);
 
   //Adjust HP based on con
@@ -55,7 +56,6 @@ export function generate(level, pcClass) {
 
   pc.currentHP = hp;
   pc.maxHP = hp;
-
   pc.ac = 10;
 
   //Spell stuff
@@ -80,11 +80,10 @@ export function generate(level, pcClass) {
     pc.memorized = getMemdSpells(spellbook, level, pcClass);
   }
 
-  //Set starting gold
   pc.gold = setStartingGold(pcClass);
-
+  pc.items = "";
+  pc.notes = "";
   pc.probity = 0;
-
   pc.affiliation = getAffiliation();
 
   //console.log("pc: ", pc);
