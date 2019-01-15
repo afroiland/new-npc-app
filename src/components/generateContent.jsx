@@ -1,38 +1,43 @@
 import React, { Component } from "react";
-import { Button, Col, FormControl, Grid, Row } from "react-bootstrap";
+// import { Button, Col, FormControl, Grid, Row } from "react-bootstrap";
 import NPCDetails from "./NPCDetails";
-import { generate } from "./../functions/generate";
+// import { generate } from "./../functions/generate";
 
-const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
+// const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
 
 class GenerateContent extends Component {
   state = {
-    npc: {},
-    level: 1,
-    pcClass: 'Fighter'
+    // npc: {},
+    // level: 1,
+    // pcClass: 'Fighter'
   };
 
-  handleGenerate = (level, pcClass) => {
-    let newNPC = generate(level, pcClass);
-    console.log("newNPC: ", newNPC);
-    this.setState({ npc: newNPC });
-  }
+  // handleGenerate = (level, pcClass) => {
+  //   let newNPC = generate(level, pcClass);
+  //   console.log("newNPC: ", newNPC);
+  //   this.setState({ npc: newNPC });
+  // }
 
-  handleSave = (state) => {
-    console.log("handleSave state: ", state);
-  }
+  // handleSave = (state) => {
+  //   console.log("handleSave state: ", state);
+  // }
 
-  handleChange = (e) => {
-    let newStateNPC = {...this.state.npc};
-    newStateNPC[e.target.name] = e.target.value;
-    this.setState({ npc: newStateNPC });
-  }
+  // handleChange = (e) => {
+  //   let newStateNPC = { ...this.state.npc };
+  //   newStateNPC[e.target.name] = e.target.value;
+  //   this.setState({ npc: newStateNPC });
+  // }
+
+  // handleClear = () => {
+  //   this.setState({ npc: {} });
+  // }
 
   render() {
     return (
       <div>
-        <Grid>
+        <NPCDetails />
+        {/* <Grid>
           <Row>
             <Col md={6}>
               <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ pcClass: e.target.value })}>
@@ -47,12 +52,13 @@ class GenerateContent extends Component {
           </Row>
           <Button onClick={() => this.handleGenerate(this.state.level, this.state.pcClass)}>Generate</Button>
           <Button onClick={() => this.handleSave(this.state)}>Save</Button>
+          <Button onClick={() => this.handleClear()}>Clear</Button>
           <Row>
             <Col md={12}>
               <NPCDetails npc={this.state.npc} changeFunc={this.handleChange} />
             </Col>
           </Row>
-        </Grid>
+        </Grid> */}
       </div>
     );
   }
