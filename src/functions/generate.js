@@ -4,9 +4,7 @@ import { rollDice } from "./dice";
 export function generate(level, pcClass) {
   let pc = { level: level, class: pcClass };
 
-  //Set name
   pc.name = getName();
-
   pc.title = "";
 
   //Set attributes
@@ -23,7 +21,6 @@ export function generate(level, pcClass) {
   pc.wis = attributes.wis;
   pc.cha = attributes.cha;
 
-  //Set HP
   let hp = setHP(level, pcClass);
 
   //Adjust HP based on con
@@ -59,7 +56,6 @@ export function generate(level, pcClass) {
 
   pc.currentHP = hp;
   pc.maxHP = hp;
-
   pc.ac = 10;
 
   //Spell stuff

@@ -39,85 +39,7 @@ class NPCDetails extends Component {
     }
   }
 
-  handleGenerate = (level, pcClass) => {
-    let newNPC = generate(level, pcClass);
-    console.log("newNPC: ", newNPC);
-    this.setState({
-      name: newNPC.name,
-      level: newNPC.level,
-      title: newNPC.title,
-      class: newNPC.class,
-      race: newNPC.race,
-      currentHP: newNPC.currentHP,
-      maxHP: newNPC.maxHP,
-      ac: newNPC.ac,
-      str: newNPC.str,
-      ex_str: newNPC.ex_str,
-      int: newNPC.int,
-      dex: newNPC.dex,
-      con: newNPC.con,
-      wis: newNPC.wis,
-      cha: newNPC.cha,
-      spellbookLvl_1: newNPC.spellbookLvl_1,
-      spellbookLvl_2: newNPC.spellbookLvl_2,
-      spellbookLvl_3: newNPC.spellbookLvl_3,
-      spellbookLvl_4: newNPC.spellbookLvl_4,
-      spellbookLvl_5: newNPC.spellbookLvl_5,
-      memorized: newNPC.memorized,
-      items: newNPC.items,
-      probity: newNPC.probity,
-      affiliation: newNPC.affiliation,
-      notes: newNPC.notes
-    });
-  }
-
-  handleSave = (state) => {
-    console.log("handleSave state: ", state);
-  }
-
-  handleChange = (e) => {
-    console.log("e.target.name: ", e.target.name);
-    console.log("e.target.value: ", e.target.value);
-    // let newState = { ...this.state };
-    // newState[e.target.name] = e.target.value;
-    let temp1 = e.target.name;
-    let temp2 = e.target.value;
-    this.setState({ [temp1]: temp2 });
-  }
-
-  handleClear = () => {
-    this.setState({
-      name: "",
-      title: "",
-      level: 0,
-      class: "",
-      race: "",
-      currentHP: 0,
-      maxHP: 0,
-      ac: 0,
-      str: 0,
-      ex_str: 0,
-      int: 0,
-      dex: 0,
-      con: 0,
-      wis: 0,
-      cha: 0,
-      spellbookLvl_1: [""],
-      spellbookLvl_2: [""],
-      spellbookLvl_3: [""],
-      spellbookLvl_4: [""],
-      spellbookLvl_5: [""],
-      memorized: [""],
-      items: "",
-      probity: 0,
-      affiliation: "",
-      notes: ""
-    });
-  }
-
   render() {
-    //console.log("this.state: ", this.state);
-    //console.log("this.state.npc: ", this.state.npc);
     return (
       <div>
         <Grid>
@@ -240,11 +162,78 @@ class NPCDetails extends Component {
     );
   }
 
+  handleGenerate = (level, pcClass) => {
+    let newNPC = generate(level, pcClass);
+    console.log("newNPC: ", newNPC);
+    this.setState({
+      name: newNPC.name,
+      level: newNPC.level,
+      title: newNPC.title,
+      class: newNPC.class,
+      race: newNPC.race,
+      currentHP: newNPC.currentHP,
+      maxHP: newNPC.maxHP,
+      ac: newNPC.ac,
+      str: newNPC.str,
+      ex_str: newNPC.ex_str,
+      int: newNPC.int,
+      dex: newNPC.dex,
+      con: newNPC.con,
+      wis: newNPC.wis,
+      cha: newNPC.cha,
+      spellbookLvl_1: newNPC.spellbookLvl_1,
+      spellbookLvl_2: newNPC.spellbookLvl_2,
+      spellbookLvl_3: newNPC.spellbookLvl_3,
+      spellbookLvl_4: newNPC.spellbookLvl_4,
+      spellbookLvl_5: newNPC.spellbookLvl_5,
+      memorized: newNPC.memorized,
+      items: newNPC.items,
+      probity: newNPC.probity,
+      affiliation: newNPC.affiliation,
+      notes: newNPC.notes
+    });
+  }
+
+  handleSave = (state) => {
+    console.log("handleSave state: ", state);
+  }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handleClear = () => {
+    this.setState({
+      name: "",
+      title: "",
+      level: 0,
+      class: "",
+      race: "",
+      currentHP: 0,
+      maxHP: 0,
+      ac: 0,
+      str: 0,
+      ex_str: 0,
+      int: 0,
+      dex: 0,
+      con: 0,
+      wis: 0,
+      cha: 0,
+      spellbookLvl_1: [""],
+      spellbookLvl_2: [""],
+      spellbookLvl_3: [""],
+      spellbookLvl_4: [""],
+      spellbookLvl_5: [""],
+      memorized: [""],
+      items: "",
+      probity: 0,
+      affiliation: "",
+      notes: ""
+    });
+  }
+
   spellbookExists() {
     let temp = this.state
-    // if (!temp) {
-    //   return false;
-    // }
     if (!temp.spellbookLvl_1 && !temp.spellbookLvl_2 && !temp.spellbookLvl_3 && !temp.spellbookLvl_4 && !temp.spellbookLvl_5) {
       return false;
     }
