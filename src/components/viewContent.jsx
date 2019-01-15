@@ -20,10 +20,10 @@ var npc1 = {
   wis: 0,
   cha: 0,
   spells: {},
-  items: {},
+  items: "",
   ranking: 0,
   affiliation: "",
-  notes: {}
+  notes: ""
 };
 
 class ViewContent extends Component {

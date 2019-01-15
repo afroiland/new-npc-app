@@ -4,14 +4,16 @@ import { rollDice } from "./dice";
 export function generate(level, pcClass) {
   let pc = { level: level, class: pcClass };
 
-  //Set name
   pc.name = getName();
+  pc.title = "";
 
   //Set attributes
   let attributes = setAttributes(pcClass);
   pc.str = attributes.str;
   if (pc.class === "Fighter" && pc.str === 18) {
     pc.ex_str = rollDice(1, 100);
+  } else {
+    pc.ex_str = 0;
   }
   pc.int = attributes.int;
   pc.dex = attributes.dex;
@@ -19,7 +21,6 @@ export function generate(level, pcClass) {
   pc.wis = attributes.wis;
   pc.cha = attributes.cha;
 
-  //Set HP
   let hp = setHP(level, pcClass);
 
   //Adjust HP based on con
@@ -55,23 +56,34 @@ export function generate(level, pcClass) {
 
   pc.currentHP = hp;
   pc.maxHP = hp;
-
   pc.ac = 10;
 
   //Spell stuff
-  if (pcClass === "Magic-User") {
-    pc.spellbook = generateSpellbook(level);
-  }
-
   if (pcClass === "Magic-User" || pcClass === "Cleric") {
-    pc.memorized = getMemdSpells(pc.spellbook, level, pcClass);
+    let spellbook = {};
+    if (pcClass === "Magic-User") {
+      spellbook = generateSpellbook(level);
+      pc.spellbookLvl_1 = spellbook.firstLvlSpells;
+      if (spellbook.secondLvlSpells.length > 0) {
+        pc.spellbookLvl_2 = spellbook.secondLvlSpells;
+      }
+      if (spellbook.thirdLvlSpells.length > 0) {
+        pc.spellbookLvl_3 = spellbook.thirdLvlSpells;
+      }
+      if (spellbook.fourthLvlSpells.length > 0) {
+        pc.spellbookLvl_4 = spellbook.fourthLvlSpells;
+      }
+      if (spellbook.fifthLvlSpells.length > 0) {
+        pc.spellbookLvl_5 = spellbook.fifthLvlSpells;
+      }
+    }
+    pc.memorized = getMemdSpells(spellbook, level, pcClass);
   }
 
-  //Set starting gold
   pc.gold = setStartingGold(pcClass);
-
+  pc.items = "";
+  pc.notes = "";
   pc.probity = 0;
-
   pc.affiliation = getAffiliation();
 
   //console.log("pc: ", pc);
@@ -198,5 +210,5 @@ function setStartingGold(pcClass) {
 function getAffiliation() {
   const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Business", "Church",
     "Crown", "Street", "Inmate", "Dwarf", "Burquone", "Tellerue"];
-  return affiliations[rollDice(1, affiliations.length) -1];
+  return affiliations[rollDice(1, affiliations.length) - 1];
 }
