@@ -1,12 +1,15 @@
 const express = require('express');
 const mysql = require('mysql');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 //TODO: create config file for pw
 const db = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '321mmm_AA*',
-  database : 'new_schema'
+  host     : process.env.DB_HOST,
+  user     : process.env.DB_USER,
+  password : process.env.DB_PASS,
+  database : process.env.DB_DATABASE
 });
 
 db.connect((err) => {
