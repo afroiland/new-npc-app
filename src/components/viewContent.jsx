@@ -32,6 +32,19 @@ class ViewContent extends Component {
     selectedNPC: npc1
   };
 
+  componentDidMount() {
+    fetch ('http://localhost:3001/test')
+      .then(function(response) {
+        response.json().then(function(data) {
+          console.log("data: ", data);
+          //update state with info
+        });
+      })
+      .catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+  }
+
   render() {
     return (
       <div>

@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ db.connect((err) => {
 });
 
 const app = express();
+app.use(cors());
 
 app.set("port", process.env.PORT || 3001);
 
@@ -31,7 +33,7 @@ app.get('/test', (req, res) => {
     if(err) throw err;
     console.log("result: ", result);
     testResult = result;
-    res.send('test res.send');
+    res.send(result);
   });
 });
 
