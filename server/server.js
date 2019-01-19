@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-//TODO: create config file for pw
 const db = mysql.createConnection({
   host     : process.env.DB_HOST,
   user     : process.env.DB_USER,
@@ -24,15 +23,18 @@ const app = express();
 
 app.set("port", process.env.PORT || 3001);
 
+let testResult;
+
 app.get('/test', (req, res) => {
   let sql = 'SELECT * FROM new_schema.npcs';
   db.query(sql, (err, result) => {
     if(err) throw err;
     console.log("result: ", result);
+    testResult = result;
     res.send('test res.send');
   });
 });
 
 app.listen('3001', () => {
-  console.log("Running on port 3001");
+  console.log("Listening on port 3001");
 });
