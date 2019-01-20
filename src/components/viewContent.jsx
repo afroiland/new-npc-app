@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Column from "./column";
 import NPCDetails from "./NPCDetails";
 import { Col, Grid, Row } from "react-bootstrap";
+import axios from "axios";
 
 var npc1 = {
   id: 1,
@@ -33,16 +34,9 @@ class ViewContent extends Component {
   };
 
   componentDidMount() {
-    fetch ('http://localhost:3001/test')
-      .then(function(response) {
-        response.json().then(function(data) {
-          console.log("data: ", data);
-          //update state with info
-        });
-      })
-      .catch(function(err) {
-        console.log('Fetch Error :-S', err);
-      });
+    axios.get('http://localhost:3001/test').then(res => {
+      console.log("res: ", res);
+    });
   }
 
   render() {
