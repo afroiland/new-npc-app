@@ -38,7 +38,7 @@ app.get('/test', (req, res) => {
 app.post('/add', (req, res) => {
   console.log("add req body: ", req.body);
   let sql = 'INSERT INTO new_schema.npcs (name, level, title, class, currentHP, maxHP, ac, str, ex_str,\
-    int, dex, con, wis, cha, memorized, gold, items, probity, affiliation, notes) VALUES (?, ?, ?, ?,\
+    intel, dex, con, wis, cha, memorized, gold, items, probity, affiliation, notes) VALUES (?, ?, ?, ?,\
     ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
   db.query(sql, [req.body.name, req.body.level, req.body.title, req.body.class, req.body.currentHP,
     req.body.maxHP, req.body.ac, req.body.str, req.body.ex_str, req.body.int, req.body.dex, req.body.con,

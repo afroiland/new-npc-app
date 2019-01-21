@@ -81,11 +81,6 @@ export function generate(level, pcClass) {
     pc.memorized = getMemdSpells(spellbook, level, pcClass);
   }
 
-  //temporary--TODO: remove this:
-  if (!pc.memorized) {
-    pc.memorized = "";
-  }
-
   pc.gold = setStartingGold(pcClass);
   pc.items = "";
   pc.notes = "";
