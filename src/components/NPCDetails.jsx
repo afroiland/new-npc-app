@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Form, FormControl, FormGroup, Button, Grid, Row } from "react-bootstrap";
 import { generate } from "./../functions/generate";
+import axios from "axios";
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
@@ -198,6 +199,12 @@ class NPCDetails extends Component {
 
   handleSave = (state) => {
     console.log("handleSave state: ", state);
+    axios.post("http://localhost:3001/add", state)
+    .then(res => {
+      console.log("add res: ", res);
+    });
+
+
   }
 
   handleChange = (e) => {
