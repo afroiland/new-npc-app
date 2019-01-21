@@ -81,6 +81,11 @@ export function generate(level, pcClass) {
     pc.memorized = getMemdSpells(spellbook, level, pcClass);
   }
 
+  //temporary--TODO: remove this:
+  if (!pc.memorized) {
+    pc.memorized = "";
+  }
+
   pc.gold = setStartingGold(pcClass);
   pc.items = "";
   pc.notes = "";
@@ -185,7 +190,6 @@ function calcPerLevel(level, die) {
 }
 
 function setStartingGold(pcClass) {
-  console.log("getting hit");
   let gold;
   switch (pcClass) {
     case 'Fighter':
