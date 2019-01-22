@@ -7,7 +7,7 @@ class NPCList extends Component {
       // <button onClick={(e) => this.props.handleClick(e)}>ok</button>
 
       <div>
-        <ul>{this.props.list.map(npc => <li key={npc.name}>{npc.name}</li>)}</ul>
+        <ul>{this.props.list.map(npc => <li key={npc.name} onClick={() => this.props.handleClick(npc.name)}>{npc.name}</li>)}</ul>
       </div>
     );
   }

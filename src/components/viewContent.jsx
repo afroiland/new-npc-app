@@ -41,11 +41,17 @@ class ViewContent extends Component {
     });
   }
 
-  handleClick = (e) => {
-    console.log("e.target: ", e.target);
+  handleClick = (name) => {
+    console.log("name: ", name);
+    let selectedNPC = this.state.NPCList.filter(obj => {
+      return obj.name === name
+    });
+    console.log("selectedNPC: ", selectedNPC);
+    this.setState({ selectedNPC: selectedNPC });
   }
 
   render() {
+    console.log("this.state: ", this.state);
     return (
       <div>
         <Grid>

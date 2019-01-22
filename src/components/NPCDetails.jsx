@@ -42,6 +42,7 @@ class NPCDetails extends Component {
   }
 
   render() {
+    console.log("details this.state: ", this.state);
     return (
       <div>
         <Grid>
