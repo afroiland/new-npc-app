@@ -35,7 +35,9 @@ class ViewContent extends Component {
 
   componentDidMount() {
     axios.get('http://localhost:3001/test').then(res => {
-      console.log("res: ", res);
+      //console.log("res.data: ", res.data);
+      this.setState({ NPCList: res.data });
+      //console.log("this.state: ", this.state);
     });
   }
 
