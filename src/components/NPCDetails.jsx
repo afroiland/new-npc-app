@@ -78,7 +78,7 @@ class NPCDetails extends Component {
                 <FormGroup>
                   <Col sm={2}>Str: </Col>
                   <Col sm={1}><FormControl name="str" value={this.state.str} onChange={this.handleChange} /></Col>
-                  <Col sm={1}><FormControl style={{ display: this.state.ex_str ? 'block' : 'none' }}
+                  <Col sm={1}><FormControl style={{ display: this.state.str > 17 ? 'block' : 'none' }}
                     name="ex_str" value={this.state.ex_str} onChange={this.handleChange} /></Col>
                 </FormGroup>
                 <FormGroup>

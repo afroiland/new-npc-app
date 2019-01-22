@@ -37,12 +37,17 @@ app.get('/test', (req, res) => {
 
 app.post('/add', (req, res) => {
   console.log("add req body: ", req.body);
-  let sql = 'INSERT INTO new_schema.npcs (name, level, title, class, currentHP, maxHP, ac, str, ex_str,\
+  //Convert array of memorized spells to string
+  let memorizedString = "";
+  if (req.body.memorized.length > 0) {
+    memorizedString = listify(req.body.memorized)
+  }
+  let sql = 'INSERT INTO new_schema.npcs (name, level, title, class, race, currentHP, maxHP, ac, str, ex_str,\
     intel, dex, con, wis, cha, memorized, gold, items, probity, affiliation, notes) VALUES (?, ?, ?, ?,\
     ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-  db.query(sql, [req.body.name, req.body.level, req.body.title, req.body.class, req.body.currentHP,
+  db.query(sql, [req.body.name, req.body.level, req.body.title, req.body.class, "", req.body.currentHP,
     req.body.maxHP, req.body.ac, req.body.str, req.body.ex_str, req.body.int, req.body.dex, req.body.con,
-    req.body.wis, req.body.cha, req.body.memorized, req.body.gold, req.body.items, req.body.probity,
+    req.body.wis, req.body.cha, memorizedString, req.body.gold, req.body.items, req.body.probity,
     req.body.affiliation, req.body.notes], (err, result) => {
     if(err) {
       console.log("error: ", err);
@@ -56,3 +61,11 @@ app.post('/add', (req, res) => {
 app.listen('3001', () => {
   console.log("Listening on port 3001");
 });
+
+function listify(memorizedArray) {
+  let list = "";
+  for (let i = 0; i < memorizedArray.length; i++) {
+    list += memorizedArray[i] + ", ";
+  }
+  return list.slice(0, (list.length - 2));
+}
