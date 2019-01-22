@@ -1,11 +1,12 @@
 import { generateSpellbook, getMemdSpells } from "./spells";
 import { rollDice } from "./dice";
+import { getTitle } from "./titles";
 
 export function generate(level, pcClass) {
   let pc = { level: level, class: pcClass };
 
   pc.name = getName();
-  pc.title = "";
+  pc.title = getTitle(pcClass, level);
 
   //Set attributes
   let attributes = setAttributes(pcClass);

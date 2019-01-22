@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Form, FormControl, FormGroup, Button, Grid, Row } from "react-bootstrap";
 import { generate } from "./../functions/generate";
+import axios from "axios";
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
@@ -30,6 +31,7 @@ class NPCDetails extends Component {
       spellbookLvl_4: [""],
       spellbookLvl_5: [""],
       memorized: [""],
+      gold: 0,
       items: "",
       probity: 0,
       affiliation: "",
@@ -76,7 +78,7 @@ class NPCDetails extends Component {
                 <FormGroup>
                   <Col sm={2}>Str: </Col>
                   <Col sm={1}><FormControl name="str" value={this.state.str} onChange={this.handleChange} /></Col>
-                  <Col sm={1}><FormControl style={{ display: this.state.ex_str ? 'block' : 'none' }}
+                  <Col sm={1}><FormControl style={{ display: this.state.str > 17 ? 'block' : 'none' }}
                     name="ex_str" value={this.state.ex_str} onChange={this.handleChange} /></Col>
                 </FormGroup>
                 <FormGroup>
@@ -187,6 +189,7 @@ class NPCDetails extends Component {
       spellbookLvl_4: newNPC.spellbookLvl_4,
       spellbookLvl_5: newNPC.spellbookLvl_5,
       memorized: newNPC.memorized,
+      gold: newNPC.gold,
       items: newNPC.items,
       probity: newNPC.probity,
       affiliation: newNPC.affiliation,
@@ -196,6 +199,12 @@ class NPCDetails extends Component {
 
   handleSave = (state) => {
     console.log("handleSave state: ", state);
+    axios.post("http://localhost:3001/add", state)
+    .then(res => {
+      console.log("add res: ", res);
+    });
+
+
   }
 
   handleChange = (e) => {
@@ -225,6 +234,7 @@ class NPCDetails extends Component {
       spellbookLvl_4: [""],
       spellbookLvl_5: [""],
       memorized: [""],
+      gold: 0,
       items: "",
       probity: 0,
       affiliation: "",

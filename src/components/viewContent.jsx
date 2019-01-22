@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Column from "./column";
+import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { Col, Grid, Row } from "react-bootstrap";
+import axios from "axios";
 
 var npc1 = {
   id: 1,
@@ -32,13 +33,23 @@ class ViewContent extends Component {
     selectedNPC: npc1
   };
 
+  componentDidMount() {
+    axios.get('http://localhost:3001/test').then(res => {
+      console.log("res: ", res);
+    });
+  }
+
+  handleClick = (e) => {
+    console.log("e.target: ", e.target);
+  }
+
   render() {
     return (
       <div>
         <Grid>
           <Row>
-            <Col sm={6}>
-              <Column name="NPCs" />
+            <Col sm={4}>
+              <NPCList list={this.state.NPCList} handleClick={this.handleClick} />
             </Col>
             <Col sm={6}>
               <NPCDetails npc={this.state.selectedNPC} />
