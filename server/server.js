@@ -37,18 +37,14 @@ app.get('/test', (req, res) => {
 
 app.post('/add', (req, res) => {
   console.log("add req body: ", req.body);
-  //Convert array of memorized spells to string
-  let memorizedString = "";
-  if (req.body.memorized) {
-    memorizedString = listify(req.body.memorized)
-  }
   let sql = 'INSERT INTO new_schema.npcs (name, level, title, class, race, currentHP, maxHP, ac, str, ex_str,\
-    intel, dex, con, wis, cha, memorized, gold, items, probity, affiliation, notes) VALUES (?, ?, ?, ?,\
-    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    intel, dex, con, wis, cha, memorized, SBLvl_1, SBLvl_2, SBLvl_3, SBLvl_4, SBLvl_5, gold, items, probity,\
+    affiliation, notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
   db.query(sql, [req.body.name, req.body.level, req.body.title, req.body.class, "", req.body.currentHP,
     req.body.maxHP, req.body.ac, req.body.str, req.body.ex_str, req.body.int, req.body.dex, req.body.con,
-    req.body.wis, req.body.cha, memorizedString, req.body.gold, req.body.items, req.body.probity,
-    req.body.affiliation, req.body.notes], (err, result) => {
+    req.body.wis, req.body.cha, req.body.memorized, req.body.spellbookLvl_1, req.body.spellbookLvl_2,
+    req.body.spellbookLvl_3, req.body.spellbookLvl_4, req.body.spellbookLvl_5, req.body.gold, req.body.items,
+    req.body.probity, req.body.affiliation, req.body.notes], (err, result) => {
     if(err) {
       console.log("error: ", err);
       throw err;
