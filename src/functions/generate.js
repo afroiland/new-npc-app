@@ -64,21 +64,36 @@ export function generate(level, pcClass) {
     let spellbook = {};
     if (pcClass === "Magic-User") {
       spellbook = generateSpellbook(level);
-      pc.spellbookLvl_1 = spellbook.firstLvlSpells;
+      pc.spellbookLvl_1 = listify(spellbook.firstLvlSpells);
       if (spellbook.secondLvlSpells.length > 0) {
-        pc.spellbookLvl_2 = spellbook.secondLvlSpells;
+        pc.spellbookLvl_2 = listify(spellbook.secondLvlSpells);
+      } else {
+        pc.spellbookLvl_2 = "";
       }
       if (spellbook.thirdLvlSpells.length > 0) {
-        pc.spellbookLvl_3 = spellbook.thirdLvlSpells;
+        pc.spellbookLvl_3 = listify(spellbook.thirdLvlSpells);
+      } else {
+        pc.spellbookLvl_3 = "";
       }
       if (spellbook.fourthLvlSpells.length > 0) {
-        pc.spellbookLvl_4 = spellbook.fourthLvlSpells;
+        pc.spellbookLvl_4 = listify(spellbook.fourthLvlSpells);
+      } else {
+        pc.spellbookLvl_4 = "";
       }
       if (spellbook.fifthLvlSpells.length > 0) {
-        pc.spellbookLvl_5 = spellbook.fifthLvlSpells;
+        pc.spellbookLvl_5 = listify(spellbook.fifthLvlSpells);
+      } else {
+        pc.spellbookLvl_5 = "";
       }
     }
     pc.memorized = getMemdSpells(spellbook, level, pcClass);
+  } else {
+    pc.memorized = "";
+    pc.spellbookLvl_1 = "";
+    pc.spellbookLvl_2 = "";
+    pc.spellbookLvl_3 = "";
+    pc.spellbookLvl_4 = "";
+    pc.spellbookLvl_5 = "";
   }
 
   pc.gold = setStartingGold(pcClass);
@@ -89,6 +104,14 @@ export function generate(level, pcClass) {
 
   //console.log("pc: ", pc);
   return pc;
+}
+
+function listify(spellsForLevel) {
+  let list = "";
+  for (let i = 0; i < spellsForLevel.length; i++) {
+    list += spellsForLevel[i] + ", ";
+  }
+  return list.slice(0, (list.length - 2));
 }
 
 function getName() {

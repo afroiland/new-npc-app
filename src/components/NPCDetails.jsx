@@ -76,30 +76,30 @@ class NPCDetails extends Component {
                   <p>Memorized Spells</p>
                   <FormGroup>
                     <Col sm={12}><FormControl style={{ marginBottom: 20 }} name="memorized"
-                      value={this.props.memorized ? this.listMemdSpells() : ""} onChange={(e) => this.props.handleChange(e)} /></Col>
+                      value={this.props.memorized ? this.props.memorized : ""} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                 </div>
                 <div style={{ display: this.spellbookExists() ? 'block' : 'none' }}>
                   <p>Spellbook</p>
                   <FormGroup style={{ display: this.props.spellbookLvl_1 ? 'block' : 'none' }}>
                     <Col sm={2}>Lv 1: </Col>
-                    <Col sm={10}><FormControl value={this.listify(this.props.spellbookLvl_1)} onChange={(e) => this.props.handleChange(e)} /></Col>
+                    <Col sm={10}><FormControl value={this.props.spellbookLvl_1} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_2 ? 'block' : 'none' }}>
                     <Col sm={2}>Lv 2: </Col>
-                    <Col sm={10}><FormControl value={this.listify(this.props.spellbookLvl_2)} onChange={(e) => this.props.handleChange(e)} /></Col>
+                    <Col sm={10}><FormControl value={this.props.spellbookLvl_2} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_3 ? 'block' : 'none' }}>
                     <Col sm={2}>Lv 3: </Col>
-                    <Col sm={10}><FormControl value={this.listify(this.props.spellbookLvl_3)} onChange={(e) => this.props.handleChange(e)} /></Col>
+                    <Col sm={10}><FormControl value={this.props.spellbookLvl_3} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_4 ? 'block' : 'none' }}>
                     <Col sm={2}>Lv 4: </Col>
-                    <Col sm={10}><FormControl value={this.listify(this.props.spellbookLvl_4)} onChange={(e) => this.props.handleChange(e)} /></Col>
+                    <Col sm={10}><FormControl value={this.props.spellbookLvl_4} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_5 ? 'block' : 'none' }}>
                     <Col sm={2}>Lv 5: </Col>
-                    <Col sm={10}><FormControl value={this.listify(this.props.spellbookLvl_5)} onChange={(e) => this.props.handleChange(e)} /></Col>
+                    <Col sm={10}><FormControl value={this.props.spellbookLvl_5} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                 </div>
               </Form>
@@ -116,34 +116,6 @@ class NPCDetails extends Component {
       return false;
     }
     return true;
-  }
-
-  listify(spellLevel) {
-    if (!spellLevel) {
-      return "";
-    }
-    let list = "";
-    for (let i = 0; i < spellLevel.length; i++) {
-      list += spellLevel[i] + ", ";
-    }
-    return list.slice(0, (list.length - 2));
-  }
-
-  listMemdSpells() {
-    let temp = this.props.memorized;
-    if (!temp) {
-      return;
-    }
-    let list = "";
-    list = listify(temp);
-    return list;
-
-    function listify() {
-      for (let i = 0; i < temp.length; i++) {
-        list += temp[i] + ", ";
-      }
-      return list.slice(0, (list.length - 2));
-    }
   }
 }
 

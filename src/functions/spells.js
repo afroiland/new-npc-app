@@ -251,5 +251,14 @@ export function getMemdSpells(spellbook, level, pcClass) {
       memdList.push(listName[rollDice(1, listName.length) - 1]);
     }
   }
-  return memdList;
+
+  console.log("memdList: ", memdList);
+  let list = "";
+  for (let i = 0; i < memdList.length; i++) {
+    list += memdList[i] + ", ";
+  }
+  let finalList = list.slice(0, (list.length - 2));
+  console.log("finalList: ", finalList);
+
+  return finalList;
 }
