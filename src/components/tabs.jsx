@@ -3,24 +3,24 @@ import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import SearchBar from "./searchbar";
 import Columns from "./columns";
 import ViewContent from "./viewContent";
-import GenerateContent from "./generateContent";
+// import GenerateContent from "./generateContent";
 
 class NavTabs extends Component {
   render() {
     return (
       <div>
-        <Tabs defaultIndex={1}>
+        <Tabs defaultIndex={0}>
           <TabList>
-            <Tab>View</Tab>
-            <Tab>Generate</Tab>
-            <Tab>Fight</Tab>
+            <Tab>NPCs</Tab>
+            {/* <Tab>Generate</Tab> */}
+            <Tab>Combat</Tab>
           </TabList>
           <TabPanel>
             <ViewContent />
           </TabPanel>
-          <TabPanel>
+          {/* <TabPanel>
             <GenerateContent />
-          </TabPanel>
+          </TabPanel> */}
           <TabPanel>
             <div>
               <SearchBar />
