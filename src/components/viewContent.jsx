@@ -8,35 +8,11 @@ import axios from "axios";
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
 
-// var npc1 = {
-//   id: 1,
-//   name: "Test Name",
-//   title: "",
-//   level: 0,
-//   class: "",
-//   currentHP: 0,
-//   maxHP: 0,
-//   ac: 0,
-//   str: 0,
-//   ex_str: 0,
-//   int: 0,
-//   dex: 0,
-//   con: 0,
-//   wis: 0,
-//   cha: 0,
-//   spells: {},
-//   items: "",
-//   ranking: 0,
-//   affiliation: "",
-//   notes: ""
-// };
-
 class ViewContent extends Component {
   state = {
     levelSelect: 1,
     classSelect: "Fighter",
-    NPCList: [{name: "Test Name"}],
-    // selectedNPC: npc1,
+    NPCList: [{ name: "Test Name" }],
     name: "",
     title: "",
     level: 0,
@@ -66,7 +42,7 @@ class ViewContent extends Component {
   };
 
   render() {
-    console.log("this.state: ", this.state);
+    //console.log("this.state: ", this.state);
     return (
       <div>
         <Grid>
@@ -118,8 +94,7 @@ class ViewContent extends Component {
                 probity={this.state.probity}
                 affiliation={this.state.affiliation}
                 notes={this.state.notes}
-                
-                />
+              />
             </Col>
           </Row>
         </Grid>
@@ -136,11 +111,9 @@ class ViewContent extends Component {
   }
 
   handleNameClick = (name) => {
-    console.log("name: ", name);
     let selectedNPC = this.state.NPCList.filter(obj => {
       return obj.name === name
     });
-    console.log("selectedNPC: ", selectedNPC);
     this.setState({
       name: selectedNPC[0].name,
       level: selectedNPC[0].level,

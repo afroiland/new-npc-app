@@ -1,63 +1,11 @@
 import React, { Component } from "react";
 import { Col, Form, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
-// import { generate } from "./../functions/generate";
-// import axios from "axios";
 
 class NPCDetails extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     name: "",
-  //     title: "",
-  //     level: 0,
-  //     class: "",
-  //     race: "",
-  //     currentHP: 0,
-  //     maxHP: 0,
-  //     ac: 0,
-  //     str: 0,
-  //     ex_str: 0,
-  //     int: 0,
-  //     dex: 0,
-  //     con: 0,
-  //     wis: 0,
-  //     cha: 0,
-  //     spellbookLvl_1: [""],
-  //     spellbookLvl_2: [""],
-  //     spellbookLvl_3: [""],
-  //     spellbookLvl_4: [""],
-  //     spellbookLvl_5: [""],
-  //     memorized: [""],
-  //     gold: 0,
-  //     items: "",
-  //     probity: 0,
-  //     affiliation: "",
-  //     notes: "",
-  //     levelSelect: 1,
-  //     pcClass: 'Fighter'
-  //   }
-  // }
-
   render() {
-    console.log("details this.props: ", this.props);
     return (
       <div>
         <Grid>
-          {/* <Row>
-            <Col md={6}>
-              <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ pcClass: e.target.value })}>
-                {classes.map(pcClass => <option key={pcClass} value={pcClass}>{pcClass}</option>)}
-              </FormControl>
-            </Col>
-            <Col md={6}>
-              <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ levelSelect: parseInt(e.target.value) })}>
-                {levelRange.map(level => <option key={level} value={level}>{level}</option>)}
-              </FormControl>
-            </Col>
-          </Row>
-          <Button onClick={() => this.handleGenerate(this.state.levelSelect, this.state.pcClass)}>Generate</Button>
-          <Button onClick={() => this.handleSave(this.state)}>Save</Button>
-          <Button onClick={() => this.handleClear()}>Clear</Button> */}
           <Row>
             <Col md={12}>
               <Form horizontal>
@@ -161,82 +109,6 @@ class NPCDetails extends Component {
       </div>
     );
   }
-
-  // handleGenerate = (level, pcClass) => {
-  //   let newNPC = generate(level, pcClass);
-  //   console.log("newNPC: ", newNPC);
-  //   this.setState({
-  //     name: newNPC.name,
-  //     level: newNPC.level,
-  //     title: newNPC.title,
-  //     class: newNPC.class,
-  //     race: newNPC.race,
-  //     currentHP: newNPC.currentHP,
-  //     maxHP: newNPC.maxHP,
-  //     ac: newNPC.ac,
-  //     str: newNPC.str,
-  //     ex_str: newNPC.ex_str,
-  //     int: newNPC.int,
-  //     dex: newNPC.dex,
-  //     con: newNPC.con,
-  //     wis: newNPC.wis,
-  //     cha: newNPC.cha,
-  //     spellbookLvl_1: newNPC.spellbookLvl_1,
-  //     spellbookLvl_2: newNPC.spellbookLvl_2,
-  //     spellbookLvl_3: newNPC.spellbookLvl_3,
-  //     spellbookLvl_4: newNPC.spellbookLvl_4,
-  //     spellbookLvl_5: newNPC.spellbookLvl_5,
-  //     memorized: newNPC.memorized,
-  //     gold: newNPC.gold,
-  //     items: newNPC.items,
-  //     probity: newNPC.probity,
-  //     affiliation: newNPC.affiliation,
-  //     notes: newNPC.notes
-  //   });
-  // }
-
-  // handleSave = (state) => {
-  //   console.log("handleSave state: ", state);
-  //   axios.post("http://localhost:3001/add", state)
-  //   .then(res => {
-  //     console.log("add res: ", res);
-  //   });
-  // }
-
-  // handleChange = (e) => {
-  //   this.setState({ [e.target.name]: e.target.value });
-  // }
-
-  // handleClear = () => {
-  //   this.setState({
-  //     name: "",
-  //     title: "",
-  //     level: 0,
-  //     class: "",
-  //     race: "",
-  //     currentHP: 0,
-  //     maxHP: 0,
-  //     ac: 0,
-  //     str: 0,
-  //     ex_str: 0,
-  //     int: 0,
-  //     dex: 0,
-  //     con: 0,
-  //     wis: 0,
-  //     cha: 0,
-  //     spellbookLvl_1: [""],
-  //     spellbookLvl_2: [""],
-  //     spellbookLvl_3: [""],
-  //     spellbookLvl_4: [""],
-  //     spellbookLvl_5: [""],
-  //     memorized: [""],
-  //     gold: 0,
-  //     items: "",
-  //     probity: 0,
-  //     affiliation: "",
-  //     notes: ""
-  //   });
-  // }
 
   spellbookExists() {
     let temp = this.props
