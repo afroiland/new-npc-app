@@ -85,6 +85,12 @@ export function generate(level, pcClass) {
       } else {
         pc.spellbookLvl_5 = "";
       }
+    } else {
+      pc.spellbookLvl_1 = "";
+      pc.spellbookLvl_2 = "";
+      pc.spellbookLvl_3 = "";
+      pc.spellbookLvl_4 = "";
+      pc.spellbookLvl_5 = "";
     }
     pc.memorized = getMemdSpells(spellbook, level, pcClass);
   } else {

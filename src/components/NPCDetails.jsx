@@ -3,6 +3,7 @@ import { Col, Form, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
 
 class NPCDetails extends Component {
   render() {
+    //console.log("this.props: ", this.props);
     return (
       <div>
         <Grid>
