@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
-import { Button, Col, FormControl, Grid, Row } from "react-bootstrap";
+import { Button, Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
 import axios from "axios";
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -12,7 +12,7 @@ class ViewContent extends Component {
   state = {
     levelSelect: 1,
     classSelect: "Fighter",
-    NPCList: [{ name: "Test Name" }],
+    NPCList: [],
     name: "",
     title: "",
     level: 0,
@@ -48,6 +48,9 @@ class ViewContent extends Component {
         <Grid>
           <Row>
             <Col sm={2}>
+              <FormGroup>
+                <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
+              </FormGroup>
               <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} />
             </Col>
             <Col sm={10}>
@@ -108,6 +111,11 @@ class ViewContent extends Component {
       this.setState({ NPCList: res.data });
       //console.log("this.state: ", this.state);
     });
+  }
+
+  handleSearchChange = (searchString) => {
+    console.log("searchString: ", searchString);
+    //loop through each object in state.NPCList, compare searchString to property values, add property hideInList to each object
   }
 
   handleNameClick = (name) => {
