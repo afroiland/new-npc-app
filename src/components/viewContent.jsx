@@ -208,14 +208,20 @@ class ViewContent extends Component {
 
   handleSave = (state) => {
     console.log("handleSave state: ", state);
-    // if NPCList includes state.name, do an update, else post with /add route
-
-    // axios.update
-
-    axios.post("http://localhost:3001/add", state)
-      .then(res => {
-        console.log("add res: ", res);
-      });
+    let nameExists = false;
+    for (let i = 0; i < state.NPCList.length; i++) {
+      if (state.NPCList[i].name === state.name) {
+        nameExists = true;
+      }
+    }
+    if (nameExists) {
+      console.log("Here is where an update would happen");
+    } else {
+      axios.post("http://localhost:3001/add", state)
+        .then(res => {
+          console.log("add res: ", res);
+        });
+    }
   }
 
   handleChange = (e) => {

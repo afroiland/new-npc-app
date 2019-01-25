@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FormGroup, FormControl, Button, Navbar } from "react-bootstrap";
+import { Button, Navbar } from "react-bootstrap";
 
 class SearchBar extends Component {
   render() {
@@ -10,9 +10,6 @@ class SearchBar extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Navbar.Form pullLeft>
-            <FormGroup>
-              <FormControl type="text" placeholder="Search" />
-            </FormGroup>{" "}
             <Button>Add to Group A</Button>
             <Button>Add to Group B</Button>
             <Button>Fight</Button>

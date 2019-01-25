@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
-import SearchBar from "./searchbar";
-import Columns from "./columns";
 import ViewContent from "./viewContent";
+import Combat from "./combat";
 
 class NavTabs extends Component {
   render() {
     return (
       <div>
-        <Tabs defaultIndex={0}>
+        <Tabs defaultIndex={1}>
           <TabList>
             <Tab>NPCs</Tab>
             <Tab>Combat</Tab>
@@ -18,8 +17,7 @@ class NavTabs extends Component {
           </TabPanel>
           <TabPanel>
             <div>
-              <SearchBar />
-              <Columns />
+              <Combat />
             </div>
           </TabPanel>
         </Tabs>

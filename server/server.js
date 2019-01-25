@@ -30,7 +30,7 @@ app.get('/test', (req, res) => {
   let sql = 'SELECT * FROM new_schema.npcs';
   db.query(sql, (err, result) => {
     if(err) throw err;
-    console.log("test result: ", result);
+    //console.log("test result: ", result);
     res.send(result);
   });
 });
