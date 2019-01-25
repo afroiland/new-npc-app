@@ -114,10 +114,11 @@ class ViewContent extends Component {
   }
 
   handleSearchChange = (searchString) => {
+    //debugger;
     console.log("searchString: ", searchString);
     let tempNPCList = this.state.NPCList;
     console.log("tempNPCList[0].name: ", tempNPCList[0].name);
-    for (let i = 0; i < tempNPCList.length - 1; i++) {
+    for (let i = 0; i < tempNPCList.length; i++) {
       if (!tempNPCList[i].name.includes(searchString) &&
       !tempNPCList[i].title.includes(searchString) &&
       !tempNPCList[i].class.includes(searchString) &&
@@ -132,6 +133,8 @@ class ViewContent extends Component {
       !tempNPCList[i].affiliation.includes(searchString) &&
       !tempNPCList[i].notes.includes(searchString)) {
         tempNPCList[i].hideInList = true;
+      } else {
+        tempNPCList[i].hideInList = false;
       }
     }
     this.setState({ NPCList: tempNPCList });
