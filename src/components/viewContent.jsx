@@ -114,27 +114,26 @@ class ViewContent extends Component {
   }
 
   handleSearchChange = (searchString) => {
-    //debugger;
-    console.log("searchString: ", searchString);
     let tempNPCList = this.state.NPCList;
-    console.log("tempNPCList[0].name: ", tempNPCList[0].name);
     for (let i = 0; i < tempNPCList.length; i++) {
-      if (!tempNPCList[i].name.includes(searchString) &&
-      !tempNPCList[i].title.includes(searchString) &&
-      !tempNPCList[i].class.includes(searchString) &&
-      !tempNPCList[i].race.includes(searchString) &&
-      !tempNPCList[i].memorized.includes(searchString) &&
-      !tempNPCList[i].SBLvl_1.includes(searchString) &&
-      !tempNPCList[i].SBLvl_2.includes(searchString) &&
-      !tempNPCList[i].SBLvl_3.includes(searchString) &&
-      !tempNPCList[i].SBLvl_4.includes(searchString) &&
-      !tempNPCList[i].SBLvl_5.includes(searchString) &&
-      !tempNPCList[i].items.includes(searchString) &&
-      !tempNPCList[i].affiliation.includes(searchString) &&
-      !tempNPCList[i].notes.includes(searchString)) {
-        tempNPCList[i].hideInList = true;
-      } else {
+      let allWordList = "";
+      allWordList += tempNPCList[i].name;
+      allWordList += tempNPCList[i].title;
+      allWordList += tempNPCList[i].class;
+      allWordList += tempNPCList[i].race;
+      allWordList += tempNPCList[i].memorized;
+      allWordList += tempNPCList[i].SBLvl_1;
+      allWordList += tempNPCList[i].SBLvl_2;
+      allWordList += tempNPCList[i].SBLvl_3;
+      allWordList += tempNPCList[i].SBLvl_4;
+      allWordList += tempNPCList[i].SBLvl_5;
+      allWordList += tempNPCList[i].items;
+      allWordList += tempNPCList[i].affiliation;
+      allWordList += tempNPCList[i].notes;
+      if (allWordList.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) {
         tempNPCList[i].hideInList = false;
+      } else {
+        tempNPCList[i].hideInList = true;
       }
     }
     this.setState({ NPCList: tempNPCList });
@@ -209,6 +208,10 @@ class ViewContent extends Component {
 
   handleSave = (state) => {
     console.log("handleSave state: ", state);
+    // if NPCList includes state.name, do an update, else post with /add route
+
+    // axios.update
+
     axios.post("http://localhost:3001/add", state)
       .then(res => {
         console.log("add res: ", res);
