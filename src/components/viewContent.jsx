@@ -115,7 +115,26 @@ class ViewContent extends Component {
 
   handleSearchChange = (searchString) => {
     console.log("searchString: ", searchString);
-    //loop through each object in state.NPCList, compare searchString to property values, add property hideInList to each object
+    let tempNPCList = this.state.NPCList;
+    console.log("tempNPCList[0].name: ", tempNPCList[0].name);
+    for (let i = 0; i < tempNPCList.length - 1; i++) {
+      if (!tempNPCList[i].name.includes(searchString) &&
+      !tempNPCList[i].title.includes(searchString) &&
+      !tempNPCList[i].class.includes(searchString) &&
+      !tempNPCList[i].race.includes(searchString) &&
+      !tempNPCList[i].memorized.includes(searchString) &&
+      !tempNPCList[i].SBLvl_1.includes(searchString) &&
+      !tempNPCList[i].SBLvl_2.includes(searchString) &&
+      !tempNPCList[i].SBLvl_3.includes(searchString) &&
+      !tempNPCList[i].SBLvl_4.includes(searchString) &&
+      !tempNPCList[i].SBLvl_5.includes(searchString) &&
+      !tempNPCList[i].items.includes(searchString) &&
+      !tempNPCList[i].affiliation.includes(searchString) &&
+      !tempNPCList[i].notes.includes(searchString)) {
+        tempNPCList[i].hideInList = true;
+      }
+    }
+    this.setState({ NPCList: tempNPCList });
   }
 
   handleNameClick = (name) => {
