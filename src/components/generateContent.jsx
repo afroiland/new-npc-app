@@ -6,7 +6,8 @@ class GenerateContent extends Component {
 
   render() {
     return (
-      <NPCDetails />
+      // <NPCDetails />
+      <div></div>
     );
   }
 }
