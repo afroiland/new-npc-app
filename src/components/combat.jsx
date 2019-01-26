@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from "./searchbar";
 import NPCList from "./NPCList";
-import Column from "./column";
 import { Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
 import axios from "axios";
 
@@ -25,13 +24,15 @@ class Combat extends Component {
               <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} />
             </Col>
             <Col sm={3}>
-              <Column name="Group A" />
+              <p>Group A</p>
+              <NPCList list={this.state.groupA} />
             </Col>
             <Col sm={3}>
-              <Column name="Group B" />
+              <p>Group B</p>
+              <NPCList list={this.state.groupB} />
             </Col>
             <Col sm={3}>
-              <Column name="Combat Log" />
+              <p>Log / Results</p>
             </Col>
           </Row>
         </Grid>
