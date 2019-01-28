@@ -52,7 +52,7 @@ class ViewContent extends Component {
               <FormGroup>
                 <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
               </FormGroup>
-              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC}/>
+              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC} />
             </Col>
             <Col sm={10}>
               <Row>

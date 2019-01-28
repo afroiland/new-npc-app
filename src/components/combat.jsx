@@ -8,20 +8,21 @@ class Combat extends Component {
   state = {
     NPCList: [],
     groupA: [],
-    groupB: []
+    groupB: [],
+    selectedNPC: ""
   }
 
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} />
         <Grid>
           <Row>
             <Col sm={2}>
               <FormGroup>
                 <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
               </FormGroup>
-              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} />
+              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC} />
             </Col>
             <Col sm={3}>
               <p>Group A</p>
@@ -76,6 +77,20 @@ class Combat extends Component {
 
   handleNameClick = (name) => {
     console.log(name, "clicked");
+    this.setState({ selectedNPC: name });
+  }
+
+  handleButtonClick = (groupId) => {
+    console.log("groupId: ", groupId);
+    let group = "group" + groupId;
+    console.log("group: ", group);
+    //debugger;
+    let selectedNPCObject = this.state.NPCList.filter(obj => {
+      return obj.name === this.state.selectedNPC
+    });
+    let newGroup = groupId === "A" ? this.state.groupA : this.state.groupB;
+    newGroup.push(selectedNPCObject);
+    this.setState({ [group]: newGroup })
   }
 }
 

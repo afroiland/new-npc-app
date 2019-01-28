@@ -10,8 +10,8 @@ class SearchBar extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Navbar.Form pullLeft>
-            <Button>Add to Group A</Button>
-            <Button>Add to Group B</Button>
+            <Button onClick={() => this.props.handleClick("A")}>Add to Group A</Button>
+            <Button onClick={() => this.props.handleClick("B")}>Add to Group B</Button>
             <Button>Fight</Button>
           </Navbar.Form>
         </Navbar.Collapse>
