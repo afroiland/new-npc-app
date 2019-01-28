@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from "./searchbar";
 import NPCList from "./NPCList";
-import Column from "./column";
 import { Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
 import axios from "axios";
 
@@ -9,29 +8,33 @@ class Combat extends Component {
   state = {
     NPCList: [],
     groupA: [],
-    groupB: []
+    groupB: [],
+    selectedNPC: ""
   }
 
   render() {
+    //console.log("this.state.groupA: ", this.state.groupA);
     return (
       <div>
-        <SearchBar />
+        <SearchBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} />
         <Grid>
           <Row>
             <Col sm={2}>
               <FormGroup>
                 <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
               </FormGroup>
-              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} />
+              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC} />
             </Col>
             <Col sm={3}>
-              <Column name="Group A" />
+              <p>Group A</p>
+              <NPCList list={this.state.groupA} />
             </Col>
             <Col sm={3}>
-              <Column name="Group B" />
+              <p>Group B</p>
+              <NPCList list={this.state.groupB} />
             </Col>
             <Col sm={3}>
-              <Column name="Combat Log" />
+              <p>Log / Results</p>
             </Col>
           </Row>
         </Grid>
@@ -43,7 +46,6 @@ class Combat extends Component {
     axios.get('http://localhost:3001/test').then(res => {
       //console.log("res.data: ", res.data);
       this.setState({ NPCList: res.data });
-      //console.log("this.state: ", this.state);
     });
   }
 
@@ -71,6 +73,53 @@ class Combat extends Component {
       }
     }
     this.setState({ NPCList: tempNPCList });
+  }
+
+  handleNameClick = (name) => {
+    this.setState({ selectedNPC: name });
+  }
+
+  handleButtonClick = (buttonId) => {
+    if (buttonId === "clear") {
+      this.setState({ groupA: [], groupB: [] });
+      return;
+    }
+
+    if (buttonId === "remove") {
+      let newGroupA = this.state.groupA.filter(obj => {
+        return obj.name !== this.state.selectedNPC
+      });
+      let newGroupB = this.state.groupB.filter(obj => {
+        return obj.name !== this.state.selectedNPC
+      });
+      this.setState({ groupA: newGroupA, groupB: newGroupB});
+      return;
+    }
+
+    let selectedNPCObject = this.state.NPCList.filter(obj => {
+      return obj.name === this.state.selectedNPC;
+    });
+    let newGroupA = this.state.groupA;
+    let newGroupB = this.state.groupB;
+    
+    if (buttonId === "A") {
+      if (this.state.groupA.some(obj => obj.name === this.state.selectedNPC)) {
+        return;
+      };
+      newGroupA.push(selectedNPCObject[0]);
+      newGroupB = newGroupB.filter(obj => {
+        return obj.name !== this.state.selectedNPC;
+      });
+    } else if (buttonId === "B") {
+      if (this.state.groupB.some(obj => obj.name === this.state.selectedNPC)) {
+        return;
+      };
+      newGroupB.push(selectedNPCObject[0]);
+      newGroupA = newGroupA.filter(obj => {
+        return obj.name !== this.state.selectedNPC;
+      });
+    }
+    this.setState({ groupA: newGroupA, groupB: newGroupB});
   }
 }
 
