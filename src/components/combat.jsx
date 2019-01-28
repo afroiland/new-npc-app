@@ -73,6 +73,10 @@ class Combat extends Component {
     }
     this.setState({ NPCList: tempNPCList });
   }
+
+  handleNameClick = (name) => {
+    console.log(name, "clicked");
+  }
 }
 
 export default Combat;
