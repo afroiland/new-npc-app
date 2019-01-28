@@ -38,7 +38,8 @@ class ViewContent extends Component {
     items: "",
     probity: 0,
     affiliation: "",
-    notes: ""
+    notes: "",
+    selectedNPC: ""
   };
 
   render() {
@@ -51,7 +52,7 @@ class ViewContent extends Component {
               <FormGroup>
                 <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
               </FormGroup>
-              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} />
+              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC}/>
             </Col>
             <Col sm={10}>
               <Row>
@@ -169,7 +170,8 @@ class ViewContent extends Component {
       items: selectedNPC[0].items,
       probity: selectedNPC[0].probity,
       affiliation: selectedNPC[0].affiliation,
-      notes: selectedNPC[0].notes
+      notes: selectedNPC[0].notes,
+      selectedNPC: selectedNPC[0].name
     });
   }
 
