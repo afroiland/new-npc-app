@@ -13,6 +13,7 @@ class SearchBar extends Component {
             <Button onClick={() => this.props.handleClick("A")}>Add to Group A</Button>
             <Button onClick={() => this.props.handleClick("B")}>Add to Group B</Button>
             <Button onClick={() => this.props.handleClick("remove")}>Remove</Button>
+            <Button onClick={() => this.props.handleClick("clear")}>Clear All</Button>
             <Button>Fight</Button>
           </Navbar.Form>
         </Navbar.Collapse>
