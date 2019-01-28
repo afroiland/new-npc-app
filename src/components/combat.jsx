@@ -83,23 +83,44 @@ class Combat extends Component {
   handleButtonClick = (buttonId) => {
     if (buttonId === "remove") {
       let newGroupA = this.state.groupA.filter(obj => {
-        return obj.name != this.state.selectedNPC
+        return obj.name !== this.state.selectedNPC
       });
       let newGroupB = this.state.groupB.filter(obj => {
-        return obj.name != this.state.selectedNPC
+        return obj.name !== this.state.selectedNPC
       });
       this.setState({ groupA: newGroupA, groupB: newGroupB});
       return;
     }
-    
-    //logic for if NPC is already in a group
 
     let selectedNPCObject = this.state.NPCList.filter(obj => {
-      return obj.name === this.state.selectedNPC
+      return obj.name === this.state.selectedNPC;
     });
-    let newGroup = buttonId === "A" ? this.state.groupA : this.state.groupB;
-    newGroup.push(selectedNPCObject[0]);
-    this.setState({ ["group" + buttonId]: newGroup });
+
+    let newGroupA = this.state.groupA;
+    let newGroupB = this.state.groupB;
+    if (buttonId === "A") {
+      newGroupA.push(selectedNPCObject[0]);
+      newGroupB = newGroupB.filter(obj => {
+        return obj.name !== this.state.selectedNPC;
+      });
+    } else if (buttonId === "B") {
+      newGroupB.push(selectedNPCObject[0]);
+      newGroupA = newGroupA.filter(obj => {
+        return obj.name !== this.state.selectedNPC;
+      });
+    }
+    this.setState({ groupA: newGroupA, groupB: newGroupB});
+
+    // let groupToAddTo;
+    // let groupToRemoveFrom;
+    // if (buttonId === "A") {
+    //   groupToAddTo = "groupA";
+    //   groupToRemoveFrom = "groupB";
+    // }
+
+    // let newGroup = buttonId === "A" ? this.state.groupA : this.state.groupB;
+    // newGroup.push(selectedNPCObject[0]);
+    // this.setState({ ["group" + buttonId]: newGroup });
   }
 }
 
