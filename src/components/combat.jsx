@@ -13,6 +13,7 @@ class Combat extends Component {
   }
 
   render() {
+    //console.log("this.state.groupA: ", this.state.groupA);
     return (
       <div>
         <SearchBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} />
@@ -45,7 +46,6 @@ class Combat extends Component {
     axios.get('http://localhost:3001/test').then(res => {
       //console.log("res.data: ", res.data);
       this.setState({ NPCList: res.data });
-      //console.log("this.state: ", this.state);
     });
   }
 
@@ -81,16 +81,13 @@ class Combat extends Component {
   }
 
   handleButtonClick = (groupId) => {
-    console.log("groupId: ", groupId);
     let group = "group" + groupId;
-    console.log("group: ", group);
-    //debugger;
     let selectedNPCObject = this.state.NPCList.filter(obj => {
       return obj.name === this.state.selectedNPC
     });
     let newGroup = groupId === "A" ? this.state.groupA : this.state.groupB;
-    newGroup.push(selectedNPCObject);
-    this.setState({ [group]: newGroup })
+    newGroup.push(selectedNPCObject[0]);
+    this.setState({ [group]: newGroup });
   }
 }
 
