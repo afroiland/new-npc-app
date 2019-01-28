@@ -80,15 +80,26 @@ class Combat extends Component {
     this.setState({ selectedNPC: name });
   }
 
-  handleButtonClick = (groupId) => {
-    //logic for if NPC is already in a group
+  handleButtonClick = (buttonId) => {
+    if (buttonId === "remove") {
+      let newGroupA = this.state.groupA.filter(obj => {
+        return obj.name != this.state.selectedNPC
+      });
+      let newGroupB = this.state.groupB.filter(obj => {
+        return obj.name != this.state.selectedNPC
+      });
+      this.setState({ groupA: newGroupA, groupB: newGroupB});
+      return;
+    }
     
+    //logic for if NPC is already in a group
+
     let selectedNPCObject = this.state.NPCList.filter(obj => {
       return obj.name === this.state.selectedNPC
     });
-    let newGroup = groupId === "A" ? this.state.groupA : this.state.groupB;
+    let newGroup = buttonId === "A" ? this.state.groupA : this.state.groupB;
     newGroup.push(selectedNPCObject[0]);
-    this.setState({ ["group" + groupId]: newGroup });
+    this.setState({ ["group" + buttonId]: newGroup });
   }
 }
 
