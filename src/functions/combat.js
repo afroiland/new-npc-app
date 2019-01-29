@@ -11,7 +11,12 @@ export function fight(groupA, groupB) {
     "damage": getDamage(npc.weapon), "spells": npc.memorized, "incap": false}));
   console.log("cgrpA: ", cgrpA);
 
+  let cgrpB = groupB.map(npc => ({"name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
+    "damage": getDamage(npc.weapon), "spells": npc.memorized, "incap": false}));
+  console.log("cgrpB: ", cgrpB);
+
   // initiative
+
 
 
   // side one each NPC does an action
@@ -37,5 +42,6 @@ export function fight(groupA, groupB) {
 }
 
 function getDamage(weapon) {
+  console.log("weapon: ", weapon);
   return "1-8";
 }

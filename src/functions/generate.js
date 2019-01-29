@@ -1,6 +1,7 @@
 import { generateSpellbook, getMemdSpells } from "./spells";
 import { rollDice } from "./dice";
 import { getTitle } from "./titles";
+import { calcThac0 } from "./thac0";
 
 export function generate(level, pcClass) {
   let pc = { level: level, class: pcClass };
@@ -58,7 +59,7 @@ export function generate(level, pcClass) {
   pc.currentHP = hp;
   pc.maxHP = hp;
   pc.ac = 10;
-  pc.thac0 = 10;
+  pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
 
   //Spell stuff
   if (pcClass === "Magic-User" || pcClass === "Cleric") {
