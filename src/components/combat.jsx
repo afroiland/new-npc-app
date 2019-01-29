@@ -10,7 +10,8 @@ class Combat extends Component {
     NPCList: [],
     groupA: [],
     groupB: [],
-    selectedNPC: ""
+    selectedNPC: "",
+    combatLog: []
   }
 
   render() {
