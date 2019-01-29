@@ -58,6 +58,7 @@ export function generate(level, pcClass) {
   pc.currentHP = hp;
   pc.maxHP = hp;
   pc.ac = 10;
+  pc.thac0 = 10;
 
   //Spell stuff
   if (pcClass === "Magic-User" || pcClass === "Cleric") {
@@ -103,6 +104,8 @@ export function generate(level, pcClass) {
   }
 
   pc.gold = setStartingGold(pcClass);
+  //TODO: Determine weapon randomly by class
+  pc.weapon = "Staff";
   pc.items = "";
   pc.notes = "";
   pc.probity = 0;
