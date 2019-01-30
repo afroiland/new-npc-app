@@ -227,6 +227,10 @@ class ViewContent extends Component {
     }
     if (nameExists) {
       console.log("Here is where an update would happen");
+      axios.put("http://localhost:3001/update", state)
+        .then(res => {
+          console.log("update res: ", res);
+        });
     } else {
       axios.post("http://localhost:3001/add", state)
         .then(res => {
