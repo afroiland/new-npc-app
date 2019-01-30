@@ -27,24 +27,20 @@ class NPCDetails extends Component {
                   <Col sm={1}><FormControl name="str" value={this.props.str} onChange={(e) => this.props.handleChange(e)} /></Col>
                   <Col sm={1}><FormControl style={{ display: this.props.str > 17 ? 'block' : 'none' }}
                     name="ex_str" value={this.props.ex_str} onChange={(e) => this.props.handleChange(e)} /></Col>
-                </FormGroup>
-                <FormGroup>
                   <Col sm={2}>Int: </Col>
                   <Col sm={1}><FormControl name="int" value={this.props.int} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
                 <FormGroup>
                   <Col sm={2}>Dex: </Col>
                   <Col sm={1}><FormControl name="dex" value={this.props.dex} onChange={(e) => this.props.handleChange(e)} /></Col>
-                </FormGroup>
-                <FormGroup>
+                  <Col sm={1}></Col>
                   <Col sm={2}>Con: </Col>
                   <Col sm={1}><FormControl name="con" value={this.props.con} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
                 <FormGroup>
                   <Col sm={2}>Wis: </Col>
                   <Col sm={1}><FormControl name="wis" value={this.props.wis} onChange={(e) => this.props.handleChange(e)} /></Col>
-                </FormGroup>
-                <FormGroup>
+                  <Col sm={1}></Col>
                   <Col sm={2}>Cha: </Col>
                   <Col sm={1}><FormControl name="cha" value={this.props.cha} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
@@ -52,10 +48,16 @@ class NPCDetails extends Component {
                   <Col sm={2}>HP: </Col>
                   <Col sm={1}><FormControl name="currentHP" value={this.props.currentHP} onChange={(e) => this.props.handleChange(e)} /></Col>
                   <Col sm={1}><FormControl name="maxHP" value={this.props.maxHP} onChange={(e) => this.props.handleChange(e)} /></Col>
-                  <Col sm={2}>AC: </Col>
+                  <Col sm={1}>AC: </Col>
                   <Col sm={1}><FormControl name="ac" value={this.props.ac} onChange={(e) => this.props.handleChange(e)} /></Col>
-                  <Col sm={2}>Gold: </Col>
+                  <Col sm={1}>Thac0: </Col>
+                  <Col sm={1}><FormControl name="thac0" value={this.props.thac0} onChange={(e) => this.props.handleChange(e)} /></Col>
+                  <Col sm={1}>Gold: </Col>
                   <Col sm={1}><FormControl name="gold" value={this.props.gold} onChange={(e) => this.props.handleChange(e)} /></Col>
+                </FormGroup>
+                <FormGroup>
+                  <Col sm={2}>Weapon: </Col>
+                  <Col sm={3}><FormControl name="weapon" value={this.props.weapon} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
                 <FormGroup>
                   <Col sm={2}>Items: </Col>

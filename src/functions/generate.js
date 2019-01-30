@@ -1,6 +1,8 @@
 import { generateSpellbook, getMemdSpells } from "./spells";
 import { rollDice } from "./dice";
 import { getTitle } from "./titles";
+import { calcThac0 } from "./thac0";
+import { getWeapon } from "./weapons"
 
 export function generate(level, pcClass) {
   let pc = { level: level, class: pcClass };
@@ -58,6 +60,7 @@ export function generate(level, pcClass) {
   pc.currentHP = hp;
   pc.maxHP = hp;
   pc.ac = 10;
+  pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
 
   //Spell stuff
   if (pcClass === "Magic-User" || pcClass === "Cleric") {
@@ -103,6 +106,7 @@ export function generate(level, pcClass) {
   }
 
   pc.gold = setStartingGold(pcClass);
+  pc.weapon = getWeapon(pcClass);
   pc.items = "";
   pc.notes = "";
   pc.probity = 0;
@@ -160,6 +164,7 @@ function setAttributes(pcClass) {
   }
 
   attributes.str = setAttribute(mins.str);
+  //attributes.str = 18;
   attributes.int = setAttribute(mins.int);
   attributes.dex = setAttribute(mins.dex);
   attributes.con = setAttribute(mins.con);

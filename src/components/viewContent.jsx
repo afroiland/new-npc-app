@@ -21,6 +21,7 @@ class ViewContent extends Component {
     currentHP: 0,
     maxHP: 0,
     ac: 0,
+    thac0: 0,
     str: 0,
     ex_str: 0,
     int: 0,
@@ -35,6 +36,7 @@ class ViewContent extends Component {
     spellbookLvl_5: "",
     memorized: "",
     gold: 0,
+    weapon: "",
     items: "",
     probity: 0,
     affiliation: "",
@@ -72,7 +74,6 @@ class ViewContent extends Component {
               <Button onClick={() => this.handleClear()}>Clear</Button>
 
               <NPCDetails handleChange={this.handleChange}
-                handleGenerate={this.handleGenerate} handleSave={this.handleSave} handleClear={this.handleClear}
                 name={this.state.name}
                 title={this.state.title}
                 level={this.state.level}
@@ -81,6 +82,8 @@ class ViewContent extends Component {
                 currentHP={this.state.currentHP}
                 maxHP={this.state.maxHP}
                 ac={this.state.ac}
+                thac0={this.state.thac0}
+                gold={this.state.gold}
                 str={this.state.str}
                 ex_str={this.state.ex_str}
                 int={this.state.int}
@@ -94,6 +97,7 @@ class ViewContent extends Component {
                 spellbookLvl_4={this.state.spellbookLvl_4}
                 spellbookLvl_5={this.state.spellbookLvl_5}
                 memorized={this.state.memorized}
+                weapon={this.state.weapon}
                 items={this.state.items}
                 probity={this.state.probity}
                 affiliation={this.state.affiliation}
@@ -107,10 +111,16 @@ class ViewContent extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/test').then(res => {
-      //console.log("res.data: ", res.data);
+    this.getNPCs();
+  }
+
+  componentDidUpdate() {
+    this.getNPCs();
+  }
+
+  getNPCs() {
+    axios.get('http://localhost:3001/getNPCs').then(res => {
       this.setState({ NPCList: res.data });
-      //console.log("this.state: ", this.state);
     });
   }
 
@@ -128,6 +138,7 @@ class ViewContent extends Component {
       allWordList += tempNPCList[i].SBLvl_3;
       allWordList += tempNPCList[i].SBLvl_4;
       allWordList += tempNPCList[i].SBLvl_5;
+      allWordList += tempNPCList[i].weapon;
       allWordList += tempNPCList[i].items;
       allWordList += tempNPCList[i].affiliation;
       allWordList += tempNPCList[i].notes;
@@ -153,6 +164,7 @@ class ViewContent extends Component {
       currentHP: selectedNPC[0].currentHP,
       maxHP: selectedNPC[0].maxHP,
       ac: selectedNPC[0].ac,
+      thac0: selectedNPC[0].thac0,
       str: selectedNPC[0].str,
       ex_str: selectedNPC[0].ex_str,
       int: selectedNPC[0].intel,
@@ -167,6 +179,7 @@ class ViewContent extends Component {
       spellbookLvl_5: selectedNPC[0].SBLvl_5,
       memorized: selectedNPC[0].memorized,
       gold: selectedNPC[0].gold,
+      weapon: selectedNPC[0].weapon,
       items: selectedNPC[0].items,
       probity: selectedNPC[0].probity,
       affiliation: selectedNPC[0].affiliation,
@@ -187,6 +200,7 @@ class ViewContent extends Component {
       currentHP: newNPC.currentHP,
       maxHP: newNPC.maxHP,
       ac: newNPC.ac,
+      thac0: newNPC.thac0,
       str: newNPC.str,
       ex_str: newNPC.ex_str,
       int: newNPC.int,
@@ -201,6 +215,7 @@ class ViewContent extends Component {
       spellbookLvl_5: newNPC.spellbookLvl_5,
       memorized: newNPC.memorized,
       gold: newNPC.gold,
+      weapon: newNPC.weapon,
       items: newNPC.items,
       probity: newNPC.probity,
       affiliation: newNPC.affiliation,
@@ -217,7 +232,10 @@ class ViewContent extends Component {
       }
     }
     if (nameExists) {
-      console.log("Here is where an update would happen");
+      axios.put("http://localhost:3001/update", state)
+        .then(res => {
+          console.log("update res: ", res);
+        });
     } else {
       axios.post("http://localhost:3001/add", state)
         .then(res => {
@@ -240,6 +258,7 @@ class ViewContent extends Component {
       currentHP: 0,
       maxHP: 0,
       ac: 0,
+      thac0: 0,
       str: 0,
       ex_str: 0,
       int: 0,
@@ -254,6 +273,7 @@ class ViewContent extends Component {
       spellbookLvl_5: [""],
       memorized: [""],
       gold: 0,
+      weapon: "",
       items: "",
       probity: 0,
       affiliation: "",

@@ -3,20 +3,22 @@ import SearchBar from "./searchbar";
 import NPCList from "./NPCList";
 import { Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
 import axios from "axios";
+import { fight } from "./../functions/combat";
 
 class Combat extends Component {
   state = {
     NPCList: [],
     groupA: [],
     groupB: [],
-    selectedNPC: ""
+    selectedNPC: "",
+    combatLog: []
   }
 
   render() {
     //console.log("this.state.groupA: ", this.state.groupA);
     return (
       <div>
-        <SearchBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} />
+        <SearchBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
         <Grid>
           <Row>
             <Col sm={2}>
@@ -43,7 +45,7 @@ class Combat extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/test').then(res => {
+    axios.get('http://localhost:3001/getNPCs').then(res => {
       //console.log("res.data: ", res.data);
       this.setState({ NPCList: res.data });
     });
@@ -85,6 +87,10 @@ class Combat extends Component {
       return;
     }
 
+    if (!this.state.selectedNPC) {
+      return;
+    }
+
     if (buttonId === "remove") {
       let newGroupA = this.state.groupA.filter(obj => {
         return obj.name !== this.state.selectedNPC
@@ -120,6 +126,10 @@ class Combat extends Component {
       });
     }
     this.setState({ groupA: newGroupA, groupB: newGroupB});
+  }
+
+  doAFight = () => {
+    return fight(this.state.groupA, this.state.groupB);
   }
 }
 
