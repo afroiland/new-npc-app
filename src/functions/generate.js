@@ -2,6 +2,7 @@ import { generateSpellbook, getMemdSpells } from "./spells";
 import { rollDice } from "./dice";
 import { getTitle } from "./titles";
 import { calcThac0 } from "./thac0";
+import { getWeapon } from "./weapons"
 
 export function generate(level, pcClass) {
   let pc = { level: level, class: pcClass };
@@ -105,8 +106,7 @@ export function generate(level, pcClass) {
   }
 
   pc.gold = setStartingGold(pcClass);
-  //TODO: Determine weapon randomly by class
-  pc.weapon = "Staff";
+  pc.weapon = getWeapon(pcClass);
   pc.items = "";
   pc.notes = "";
   pc.probity = 0;
