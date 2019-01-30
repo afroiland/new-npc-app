@@ -33,6 +33,5 @@ export function calcThac0(level, pcClass, str, ex_str) {
     }
   }
 
-  console.log("thac0: ", thac0);
   return thac0;
 }

@@ -47,5 +47,22 @@ function getDamage(weapon) {
 }
 
 function getDmgBonus(str, ex_str) {
-  return 1;
+  let bonus = 0;
+  if (str === 16 || str === 17) {
+    bonus = 1;
+  }
+  if (str === 18) {
+    if (ex_str === 0) {
+      bonus = 2;
+    } else if (1 <= ex_str && ex_str <= 75) {
+      bonus = 3;
+    } else if (76 <= ex_str && ex_str <= 90) {
+      bonus = 4;
+    } else if (91 <= ex_str && ex_str <= 99) {
+      bonus = 5;
+    } else if (ex_str === 100) {
+      bonus = 6;
+    }
+  }
+  return bonus;
 }
