@@ -111,10 +111,16 @@ class ViewContent extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/test').then(res => {
-      //console.log("res.data: ", res.data);
+    this.getNPCs();
+  }
+
+  componentDidUpdate() {
+    this.getNPCs();
+  }
+
+  getNPCs() {
+    axios.get('http://localhost:3001/getNPCs').then(res => {
       this.setState({ NPCList: res.data });
-      //console.log("this.state: ", this.state);
     });
   }
 
@@ -226,7 +232,6 @@ class ViewContent extends Component {
       }
     }
     if (nameExists) {
-      console.log("Here is where an update would happen");
       axios.put("http://localhost:3001/update", state)
         .then(res => {
           console.log("update res: ", res);

@@ -26,7 +26,7 @@ app.use(express.json());
 
 app.set("port", process.env.PORT || 3001);
 
-app.get('/test', (req, res) => {
+app.get('/getNPCs', (req, res) => {
   let sql = 'SELECT * FROM new_schema.npcs';
   db.query(sql, (err, result) => {
     if (err) throw err;

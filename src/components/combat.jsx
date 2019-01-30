@@ -45,7 +45,7 @@ class Combat extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/test').then(res => {
+    axios.get('http://localhost:3001/getNPCs').then(res => {
       //console.log("res.data: ", res.data);
       this.setState({ NPCList: res.data });
     });
