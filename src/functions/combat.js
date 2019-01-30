@@ -1,23 +1,24 @@
 import { rollDice } from "./dice";
 
-export function fight(groupA, groupB) {
-  console.log("groupA: ", groupA);
-  console.log("groupB: ", groupB);
+export function fight(incomingGroupA, incomingGroupB) {
+  console.log("incomingGroupA: ", incomingGroupA);
+  console.log("incomingGroupB: ", incomingGroupB);
 
   let log = [];
 
   // establish vars for each NPC
-  let cgrpA = groupA.map(npc => ({"name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
+  let groupA = incomingGroupA.map(npc => ({"name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
     "damage": getDamage(npc.weapon), "dmgBonus": getDmgBonus(npc.str, npc.ex_str), "spells": npc.memorized, "incap": false}));
-  console.log("cgrpA: ", cgrpA);
+  console.log("groupA: ", groupA);
 
-  let cgrpB = groupB.map(npc => ({"name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
+  let groupB = incomingGroupB.map(npc => ({"name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
     "damage": getDamage(npc.weapon), "dmgBonus": getDmgBonus(npc.str, npc.ex_str), "spells": npc.memorized, "incap": false}));
-  console.log("cgrpB: ", cgrpB);
+  console.log("groupB: ", groupB);
 
   // initiative
-
-
+  let groupAInit = rollDice(1, 6);
+  let groupBInit = rollDice(1, 6);
+  console.log("inits: ", groupAInit, groupBInit);
 
   // side one each NPC does an action
   // check if NPC is incap
@@ -38,7 +39,7 @@ export function fight(groupA, groupB) {
 
 
 
-
+  return log;
 }
 
 function getDamage(weapon) {

@@ -74,7 +74,6 @@ class ViewContent extends Component {
               <Button onClick={() => this.handleClear()}>Clear</Button>
 
               <NPCDetails handleChange={this.handleChange}
-                // handleGenerate={this.handleGenerate} handleSave={this.handleSave} handleClear={this.handleClear}
                 name={this.state.name}
                 title={this.state.title}
                 level={this.state.level}
@@ -84,6 +83,7 @@ class ViewContent extends Component {
                 maxHP={this.state.maxHP}
                 ac={this.state.ac}
                 thac0={this.state.thac0}
+                gold={this.state.gold}
                 str={this.state.str}
                 ex_str={this.state.ex_str}
                 int={this.state.int}

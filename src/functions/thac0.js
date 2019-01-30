@@ -1,7 +1,7 @@
 const fighterThac0s = [20, 19, 18, 17, 16, 15, 14, 13, 12];
 const thiefThac0s = [20, 20, 20, 20, 19, 19, 19, 19, 16];
 const clericThac0s = [20, 20, 20, 18, 18, 18, 16, 16, 16];
-const muThac0s = [20, 20, 20, 20, 20, 19, 19, 19, 19 ];
+const muThac0s = [20, 20, 20, 20, 20, 19, 19, 19, 19];
 
 export function calcThac0(level, pcClass, str, ex_str) {
   let thac0;
