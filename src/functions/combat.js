@@ -45,30 +45,30 @@ export function fight(incomingGroupA, incomingGroupB) {
 function getDamage(weapon) {
   let damage;
   switch (weapon) {
-    case "dart":
+    case "Dart":
       damage = "1-3";
       break;
-    case "dagger":
+    case "Dagger":
       damage = "1-4";
       break;
-    case "hammer":
+    case "Hammer":
       damage = "2-5";
       break;
-    case "club":
-    case "mace":
-    case "shortsword":
-    case "staff":
+    case "Club":
+    case "Mace":
+    case "Shortsword":
+    case "Staff":
       damage = "1-6";
       break;
-    case "flail":
+    case "Flail":
       damage = "2-7";
       break;
-    case "axe":
-    case "longsword":
+    case "Axe":
+    case "Longsword":
       damage = "1-8";
       break;
-    case "halberd":
-    case "2handedsword":
+    case "Halberd":
+    case "Two-Handed Sword":
       damage = "1-10";
       break;
     default:
