@@ -15,7 +15,6 @@ class NPCList extends Component {
     let classes = "";
     classes += npc.name === this.props.selectedNPC ? "selected " : "notSelected ";
     classes += npc.hideInList ? "hidden" : "notHidden";
-    //console.log("classes: ", classes);
     return classes;
   }
 }

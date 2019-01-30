@@ -43,7 +43,37 @@ export function fight(incomingGroupA, incomingGroupB) {
 }
 
 function getDamage(weapon) {
-  return "1-8";
+  let damage;
+  switch (weapon) {
+    case "dart":
+      damage = "1-3";
+      break;
+    case "dagger":
+      damage = "1-4";
+      break;
+    case "hammer":
+      damage = "2-5";
+      break;
+    case "club":
+    case "mace":
+    case "shortsword":
+    case "staff":
+      damage = "1-6";
+      break;
+    case "flail":
+      damage = "2-7";
+      break;
+    case "axe":
+    case "longsword":
+      damage = "1-8";
+      break;
+    case "halberd":
+    case "2handedsword":
+      damage = "1-10";
+      break;
+    default:
+  }
+  return damage;
 }
 
 function getDmgBonus(str, ex_str) {

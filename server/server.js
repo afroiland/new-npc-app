@@ -57,11 +57,3 @@ app.post('/add', (req, res) => {
 app.listen('3001', () => {
   console.log("Listening on port 3001");
 });
-
-// function listify(memorizedArray) {
-//   let list = "";
-//   for (let i = 0; i < memorizedArray.length; i++) {
-//     list += memorizedArray[i] + ", ";
-//   }
-//   return list.slice(0, (list.length - 2));
-// }
