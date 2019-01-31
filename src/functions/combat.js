@@ -45,7 +45,7 @@ export function fight(incomingGroupA, incomingGroupB) {
 function getDamage(weapon) {
   let damage;
   switch (weapon) {
-    case "Dart":
+    case "Darts":
       damage = "1-3";
       break;
     case "Dagger":

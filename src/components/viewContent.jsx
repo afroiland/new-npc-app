@@ -9,6 +9,7 @@ const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
 
 class ViewContent extends Component {
+  _isMounted = false;
   state = {
     levelSelect: 1,
     classSelect: "Fighter",
@@ -111,6 +112,7 @@ class ViewContent extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     this.getNPCs();
   }
 
@@ -118,9 +120,15 @@ class ViewContent extends Component {
     this.getNPCs();
   }
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   getNPCs() {
     axios.get('http://localhost:3001/getNPCs').then(res => {
-      this.setState({ NPCList: res.data });
+      if (this._isMounted) {
+        this.setState({ NPCList: res.data });
+      }
     });
   }
 
