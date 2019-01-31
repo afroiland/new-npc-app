@@ -3,13 +3,17 @@ import { rollDice } from "./dice";
 export function fight(incomingGroupA, incomingGroupB) {
   let log = [];
 
-  let groupA = incomingGroupA.map(npc => ({"name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
-    "damage": getDamage(npc.weapon), "dmgBonus": getDmgBonus(npc.str, npc.ex_str), "spells": npc.memorized, "incap": false}));
-  console.log("groupA: ", groupA);
+  let groupA = incomingGroupA.map(npc => ({
+    "name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
+    "damage": getDamage(npc.weapon), "dmgBonus": getDmgBonus(npc.str, npc.ex_str), "spells": npc.memorized, "incap": false
+  }));
+  //console.log("initial groupA: ", groupA);
 
-  let groupB = incomingGroupB.map(npc => ({"name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
-    "damage": getDamage(npc.weapon), "dmgBonus": getDmgBonus(npc.str, npc.ex_str), "spells": npc.memorized, "incap": false}));
-  console.log("groupB: ", groupB);
+  let groupB = incomingGroupB.map(npc => ({
+    "name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
+    "damage": getDamage(npc.weapon), "dmgBonus": getDmgBonus(npc.str, npc.ex_str), "spells": npc.memorized, "incap": false
+  }));
+  //console.log("initial groupB: ", groupB);
 
   let eachSideHasOnePersonStanding = true;
 
@@ -38,14 +42,14 @@ export function fight(incomingGroupA, incomingGroupB) {
   function doOneRound() {
     let groupAInit = rollDice(1, 6);
     let groupBInit = rollDice(1, 6);
-    console.log("inits: ", groupAInit, groupBInit);
+    //console.log("inits: ", groupAInit, groupBInit);
 
     if (groupAInit > groupBInit) {
       oneSideGoes("A");
     } else if (groupAInit < groupBInit) {
       oneSideGoes("B");
     } else if (groupAInit === groupBInit) {
-      console.log("simultaneous");
+      //console.log("simultaneous");
     }
   }
 
@@ -61,7 +65,7 @@ export function fight(incomingGroupA, incomingGroupB) {
       // select target
       let target = {};
       while (Object.keys(target).length === 0) {
-        let tempTarget = defendingGroup[rollDice(1, defendingGroup.length) -1];
+        let tempTarget = defendingGroup[rollDice(1, defendingGroup.length) - 1];
         //console.log("tempTarget: ", tempTarget);
         if (tempTarget.incap) {
           tempTarget = {};
@@ -81,31 +85,32 @@ export function fight(incomingGroupA, incomingGroupB) {
           damage = rollDice(1, 10);
         }
         damage += attackingGroup[i].dmgBonus;
-        console.log("damage: ", damage);
+        //console.log("damage: ", damage);
 
-        //subtract dmg from hp
-        // let targetedNPC = defendingGroup.filter(obj => {return obj.name === target.name});
-        let targetedNPC = defendingGroup.find(obj => obj.name === target.name);
-        console.log("targetedNPC: ", targetedNPC);
-        console.log("targetedNPC.hp: ", targetedNPC.hp);
-        targetedNPC.hp -= damage;
-        console.log("targetedNPC.hp: ", targetedNPC.hp);
-        log.push(attackingGroup[i].name + " hit " + targetedNPC.name + " for " + damage + ".");
+        log.push(attackingGroup[i].name + " hits " + target.name + " for " + damage + ".");
 
-        // change incap status of target if necessary
-        if (targetedNPC.hp <= 0) {
-          targetedNPC.incap = true;
-          log.push(targetedNPC.name + " has fallen.");
+        //subtract dmg from hp and change incap status of target if necessary
+        let groupAIndex = groupA.findIndex(obj => obj.name === target.name);
+        let groupBIndex = groupB.findIndex(obj => obj.name === target.name);
+        if (groupAIndex !== -1) {
+          groupA[groupAIndex].hp -= damage;
+          if (groupA[groupAIndex].hp <= 0) {
+            groupA[groupAIndex].incap = true;
+            log.push(groupA[groupAIndex].name + " has fallen.");
+          }
         }
-
-        console.log("groupA: ", groupA);
-        console.log("groupB: ", groupB);
+        if (groupBIndex !== -1) {
+          groupB[groupBIndex].hp -= damage;
+          if (groupB[groupBIndex].hp <= 0) {
+            groupB[groupBIndex].incap = true;
+            log.push(groupB[groupBIndex].name + " has fallen.");
+          }
+        }
       }
     }
+    //console.log("groupA: ", groupA);
+    //console.log("groupB: ", groupB);
   }
-
-
-
 
 
 
