@@ -11,7 +11,29 @@ export function fight(incomingGroupA, incomingGroupB) {
     "damage": getDamage(npc.weapon), "dmgBonus": getDmgBonus(npc.str, npc.ex_str), "spells": npc.memorized, "incap": false}));
   console.log("groupB: ", groupB);
 
-  doOneRound();
+  let eachSideHasOnePersonStanding = true;
+
+  while (eachSideHasOnePersonStanding) {
+    doOneRound();
+    let groupAHasOnePersonStanding = false;
+    for (let i = 0; i < groupA.length; i++) {
+      if (groupA[i].incap === false) {
+        groupAHasOnePersonStanding = true;
+        break;
+      }
+    }
+    let groupBHasOnePersonStanding = false;
+    for (let i = 0; i < groupB.length; i++) {
+      if (groupB[i].incap === false) {
+        groupBHasOnePersonStanding = true;
+        break;
+      }
+    }
+    if (!groupAHasOnePersonStanding || !groupBHasOnePersonStanding) {
+      eachSideHasOnePersonStanding = false;
+      console.log("log: ", log);
+    }
+  }
 
   function doOneRound() {
     let groupAInit = rollDice(1, 6);
@@ -19,17 +41,18 @@ export function fight(incomingGroupA, incomingGroupB) {
     console.log("inits: ", groupAInit, groupBInit);
 
     if (groupAInit > groupBInit) {
-      oneSideGoes(groupA, groupB);
-      oneSideGoes(groupB, groupA);
+      oneSideGoes("A");
     } else if (groupAInit < groupBInit) {
-      oneSideGoes(groupB, groupA);
-      oneSideGoes(groupA, groupB);
+      oneSideGoes("B");
     } else if (groupAInit === groupBInit) {
       console.log("simultaneous");
     }
   }
 
-  function oneSideGoes(attackingGroup, defendingGroup) {
+  function oneSideGoes(attackingGroupId) {
+    let attackingGroup = attackingGroupId === "A" ? groupA : groupB;
+    let defendingGroup = attackingGroupId === "A" ? groupB : groupA;
+
     // loop through each npc
     for (let i = 0; i < attackingGroup.length; i++) {
       if (attackingGroup[i].incap) {
@@ -39,38 +62,57 @@ export function fight(incomingGroupA, incomingGroupB) {
       let target = {};
       while (Object.keys(target).length === 0) {
         let tempTarget = defendingGroup[rollDice(1, defendingGroup.length) -1];
-        console.log("tempTarget: ", tempTarget);
+        //console.log("tempTarget: ", tempTarget);
         if (tempTarget.incap) {
           tempTarget = {};
         } else {
           target = tempTarget;
         }
       }
-      console.log("target: ", target);
+      //console.log("target: ", target);
+
       // attack
+      if (attackingGroup[i].thac0 <= rollDice(1, 20) - target.ac) {
+        //attack succeeds
+        let minDamage = attackingGroup[i].damage[0];
+        let maxDamage = attackingGroup[i].damage[2];
+        let damage = 0;
+        while (minDamage > damage || damage > maxDamage) {
+          damage = rollDice(1, 10);
+        }
+        damage += attackingGroup[i].dmgBonus;
+        console.log("damage: ", damage);
 
-      // dmg
+        //subtract dmg from hp
+        // let targetedNPC = defendingGroup.filter(obj => {return obj.name === target.name});
+        let targetedNPC = defendingGroup.find(obj => obj.name === target.name);
+        console.log("targetedNPC: ", targetedNPC);
+        console.log("targetedNPC.hp: ", targetedNPC.hp);
+        targetedNPC.hp -= damage;
+        console.log("targetedNPC.hp: ", targetedNPC.hp);
+        log.push(attackingGroup[i].name + " hit " + targetedNPC.name + " for " + damage + ".");
 
-      // change incap status of target if necessary
+        // change incap status of target if necessary
+        if (targetedNPC.hp <= 0) {
+          targetedNPC.incap = true;
+          log.push(targetedNPC.name + " has fallen.");
+        }
+
+        console.log("groupA: ", groupA);
+        console.log("groupB: ", groupB);
+      }
     }
   }
 
 
-  // side two each NPC does an action
 
 
 
 
+  //list survivors and their current HP
 
 
-
-
-
-
-
-
-
-
+  //console.log("log: ", log);
   return log;
 }
 
