@@ -37,6 +37,7 @@ class Combat extends Component {
             </Col>
             <Col sm={3}>
               <p>Log / Results</p>
+              <ul>{this.state.combatLog.map(t => <li key={t} className="notHidden">{t}</li>)}</ul>
             </Col>
           </Row>
         </Grid>
@@ -83,7 +84,7 @@ class Combat extends Component {
 
   handleButtonClick = (buttonId) => {
     if (buttonId === "clear") {
-      this.setState({ groupA: [], groupB: [] });
+      this.setState({ groupA: [], groupB: [], combatLog: [] });
       return;
     }
 
@@ -129,7 +130,8 @@ class Combat extends Component {
   }
 
   doAFight = () => {
-    return fight(this.state.groupA, this.state.groupB);
+    let log = fight(this.state.groupA, this.state.groupB);
+    this.setState({ combatLog: log });
   }
 }
 

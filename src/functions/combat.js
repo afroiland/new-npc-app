@@ -25,6 +25,7 @@ export function fight(incomingGroupA, incomingGroupB) {
         groupAHasOnePersonStanding = true;
         break;
       }
+      log.push("Group B is victorious.");
     }
     let groupBHasOnePersonStanding = false;
     for (let i = 0; i < groupB.length; i++) {
@@ -32,6 +33,7 @@ export function fight(incomingGroupA, incomingGroupB) {
         groupBHasOnePersonStanding = true;
         break;
       }
+      log.push("Group A is victorious.");
     }
     if (!groupAHasOnePersonStanding || !groupBHasOnePersonStanding) {
       eachSideHasOnePersonStanding = false;
