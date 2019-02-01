@@ -48,7 +48,7 @@ class ViewContent extends Component {
   render() {
     //console.log("this.state: ", this.state);
     return (
-      <div className="mainDiv">
+      <div>
         <Grid>
           <Row>
             <Col sm={2}>
@@ -117,7 +117,7 @@ class ViewContent extends Component {
   }
 
   componentDidUpdate() {
-    this.getNPCs();
+    //this.getNPCs();
   }
 
   componentWillUnmount() {
@@ -133,6 +133,8 @@ class ViewContent extends Component {
   }
 
   handleSearchChange = (searchString) => {
+    console.log("searchString: ", searchString);
+    //debugger;
     let tempNPCList = this.state.NPCList;
     for (let i = 0; i < tempNPCList.length; i++) {
       let allWordList = "";

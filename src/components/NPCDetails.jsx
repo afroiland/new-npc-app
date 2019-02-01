@@ -11,14 +11,14 @@ class NPCDetails extends Component {
             <Col md={12}>
               <Form horizontal>
                 <FormGroup>
-                  <Col sm={1} style={{ marginTop: 7 }}>Name: </Col>
-                  <Col sm={5}><FormControl name="name" value={this.props.name} onChange={(e) => this.props.handleChange(e)} /></Col>
+                  <Col sm={2} style={{ marginTop: 7 }}>Name: </Col>
+                  <Col sm={4}><FormControl name="name" value={this.props.name} onChange={(e) => this.props.handleChange(e)} /></Col>
                   <Col sm={1}>Level: </Col>
                   <Col sm={3}><FormControl name="level" value={this.props.level} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm={1}>Class: </Col>
-                  <Col sm={5}><FormControl name="class" value={this.props.class} onChange={(e) => this.props.handleChange(e)} /></Col>
+                  <Col sm={2}>Class: </Col>
+                  <Col sm={4}><FormControl name="class" value={this.props.class} onChange={(e) => this.props.handleChange(e)} /></Col>
                   <Col sm={1}>Title: </Col>
                   <Col sm={3}><FormControl name="title" value={this.props.title} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
@@ -70,15 +70,15 @@ class NPCDetails extends Component {
                 <FormGroup>
                   <Col sm={2}>Probity Score: </Col>
                   <Col sm={1}><FormControl name="probity" value={this.props.probity} onChange={(e) => this.props.handleChange(e)} /></Col>
-                </FormGroup>
-                <FormGroup>
+                {/* </FormGroup>
+                <FormGroup> */}
                   <Col sm={2}>Affiliation: </Col>
-                  <Col sm={4}><FormControl name="affiliation" value={this.props.affiliation} onChange={(e) => this.props.handleChange(e)} /></Col>
+                  <Col sm={5}><FormControl name="affiliation" value={this.props.affiliation} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
                 <div style={{ display: this.props.memorized ? 'block' : 'none' }}>
                   <p>Memorized Spells</p>
                   <FormGroup>
-                    <Col sm={12}><FormControl style={{ marginBottom: 20 }} name="memorized"
+                    <Col sm={10}><FormControl style={{ marginBottom: 20 }} name="memorized"
                       value={this.props.memorized ? this.props.memorized : ""} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                 </div>
@@ -86,23 +86,23 @@ class NPCDetails extends Component {
                   <p>Spellbook</p>
                   <FormGroup style={{ display: this.props.spellbookLvl_1 ? 'block' : 'none' }}>
                     <Col sm={2}>Lv 1: </Col>
-                    <Col sm={10}><FormControl value={this.props.spellbookLvl_1} onChange={(e) => this.props.handleChange(e)} /></Col>
+                    <Col sm={8}><FormControl value={this.props.spellbookLvl_1} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_2 ? 'block' : 'none' }}>
                     <Col sm={2}>Lv 2: </Col>
-                    <Col sm={10}><FormControl value={this.props.spellbookLvl_2} onChange={(e) => this.props.handleChange(e)} /></Col>
+                    <Col sm={8}><FormControl value={this.props.spellbookLvl_2} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_3 ? 'block' : 'none' }}>
                     <Col sm={2}>Lv 3: </Col>
-                    <Col sm={10}><FormControl value={this.props.spellbookLvl_3} onChange={(e) => this.props.handleChange(e)} /></Col>
+                    <Col sm={8}><FormControl value={this.props.spellbookLvl_3} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_4 ? 'block' : 'none' }}>
                     <Col sm={2}>Lv 4: </Col>
-                    <Col sm={10}><FormControl value={this.props.spellbookLvl_4} onChange={(e) => this.props.handleChange(e)} /></Col>
+                    <Col sm={8}><FormControl value={this.props.spellbookLvl_4} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_5 ? 'block' : 'none' }}>
                     <Col sm={2}>Lv 5: </Col>
-                    <Col sm={10}><FormControl value={this.props.spellbookLvl_5} onChange={(e) => this.props.handleChange(e)} /></Col>
+                    <Col sm={8}><FormControl value={this.props.spellbookLvl_5} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                 </div>
               </Form>
