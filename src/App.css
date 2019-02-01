@@ -5,6 +5,10 @@
   height: 100vh;
 }
 
+.fieldTitle {
+  margin-top: 7px;
+}
+
 .selected {
   color: PowderBlue;
   text-shadow:
