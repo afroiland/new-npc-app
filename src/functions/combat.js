@@ -19,6 +19,7 @@ export function fight(incomingGroupA, incomingGroupB) {
 
   while (eachSideHasOnePersonStanding) {
     doOneRound();
+    //debugger;
     let groupAHasOnePersonStanding = false;
     for (let i = 0; i < groupA.length; i++) {
       if (groupA[i].incap === false) {
@@ -59,7 +60,7 @@ export function fight(incomingGroupA, incomingGroupB) {
     let attackingGroup = attackingGroupId === "A" ? groupA : groupB;
     let defendingGroup = attackingGroupId === "A" ? groupB : groupA;
 
-    // loop through each npc
+    // loop through each npc in attacking group
     for (let i = 0; i < attackingGroup.length; i++) {
       if (attackingGroup[i].incap) {
         break;
