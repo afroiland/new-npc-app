@@ -48,7 +48,7 @@ class ViewContent extends Component {
   render() {
     //console.log("this.state: ", this.state);
     return (
-      <div>
+      <div className="mainDiv">
         <Grid>
           <Row>
             <Col sm={2}>

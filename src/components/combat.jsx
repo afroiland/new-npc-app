@@ -17,7 +17,7 @@ class Combat extends Component {
   render() {
     //console.log("this.state.groupA: ", this.state.groupA);
     return (
-      <div>
+      <div className="mainDiv">
         <SearchBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
         <Grid>
           <Row>

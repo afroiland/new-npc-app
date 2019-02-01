@@ -14,13 +14,13 @@ class NPCDetails extends Component {
                   <Col sm={1} style={{ marginTop: 7 }}>Name: </Col>
                   <Col sm={5}><FormControl name="name" value={this.props.name} onChange={(e) => this.props.handleChange(e)} /></Col>
                   <Col sm={1}>Level: </Col>
-                  <Col sm={5}><FormControl name="level" value={this.props.level} onChange={(e) => this.props.handleChange(e)} /></Col>
+                  <Col sm={3}><FormControl name="level" value={this.props.level} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
                 <FormGroup>
                   <Col sm={1}>Class: </Col>
                   <Col sm={5}><FormControl name="class" value={this.props.class} onChange={(e) => this.props.handleChange(e)} /></Col>
                   <Col sm={1}>Title: </Col>
-                  <Col sm={5}><FormControl name="title" value={this.props.title} onChange={(e) => this.props.handleChange(e)} /></Col>
+                  <Col sm={3}><FormControl name="title" value={this.props.title} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
                 <FormGroup>
                   <Col sm={2}>Str: </Col>
@@ -61,11 +61,11 @@ class NPCDetails extends Component {
                 </FormGroup>
                 <FormGroup>
                   <Col sm={2}>Items: </Col>
-                  <Col sm={10}><FormControl name="items" value={this.props.items} onChange={(e) => this.props.handleChange(e)} /></Col>
+                  <Col sm={8}><FormControl name="items" value={this.props.items} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
                 <FormGroup>
                   <Col sm={2}>Notes: </Col>
-                  <Col sm={10}><FormControl name="notes" value={this.props.notes} onChange={(e) => this.props.handleChange(e)} /></Col>
+                  <Col sm={8}><FormControl name="notes" value={this.props.notes} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
                 <FormGroup>
                   <Col sm={2}>Probity Score: </Col>
