@@ -71,8 +71,6 @@ class NPCDetails extends Component {
                 <FormGroup>
                   <Col sm={2} className="fieldTitle">Probity Score: </Col>
                   <Col sm={1}><FormControl name="probity" value={this.props.probity} onChange={(e) => this.props.handleChange(e)} /></Col>
-                {/* </FormGroup>
-                <FormGroup> */}
                   <Col sm={2} className="fieldTitle">Affiliation: </Col>
                   <Col sm={5}><FormControl name="affiliation" value={this.props.affiliation} onChange={(e) => this.props.handleChange(e)} /></Col>
                 </FormGroup>
