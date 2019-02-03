@@ -113,18 +113,19 @@ class ViewContent extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    this.getNPCs();
+    axios.get('http://localhost:3001/getNPCs').then(res => {
+      if (this._isMounted) {
+        this.setState({ NPCList: res.data });
+      }
+    });
   }
 
   componentDidUpdate() {
-    // this.getNPCs();
     axios.get('http://localhost:3001/getNPCs').then(res => {
       let resDatastring = JSON.stringify(res.data);
       let NPCListString = JSON.stringify(this.state.NPCList);
       let NPCListHasChanged = resDatastring !== NPCListString;
-      // console.log("resDatastring: ", resDatastring);
-      // console.log("NPCListString: ", NPCListString);
-      console.log("NPCListHasChanged: ", NPCListHasChanged);
+      //console.log("NPCListHasChanged: ", NPCListHasChanged);
       if (this._isMounted && NPCListHasChanged) {
         this.setState({ NPCList: res.data });
       }
@@ -133,18 +134,6 @@ class ViewContent extends Component {
 
   componentWillUnmount() {
     this._isMounted = false;
-  }
-
-  getNPCs() {
-    axios.get('http://localhost:3001/getNPCs').then(res => {
-      // let NPCListHasChanged = res.data !== this.state.NPCList;
-      // console.log("res.data: ", res.data);
-      // console.log("this.state.NPCList: ", this.state.NPCList);
-      // console.log("NPCListHasChanged: ", NPCListHasChanged);
-      if (this._isMounted) {
-        this.setState({ NPCList: res.data });
-      }
-    });
   }
 
   handleSearchChange = (searchString) => {
