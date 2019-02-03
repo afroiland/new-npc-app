@@ -2,8 +2,8 @@ import { rollDice } from "./dice";
 
 const fighterWeapons = ["Axe", "Club", "Halberd", "Shortsword", "Longsword", "Two-Handed Sword"];
 const clericWeapons = ["Club", "Flail", "Hammer", "Mace", "Staff"];
-const thiefWeapons = ["Club", "Dagger", "Dart", "Shortsword", "Longsword"];
-const muWeapons = ["Dagger", "Dart", "Staff"];
+const thiefWeapons = ["Club", "Dagger", "Darts", "Shortsword", "Longsword"];
+const muWeapons = ["Dagger", "Darts", "Staff"];
 
 export function getWeapon(pcClass) {
   let weapon;

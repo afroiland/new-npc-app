@@ -9,6 +9,7 @@ const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
 
 class ViewContent extends Component {
+  _isMounted = false;
   state = {
     levelSelect: 1,
     classSelect: "Fighter",
@@ -111,20 +112,33 @@ class ViewContent extends Component {
   }
 
   componentDidMount() {
-    this.getNPCs();
-  }
-
-  componentDidUpdate() {
-    this.getNPCs();
-  }
-
-  getNPCs() {
+    this._isMounted = true;
     axios.get('http://localhost:3001/getNPCs').then(res => {
-      this.setState({ NPCList: res.data });
+      if (this._isMounted) {
+        this.setState({ NPCList: res.data });
+      }
     });
   }
 
+  componentDidUpdate() {
+    axios.get('http://localhost:3001/getNPCs').then(res => {
+      let resDatastring = JSON.stringify(res.data);
+      let NPCListString = JSON.stringify(this.state.NPCList);
+      let NPCListHasChanged = resDatastring !== NPCListString;
+      //console.log("NPCListHasChanged: ", NPCListHasChanged);
+      if (this._isMounted && NPCListHasChanged) {
+        this.setState({ NPCList: res.data });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   handleSearchChange = (searchString) => {
+    console.log("searchString: ", searchString);
+    //debugger;
     let tempNPCList = this.state.NPCList;
     for (let i = 0; i < tempNPCList.length; i++) {
       let allWordList = "";

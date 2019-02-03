@@ -7,7 +7,7 @@ class NavTabs extends Component {
   render() {
     return (
       <div>
-        <Tabs defaultIndex={1}>
+        <Tabs defaultIndex={0}>
           <TabList>
             <Tab>NPCs</Tab>
             <Tab>Combat</Tab>

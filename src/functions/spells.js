@@ -37,102 +37,73 @@ export function generateSpellbook(pcLevel) {
   let thirdLvlSpells = [];
   let fourthLvlSpells = [];
   let fifthLvlSpells = [];
+  let numberOfLevel1Spells = 0;
+  let numberOfLevel2Spells = 0;
+  let numberOfLevel3Spells = 0;
+  let numberOfLevel4Spells = 0;
+  let numberOfLevel5Spells = 0;
 
   switch (pcLevel) {
     case 1:
-      while (firstLvlSpells.length < 4) {
-        addSpell(firstLvlSpells, level_1_spellsMU);
-      }
+      numberOfLevel1Spells = 4;
       break;
     case 2:
-      while (firstLvlSpells.length < 5) {
-        addSpell(firstLvlSpells, level_1_spellsMU);
-      }
+      numberOfLevel1Spells = 5;
       break;
     case 3:
-      while (firstLvlSpells.length < 5) {
-        addSpell(firstLvlSpells, level_1_spellsMU);
-      }
-      while (secondLvlSpells.length < 1) {
-        addSpell(secondLvlSpells, level_2_spellsMU);
-      }
+      numberOfLevel1Spells = 5;
+      numberOfLevel2Spells = 1;
       break;
     case 4:
-      while (firstLvlSpells.length < 6) {
-        addSpell(firstLvlSpells, level_1_spellsMU);
-      }
-      while (secondLvlSpells.length < 2) {
-        addSpell(secondLvlSpells, level_2_spellsMU);
-      }
+      numberOfLevel1Spells = 6;
+      numberOfLevel2Spells = 2;
       break;
     case 5:
-      while (firstLvlSpells.length < 6) {
-        addSpell(firstLvlSpells, level_1_spellsMU);
-      }
-      while (secondLvlSpells.length < 2) {
-        addSpell(secondLvlSpells, level_2_spellsMU);
-      }
-      while (thirdLvlSpells.length < 1) {
-        addSpell(thirdLvlSpells, level_3_spellsMU);
-      }
+      numberOfLevel1Spells = 6;
+      numberOfLevel2Spells = 2;
+      numberOfLevel3Spells = 1;
       break;
     case 6:
-      while (firstLvlSpells.length < 7) {
-        addSpell(firstLvlSpells, level_1_spellsMU);
-      }
-      while (secondLvlSpells.length < 3) {
-        addSpell(secondLvlSpells, level_2_spellsMU);
-      }
-      while (thirdLvlSpells.length < 2) {
-        addSpell(thirdLvlSpells, level_3_spellsMU);
-      }
+      numberOfLevel1Spells = 7;
+      numberOfLevel2Spells = 3;
+      numberOfLevel3Spells = 2;
       break;
     case 7:
-      while (firstLvlSpells.length < 7) {
-        addSpell(firstLvlSpells, level_1_spellsMU);
-      }
-      while (secondLvlSpells.length < 3) {
-        addSpell(secondLvlSpells, level_2_spellsMU);
-      }
-      while (thirdLvlSpells.length < 2) {
-        addSpell(thirdLvlSpells, level_3_spellsMU);
-      }
-      while (fourthLvlSpells.length < 1) {
-        addSpell(fourthLvlSpells, level_4_spellsMU);
-      }
+      numberOfLevel1Spells = 7;
+      numberOfLevel2Spells = 3;
+      numberOfLevel3Spells = 2;
+      numberOfLevel4Spells = 1;
       break;
     case 8:
-      while (firstLvlSpells.length < 8) {
-        addSpell(firstLvlSpells, level_1_spellsMU);
-      }
-      while (secondLvlSpells.length < 4) {
-        addSpell(secondLvlSpells, level_2_spellsMU);
-      }
-      while (thirdLvlSpells.length < 3) {
-        addSpell(thirdLvlSpells, level_3_spellsMU);
-      }
-      while (fourthLvlSpells.length < 2) {
-        addSpell(fourthLvlSpells, level_4_spellsMU);
-      }
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
       break;
     case 9:
-      while (firstLvlSpells.length < 8) {
-        addSpell(firstLvlSpells, level_1_spellsMU);
-      }
-      while (secondLvlSpells.length < 4) {
-        addSpell(secondLvlSpells, level_2_spellsMU);
-      }
-      while (thirdLvlSpells.length < 3) {
-        addSpell(thirdLvlSpells, level_3_spellsMU);
-      }
-      while (fourthLvlSpells.length < 2) {
-        addSpell(fourthLvlSpells, level_4_spellsMU);
-      }
-      while (fifthLvlSpells.length < 1) {
-        addSpell(fifthLvlSpells, level_5_spellsMU);
-      }
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
       break;
     default:
+  }
+
+  while (firstLvlSpells.length < numberOfLevel1Spells) {
+    addSpell(firstLvlSpells, level_1_spellsMU);
+  }
+  while (secondLvlSpells.length < numberOfLevel2Spells) {
+    addSpell(secondLvlSpells, level_2_spellsMU);
+  }
+  while (thirdLvlSpells.length < numberOfLevel3Spells) {
+    addSpell(thirdLvlSpells, level_3_spellsMU);
+  }
+  while (fourthLvlSpells.length < numberOfLevel4Spells) {
+    addSpell(fourthLvlSpells, level_4_spellsMU);
+  }
+  while (fifthLvlSpells.length < numberOfLevel5Spells) {
+    addSpell(fifthLvlSpells, level_5_spellsMU);
   }
 
   spellbook.firstLvlSpells = firstLvlSpells;
