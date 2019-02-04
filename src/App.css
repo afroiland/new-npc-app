@@ -9,6 +9,10 @@
   margin-top: 7px;
 }
 
+.textList {
+  text-align: left;
+}
+
 .selected {
   color: PowderBlue;
   text-shadow:
