@@ -125,7 +125,6 @@ class ViewContent extends Component {
       let resDatastring = JSON.stringify(res.data);
       let NPCListString = JSON.stringify(this.state.NPCList);
       let NPCListHasChanged = resDatastring !== NPCListString;
-      //console.log("NPCListHasChanged: ", NPCListHasChanged);
       if (this._isMounted && NPCListHasChanged) {
         this.setState({ NPCList: res.data });
       }
@@ -137,8 +136,6 @@ class ViewContent extends Component {
   }
 
   handleSearchChange = (searchString) => {
-    console.log("searchString: ", searchString);
-    //debugger;
     let tempNPCList = this.state.NPCList;
     for (let i = 0; i < tempNPCList.length; i++) {
       let allWordList = "";
@@ -204,7 +201,6 @@ class ViewContent extends Component {
 
   handleGenerate = (level, pcClass) => {
     let newNPC = generate(level, pcClass);
-    console.log("newNPC: ", newNPC);
     this.setState({
       name: newNPC.name,
       level: newNPC.level,
@@ -238,7 +234,6 @@ class ViewContent extends Component {
   }
 
   handleSave = (state) => {
-    console.log("handleSave state: ", state);
     let nameExists = false;
     for (let i = 0; i < state.NPCList.length; i++) {
       if (state.NPCList[i].name === state.name) {
@@ -259,7 +254,6 @@ class ViewContent extends Component {
   }
 
   handleChange = (e) => {
-    console.log("e.target: ", e.target);
     this.setState({ [e.target.name]: e.target.value });
   }
 

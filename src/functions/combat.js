@@ -7,13 +7,11 @@ export function fight(incomingGroupA, incomingGroupB) {
     "name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
     "damage": getDamage(npc.weapon), "dmgBonus": getDmgBonus(npc.str, npc.ex_str), "spells": npc.memorized, "incap": false
   }));
-  //console.log("initial groupA: ", groupA);
 
   let groupB = incomingGroupB.map(npc => ({
     "name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
     "damage": getDamage(npc.weapon), "dmgBonus": getDmgBonus(npc.str, npc.ex_str), "spells": npc.memorized, "incap": false
   }));
-  //console.log("initial groupB: ", groupB);
 
   let eachSideHasOnePersonStanding = true;
   let groupAHasOnePersonStanding = true;
@@ -38,7 +36,6 @@ export function fight(incomingGroupA, incomingGroupB) {
   function doOneRound() {
     let groupAInit = rollDice(1, 6);
     let groupBInit = rollDice(1, 6);
-    //console.log("inits: ", groupAInit, groupBInit);
 
     if (groupAInit > groupBInit) {
       oneSideGoes("A");
@@ -47,7 +44,7 @@ export function fight(incomingGroupA, incomingGroupB) {
       oneSideGoes("B");
       oneSideGoes("A");
     } else if (groupAInit === groupBInit) {
-      //console.log("simultaneous");
+      // simultaneous combat
     }
   }
 
@@ -74,16 +71,13 @@ export function fight(incomingGroupA, incomingGroupB) {
       }
       if (groupAHasOnePersonStanding && groupBHasOnePersonStanding) {
         if (attackingGroup[i].incap) {
-          console.log("No action for fallen NPC");
+          //console.log("No action for fallen NPC");
         } else {
           // select target
           let target = {};
           while (Object.keys(target).length === 0) {
-            console.log("While object.keys");
             let tempTarget = defendingGroup[rollDice(1, defendingGroup.length) - 1];
-            //console.log("tempTarget: ", tempTarget);
             if (tempTarget.incap) {
-              console.log("if temp target incap");
               target = {};
             } else {
               target = tempTarget;
@@ -92,7 +86,7 @@ export function fight(incomingGroupA, incomingGroupB) {
 
           // attack
           if (attackingGroup[i].thac0 <= rollDice(1, 20) - target.ac) {
-            //attack succeeds
+            // attack succeeds
             let minDamage = attackingGroup[i].damage[0];
             let maxDamage = attackingGroup[i].damage[2];
             let damage = 0;
@@ -103,7 +97,7 @@ export function fight(incomingGroupA, incomingGroupB) {
 
             log.push(attackingGroup[i].name + " hits " + target.name + " for " + damage + ".");
 
-            //subtract dmg from hp and change incap status of target if necessary
+            // subtract dmg from hp and change incap status of target if necessary
             let groupAIndex = groupA.findIndex(obj => obj.name === target.name);
             let groupBIndex = groupB.findIndex(obj => obj.name === target.name);
             if (groupAIndex !== -1) {
@@ -164,17 +158,17 @@ function getDamage(weapon) {
 
 function getDmgBonus(str, ex_str) {
   let bonus = 0;
-  if (str === 16 || str === 17) {
+  if (15 < str < 18) {
     bonus = 1;
   }
   if (str === 18) {
     if (ex_str === 0) {
       bonus = 2;
-    } else if (1 <= ex_str && ex_str <= 75) {
+    } else if (1 <= ex_str <= 75) {
       bonus = 3;
-    } else if (76 <= ex_str && ex_str <= 90) {
+    } else if (76 <= ex_str <= 90) {
       bonus = 4;
-    } else if (91 <= ex_str && ex_str <= 99) {
+    } else if (91 <= ex_str <= 99) {
       bonus = 5;
     } else if (ex_str === 100) {
       bonus = 6;
