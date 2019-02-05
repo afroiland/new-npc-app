@@ -26,7 +26,7 @@ class NPCDetails extends Component {
                 <FormGroup>
                   <Col sm={2} className="fieldTitle">Str: </Col>
                   <Col sm={1}><FormControl name="str" value={this.props.str} onChange={(e) => this.props.handleChange(e)} /></Col>
-                  <Col sm={1}><FormControl style={{ display: this.props.str > 17 ? 'block' : 'none' }}
+                  <Col sm={1}><FormControl style={{ display: this.showEx_str() ? 'block' : 'none' }}
                     name="ex_str" value={this.props.ex_str} onChange={(e) => this.props.handleChange(e)} /></Col>
                   <Col sm={2} className="fieldTitle">Int: </Col>
                   <Col sm={1}><FormControl name="int" value={this.props.int} onChange={(e) => this.props.handleChange(e)} /></Col>
@@ -112,12 +112,16 @@ class NPCDetails extends Component {
     );
   }
 
-  spellbookExists() {
-    let temp = this.props
-    if (!temp.spellbookLvl_1 && !temp.spellbookLvl_2 && !temp.spellbookLvl_3 && !temp.spellbookLvl_4 && !temp.spellbookLvl_5) {
-      return false;
+  showEx_str() {
+    if (this.props.class === "Fighter" && this.props.str === "18") {
+      return true;
     }
-    return true;
+  }
+
+  spellbookExists() {
+    if (this.props.spellbookLvl_1) {
+      return true;
+    }
   }
 }
 
