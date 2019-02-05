@@ -37,16 +37,13 @@ export function generateSpellbook(pcLevel) {
   let thirdLvlSpells = [];
   let fourthLvlSpells = [];
   let fifthLvlSpells = [];
-  let numberOfLevel1Spells = 0;
+  let numberOfLevel1Spells = 4;
   let numberOfLevel2Spells = 0;
   let numberOfLevel3Spells = 0;
   let numberOfLevel4Spells = 0;
   let numberOfLevel5Spells = 0;
 
   switch (pcLevel) {
-    case 1:
-      numberOfLevel1Spells = 4;
-      break;
     case 2:
       numberOfLevel1Spells = 5;
       break;

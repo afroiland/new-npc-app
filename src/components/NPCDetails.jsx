@@ -11,7 +11,6 @@ class NPCDetails extends Component {
             <Col md={12}>
               <Form horizontal>
                 <FormGroup>
-                  {/* <Col sm={2} style={{ marginTop: 7 }}>Name: </Col> */}
                   <Col sm={2} className="fieldTitle">Name: </Col>
                   <Col sm={4}><FormControl name="name" value={this.props.name} onChange={(e) => this.props.handleChange(e)} /></Col>
                   <Col sm={1} className="fieldTitle">Level: </Col>
@@ -113,7 +112,7 @@ class NPCDetails extends Component {
   }
 
   showEx_str() {
-    if (this.props.class === "Fighter" && this.props.str === "18") {
+    if (this.props.class === "Fighter" && this.props.str > 17) {
       return true;
     }
   }
