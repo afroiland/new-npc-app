@@ -78,7 +78,7 @@ class ViewContent extends Component {
                 name={this.state.name}
                 title={this.state.title}
                 level={this.state.level}
-                class={this.state.class}
+                npcClass={this.state.class}
                 race={this.state.race}
                 currentHP={this.state.currentHP}
                 maxHP={this.state.maxHP}

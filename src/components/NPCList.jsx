@@ -2,10 +2,11 @@ import React, { Component } from "react";
 
 class NPCList extends Component {
   render() {
+    const { list, handleNameClick, } = this.props;
     return (
       <div className="textList">
-        <ul>{this.props.list.map(npc => <li key={npc.name} className={this.determineDisplay(npc)}
-          onClick={() => this.props.handleNameClick(npc.name)}>{npc.name}</li>)}</ul>
+        <ul>{list.map(npc => <li key={npc.name} className={this.determineDisplay(npc)}
+          onClick={() => handleNameClick(npc.name)}>{npc.name}</li>)}</ul>
       </div>
     );
   }
