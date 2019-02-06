@@ -82,23 +82,23 @@ class NPCDetails extends Component {
                 <div style={{ display: this.spellbookExists() ? 'block' : 'none' }}>
                   <p>Spellbook</p>
                   <FormGroup style={{ display: this.props.spellbookLvl_1 ? 'block' : 'none' }}>
-                    <Col sm={2}>Lv 1: </Col>
+                    <Col sm={2} className="fieldTitle">Lv 1: </Col>
                     <Col sm={8}><FormControl value={this.props.spellbookLvl_1} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_2 ? 'block' : 'none' }}>
-                    <Col sm={2}>Lv 2: </Col>
+                    <Col sm={2} className="fieldTitle">Lv 2: </Col>
                     <Col sm={8}><FormControl value={this.props.spellbookLvl_2} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_3 ? 'block' : 'none' }}>
-                    <Col sm={2}>Lv 3: </Col>
+                    <Col sm={2} className="fieldTitle">Lv 3: </Col>
                     <Col sm={8}><FormControl value={this.props.spellbookLvl_3} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_4 ? 'block' : 'none' }}>
-                    <Col sm={2}>Lv 4: </Col>
+                    <Col sm={2} className="fieldTitle">Lv 4: </Col>
                     <Col sm={8}><FormControl value={this.props.spellbookLvl_4} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                   <FormGroup style={{ display: this.props.spellbookLvl_5 ? 'block' : 'none' }}>
-                    <Col sm={2}>Lv 5: </Col>
+                    <Col sm={2} className="fieldTitle">Lv 5: </Col>
                     <Col sm={8}><FormControl value={this.props.spellbookLvl_5} onChange={(e) => this.props.handleChange(e)} /></Col>
                   </FormGroup>
                 </div>
