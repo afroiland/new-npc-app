@@ -16,9 +16,7 @@ class NavTabs extends Component {
             <ViewContent />
           </TabPanel>
           <TabPanel>
-            <div>
               <Combat />
-            </div>
           </TabPanel>
         </Tabs>
       </div>

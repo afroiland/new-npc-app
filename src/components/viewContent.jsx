@@ -46,7 +46,6 @@ class ViewContent extends Component {
   };
 
   render() {
-    //console.log("this.state: ", this.state);
     return (
       <div>
         <Grid>
@@ -57,22 +56,25 @@ class ViewContent extends Component {
               </FormGroup>
               <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC} />
             </Col>
-            <Col sm={10}>
-              <Row>
-                <Col md={6}>
+            <Col sm={8}>
+              <Row style={{marginLeft: 5}}>
+              <Col md={3}></Col>
+                <Col md={3}>
                   <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ classSelect: e.target.value })}>
                     {classes.map(pcClass => <option key={pcClass} value={pcClass}>{pcClass}</option>)}
                   </FormControl>
                 </Col>
-                <Col md={6}>
+                <Col md={2}>
                   <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ levelSelect: parseInt(e.target.value) })}>
                     {levelRange.map(level => <option key={level} value={level}>{level}</option>)}
                   </FormControl>
                 </Col>
-              </Row>
+              {/* </Row> */}
               <Button onClick={() => this.handleGenerate(this.state.levelSelect, this.state.classSelect)}>Generate</Button>
               <Button onClick={() => this.handleSave(this.state)}>Save</Button>
               <Button onClick={() => this.handleClear()}>Clear</Button>
+              </Row>
+              <br />
 
               <NPCDetails handleChange={this.handleChange}
                 name={this.state.name}
