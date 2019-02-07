@@ -4,6 +4,9 @@ import { getTitle } from "./titles";
 import { calcThac0 } from "./thac0";
 import { getWeapon } from "./weapons"
 
+const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Business", "Church",
+  "Crown", "Street", "Inmate", "Dwarf", "Burquone", "Tellerue"];
+
 export function generate(level, pcClass) {
   let pc = { level: level, class: pcClass };
 
@@ -164,7 +167,6 @@ function setAttributes(pcClass) {
   }
 
   attributes.str = setAttribute(mins.str);
-  //attributes.str = 18;
   attributes.int = setAttribute(mins.int);
   attributes.dex = setAttribute(mins.dex);
   attributes.con = setAttribute(mins.con);
@@ -186,27 +188,27 @@ function setHP(level, pcClass) {
   let hp;
   switch (pcClass) {
     case 'Fighter':
-      hp = calcPerLevel(level, 10);
+      hp = calcHpPerLevel(level, 10);
       break;
     case 'Thief':
     case 'Assassin':
-      hp = calcPerLevel(level, 6);
+      hp = calcHpPerLevel(level, 6);
       break;
     case 'Cleric':
-      hp = calcPerLevel(level, 8);
+      hp = calcHpPerLevel(level, 8);
       break;
     case 'Magic-User':
-      hp = calcPerLevel(level, 4);
+      hp = calcHpPerLevel(level, 4);
       break;
     case 'Monk':
-      hp = calcPerLevel(level, 4) + 4;
+      hp = calcHpPerLevel(level, 4) + 4;
       break;
     default:
   }
   return hp;
 }
 
-function calcPerLevel(level, die) {
+function calcHpPerLevel(level, die) {
   let hp = die;
   if (level === 1) {
     return hp;
@@ -243,7 +245,5 @@ function setStartingGold(pcClass) {
 }
 
 function getAffiliation() {
-  const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Business", "Church",
-    "Crown", "Street", "Inmate", "Dwarf", "Burquone", "Tellerue"];
   return affiliations[rollDice(1, affiliations.length) - 1];
 }

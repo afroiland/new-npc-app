@@ -3,6 +3,7 @@ import { Button, Navbar } from "react-bootstrap";
 
 class SearchBar extends Component {
   render() {
+    const { doAFight, handleClick } = this.props;
     return (
       <Navbar>
         <Navbar.Header>
@@ -10,11 +11,11 @@ class SearchBar extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Navbar.Form pullLeft>
-            <Button onClick={() => this.props.handleClick("A")}>Add to Group A</Button>
-            <Button onClick={() => this.props.handleClick("B")}>Add to Group B</Button>
-            <Button onClick={() => this.props.handleClick("remove")}>Remove Selected</Button>
-            <Button onClick={() => this.props.handleClick("clear")}>Clear All</Button>
-            <Button onClick={() => this.props.doAFight()}>Fight</Button>
+            <Button onClick={() => handleClick("A")}>Add to Group A</Button>
+            <Button onClick={() => handleClick("B")}>Add to Group B</Button>
+            <Button onClick={() => handleClick("remove")}>Remove Selected</Button>
+            <Button onClick={() => handleClick("clear")}>Clear All</Button>
+            <Button onClick={() => doAFight()}>Fight</Button>
           </Navbar.Form>
         </Navbar.Collapse>
       </Navbar>

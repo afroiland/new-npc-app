@@ -30,7 +30,6 @@ app.get('/getNPCs', (req, res) => {
   let sql = 'SELECT * FROM new_schema.npcs';
   db.query(sql, (err, result) => {
     if (err) throw err;
-    //console.log("test result: ", result);
     res.send(result);
   });
 });
@@ -49,7 +48,6 @@ app.post('/add', (req, res) => {
       console.log("error: ", err);
       throw err;
     }
-    console.log("add result: ", result);
     res.send(result);
   });
 });
@@ -68,7 +66,6 @@ app.put('/update', (req, res) => {
       console.log("error: ", err);
       throw err;
     }
-    console.log("add result: ", result);
     res.send(result);
   });
 });

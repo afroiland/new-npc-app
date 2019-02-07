@@ -15,7 +15,6 @@ class Combat extends Component {
   }
 
   render() {
-    //console.log("this.state.groupA: ", this.state.groupA);
     return (
       <div>
         <SearchBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
@@ -37,7 +36,7 @@ class Combat extends Component {
             </Col>
             <Col sm={3}>
               <p>Log / Results</p>
-              <ul>{this.state.combatLog.map((string, index) => <li key={index} className="notHidden">{string}</li>)}</ul>
+              <ul className="combatLog">{this.state.combatLog.map((string, index) => <li key={index} className="notHidden">{string}</li>)}</ul>
             </Col>
           </Row>
         </Grid>
@@ -47,7 +46,6 @@ class Combat extends Component {
 
   componentDidMount() {
     axios.get('http://localhost:3001/getNPCs').then(res => {
-      //console.log("res.data: ", res.data);
       this.setState({ NPCList: res.data });
     });
   }
@@ -99,7 +97,7 @@ class Combat extends Component {
       let newGroupB = this.state.groupB.filter(obj => {
         return obj.name !== this.state.selectedNPC
       });
-      this.setState({ groupA: newGroupA, groupB: newGroupB});
+      this.setState({ groupA: newGroupA, groupB: newGroupB });
       return;
     }
 
