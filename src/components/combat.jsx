@@ -36,7 +36,7 @@ class Combat extends Component {
             </Col>
             <Col sm={3}>
               <p>Log / Results</p>
-              <ul className="textList">{this.state.combatLog.map((string, index) => <li key={index} className="notHidden">{string}</li>)}</ul>
+              <ul className="combatLog">{this.state.combatLog.map((string, index) => <li key={index} className="notHidden">{string}</li>)}</ul>
             </Col>
           </Row>
         </Grid>
