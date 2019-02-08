@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from "./searchbar";
 import NPCList from "./NPCList";
+import GroupList from "./groupList";
 import { Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
 import axios from "axios";
 import { fight } from "./../functions/combat";
@@ -30,11 +31,11 @@ class Combat extends Component {
             </Col>
             <Col sm={3}>
               <p>Group A</p>
-              <NPCList list={this.state.groupA} />
+              <GroupList list={this.state.groupA} />
             </Col>
             <Col sm={3}>
               <p>Group B</p>
-              <NPCList list={this.state.groupB} />
+              <GroupList list={this.state.groupB} />
             </Col>
             <Col sm={3}>
               <p>Log / Results</p>

@@ -40,5 +40,3 @@ class NPCList extends Component {
 }
 
 export default NPCList;
-
-// TODO: Add something so that names in the lists for groupA or B always display regardless of searchString
