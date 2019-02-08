@@ -11,7 +11,8 @@ class Combat extends Component {
     groupA: [],
     groupB: [],
     selectedNPC: "",
-    combatLog: []
+    combatLog: [],
+    searchString: ""
   }
 
   render() {
@@ -24,7 +25,8 @@ class Combat extends Component {
               <FormGroup>
                 <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
               </FormGroup>
-              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC} />
+              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC}
+                searchString={this.state.searchString} />
             </Col>
             <Col sm={3}>
               <p>Group A</p>
@@ -50,30 +52,8 @@ class Combat extends Component {
     });
   }
 
-  handleSearchChange = (searchString) => {
-    let tempNPCList = this.state.NPCList;
-    for (let i = 0; i < tempNPCList.length; i++) {
-      let allWordList = "";
-      allWordList += tempNPCList[i].name;
-      allWordList += tempNPCList[i].title;
-      allWordList += tempNPCList[i].class;
-      allWordList += tempNPCList[i].race;
-      allWordList += tempNPCList[i].memorized;
-      allWordList += tempNPCList[i].SBLvl_1;
-      allWordList += tempNPCList[i].SBLvl_2;
-      allWordList += tempNPCList[i].SBLvl_3;
-      allWordList += tempNPCList[i].SBLvl_4;
-      allWordList += tempNPCList[i].SBLvl_5;
-      allWordList += tempNPCList[i].items;
-      allWordList += tempNPCList[i].affiliation;
-      allWordList += tempNPCList[i].notes;
-      if (allWordList.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) {
-        tempNPCList[i].hideInList = false;
-      } else {
-        tempNPCList[i].hideInList = true;
-      }
-    }
-    this.setState({ NPCList: tempNPCList });
+  handleSearchChange = (newSearchString) => {
+    this.setState({ searchString: newSearchString });
   }
 
   handleNameClick = (name) => {

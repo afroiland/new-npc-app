@@ -42,10 +42,12 @@ class ViewContent extends Component {
     probity: 0,
     affiliation: "",
     notes: "",
-    selectedNPC: ""
+    selectedNPC: "",
+    searchString: ""
   };
 
   render() {
+    const { name } = this.state;
     return (
       <div>
         <Grid>
@@ -54,7 +56,8 @@ class ViewContent extends Component {
               <FormGroup>
                 <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
               </FormGroup>
-              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC} />
+              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC}
+                searchString={this.state.searchString} />
             </Col>
             <Col sm={8}>
               <Row style={{marginLeft: 5}}>
@@ -69,15 +72,13 @@ class ViewContent extends Component {
                     {levelRange.map(level => <option key={level} value={level}>{level}</option>)}
                   </FormControl>
                 </Col>
-              {/* </Row> */}
               <Button onClick={() => this.handleGenerate(this.state.levelSelect, this.state.classSelect)}>Generate</Button>
               <Button onClick={() => this.handleSave(this.state)}>Save</Button>
               <Button onClick={() => this.handleClear()}>Clear</Button>
               </Row>
               <br />
-
               <NPCDetails handleChange={this.handleChange}
-                name={this.state.name}
+                name={name}
                 title={this.state.title}
                 level={this.state.level}
                 npcClass={this.state.class}
@@ -137,31 +138,8 @@ class ViewContent extends Component {
     this._isMounted = false;
   }
 
-  handleSearchChange = (searchString) => {
-    let tempNPCList = this.state.NPCList;
-    for (let i = 0; i < tempNPCList.length; i++) {
-      let allWordList = "";
-      allWordList += tempNPCList[i].name;
-      allWordList += tempNPCList[i].title;
-      allWordList += tempNPCList[i].class;
-      allWordList += tempNPCList[i].race;
-      allWordList += tempNPCList[i].memorized;
-      allWordList += tempNPCList[i].SBLvl_1;
-      allWordList += tempNPCList[i].SBLvl_2;
-      allWordList += tempNPCList[i].SBLvl_3;
-      allWordList += tempNPCList[i].SBLvl_4;
-      allWordList += tempNPCList[i].SBLvl_5;
-      allWordList += tempNPCList[i].weapon;
-      allWordList += tempNPCList[i].items;
-      allWordList += tempNPCList[i].affiliation;
-      allWordList += tempNPCList[i].notes;
-      if (allWordList.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) {
-        tempNPCList[i].hideInList = false;
-      } else {
-        tempNPCList[i].hideInList = true;
-      }
-    }
-    this.setState({ NPCList: tempNPCList });
+  handleSearchChange = (newSearchString) => {
+    this.setState({ searchString: newSearchString });
   }
 
   handleNameClick = (name) => {
