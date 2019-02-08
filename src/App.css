@@ -16,6 +16,7 @@
   border: 1px solid powderblue;
   border-radius: 5px;
   padding: 10px;
+  width: 100%;
 }
 
 .combatLog {

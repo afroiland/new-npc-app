@@ -8,7 +8,7 @@ const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Busine
   "Crown", "Street", "Inmate", "Dwarf", "Burquone", "Tellerue"];
 
 export function generate(level, pcClass) {
-  let pc = { level: level, class: pcClass };
+  let pc = { level: level, npcClass: pcClass };
 
   pc.name = getName();
   pc.title = getTitle(pcClass, level);
@@ -16,7 +16,7 @@ export function generate(level, pcClass) {
   //Set attributes
   let attributes = setAttributes(pcClass);
   pc.str = attributes.str;
-  if (pc.class === "Fighter" && pc.str === 18) {
+  if (pc.npcClass === "Fighter" && pc.str === 18) {
     pc.ex_str = rollDice(1, 100);
   } else {
     pc.ex_str = 0;
@@ -115,7 +115,7 @@ export function generate(level, pcClass) {
   pc.probity = 0;
   pc.affiliation = getAffiliation();
 
-  //console.log("pc: ", pc);
+  console.log("pc: ", pc);
   return pc;
 }
 
