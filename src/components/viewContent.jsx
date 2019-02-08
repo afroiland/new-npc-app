@@ -17,7 +17,7 @@ class ViewContent extends Component {
     name: "",
     title: "",
     level: 0,
-    class: "",
+    npcClass: "",
     race: "",
     currentHP: 0,
     maxHP: 0,
@@ -47,7 +47,9 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { name } = this.state;
+    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, ac, thac0, str, ex_str, int, dex, con, wis, cha,
+      spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, memorized, gold, weapon, items,
+      probity, affiliation, notes, selectedNPC, searchString } = this.state;
     return (
       <div>
         <Grid>
@@ -56,8 +58,8 @@ class ViewContent extends Component {
               <FormGroup>
                 <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
               </FormGroup>
-              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC}
-                searchString={this.state.searchString} />
+              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
+                searchString={searchString} />
             </Col>
             <Col sm={8}>
               <Row style={{marginLeft: 5}}>
@@ -72,40 +74,40 @@ class ViewContent extends Component {
                     {levelRange.map(level => <option key={level} value={level}>{level}</option>)}
                   </FormControl>
                 </Col>
-              <Button onClick={() => this.handleGenerate(this.state.levelSelect, this.state.classSelect)}>Generate</Button>
+              <Button onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
               <Button onClick={() => this.handleSave(this.state)}>Save</Button>
               <Button onClick={() => this.handleClear()}>Clear</Button>
               </Row>
               <br />
               <NPCDetails handleChange={this.handleChange}
                 name={name}
-                title={this.state.title}
-                level={this.state.level}
-                npcClass={this.state.class}
-                race={this.state.race}
-                currentHP={this.state.currentHP}
-                maxHP={this.state.maxHP}
-                ac={this.state.ac}
-                thac0={this.state.thac0}
-                gold={this.state.gold}
-                str={this.state.str}
-                ex_str={this.state.ex_str}
-                int={this.state.int}
-                dex={this.state.dex}
-                con={this.state.con}
-                wis={this.state.wis}
-                cha={this.state.cha}
-                spellbookLvl_1={this.state.spellbookLvl_1}
-                spellbookLvl_2={this.state.spellbookLvl_2}
-                spellbookLvl_3={this.state.spellbookLvl_3}
-                spellbookLvl_4={this.state.spellbookLvl_4}
-                spellbookLvl_5={this.state.spellbookLvl_5}
-                memorized={this.state.memorized}
-                weapon={this.state.weapon}
-                items={this.state.items}
-                probity={this.state.probity}
-                affiliation={this.state.affiliation}
-                notes={this.state.notes}
+                title={title}
+                level={level}
+                npcClass={npcClass}
+                race={race}
+                currentHP={currentHP}
+                maxHP={maxHP}
+                ac={ac}
+                thac0={thac0}
+                gold={gold}
+                str={str}
+                ex_str={ex_str}
+                int={int}
+                dex={dex}
+                con={con}
+                wis={wis}
+                cha={cha}
+                spellbookLvl_1={spellbookLvl_1}
+                spellbookLvl_2={spellbookLvl_2}
+                spellbookLvl_3={spellbookLvl_3}
+                spellbookLvl_4={spellbookLvl_4}
+                spellbookLvl_5={spellbookLvl_5}
+                memorized={memorized}
+                weapon={weapon}
+                items={items}
+                probity={probity}
+                affiliation={affiliation}
+                notes={notes}
               />
             </Col>
           </Row>
@@ -150,7 +152,7 @@ class ViewContent extends Component {
       name: selectedNPC[0].name,
       level: selectedNPC[0].level,
       title: selectedNPC[0].title,
-      class: selectedNPC[0].class,
+      npcClass: selectedNPC[0].class,
       race: selectedNPC[0].race,
       currentHP: selectedNPC[0].currentHP,
       maxHP: selectedNPC[0].maxHP,
@@ -185,7 +187,7 @@ class ViewContent extends Component {
       name: newNPC.name,
       level: newNPC.level,
       title: newNPC.title,
-      class: newNPC.class,
+      npcClass: newNPC.npcClass,
       race: newNPC.race,
       currentHP: newNPC.currentHP,
       maxHP: newNPC.maxHP,
@@ -242,7 +244,7 @@ class ViewContent extends Component {
       name: "",
       title: "",
       level: 0,
-      class: "",
+      npcClass: "",
       race: "",
       currentHP: 0,
       maxHP: 0,

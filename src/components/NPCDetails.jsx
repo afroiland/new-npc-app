@@ -20,7 +20,7 @@ class NPCDetails extends Component {
                 </FormGroup>
                 <FormGroup>
                   <Col sm={1} className="fieldTitle">Class: </Col>
-                  <Col sm={4}><FormControl name="class" value={npcClass} onChange={(e) => handleChange(e)} /></Col>
+                  <Col sm={4}><FormControl name="npcClass" value={npcClass} onChange={(e) => handleChange(e)} /></Col>
                   <Col sm={1} className="fieldTitle">Title: </Col>
                   <Col sm={3}><FormControl name="title" value={title} onChange={(e) => handleChange(e)} /></Col>
                 </FormGroup>
