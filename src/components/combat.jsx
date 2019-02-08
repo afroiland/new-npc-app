@@ -37,7 +37,7 @@ class Combat extends Component {
               <p>Group B</p>
               <GroupList list={this.state.groupB} />
             </Col>
-            <Col sm={3}>
+            <Col sm={4}>
               <p>Log / Results</p>
               <ul className="combatLog">{this.state.combatLog.map((string, index) => <li key={index} className="notHidden">{string}</li>)}</ul>
             </Col>
