@@ -9,6 +9,7 @@ import Paper from "@material-ui/core/Paper";
 // import InputBase from '@material-ui/core/InputBase';
 // import SearchIcon from '@material-ui/icons/Search';
 import axios from "axios";
+import SearchBar from "./searchBar";
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
@@ -75,7 +76,7 @@ class ViewContent extends Component {
             {/* <FormGroup>
               <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
             </FormGroup> */}
-            
+            <SearchBar />
             <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
               searchString={searchString} />
           </Grid>

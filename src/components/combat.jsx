@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchBar from "./searchbar";
+import CombatBar from "./combatBar";
 import NPCList from "./NPCList";
 import GroupList from "./groupList";
 import { Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
@@ -19,7 +19,7 @@ class Combat extends Component {
   render() {
     return (
       <div>
-        <SearchBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
+        <CombatBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
         <Grid>
           <Row>
             <Col sm={2}>
