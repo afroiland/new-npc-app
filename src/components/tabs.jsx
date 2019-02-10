@@ -1,12 +1,34 @@
 import React, { Component } from "react";
 // import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
+import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
 import { Link, Route, BrowserRouter, Switch } from "react-router-dom";
 import ViewContent from "./viewContent";
 import Combat from "./combat";
 // import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+
+function TabContainer({ children, dir }) {
+  return (
+    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+      {children}
+    </Typography>
+  );
+}
+
+// TabContainer.propTypes = {
+//   children: PropTypes.node.isRequired,
+//   dir: PropTypes.string.isRequired,
+// };
+
+const styles = theme => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    width: 500,
+  },
+});
 
 class NavTabs extends Component {
   state = {
@@ -22,10 +44,12 @@ class NavTabs extends Component {
   };
 
   render() {
+    //const { classes, theme } = this.props;
+
     return (
       <BrowserRouter>
         <div>
-          <AppBar>
+          <AppBar color="default">
             <Tabs
               value={this.state.value}
               onChange={this.handleChange}
@@ -33,16 +57,19 @@ class NavTabs extends Component {
               textColor="primary"
               centered
             >
-              <Tab label="NPCs" component={Link} to="/npcs" />
-              <Tab label="Combat" component={Link} to="/combat" />
+              {/* <Tab label="NPCs" component={Link} to="/npcs" />
+              <Tab label="Combat" component={Link} to="/combat" /> */}
+              <Tab label="NPCs" />
+              <Tab label="Combat" />
             </Tabs>
           </AppBar>
-          <Switch>
             {/* <Route path="/npcs" component={PageShell(ItemOne)} />
           <Route path="/combat" component={PageShell(ItemTwo)} /> */}
-            <Route path="/npcs" component={ViewContent} />
-            <Route path="/combat" component={Combat} />
-          </Switch>
+            {/* <Route path="/npcs" component={ViewContent} />
+            <Route path="/combat" component={Combat} /> */}
+
+            {this.state.value === 0 && <TabContainer><ViewContent /></TabContainer>}
+            {this.state.value === 1 && <TabContainer><Combat /></TabContainer>}
         </div>
       </BrowserRouter>
     );
@@ -66,4 +93,4 @@ class NavTabs extends Component {
 //   );
 // };
 
-export default NavTabs;
+export default withStyles(styles, { withTheme: true })(NavTabs);
