@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import { Link, Route, BrowserRouter, Switch } from "react-router-dom";
 import ViewContent from "./viewContent";
 import Combat from "./combat";
 // import ReactCSSTransitionGroup from "react-addons-css-transition-group";
