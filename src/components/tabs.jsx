@@ -39,39 +39,33 @@ class NavTabs extends Component {
     this.setState({ value });
   };
 
-  handleChangeIndex = index => {
-    this.setState({ value: index });
-  };
-
   render() {
-    //const { classes, theme } = this.props;
+    const { value } = this.state;
 
     return (
-      <BrowserRouter>
-        <div>
-          <AppBar color="default">
-            <Tabs
-              value={this.state.value}
-              onChange={this.handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              centered
-            >
-              {/* <Tab label="NPCs" component={Link} to="/npcs" />
+      <div>
+        <AppBar color="default">
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            {/* <Tab label="NPCs" component={Link} to="/npcs" />
               <Tab label="Combat" component={Link} to="/combat" /> */}
-              <Tab label="NPCs" />
-              <Tab label="Combat" />
-            </Tabs>
-          </AppBar>
-            {/* <Route path="/npcs" component={PageShell(ItemOne)} />
+            <Tab label="NPCs" />
+            <Tab label="Combat" />
+          </Tabs>
+        </AppBar>
+        {/* <Route path="/npcs" component={PageShell(ItemOne)} />
           <Route path="/combat" component={PageShell(ItemTwo)} /> */}
-            {/* <Route path="/npcs" component={ViewContent} />
+        {/* <Route path="/npcs" component={ViewContent} />
             <Route path="/combat" component={Combat} /> */}
 
-            {this.state.value === 0 && <TabContainer><ViewContent /></TabContainer>}
-            {this.state.value === 1 && <TabContainer><Combat /></TabContainer>}
-        </div>
-      </BrowserRouter>
+        {value === 0 && <TabContainer><ViewContent /></TabContainer>}
+        {value === 1 && <TabContainer><Combat /></TabContainer>}
+      </div>
     );
   }
 }
