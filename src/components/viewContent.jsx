@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
-import { Button, Col, FormControl, FormGroup, Row } from "react-bootstrap";
+import { Button, Col, FormControl, Row } from "react-bootstrap";
 import { withStyles } from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -76,7 +76,7 @@ class ViewContent extends Component {
             {/* <FormGroup>
               <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
             </FormGroup> */}
-            <SearchBar />
+            <SearchBar handleSearchChange={this.handleSearchChange} />
             <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
               searchString={searchString} />
           </Grid>
@@ -159,6 +159,7 @@ class ViewContent extends Component {
   }
 
   handleSearchChange = (newSearchString) => {
+    console.log("newSearchString: ", newSearchString);
     this.setState({ searchString: newSearchString });
   }
 

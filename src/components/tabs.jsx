@@ -9,10 +9,10 @@ import ViewContent from "./viewContent";
 import Combat from "./combat";
 // import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
-function TabContainer({ children, dir }) {
+function TabContainer(props) {
   return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
-      {children}
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
     </Typography>
   );
 }
@@ -43,7 +43,7 @@ class NavTabs extends Component {
 
     return (
       <div>
-        <AppBar color="default">
+        <AppBar position="static" color="default">
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}
@@ -61,9 +61,8 @@ class NavTabs extends Component {
           <Route path="/combat" component={PageShell(ItemTwo)} /> */}
         {/* <Route path="/npcs" component={ViewContent} />
             <Route path="/combat" component={Combat} /> */}
-
-        {value === 0 && <TabContainer><ViewContent /></TabContainer>}
-        {value === 1 && <TabContainer><Combat /></TabContainer>}
+          {value === 0 && <TabContainer><ViewContent /></TabContainer>}
+          {value === 1 && <TabContainer><Combat /></TabContainer>}
       </div>
     );
   }

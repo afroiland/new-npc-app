@@ -62,6 +62,7 @@ class SearchBar extends Component {
             root: classes.inputRoot,
             input: classes.inputInput,
           }}
+          onChange={e => this.props.handleSearchChange(e.target.value)}
         />
       </div>
     );
