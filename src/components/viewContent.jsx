@@ -5,7 +5,7 @@ import { generate } from "./../functions/generate"
 import { Button, Col, FormControl, Row } from "react-bootstrap";
 import { withStyles } from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
+// import Paper from "@material-ui/core/Paper";
 // import InputBase from '@material-ui/core/InputBase';
 // import SearchIcon from '@material-ui/icons/Search';
 import axios from "axios";
