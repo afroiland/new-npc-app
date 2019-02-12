@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 // import Paper from '@material-ui/core/Paper';
 // import Typography from '@material-ui/core/Typography';
-import { ListItemText } from "@material-ui/core";
 
 const styles = theme => ({
   root: {
@@ -22,7 +19,7 @@ const styles = theme => ({
 class NPCList extends Component {
   render() {
     const { list, handleNameClick, searchString } = this.props;
-    console.log("this.props: ", this.props);
+    //console.log("this.props: ", this.props);
     return (
       <div className="textList">
         <ul>{list.map(npc => <li key={npc.name} className={this.determineDisplay(npc, searchString)}

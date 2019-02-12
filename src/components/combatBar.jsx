@@ -6,10 +6,10 @@ class CombatBar extends Component {
     const { doAFight, handleClick } = this.props;
     return (
       <Navbar>
-        <Navbar.Header>
+        {/* <Navbar.Header>
           <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
+        </Navbar.Header> */}
+        {/* <Navbar.Collapse> */}
           <Navbar.Form pullLeft>
             <Button onClick={() => handleClick("A")}>Add to Group A</Button>
             <Button onClick={() => handleClick("B")}>Add to Group B</Button>
@@ -17,7 +17,7 @@ class CombatBar extends Component {
             <Button onClick={() => handleClick("clear")}>Clear All</Button>
             <Button onClick={() => doAFight()}>Fight</Button>
           </Navbar.Form>
-        </Navbar.Collapse>
+        {/* </Navbar.Collapse> */}
       </Navbar>
     );
   }
