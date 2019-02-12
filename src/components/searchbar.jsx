@@ -49,7 +49,6 @@ const styles = theme => ({
 class SearchBar extends Component {
   // state = {}
   render() {
-    console.log("this.props: ", this.props);
     const { classes } = this.props;
     return (
       <div className={classes.search}>

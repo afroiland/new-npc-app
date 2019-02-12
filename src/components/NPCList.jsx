@@ -1,26 +1,41 @@
 import React, { Component } from "react";
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+// import Paper from '@material-ui/core/Paper';
+// import Typography from '@material-ui/core/Typography';
+import { ListItemText } from "@material-ui/core";
 
 const styles = theme => ({
   root: {
-    ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    flexGrow: 1,
+    maxWidth: 752,
+  },
+  demo: {
+    backgroundColor: theme.palette.background.paper,
+  },
+  title: {
+    margin: `${theme.spacing.unit * 4}px 0 ${theme.spacing.unit * 2}px`,
   },
 });
 
 class NPCList extends Component {
   render() {
-    const { classes, list, handleNameClick, searchString } = this.props;
+    const { list, handleNameClick, searchString } = this.props;
+    console.log("this.props: ", this.props);
     return (
-      // <div className="textList">
-      <Paper className={classes.root} elevation={1}>
-          <ul>{list.map(npc => <li key={npc.name} className={this.determineDisplay(npc, searchString)}
-            onClick={() => handleNameClick(npc.name)}>{npc.name}</li>)}</ul>
-      {/* </div> */}
-      </Paper>
+      <div className="textList">
+        <ul>{list.map(npc => <li key={npc.name} className={this.determineDisplay(npc, searchString)}
+          onClick={() => handleNameClick(npc.name)}>{npc.name}</li>)}</ul>
+      </div>
+      // <List>
+      //   {list.map(npc => <ListItem key={npc.name} className={this.determineDisplay(npc, searchString)}
+      //     onClick={() => handleNameClick(npc.name)}> <ListItemText
+      //       // primary="Single-line item"
+      //       // secondary={secondary ? 'Secondary text' : null}
+      //     />
+      //     {npc.name}</ListItem>)}
+      // </List>
     );
   }
 
