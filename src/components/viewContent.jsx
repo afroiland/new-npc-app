@@ -3,29 +3,30 @@ import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
 import { Button, Col, FormControl, Row } from "react-bootstrap";
-import { withStyles } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 // import Paper from "@material-ui/core/Paper";
 // import InputBase from '@material-ui/core/InputBase';
 // import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
 import axios from "axios";
-import SearchBar from "./searchBar";
+// import SearchBar from "./searchBar";
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    height: 140,
-    width: 100,
-  },
-  control: {
-    padding: theme.spacing.unit * 2,
-  },
-});
+// const styles = theme => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   paper: {
+//     height: 140,
+//     width: 100,
+//   },
+//   control: {
+//     padding: theme.spacing.unit * 2,
+//   },
+// });
 
 class ViewContent extends Component {
   _isMounted = false;
@@ -76,7 +77,15 @@ class ViewContent extends Component {
             {/* <FormGroup>
               <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
             </FormGroup> */}
-            <SearchBar handleSearchChange={this.handleSearchChange} />
+            {/* <SearchBar handleSearchChange={this.handleSearchChange} /> */}
+            <TextField
+          id="standard-search"
+          label="Search..."
+          type="search"
+          className={classes.textField}
+          margin="normal"
+          onChange={e => this.handleSearchChange(e.target.value)}
+        />
             <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
               searchString={searchString} />
           </Grid>
@@ -292,4 +301,4 @@ class ViewContent extends Component {
   }
 }
 
-export default withStyles(styles)(ViewContent);
+export default ViewContent;
