@@ -79,13 +79,13 @@ class ViewContent extends Component {
             </FormGroup> */}
             {/* <SearchBar handleSearchChange={this.handleSearchChange} /> */}
             <TextField
-          id="standard-search"
-          label="Search..."
-          type="search"
-          className={classes.textField}
-          margin="normal"
-          onChange={e => this.handleSearchChange(e.target.value)}
-        />
+              id="standard-search"
+              label="Search..."
+              type="search"
+              className={classes.textField}
+              margin="normal"
+              onChange={e => this.handleSearchChange(e.target.value)}
+            />
             <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
               searchString={searchString} />
           </Grid>
