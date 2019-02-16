@@ -45,6 +45,7 @@ class ViewContent extends Component {
     race: "",
     currentHP: 0,
     maxHP: 0,
+    status: "Normal",
     ac: 0,
     thac0: 0,
     str: 0,
@@ -71,7 +72,7 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, ac, thac0, str, ex_str, int, dex, con, wis, cha,
+    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, status, ac, thac0, str, ex_str, int, dex, con, wis, cha,
       spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, memorized, gold, weapon, items,
       probity, affiliation, notes, selectedNPC, searchString } = this.state;
     return (
@@ -119,6 +120,7 @@ class ViewContent extends Component {
               race={race}
               currentHP={currentHP}
               maxHP={maxHP}
+              status={status}
               ac={ac}
               thac0={thac0}
               gold={gold}
@@ -188,6 +190,7 @@ class ViewContent extends Component {
       race: selectedNPC[0].race,
       currentHP: selectedNPC[0].currentHP,
       maxHP: selectedNPC[0].maxHP,
+      status: selectedNPC[0].status,
       ac: selectedNPC[0].ac,
       thac0: selectedNPC[0].thac0,
       str: selectedNPC[0].str,
@@ -223,6 +226,7 @@ class ViewContent extends Component {
       race: newNPC.race,
       currentHP: newNPC.currentHP,
       maxHP: newNPC.maxHP,
+      status: "Normal",
       ac: newNPC.ac,
       thac0: newNPC.thac0,
       str: newNPC.str,
@@ -280,6 +284,7 @@ class ViewContent extends Component {
       race: "",
       currentHP: 0,
       maxHP: 0,
+      status: "",
       ac: 0,
       thac0: 0,
       str: 0,
