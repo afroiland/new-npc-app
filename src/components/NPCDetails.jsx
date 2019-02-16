@@ -4,7 +4,7 @@ import { Col, Form, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
 class NPCDetails extends Component {
   render() {
     const { ac, affiliation, cha, con, currentHP, dex, ex_str, gold, handleChange, int, items, level, maxHP, memorized, name,
-      notes, npcClass, probity, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, str,
+      notes, npcClass, probity, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, status, str,
       thac0, title, weapon, wis } = this.props;
     return (
       <div>
@@ -33,17 +33,19 @@ class NPCDetails extends Component {
                   <Col sm={1}><FormControl name="int" value={int} onChange={(e) => handleChange(e)} /></Col>
                   <Col sm={1} className="fieldTitle">Dex: </Col>
                   <Col sm={1}><FormControl name="dex" value={dex} onChange={(e) => handleChange(e)} /></Col>
-                  <Col sm={1}></Col>
-                  </FormGroup>
-                <FormGroup>
+                  {/* <Col sm={1}></Col> */}
                   <Col sm={1} className="fieldTitle">Con: </Col>
                   <Col sm={1}><FormControl name="con" value={con} onChange={(e) => handleChange(e)} /></Col>
-                  <Col sm={2} className="fieldTitle">Wis: </Col>
+                </FormGroup>
+                <FormGroup>
+                  <Col sm={1} className="fieldTitle">Wis: </Col>
                   <Col sm={1}><FormControl name="wis" value={wis} onChange={(e) => handleChange(e)} /></Col>
                   <Col sm={1} className="fieldTitle">Cha: </Col>
                   <Col sm={1}><FormControl name="cha" value={cha} onChange={(e) => handleChange(e)} /></Col>
                   <Col sm={1} className="fieldTitle">Gold: </Col>
                   <Col sm={1}><FormControl name="gold" value={gold} onChange={(e) => handleChange(e)} /></Col>
+                  <Col sm={1} className="fieldTitle">Status: </Col>
+                  <Col sm={2}><FormControl name="status" value={status} onChange={(e) => handleChange(e)} /></Col>
                 </FormGroup>
                 <FormGroup>
                   <Col sm={1} className="fieldTitle">HP: </Col>
