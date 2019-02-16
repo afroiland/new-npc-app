@@ -15,6 +15,10 @@ import axios from "axios";
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
 
+// const StyledTextField = styled(TextField)`
+//   padding: 10px;
+// `;
+
 // const styles = theme => ({
 //   root: {
 //     flexGrow: 1,
@@ -82,7 +86,7 @@ class ViewContent extends Component {
               id="standard-search"
               label="Search..."
               type="search"
-              className={classes.textField}
+              className="textList"
               margin="normal"
               onChange={e => this.handleSearchChange(e.target.value)}
             />
