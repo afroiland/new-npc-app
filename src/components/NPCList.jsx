@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { withStyles } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
-// import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -19,20 +16,11 @@ const styles = theme => ({
 class NPCList extends Component {
   render() {
     const { list, handleNameClick, searchString } = this.props;
-    //console.log("this.props: ", this.props);
     return (
       <div className="textList">
         <ul>{list.map(npc => <li key={npc.name} className={this.determineDisplay(npc, searchString)}
           onClick={() => handleNameClick(npc.name)}>{npc.name}</li>)}</ul>
       </div>
-      // <List>
-      //   {list.map(npc => <ListItem key={npc.name} className={this.determineDisplay(npc, searchString)}
-      //     onClick={() => handleNameClick(npc.name)}> <ListItemText
-      //       // primary="Single-line item"
-      //       // secondary={secondary ? 'Secondary text' : null}
-      //     />
-      //     {npc.name}</ListItem>)}
-      // </List>
     );
   }
 
@@ -64,4 +52,4 @@ class NPCList extends Component {
   }
 }
 
-export default withStyles(styles)(NPCList);
+export default NPCList;
