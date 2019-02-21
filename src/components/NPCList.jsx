@@ -1,25 +1,15 @@
 import React, { Component } from "react";
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    maxWidth: 752,
-  },
-  demo: {
-    backgroundColor: theme.palette.background.paper,
-  },
-  title: {
-    margin: `${theme.spacing.unit * 4}px 0 ${theme.spacing.unit * 2}px`,
-  },
-});
+import { Typography } from "@material-ui/core";
 
 class NPCList extends Component {
   render() {
     const { list, handleNameClick, searchString } = this.props;
     return (
       <div className="textList">
-        <ul>{list.map(npc => <li key={npc.name} className={this.determineDisplay(npc, searchString)}
-          onClick={() => handleNameClick(npc.name)}>{npc.name}</li>)}</ul>
+        {/* <ul>{list.map(npc => <li key={npc.name} className={this.determineDisplay(npc, searchString)}
+          onClick={() => handleNameClick(npc.name)}>{npc.name}</li>)}</ul> */}
+        <div>{list.map(npc => <Typography key={npc.name} className={this.determineDisplay(npc, searchString)}
+          onClick={() => handleNameClick(npc.name)}>{npc.name}</Typography>)}</div>
       </div>
     );
   }

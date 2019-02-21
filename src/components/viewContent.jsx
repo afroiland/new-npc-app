@@ -6,6 +6,7 @@ import { Button, Col, FormControl, Row } from "react-bootstrap";
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
+import { Paper } from "@material-ui/core";
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
@@ -57,6 +58,7 @@ class ViewContent extends Component {
       <div>
         <Grid container>
           <Grid item xs={2}>
+            <Paper>
             <TextField
               id="standard-search"
               label="Search..."
@@ -67,8 +69,10 @@ class ViewContent extends Component {
             />
             <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
               searchString={searchString} />
+            </Paper>
           </Grid>
           <Grid item xs={10}>
+          <Paper>
             <Row style={{ marginLeft: 5 }}>
               <Col md={3}></Col>
               <Col md={3}>
@@ -117,6 +121,7 @@ class ViewContent extends Component {
               affiliation={affiliation}
               notes={notes}
             />
+            </Paper>
           </Grid>
         </Grid>
       </div>
