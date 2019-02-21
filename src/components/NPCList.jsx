@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-import { Typography } from "@material-ui/core";
+import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 
 class NPCList extends Component {
   render() {
     const { list, handleNameClick, searchString } = this.props;
     return (
       // <div className="textList">
-      <div>
+      <List component="ul">
         {/* <ul>{list.map(npc => <li key={npc.name} className={this.determineDisplay(npc, searchString)}
           onClick={() => handleNameClick(npc.name)}>{npc.name}</li>)}</ul> */}
-        <div>{list.map(npc => <Typography key={npc.name} onClick={() => handleNameClick(npc.name)}>{npc.name}</Typography>)}</div>
-      </div>
+          {list.map(npc => <ListItem dense button key={npc.name} onClick={() => handleNameClick(npc.name)}>
+            <ListItemText>
+            <Typography >{npc.name}</Typography>
+          </ListItemText>
+          </ListItem>)}
+      </List>
     );
   }
 

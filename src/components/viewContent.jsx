@@ -58,7 +58,7 @@ class ViewContent extends Component {
       <div>
         <Grid container>
           <Grid item xs={2}>
-            <Paper style={{margin: 5}}>
+            <Paper style={{margin: 5, height: "100%"}}>
             <TextField
               id="standard-search"
               label="Search..."
