@@ -58,7 +58,7 @@ class ViewContent extends Component {
       <div>
         <Grid container>
           <Grid item xs={2}>
-            <Paper>
+            <Paper style={{margin: 5}}>
             <TextField
               id="standard-search"
               label="Search..."
@@ -72,7 +72,7 @@ class ViewContent extends Component {
             </Paper>
           </Grid>
           <Grid item xs={10}>
-          <Paper>
+          <Paper style={{margin: 5}}>
             <Row style={{ marginLeft: 5 }}>
               <Col md={3}></Col>
               <Col md={3}>
