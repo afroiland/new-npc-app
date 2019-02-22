@@ -5,11 +5,8 @@ class NPCList extends Component {
   render() {
     const { list, handleNameClick, searchString } = this.props;
     return (
-      // <div className="textList">
       <List component="ul">
-        {/* <ul>{list.map(npc => <li key={npc.name} className={this.determineDisplay(npc, searchString)}
-          onClick={() => handleNameClick(npc.name)}>{npc.name}</li>)}</ul> */}
-          {list.map(npc => <ListItem dense button key={npc.name} onClick={() => handleNameClick(npc.name)}>
+          {list.map(npc => <ListItem dense button key={npc.name} style={{ display: this.determineDisplay(npc, searchString)}} onClick={() => handleNameClick(npc.name)}>
             <ListItemText>
             <Typography >{npc.name}</Typography>
           </ListItemText>
@@ -20,7 +17,7 @@ class NPCList extends Component {
 
   determineDisplay = (npc, searchString) => {
     let classes = "";
-    classes += npc.name === this.props.selectedNPC ? "selected " : "notSelected ";
+    // classes += npc.name === this.props.selectedNPC ? "selected " : "notSelected ";
 
     let allWordList = "";
     allWordList += npc.name;
@@ -38,9 +35,11 @@ class NPCList extends Component {
     allWordList += npc.affiliation;
     allWordList += npc.notes;
     if (allWordList.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) {
-      classes += "notHidden";
+      // classes += "notHidden";
+      classes = "block"
     } else {
-      classes += "hidden";
+      // classes += "hidden";
+      classes = "none"
     }
     return classes;
   }
