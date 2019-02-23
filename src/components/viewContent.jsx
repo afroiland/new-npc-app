@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
 import { Paper } from "@material-ui/core";
+import SearchIcon from '@material-ui/icons/Search';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
@@ -59,6 +60,7 @@ class ViewContent extends Component {
         <Grid container>
           <Grid item xs={2}>
             <Paper style={{margin: 5, height: "100%"}}>
+            <SearchIcon />
             <TextField
               id="standard-search"
               label="Search..."
