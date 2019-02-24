@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
 import { Paper } from "@material-ui/core";
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
@@ -60,7 +60,7 @@ class ViewContent extends Component {
         <Grid container>
           <Grid item xs={2}>
             <Paper style={{margin: 5, height: "100%"}}>
-            <SearchIcon />
+            {/* <SearchIcon /> */}
             <TextField
               id="standard-search"
               label="Search..."
@@ -234,7 +234,7 @@ class ViewContent extends Component {
 
   handleSave = (state) => {
     let nameExists = false;
-    for (let i = 0; i < state.NPCList.length; i++) {
+    for (let i = 0, j = state.NPCList.length; i < j; i++) {
       if (state.NPCList[i].name === state.name) {
         nameExists = true;
       }
