@@ -74,7 +74,7 @@ class ViewContent extends Component {
             </Paper>
           </Grid>
           <Grid item xs={10}>
-          <Paper style={{margin: 5}}>
+          <Paper style={{ margin: 5 }}>
             <Row style={{ marginLeft: 5 }}>
               <Col md={3}></Col>
               <Col md={3}>
