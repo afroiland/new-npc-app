@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
-import { Button, Col, FormControl, Row } from "react-bootstrap";
+// import { Button, Col, FormControl, Row } from "react-bootstrap";
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
-import { Paper } from "@material-ui/core";
+import { Paper, InputLabel } from "@material-ui/core";
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
@@ -58,70 +62,89 @@ class ViewContent extends Component {
       <div>
         <Grid container>
           <Grid item xs={2}>
-            <Paper style={{marginLeft: 5, marginTop: 5, marginBottom: 5, height: "100%"}}>
-            <TextField
-              id="standard-search"
-              label="Search..."
-              type="search"
-              className="textList"
-              margin="normal"
-              style={{width: "95%"}}
-              onChange={e => this.handleSearchChange(e.target.value)}
-            />
-            <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
-              searchString={searchString} />
+            <Paper style={{ marginLeft: 5, marginTop: 5, marginBottom: 5, height: "100%" }}>
+              <TextField
+                id="standard-search"
+                label="Search..."
+                type="search"
+                className="textList"
+                margin="normal"
+                style={{ width: "95%" }}
+                onChange={e => this.handleSearchChange(e.target.value)}
+              />
+              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
+                searchString={searchString} />
             </Paper>
           </Grid>
           <Grid item xs={10}>
-          <Paper style={{ margin: 5 }}>
-            <Row style={{ marginLeft: 5 }}>
-              <Col md={3}></Col>
-              <Col md={3}>
-                <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ classSelect: e.target.value })}>
+            <Paper style={{ margin: 5 }}>
+              {/* <Row style={{ marginLeft: 5 }}> */}
+                <Grid item md={3}></Grid>
+                <Grid item md={3}>
+                  <FormControl>
+                    <InputLabel>Class</InputLabel>
+                    <Select value={this.state.classSelect}
+                      onChange={e => this.setState({ classSelect: e.target.value })}
+                      style={{width: "150px"}}
+                      // inputProps={{
+                      //   name: 'age',
+                      //   id: 'age-simple',
+                      // }}
+                      >
+                      {classes.map(pcClass => <MenuItem key={pcClass} value={pcClass}>{pcClass}</MenuItem>)}
+                      {/* <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={10}>Ten</MenuItem>
+                      <MenuItem value={20}>Twenty</MenuItem>
+                      <MenuItem value={30}>Thirty</MenuItem> */}
+                    </Select>
+                  </FormControl>
+                  {/* <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ classSelect: e.target.value })}>
                   {classes.map(pcClass => <option key={pcClass} value={pcClass}>{pcClass}</option>)}
-                </FormControl>
-              </Col>
-              <Col md={2}>
-                <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ levelSelect: parseInt(e.target.value) })}>
-                  {levelRange.map(level => <option key={level} value={level}>{level}</option>)}
-                </FormControl>
-              </Col>
-              <Button onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
-              <Button onClick={() => this.handleSave(this.state)}>Save</Button>
-              <Button onClick={() => this.handleClear()}>Clear</Button>
-            </Row>
-            <br />
-            <NPCDetails handleChange={this.handleChange}
-              name={name}
-              title={title}
-              level={level}
-              npcClass={npcClass}
-              race={race}
-              currentHP={currentHP}
-              maxHP={maxHP}
-              status={status}
-              ac={ac}
-              thac0={thac0}
-              gold={gold}
-              str={str}
-              ex_str={ex_str}
-              int={int}
-              dex={dex}
-              con={con}
-              wis={wis}
-              cha={cha}
-              spellbookLvl_1={spellbookLvl_1}
-              spellbookLvl_2={spellbookLvl_2}
-              spellbookLvl_3={spellbookLvl_3}
-              spellbookLvl_4={spellbookLvl_4}
-              spellbookLvl_5={spellbookLvl_5}
-              memorized={memorized}
-              weapon={weapon}
-              items={items}
-              probity={probity}
-              affiliation={affiliation}
-              notes={notes}
-            />
+                </FormControl> */}
+                </Grid>
+                <Grid item md={2}>
+                  <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ levelSelect: parseInt(e.target.value) })}>
+                    {levelRange.map(level => <option key={level} value={level}>{level}</option>)}
+                  </FormControl>
+                </Grid>
+                <Button onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
+                <Button onClick={() => this.handleSave(this.state)}>Save</Button>
+                <Button onClick={() => this.handleClear()}>Clear</Button>
+              {/* </Row> */}
+              <br />
+              <NPCDetails handleChange={this.handleChange}
+                name={name}
+                title={title}
+                level={level}
+                npcClass={npcClass}
+                race={race}
+                currentHP={currentHP}
+                maxHP={maxHP}
+                status={status}
+                ac={ac}
+                thac0={thac0}
+                gold={gold}
+                str={str}
+                ex_str={ex_str}
+                int={int}
+                dex={dex}
+                con={con}
+                wis={wis}
+                cha={cha}
+                spellbookLvl_1={spellbookLvl_1}
+                spellbookLvl_2={spellbookLvl_2}
+                spellbookLvl_3={spellbookLvl_3}
+                spellbookLvl_4={spellbookLvl_4}
+                spellbookLvl_5={spellbookLvl_5}
+                memorized={memorized}
+                weapon={weapon}
+                items={items}
+                probity={probity}
+                affiliation={affiliation}
+                notes={notes}
+              />
             </Paper>
           </Grid>
         </Grid>

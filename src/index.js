@@ -10,9 +10,14 @@ const theme = createMuiTheme({
     useNextVariants: true,
   },
   palette: {
+    primary: {
+      main: "#009688"
+    },
     type: "dark"
   }
 });
+
+// console.log("theme: ", theme);
 
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>

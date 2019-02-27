@@ -9,7 +9,7 @@ class NPCList extends Component {
           {list.map(npc => <ListItem dense button key={npc.name} style={{ display: this.determineDisplay(npc, searchString),
           textAlign: 'right' }} onClick={() => handleNameClick(npc.name)}>
             <ListItemText>
-            <Typography >{npc.name}</Typography>
+            <Typography style={{color: "rgba(255, 255, 255, 0.7)"}}>{npc.name}</Typography>
           </ListItemText>
           </ListItem>)}
       </List>
