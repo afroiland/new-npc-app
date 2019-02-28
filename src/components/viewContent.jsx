@@ -101,6 +101,7 @@ class ViewContent extends Component {
               <Button style={{ marginRight: 20, marginTop: 6 }} onClick={() => this.handleSave(this.state)}>Save</Button>
               <Button style={{ marginTop: 6 }} onClick={() => this.handleClear()}>Clear</Button>
               <br />
+              <div style={{ height: 25 }}></div>
               <NPCDetails handleChange={this.handleChange}
                 name={name}
                 title={title}

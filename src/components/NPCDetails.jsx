@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Col, Form, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
+import TextField from '@material-ui/core/TextField';
 
 class NPCDetails extends Component {
   render() {
@@ -8,6 +9,101 @@ class NPCDetails extends Component {
       thac0, title, weapon, wis } = this.props;
     return (
       <div>
+        <TextField
+          label="Name"
+          value={name}
+          margin="normal"
+          variant="outlined"
+          style={{marginLeft: 3, marginRight: 3}}
+          onChange={(e) => handleChange(e)}
+        />
+        <TextField
+          label="Level"
+          value={level}
+          margin="normal"
+          variant="outlined"
+          style={{marginLeft: 3, marginRight: 3}}
+          onChange={(e) => handleChange(e)}
+        />
+        <TextField
+          label="Class"
+          value={npcClass}
+          margin="normal"
+          variant="outlined"
+          style={{marginLeft: 3, marginRight: 3}}
+          onChange={(e) => handleChange(e)}
+        />
+        <TextField
+          label="Title"
+          value={title}
+          margin="normal"
+          variant="outlined"
+          style={{marginLeft: 3, marginRight: 3}}
+          onChange={(e) => handleChange(e)}
+        />
+
+        <br />
+
+        <TextField
+          label="Str"
+          value={str}
+          margin="normal"
+          variant="outlined"
+          style={{marginLeft: 3, marginRight: 3, width: 50}}
+          onChange={(e) => handleChange(e)}
+        />
+        <TextField
+          label="/"
+          value={ex_str}
+          margin="normal"
+          variant="outlined"
+          style={{marginLeft: 3, marginRight: 3, width: 55, display: this.showEx_str() ? 'inline-flex' : 'none'}}
+          onChange={(e) => handleChange(e)}
+        />
+        <TextField
+          label="Int"
+          value={int}
+          margin="normal"
+          variant="outlined"
+          style={{marginLeft: 3, marginRight: 3, width: 50}}
+          onChange={(e) => handleChange(e)}
+        />
+        <TextField
+          label="Dex"
+          value={dex}
+          margin="normal"
+          variant="outlined"
+          style={{marginLeft: 3, marginRight: 3, width: 50}}
+          onChange={(e) => handleChange(e)}
+        />
+        <TextField
+          label="Con"
+          value={con}
+          margin="normal"
+          variant="outlined"
+          style={{marginLeft: 3, marginRight: 3, width: 50}}
+          onChange={(e) => handleChange(e)}
+        />
+        <TextField
+          label="Wis"
+          value={wis}
+          margin="normal"
+          variant="outlined"
+          style={{marginLeft: 3, marginRight: 3, width: 50}}
+          onChange={(e) => handleChange(e)}
+        />
+        <TextField
+          label="Cha"
+          value={cha}
+          margin="normal"
+          variant="outlined"
+          style={{marginLeft: 3, marginRight: 3, width: 50}}
+          onChange={(e) => handleChange(e)}
+        />
+        
+
+
+
         <Grid>
           <Row>
             <Col md={12}>
