@@ -78,36 +78,28 @@ class ViewContent extends Component {
           </Grid>
           <Grid item xs={10}>
             <Paper style={{ margin: 5 }}>
-              {/* <Row style={{ marginLeft: 5 }}> */}
-                <Grid container>
-                {/* <Grid item md={3}></Grid> */}
-                <Grid item md={3}>
-                  <FormControl>
-                    <InputLabel>Class</InputLabel>
-                    <Select value={this.state.classSelect}
-                      onChange={e => this.setState({ classSelect: e.target.value })}
-                      style={{width: "150px"}}
-                      >
-                      {classes.map(pcClass => <MenuItem key={pcClass} value={pcClass}>{pcClass}</MenuItem>)}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item md={2}>
-                <FormControl>
-                    <InputLabel>Level</InputLabel>
-                    <Select value={this.state.levelSelect}
-                      onChange={e => this.setState({ levelSelect: e.target.value })}
-                      style={{width: "75px"}}
-                      >
-                      {levelRange.map(level => <MenuItem key={level} value={level}>{level}</MenuItem>)}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Button onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
-                <Button onClick={() => this.handleSave(this.state)}>Save</Button>
-                <Button onClick={() => this.handleClear()}>Clear</Button>
-              {/* </Row> */}
-              </Grid>
+              <div style={{ height: 15 }}></div>
+              <FormControl style={{ marginRight: 30 }}>
+                <InputLabel>Class</InputLabel>
+                <Select value={this.state.classSelect}
+                  onChange={e => this.setState({ classSelect: e.target.value })}
+                  style={{ width: "150px" }}
+                >
+                  {classes.map(pcClass => <MenuItem key={pcClass} value={pcClass}>{pcClass}</MenuItem>)}
+                </Select>
+              </FormControl>
+              <FormControl style={{ marginRight: 30 }}>
+                <InputLabel>Level</InputLabel>
+                <Select value={this.state.levelSelect}
+                  onChange={e => this.setState({ levelSelect: e.target.value })}
+                  style={{ width: "75px" }}
+                >
+                  {levelRange.map(level => <MenuItem key={level} value={level}>{level}</MenuItem>)}
+                </Select>
+              </FormControl>
+              <Button style={{ marginRight: 20, marginTop: 6 }} onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
+              <Button style={{ marginRight: 20, marginTop: 6 }} onClick={() => this.handleSave(this.state)}>Save</Button>
+              <Button style={{ marginTop: 6 }} onClick={() => this.handleClear()}>Clear</Button>
               <br />
               <NPCDetails handleChange={this.handleChange}
                 name={name}
