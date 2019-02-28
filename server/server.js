@@ -39,7 +39,7 @@ app.post('/add', (req, res) => {
   let sql = 'INSERT INTO new_schema.npcs (name, level, title, class, race, currentHP, maxHP, status, ac, thac0, str, ex_str,\
     intel, dex, con, wis, cha, memorized, SBLvl_1, SBLvl_2, SBLvl_3, SBLvl_4, SBLvl_5, gold, weapon, items, probity,\
     affiliation, notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-  db.query(sql, [req.body.name, req.body.level, req.body.title, req.body.class, "", req.body.currentHP,
+  db.query(sql, [req.body.name, req.body.level, req.body.title, req.body.npcClass, "", req.body.currentHP,
   req.body.maxHP, req.body.status, req.body.ac, req.body.thac0, req.body.str, req.body.ex_str, req.body.int, req.body.dex, req.body.con,
   req.body.wis, req.body.cha, req.body.memorized, req.body.spellbookLvl_1, req.body.spellbookLvl_2,
   req.body.spellbookLvl_3, req.body.spellbookLvl_4, req.body.spellbookLvl_5, req.body.gold, req.body.weapon, req.body.items,

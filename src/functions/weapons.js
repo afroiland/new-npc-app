@@ -20,6 +20,9 @@ export function getWeapon(pcClass) {
     case "Magic-User":
       weapon = muWeapons[rollDice(1, muWeapons.length) - 1];
       break;
+    case "Monk":
+      weapon = "Deez Hands";
+      break;
     default:
   }
   return weapon;

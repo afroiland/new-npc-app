@@ -79,40 +79,35 @@ class ViewContent extends Component {
           <Grid item xs={10}>
             <Paper style={{ margin: 5 }}>
               {/* <Row style={{ marginLeft: 5 }}> */}
-                <Grid item md={3}></Grid>
+                <Grid container>
+                {/* <Grid item md={3}></Grid> */}
                 <Grid item md={3}>
                   <FormControl>
                     <InputLabel>Class</InputLabel>
                     <Select value={this.state.classSelect}
                       onChange={e => this.setState({ classSelect: e.target.value })}
                       style={{width: "150px"}}
-                      // inputProps={{
-                      //   name: 'age',
-                      //   id: 'age-simple',
-                      // }}
                       >
                       {classes.map(pcClass => <MenuItem key={pcClass} value={pcClass}>{pcClass}</MenuItem>)}
-                      {/* <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={10}>Ten</MenuItem>
-                      <MenuItem value={20}>Twenty</MenuItem>
-                      <MenuItem value={30}>Thirty</MenuItem> */}
                     </Select>
                   </FormControl>
-                  {/* <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ classSelect: e.target.value })}>
-                  {classes.map(pcClass => <option key={pcClass} value={pcClass}>{pcClass}</option>)}
-                </FormControl> */}
                 </Grid>
                 <Grid item md={2}>
-                  <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ levelSelect: parseInt(e.target.value) })}>
-                    {levelRange.map(level => <option key={level} value={level}>{level}</option>)}
+                <FormControl>
+                    <InputLabel>Level</InputLabel>
+                    <Select value={this.state.levelSelect}
+                      onChange={e => this.setState({ levelSelect: e.target.value })}
+                      style={{width: "75px"}}
+                      >
+                      {levelRange.map(level => <MenuItem key={level} value={level}>{level}</MenuItem>)}
+                    </Select>
                   </FormControl>
                 </Grid>
                 <Button onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
                 <Button onClick={() => this.handleSave(this.state)}>Save</Button>
                 <Button onClick={() => this.handleClear()}>Clear</Button>
               {/* </Row> */}
+              </Grid>
               <br />
               <NPCDetails handleChange={this.handleChange}
                 name={name}
