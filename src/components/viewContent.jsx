@@ -23,7 +23,7 @@ class ViewContent extends Component {
     NPCList: [],
     name: "",
     title: "",
-    level: 0,
+    level: "",
     npcClass: "",
     race: "",
     currentHP: 0,
@@ -262,15 +262,15 @@ class ViewContent extends Component {
     }
   }
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleChange = (name, value) => {
+    this.setState({ [name]: value });
   }
 
   handleClear = () => {
     this.setState({
       name: "",
       title: "",
-      level: 0,
+      level: "",
       npcClass: "",
       race: "",
       currentHP: 0,

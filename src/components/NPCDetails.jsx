@@ -15,14 +15,14 @@ class NPCDetails extends Component {
           margin="normal"
           variant="outlined"
           style={{marginLeft: 3, marginRight: 3}}
-          onChange={(e) => handleChange(e)}
+          onChange={this.handleInputChange('Name')}
         />
         <TextField
           label="Level"
           value={level}
           margin="normal"
           variant="outlined"
-          style={{marginLeft: 3, marginRight: 3}}
+          style={{marginLeft: 3, marginRight: 3, width: 65}}
           onChange={(e) => handleChange(e)}
         />
         <TextField
@@ -201,6 +201,10 @@ class NPCDetails extends Component {
         </Grid>
       </div>
     );
+  }
+
+  handleInputChange = name => event => {
+    this.props.handleChange(name, event.target.value);
   }
 
   showEx_str() {
