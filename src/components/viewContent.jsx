@@ -97,9 +97,12 @@ class ViewContent extends Component {
                   {levelRange.map(level => <MenuItem key={level} value={level}>{level}</MenuItem>)}
                 </Select>
               </FormControl>
-              <Button style={{ marginRight: 20, marginTop: 6 }} onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
-              <Button style={{ marginRight: 20, marginTop: 6 }} onClick={() => this.handleSave(this.state)}>Save</Button>
-              <Button style={{ marginTop: 6 }} onClick={() => this.handleClear()}>Clear</Button>
+              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+                onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
+              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+                onClick={() => this.handleSave(this.state)}>Save</Button>
+              <Button variant='contained' color='primary' style={{ marginTop: 6 }}
+                onClick={() => this.handleClear()}>Clear</Button>
               <br />
               <div style={{ height: 25 }}></div>
               <NPCDetails handleChange={this.handleChange}
