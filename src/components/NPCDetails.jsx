@@ -18,7 +18,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               style={{ marginLeft: 3, marginRight: 3 }}
-              onChange={this.handleInputChange('Name')}
+              onChange={this.handleInputChange('name')}
             />
             <TextField
               label="Level"
@@ -26,7 +26,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               style={{ marginLeft: 3, marginRight: 3, width: 65 }}
-              onChange={(e) => handleChange(e)}
+              onChange={this.handleInputChange('level')}
             />
             <TextField
               label="Class"
@@ -34,7 +34,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               style={{ marginLeft: 3, marginRight: 3 }}
-              onChange={(e) => handleChange(e)}
+              onChange={this.handleInputChange('npcClass')}
             />
             <TextField
               label="Title"
@@ -42,7 +42,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               style={{ marginLeft: 3, marginRight: 3 }}
-              onChange={(e) => handleChange(e)}
+              onChange={this.handleInputChange('title')}
             />
           </Grid>
 

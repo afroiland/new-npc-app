@@ -62,7 +62,7 @@ class ViewContent extends Component {
       <div>
         <Grid container>
           <Grid item xs={2}>
-            <Paper style={{ marginLeft: 5, marginTop: 5, marginBottom: 5, height: "100%" }}>
+            <Paper style={{ marginLeft: 5, marginTop: 5, height: "100%" }}>
               <TextField
                 id="standard-search"
                 label="Search..."
@@ -104,7 +104,9 @@ class ViewContent extends Component {
               <Button variant='contained' color='primary' style={{ marginTop: 6 }}
                 onClick={() => this.handleClear()}>Clear</Button>
               <br />
-              <div style={{ height: 25 }}></div>
+              <div style={{ height: 15 }}></div>
+              </Paper>
+              <Paper style={{ margin: 5, height: "100%" }}>
               <NPCDetails handleChange={this.handleChange}
                 name={name}
                 title={title}
