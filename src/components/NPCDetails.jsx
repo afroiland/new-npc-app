@@ -57,7 +57,7 @@ class NPCDetails extends Component {
                 margin="normal"
                 variant="outlined"
                 style={{ marginLeft: 3, marginRight: 3, width: 50 }}
-                onChange={(e) => handleChange(e)}
+                onChange={this.handleInputChange('str')}
               />
               <TextField
                 label="/"
@@ -65,168 +65,219 @@ class NPCDetails extends Component {
                 margin="normal"
                 variant="outlined"
                 style={{ marginLeft: 3, marginRight: 3, width: 55, display: this.showEx_str() ? 'inline-flex' : 'none' }}
-                onChange={(e) => handleChange(e)}
+                onChange={this.handleInputChange('ex_str')}
               />
               <span style={{ width: 55, display: this.showEx_str() ? 'none' : 'inline-flex' }}></span>
-            {/* </Grid>
+              {/* </Grid>
             <Grid item> */}
-              <TextField
-                label="Gold"
-                value={gold}
-                margin="normal"
-                variant="outlined"
-                style={{ marginLeft: 3, marginRight: 3, width: 200 }}
-                onChange={(e) => handleChange(e)}
-              />
-            </Grid>
+
+              {/* </Grid>
             <br/>
-            <Grid item>
+            <Grid item> */}
               <TextField
                 label="Int"
                 value={int}
                 margin="normal"
                 variant="outlined"
                 style={{ marginLeft: 3, marginRight: 3, width: 50 }}
-                onChange={(e) => handleChange(e)}
+                onChange={this.handleInputChange('int')}
               />
-            </Grid>
-            <Grid item>
+              {/* </Grid>
+            <Grid item> */}
               <TextField
                 label="Dex"
                 value={dex}
                 margin="normal"
                 variant="outlined"
                 style={{ marginLeft: 3, marginRight: 3, width: 50 }}
-                onChange={(e) => handleChange(e)}
+                onChange={this.handleInputChange('dex')}
               />
-            </Grid>
-            <Grid item>
+              {/* </Grid>
+            <Grid item> */}
               <TextField
                 label="Con"
                 value={con}
                 margin="normal"
                 variant="outlined"
                 style={{ marginLeft: 3, marginRight: 3, width: 50 }}
-                onChange={(e) => handleChange(e)}
+                onChange={this.handleInputChange('con')}
               />
-            </Grid>
-            <Grid item>
+              {/* </Grid>
+            <Grid item> */}
               <TextField
                 label="Wis"
                 value={wis}
                 margin="normal"
                 variant="outlined"
                 style={{ marginLeft: 3, marginRight: 3, width: 50 }}
-                onChange={(e) => handleChange(e)}
+                onChange={this.handleInputChange('wis')}
               />
-            </Grid>
-            <Grid item>
+              {/* </Grid>
+            <Grid item> */}
               <TextField
                 label="Cha"
                 value={cha}
                 margin="normal"
                 variant="outlined"
                 style={{ marginLeft: 3, marginRight: 3, width: 50 }}
-                onChange={(e) => handleChange(e)}
+                onChange={this.handleInputChange('cha')}
               />
+              <TextField
+                label="Gold"
+                value={gold}
+                margin="normal"
+                variant="outlined"
+                style={{ marginLeft: 3, marginRight: 3, width: 75 }}
+                onChange={this.handleInputChange('gold')}
+              />
+
+              <TextField
+                label="Status"
+                value={status}
+                margin="normal"
+                variant="outlined"
+                style={{ marginLeft: 3, marginRight: 3, width: 200 }}
+                onChange={this.handleInputChange('status')}
+              />
+              <TextField
+                label="HP"
+                value={currentHP}
+                margin="normal"
+                variant="outlined"
+                style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+                onChange={this.handleInputChange('currentHP')}
+              />
+              <TextField
+                label="Max"
+                value={maxHP}
+                margin="normal"
+                variant="outlined"
+                style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+                onChange={this.handleInputChange('maxHP')}
+              />
+              <TextField
+                label="AC"
+                value={ac}
+                margin="normal"
+                variant="outlined"
+                style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+                onChange={this.handleInputChange('ac')}
+              />
+              <TextField
+                label="Thac0"
+                value={thac0}
+                margin="normal"
+                variant="outlined"
+                style={{ marginLeft: 3, marginRight: 3, width: 65 }}
+                onChange={this.handleInputChange('thac0')}
+              />
+              <TextField
+                label="Probity"
+                value={probity}
+                margin="normal"
+                variant="outlined"
+                style={{ marginLeft: 3, marginRight: 3, width: 65 }}
+                onChange={this.handleInputChange('probity')}
+              />
+              <TextField
+                label="Weapon"
+                value={weapon}
+                margin="normal"
+                variant="outlined"
+                style={{ marginLeft: 3, marginRight: 3, width: 200 }}
+                onChange={this.handleInputChange('weapon')}
+              />
+              <TextField
+                label="Affiliation"
+                value={affiliation}
+                margin="normal"
+                variant="outlined"
+                style={{ marginLeft: 3, marginRight: 3, width: 200 }}
+                onChange={this.handleInputChange('affiliation')}
+              />
+              <TextField
+                label="Items"
+                value={items}
+                margin="normal"
+                variant="outlined"
+                multiline
+                style={{ marginLeft: 3, marginRight: 3, width: 800 }}
+                onChange={this.handleInputChange('items')}
+              />
+              <TextField
+                label="Notes"
+                value={notes}
+                margin="normal"
+                variant="outlined"
+                multiline
+                style={{ marginLeft: 3, marginRight: 3, width: 800 }}
+                onChange={this.handleInputChange('notes')}
+              />
+              <TextField
+                label="Memorized Spells"
+                value={memorized}
+                margin="normal"
+                variant="outlined"
+                multiline
+                style={{ display: memorized ? 'inline-flex' : 'none', marginLeft: 3, marginRight: 3, width: 800 }}
+                onChange={this.handleInputChange('memorized')}
+              />
+
+              <div style={{ display: this.spellbookExists() ? 'block' : 'none' }}>
+                <p style={{ marginRight: 200 }}>Spellbook</p>
+                <TextField
+                  label="Spellbook: Level 1"
+                  value={spellbookLvl_1}
+                  margin="normal"
+                  variant="outlined"
+                  multiline
+                  style={{ marginLeft: 3, marginRight: 3, width: 800 }}
+                  onChange={this.handleInputChange('spellbookLvl_1')}
+                />
+                <TextField
+                  label="Spellbook: Level 2"
+                  value={spellbookLvl_2}
+                  margin="normal"
+                  variant="outlined"
+                  multiline
+                  style={{ marginLeft: 3, marginRight: 3, width: 800 }}
+                  onChange={this.handleInputChange('spellbookLvl_2')}
+                />
+                <TextField
+                  label="Spellbook: Level 3"
+                  value={spellbookLvl_3}
+                  margin="normal"
+                  variant="outlined"
+                  multiline
+                  style={{ marginLeft: 3, marginRight: 3, width: 800 }}
+                  onChange={this.handleInputChange('spellbookLvl_3')}
+                />
+                <TextField
+                  label="Spellbook: Level 4"
+                  value={spellbookLvl_4}
+                  margin="normal"
+                  variant="outlined"
+                  multiline
+                  style={{ marginLeft: 3, marginRight: 3, width: 800 }}
+                  onChange={this.handleInputChange('spellbookLvl_4')}
+                />
+                <TextField
+                  label="Spellbook: Level 5"
+                  value={spellbookLvl_5}
+                  margin="normal"
+                  variant="outlined"
+                  multiline
+                  style={{ marginLeft: 3, marginRight: 3, width: 800 }}
+                  onChange={this.handleInputChange('spellbookLvl_5')}
+                />
+              </div>
+
+
+
             </Grid>
           </Grid>
 
-          {/* <Grid>
-            <Row>
-              <Col md={12}>
-                <Form horizontal>
-                  <FormGroup>
-                    <Col sm={1} className="fieldTitle">Name: </Col>
-                    <Col sm={4}><FormControl name="name" value={name} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">Level: </Col>
-                    <Col sm={3}><FormControl name="level" value={level} onChange={(e) => handleChange(e)} /></Col>
-                  </FormGroup>
-                  <FormGroup>
-                    <Col sm={1} className="fieldTitle">Class: </Col>
-                    <Col sm={4}><FormControl name="npcClass" value={npcClass} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">Title: </Col>
-                    <Col sm={3}><FormControl name="title" value={title} onChange={(e) => handleChange(e)} /></Col>
-                  </FormGroup>
-                  <FormGroup>
-                    <Col sm={1} className="fieldTitle">Str: </Col>
-                    <Col sm={1}><FormControl name="str" value={str} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1}><FormControl style={{ display: this.showEx_str() ? 'block' : 'none' }}
-                      name="ex_str" value={ex_str} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">Int: </Col>
-                    <Col sm={1}><FormControl name="int" value={int} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">Dex: </Col>
-                    <Col sm={1}><FormControl name="dex" value={dex} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">Con: </Col>
-                    <Col sm={1}><FormControl name="con" value={con} onChange={(e) => handleChange(e)} /></Col>
-                  </FormGroup>
-                  <FormGroup>
-                    <Col sm={1} className="fieldTitle">Wis: </Col>
-                    <Col sm={1}><FormControl name="wis" value={wis} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">Cha: </Col>
-                    <Col sm={1}><FormControl name="cha" value={cha} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">Gold: </Col>
-                    <Col sm={1}><FormControl name="gold" value={gold} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">Status: </Col>
-                    <Col sm={2}><FormControl name="status" value={status} onChange={(e) => handleChange(e)} /></Col>
-                  </FormGroup>
-                  <FormGroup>
-                    <Col sm={1} className="fieldTitle">HP: </Col>
-                    <Col sm={1}><FormControl name="currentHP" value={currentHP} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1}><FormControl name="maxHP" value={maxHP} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">AC: </Col>
-                    <Col sm={1}><FormControl name="ac" value={ac} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">Thac0: </Col>
-                    <Col sm={1}><FormControl name="thac0" value={thac0} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">Probity: </Col>
-                    <Col sm={1}><FormControl name="probity" value={probity} onChange={(e) => handleChange(e)} /></Col>
-                  </FormGroup>
-                  <FormGroup>
-                    <Col sm={1} className="fieldTitle">Weapon: </Col>
-                    <Col sm={3}><FormControl name="weapon" value={weapon} onChange={(e) => handleChange(e)} /></Col>
-                    <Col sm={1} className="fieldTitle">Affiliation: </Col>
-                    <Col sm={4}><FormControl name="affiliation" value={affiliation} onChange={(e) => handleChange(e)} /></Col>
-                  </FormGroup>
-                  <FormGroup>
-                    <Col sm={1} className="fieldTitle">Items: </Col>
-                    <Col sm={8}><FormControl name="items" value={items} onChange={(e) => handleChange(e)} /></Col>
-                  </FormGroup>
-                  <FormGroup>
-                    <Col sm={1} className="fieldTitle">Notes: </Col>
-                    <Col sm={8}><FormControl name="notes" value={notes} onChange={(e) => handleChange(e)} /></Col>
-                  </FormGroup>
-                  <FormGroup style={{ display: memorized ? 'block' : 'none' }}>
-                    <Col sm={1} className="fieldTitle">Memorized: </Col>
-                    <Col sm={8}><FormControl name="memorized"
-                      value={memorized ? memorized : ""} onChange={(e) => handleChange(e)} /></Col>
-                  </FormGroup>
-                  <div style={{ display: this.spellbookExists() ? 'block' : 'none' }}>
-                    <p style={{ marginRight: 200 }}>Spellbook</p>
-                    <FormGroup style={{ display: spellbookLvl_1 ? 'block' : 'none' }}>
-                      <Col sm={1} className="fieldTitle">Lv 1: </Col>
-                      <Col sm={8}><FormControl value={spellbookLvl_1} onChange={(e) => handleChange(e)} /></Col>
-                    </FormGroup>
-                    <FormGroup style={{ display: spellbookLvl_2 ? 'block' : 'none' }}>
-                      <Col sm={1} className="fieldTitle">Lv 2: </Col>
-                      <Col sm={8}><FormControl value={spellbookLvl_2} onChange={(e) => handleChange(e)} /></Col>
-                    </FormGroup>
-                    <FormGroup style={{ display: spellbookLvl_3 ? 'block' : 'none' }}>
-                      <Col sm={1} className="fieldTitle">Lv 3: </Col>
-                      <Col sm={8}><FormControl value={spellbookLvl_3} onChange={(e) => handleChange(e)} /></Col>
-                    </FormGroup>
-                    <FormGroup style={{ display: spellbookLvl_4 ? 'block' : 'none' }}>
-                      <Col sm={1} className="fieldTitle">Lv 4: </Col>
-                      <Col sm={8}><FormControl value={spellbookLvl_4} onChange={(e) => handleChange(e)} /></Col>
-                    </FormGroup>
-                    <FormGroup style={{ display: spellbookLvl_5 ? 'block' : 'none' }}>
-                      <Col sm={1} className="fieldTitle">Lv 5: </Col>
-                      <Col sm={8}><FormControl value={spellbookLvl_5} onChange={(e) => handleChange(e)} /></Col>
-                    </FormGroup>
-                  </div>
-                </Form>
-              </Col>
-            </Row>
-          </Grid> */}
+          
         </Grid>
       </div>
     );

@@ -28,7 +28,7 @@ class ViewContent extends Component {
     race: "",
     currentHP: 0,
     maxHP: 0,
-    status: "Normal",
+    status: "",
     ac: 0,
     thac0: 0,
     str: 0,
