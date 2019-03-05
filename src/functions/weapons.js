@@ -15,13 +15,14 @@ export function getWeapon(pcClass) {
       weapon = clericWeapons[rollDice(1, clericWeapons.length) - 1];
       break;
     case "Thief":
+    case "Assassin":
       weapon = thiefWeapons[rollDice(1, thiefWeapons.length) - 1];
       break;
     case "Magic-User":
       weapon = muWeapons[rollDice(1, muWeapons.length) - 1];
       break;
     case "Monk":
-      weapon = "Deez Hands";
+      weapon = "Hands";
       break;
     default:
   }

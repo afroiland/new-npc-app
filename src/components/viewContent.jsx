@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
-// import { Button, Col, FormControl, Row } from "react-bootstrap";
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";

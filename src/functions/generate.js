@@ -5,7 +5,7 @@ import { calcThac0 } from "./thac0";
 import { getWeapon } from "./weapons"
 
 const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Business", "Church",
-  "Crown", "Street", "Inmate", "Dwarf", "Burquone", "Tellerue"];
+  "Crown", "Street", "Inmates", "Dwarves", "Burquone", "Tellerue"];
 
 export function generate(level, pcClass) {
   let pc = { level: level, npcClass: pcClass };
