@@ -9,8 +9,8 @@ class NPCDetails extends Component {
       thac0, title, weapon, wis } = this.props;
     return (
       <div>
-        <Grid container>
-          <Grid item sm>
+        <Grid container spacing={24} style={{marginLeft: 15}}>
+          <Grid item>
             <TextField
               label="Name"
               value={name}
@@ -19,6 +19,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3 }}
               onChange={this.handleInputChange('name')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Level"
               value={level}
@@ -27,6 +29,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 65 }}
               onChange={this.handleInputChange('level')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Class"
               value={npcClass}
@@ -35,6 +39,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3 }}
               onChange={this.handleInputChange('npcClass')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Title"
               value={title}
@@ -43,7 +49,9 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3 }}
               onChange={this.handleInputChange('title')}
             />
-            <br />
+          </Grid>
+          <br />
+          <Grid item>
             <TextField
               label="Str"
               value={str}
@@ -52,6 +60,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 50 }}
               onChange={this.handleInputChange('str')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="/"
               value={ex_str}
@@ -60,7 +70,9 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 55, display: this.showEx_str() ? 'inline-flex' : 'none' }}
               onChange={this.handleInputChange('ex_str')}
             />
-            <span style={{ width: 55, display: this.showEx_str() ? 'none' : 'inline-flex' }}></span>
+            <span style={{ width: 61, display: this.showEx_str() ? 'none' : 'inline-flex' }}></span>
+          </Grid>
+          <Grid item>
             <TextField
               label="Int"
               value={int}
@@ -69,6 +81,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 50 }}
               onChange={this.handleInputChange('int')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Dex"
               value={dex}
@@ -77,6 +91,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 50 }}
               onChange={this.handleInputChange('dex')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Con"
               value={con}
@@ -85,6 +101,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 50 }}
               onChange={this.handleInputChange('con')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Wis"
               value={wis}
@@ -93,6 +111,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 50 }}
               onChange={this.handleInputChange('wis')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Cha"
               value={cha}
@@ -101,6 +121,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 50 }}
               onChange={this.handleInputChange('cha')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Gold"
               value={gold}
@@ -109,6 +131,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 75 }}
               onChange={this.handleInputChange('gold')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Status"
               value={status}
@@ -117,7 +141,9 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3 }}
               onChange={this.handleInputChange('status')}
             />
-            <br />
+          </Grid>
+          <br />
+          <Grid item>
             <TextField
               label="HP"
               value={currentHP}
@@ -126,6 +152,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 60 }}
               onChange={this.handleInputChange('currentHP')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Max"
               value={maxHP}
@@ -134,6 +162,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 60 }}
               onChange={this.handleInputChange('maxHP')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="AC"
               value={ac}
@@ -142,6 +172,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 50 }}
               onChange={this.handleInputChange('ac')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Thac0"
               value={thac0}
@@ -150,6 +182,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 65 }}
               onChange={this.handleInputChange('thac0')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Probity"
               value={probity}
@@ -158,6 +192,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 65 }}
               onChange={this.handleInputChange('probity')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Weapon"
               value={weapon}
@@ -166,6 +202,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3 }}
               onChange={this.handleInputChange('weapon')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Affiliation"
               value={affiliation}
@@ -174,6 +212,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3 }}
               onChange={this.handleInputChange('affiliation')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Items"
               value={items}
@@ -183,6 +223,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 800 }}
               onChange={this.handleInputChange('items')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Notes"
               value={notes}
@@ -192,6 +234,8 @@ class NPCDetails extends Component {
               style={{ marginLeft: 3, marginRight: 3, width: 800 }}
               onChange={this.handleInputChange('notes')}
             />
+          </Grid>
+          <Grid item>
             <TextField
               label="Memorized Spells"
               value={memorized}
@@ -201,9 +245,11 @@ class NPCDetails extends Component {
               style={{ display: memorized ? 'inline-flex' : 'none', marginLeft: 3, marginRight: 3, width: 800 }}
               onChange={this.handleInputChange('memorized')}
             />
+          </Grid>
 
-            <div style={{ display: this.spellbookExists() ? 'block' : 'none' }}>
-              <p style={{ marginRight: 200 }}>Spellbook</p>
+          <div style={{ display: this.spellbookExists() ? 'block' : 'none' }}>
+            <Grid item>
+              {/* <p style={{ marginRight: 200 }}>Spellbook</p> */}
               <TextField
                 label="Spellbook: Level 1"
                 value={spellbookLvl_1}
@@ -213,6 +259,8 @@ class NPCDetails extends Component {
                 style={{ marginLeft: 3, marginRight: 3, width: 800 }}
                 onChange={this.handleInputChange('spellbookLvl_1')}
               />
+            </Grid>
+            <Grid item>
               <TextField
                 label="Spellbook: Level 2"
                 value={spellbookLvl_2}
@@ -222,6 +270,8 @@ class NPCDetails extends Component {
                 style={{ marginLeft: 3, marginRight: 3, width: 800 }}
                 onChange={this.handleInputChange('spellbookLvl_2')}
               />
+            </Grid>
+            <Grid item>
               <TextField
                 label="Spellbook: Level 3"
                 value={spellbookLvl_3}
@@ -231,6 +281,8 @@ class NPCDetails extends Component {
                 style={{ marginLeft: 3, marginRight: 3, width: 800 }}
                 onChange={this.handleInputChange('spellbookLvl_3')}
               />
+            </Grid>
+            <Grid item>
               <TextField
                 label="Spellbook: Level 4"
                 value={spellbookLvl_4}
@@ -240,6 +292,8 @@ class NPCDetails extends Component {
                 style={{ marginLeft: 3, marginRight: 3, width: 800 }}
                 onChange={this.handleInputChange('spellbookLvl_4')}
               />
+            </Grid>
+            <Grid item>
               <TextField
                 label="Spellbook: Level 5"
                 value={spellbookLvl_5}
@@ -249,8 +303,8 @@ class NPCDetails extends Component {
                 style={{ marginLeft: 3, marginRight: 3, width: 800 }}
                 onChange={this.handleInputChange('spellbookLvl_5')}
               />
-            </div>
-          </Grid>
+            </Grid>
+          </div>
         </Grid>
       </div>
     );
