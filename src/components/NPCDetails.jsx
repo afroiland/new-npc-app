@@ -9,14 +9,14 @@ class NPCDetails extends Component {
       thac0, title, weapon, wis } = this.props;
     return (
       <div>
-        <Grid container spacing={24} style={{marginLeft: 15}}>
+        <Grid container spacing={24} justify="center" style={{marginTop: 5}}>
           <Grid item>
             <TextField
               label="Name"
               value={name}
               margin="normal"
               variant="outlined"
-              style={{ marginLeft: 3, marginRight: 3 }}
+              // style={{ marginLeft: 3, marginRight: 3 }}
               onChange={this.handleInputChange('name')}
             />
           </Grid>
@@ -26,7 +26,8 @@ class NPCDetails extends Component {
               value={level}
               margin="normal"
               variant="outlined"
-              style={{ marginLeft: 3, marginRight: 3, width: 65 }}
+              style={{width: 65}}
+              // style={{ marginLeft: 3, marginRight: 3, width: 65 }}
               onChange={this.handleInputChange('level')}
             />
           </Grid>
@@ -36,7 +37,7 @@ class NPCDetails extends Component {
               value={npcClass}
               margin="normal"
               variant="outlined"
-              style={{ marginLeft: 3, marginRight: 3 }}
+              // style={{ marginLeft: 3, marginRight: 3 }}
               onChange={this.handleInputChange('npcClass')}
             />
           </Grid>
@@ -46,11 +47,11 @@ class NPCDetails extends Component {
               value={title}
               margin="normal"
               variant="outlined"
-              style={{ marginLeft: 3, marginRight: 3 }}
+              // style={{ marginLeft: 3, marginRight: 3 }}
               onChange={this.handleInputChange('title')}
             />
           </Grid>
-          <br />
+          <div style={{width: '100%'}}></div>
           <Grid item>
             <TextField
               label="Str"
@@ -142,7 +143,8 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('status')}
             />
           </Grid>
-          <br />
+          <div style={{width: '100%'}}></div>
+          {/* <br /> */}
           <Grid item>
             <TextField
               label="HP"

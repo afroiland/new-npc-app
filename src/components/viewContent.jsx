@@ -105,7 +105,7 @@ class ViewContent extends Component {
               <br />
               <div style={{ height: 15 }}></div>
               </Paper>
-              <Paper style={{ margin: 5, height: "100%" }}>
+              <Paper style={{ marginLeft: 5, height: "100%" }}>
               <NPCDetails handleChange={this.handleChange}
                 name={name}
                 title={title}
