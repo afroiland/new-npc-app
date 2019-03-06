@@ -256,20 +256,21 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('notes')}
             />
           </Grid>
-          <Grid item style={{padding: 5, width: '100%'}}>
+          {memorized && <Grid item style={{padding: 5, width: '100%'}}>
             <TextField
               label="Memorized Spells"
               value={memorized}
               margin="normal"
               variant="outlined"
               multiline
-              style={{ display: memorized ? 'inline-flex' : 'none', marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ display: memorized ? 'inline-flex' : 'none', marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
               onChange={this.handleInputChange('memorized')}
             />
-          </Grid>
+          </Grid>}
 
-          <div style={{ display: this.spellbookExists() ? 'inline-flex' : 'none' }}>
-            <Grid item style={{padding: 5, width: '100%'}}>
+          {/* <div style={{ display: this.spellbookExists() ? 'inline-flex' : 'none' }}> */}
+            {spellbookLvl_1 && <Grid item style={{padding: 5, width: '100%'}}>
               <TextField
                 label="Spellbook: Level 1"
                 value={spellbookLvl_1}
@@ -279,8 +280,8 @@ class NPCDetails extends Component {
                 style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
                 onChange={this.handleInputChange('spellbookLvl_1')}
               />
-            </Grid>
-            <Grid item style={{padding: 5, width: '100%'}}>
+            </Grid>}
+            {spellbookLvl_2 && <Grid item style={{padding: 5, width: '100%'}}>
               <TextField
                 label="Spellbook: Level 2"
                 value={spellbookLvl_2}
@@ -290,8 +291,8 @@ class NPCDetails extends Component {
                 style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
                 onChange={this.handleInputChange('spellbookLvl_2')}
               />
-            </Grid>
-            <Grid item style={{padding: 5, width: '100%'}}>
+            </Grid>}
+            {spellbookLvl_3 && <Grid item style={{padding: 5, width: '100%'}}>
               <TextField
                 label="Spellbook: Level 3"
                 value={spellbookLvl_3}
@@ -301,8 +302,8 @@ class NPCDetails extends Component {
                 style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
                 onChange={this.handleInputChange('spellbookLvl_3')}
               />
-            </Grid>
-            <Grid item style={{padding: 5, width: '100%'}}>
+            </Grid>}
+            {spellbookLvl_4 && <Grid item style={{padding: 5, width: '100%'}}>
               <TextField
                 label="Spellbook: Level 4"
                 value={spellbookLvl_4}
@@ -312,8 +313,8 @@ class NPCDetails extends Component {
                 style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
                 onChange={this.handleInputChange('spellbookLvl_4')}
               />
-            </Grid>
-            <Grid item style={{padding: 5, width: '100%'}}>
+            </Grid>}
+            {spellbookLvl_5 && <Grid item style={{padding: 5, width: '100%'}}>
               <TextField
                 label="Spellbook: Level 5"
                 value={spellbookLvl_5}
@@ -323,8 +324,8 @@ class NPCDetails extends Component {
                 style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
                 onChange={this.handleInputChange('spellbookLvl_5')}
               />
-            </Grid>
-          </div>
+            </Grid>}
+          {/* </div> */}
         </Grid>
       </div>
     );
@@ -341,11 +342,11 @@ class NPCDetails extends Component {
     }
   }
 
-  spellbookExists() {
-    if (this.props.spellbookLvl_1) {
-      return true;
-    }
-  }
+  // spellbookExists() {
+  //   if (this.props.spellbookLvl_1) {
+  //     return true;
+  //   }
+  // }
 }
 
 export default NPCDetails;
