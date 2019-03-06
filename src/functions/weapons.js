@@ -4,6 +4,7 @@ const fighterWeapons = ["Axe", "Club", "Halberd", "Shortsword", "Longsword", "Tw
 const clericWeapons = ["Club", "Flail", "Hammer", "Mace", "Staff"];
 const thiefWeapons = ["Club", "Dagger", "Darts", "Shortsword", "Longsword"];
 const muWeapons = ["Dagger", "Darts", "Staff"];
+const monkWeapons = ["Club", "Dagger", "Darts", "Staff", "Hands"];
 
 export function getWeapon(pcClass) {
   let weapon;
@@ -22,8 +23,8 @@ export function getWeapon(pcClass) {
       weapon = muWeapons[rollDice(1, muWeapons.length) - 1];
       break;
     case "Monk":
-      weapon = "Hands";
-      break;
+      weapon = monkWeapons[rollDice(1, monkWeapons.length) -1];
+      break;  
     default:
   }
   return weapon;
