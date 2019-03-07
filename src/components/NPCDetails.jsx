@@ -10,17 +10,18 @@ class NPCDetails extends Component {
     return (
       <div>
         <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '95%' }}>
-          <Grid item style={{ padding: 5 }}>
+          <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Name"
               value={name}
               margin="normal"
               variant="outlined"
-              style={{ flexGrow: 1 }}
+              // style={{ flexGrow: 1 }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('name')}
             />
           </Grid>
-          <div style={{ flexGrow: 1 }}></div>
+          {/* <div style={{ flexGrow: 1 }}></div> */}
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Level"
@@ -32,23 +33,25 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('level')}
             />
           </Grid>
-          <div style={{ flexGrow: 1 }}></div>
-          <Grid item style={{ padding: 5 }}>
+          {/* <div style={{ flexGrow: 1 }}></div> */}
+          <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Class"
               value={npcClass}
               margin="normal"
               variant="outlined"
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('npcClass')}
             />
           </Grid>
-          <div style={{ flexGrow: 1 }}></div>
-          <Grid item style={{ padding: 5 }}>
+          {/* <div style={{ flexGrow: 1 }}></div> */}
+          <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Title"
               value={title}
               margin="normal"
               variant="outlined"
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('title')}
             />
           </Grid>
@@ -60,7 +63,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              // style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              style={{ width: 50 }}
               onChange={this.handleInputChange('str')}
             />
           </Grid>
@@ -130,7 +134,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('cha')}
             />
           </Grid>
-          <div style={{ flexGrow: 1 }}></div>
+          {/* <div style={{ flexGrow: 1 }}></div> */}
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Gold"
@@ -138,18 +142,18 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ textAlign: "right", marginLeft: 3, marginRight: 3, width: 75 }}
+              style={{ textAlign: "right", marginLeft: 3, marginRight: 3, width: 100 }}
               onChange={this.handleInputChange('gold')}
             />
           </Grid>
-          <div style={{ flexGrow: 1 }}></div>
-          <Grid item style={{ padding: 5 }}>
+          {/* <div style={{ flexGrow: 1 }}></div> */}
+          <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Status"
               value={status}
               margin="normal"
               variant="outlined"
-              style={{ marginLeft: 3, marginRight: 3 }}
+              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
               onChange={this.handleInputChange('status')}
             />
           </Grid>
@@ -212,24 +216,24 @@ class NPCDetails extends Component {
             />
           </Grid>
           <div style={{ flexGrow: 1 }}></div>
-          <Grid item style={{ padding: 5 }}>
+          <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Weapon"
               value={weapon}
               margin="normal"
               variant="outlined"
-              style={{ marginLeft: 3, marginRight: 3 }}
+              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
               onChange={this.handleInputChange('weapon')}
             />
           </Grid>
           <div style={{ flexGrow: 1 }}></div>
-          <Grid item style={{ padding: 5 }}>
+          <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
-              label="Affiliation"
+              label="Affiliation" 
               value={affiliation}
               margin="normal"
               variant="outlined"
-              style={{ marginLeft: 3, marginRight: 3 }}
+              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
               onChange={this.handleInputChange('affiliation')}
             />
           </Grid>
