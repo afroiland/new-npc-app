@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CombatBar from "./combatBar";
+// import CombatBar from "./combatBar";
 import NPCList from "./NPCList";
 import GroupList from "./groupList";
 // import { Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
@@ -22,7 +22,7 @@ class Combat extends Component {
   }
 
   render() {
-    const {selectedNPC, searchString} = this.state;
+    const { selectedNPC, searchString } = this.state;
     return (
       <div>
         <Grid container>
@@ -42,95 +42,137 @@ class Combat extends Component {
             </Paper>
           </Grid>
           <Grid item xs={10}>
-          <Paper style={{ margin: 5 }}>
-            <div style={{ height: 15 }}></div>
+            <Paper style={{ margin: 5 }}>
+              <div style={{ height: 15 }}></div>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-                // onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
-                >Generate</Button>
+              // onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
+              >Add to Group A</Button>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-                // onClick={() => this.handleSave(this.state)}>Save</Button>
-                >Save</Button>
+              // onClick={() => this.handleSave(this.state)}>Save</Button>
+              >Add to Group B</Button>
               <Button variant='contained' color='primary' style={{ marginTop: 6 }}
-                // onClick={() => this.handleClear()}>Clear</Button>
-                >Clear</Button>
+              // onClick={() => this.handleClear()}>Clear</Button>
+              >Remove</Button>
+              <Button variant='contained' color='primary' style={{ marginTop: 6 }}
+              // onClick={() => this.handleClear()}>Clear</Button>
+              >Clear All</Button>
+              <Button variant='contained' color='primary' style={{ marginTop: 6 }}
+              // onClick={() => this.handleClear()}>Clear</Button>
+              >Fight</Button>
               <br />
               <div style={{ height: 15 }}></div>
             </Paper>
+            <Paper>
+              <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '95%' }}>
+                <Grid item style={{ padding: 5, flexGrow: 1 }}>
+                  <TextField
+                    label="Group A"
+                    value=""
+                    margin="normal"
+                    variant="outlined"
+                    style={{ width: '100%' }}
+                    // onChange={this.handleInputChange('name')}
+                  />
+                </Grid>
+                <Grid item style={{ padding: 5, flexGrow: 1 }}>
+                  <TextField
+                    label="Group B"
+                    value=""
+                    margin="normal"
+                    variant="outlined"
+                    inputProps={{ style: { textAlign: "center" } }}
+                    style={{ width: '100%' }}
+                    // onChange={this.handleInputChange('level')}
+                  />
+                </Grid>
+                <Grid item style={{ padding: 5, flexGrow: 1 }}>
+                  <TextField
+                    label="Combat Log"
+                    value=""
+                    margin="normal"
+                    variant="outlined"
+                    style={{ width: '100%' }}
+                    // onChange={this.handleInputChange('npcClass')}
+                  />
+                </Grid>
+              </Grid>
+            </Paper>
           </Grid>
-        </Grid>
-
-        {/* <CombatBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
-        <Grid>
-          <Row>
-            <Col sm={2}>
-              <FormGroup>
-                <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
-              </FormGroup>
-              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC}
-                searchString={this.state.searchString} />
-            </Col>
-            <Col sm={3}>
-              <p>Group A</p>
-              <GroupList list={this.state.groupA} />
-            </Col>
-            <Col sm={3}>
-              <p>Group B</p>
-              <GroupList list={this.state.groupB} />
-            </Col>
-            <Col sm={4}>
-              <p>Log / Results</p>
-              <ul className="combatLog">{this.state.combatLog.map((string, index) => <li key={index} className="notHidden">{string}</li>)}</ul>
-            </Col>
-          </Row>
-        </Grid> */}
-      </div>
-    );
-  }
-
+          </Grid>
+          </div>
+          
+        //    <CombatBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
+        // <Grid>
+        //   <Row>
+        //     <Col sm={2}>
+        //       <FormGroup>
+        //         <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
+        //       </FormGroup>
+        //       <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC}
+        //         searchString={this.state.searchString} />
+        //     </Col>
+        //     <Col sm={3}>
+        //       <p>Group A</p>
+        //       <GroupList list={this.state.groupA} />
+        //     </Col>
+        //     <Col sm={3}>
+        //       <p>Group B</p>
+        //       <GroupList list={this.state.groupB} />
+        //     </Col>
+        //     <Col sm={4}>
+        //       <p>Log / Results</p>
+        //       <ul className="combatLog">{this.state.combatLog.map((string, index) => <li key={index} className="notHidden">{string}</li>)}</ul>
+        //     </Col>
+        //   </Row>
+        // </Grid> 
+      
+        );
+      }
+    
   componentDidMount() {
-    axios.get('http://localhost:3001/getNPCs').then(res => {
-      this.setState({ NPCList: res.data });
-    });
-  }
-
+          axios.get('http://localhost:3001/getNPCs').then(res => {
+            this.setState({ NPCList: res.data });
+          });
+        }
+      
   handleSearchChange = (newSearchString) => {
-    this.setState({ searchString: newSearchString });
-  }
-
+          this.setState({ searchString: newSearchString });
+        }
+      
   handleNameClick = (name) => {
-    this.setState({ selectedNPC: name });
-  }
-
+          this.setState({ selectedNPC: name });
+        }
+      
   handleButtonClick = (buttonId) => {
     if (buttonId === "clear") {
-      this.setState({ groupA: [], groupB: [], combatLog: [] });
-      return;
-    }
-
+          this.setState({ groupA: [], groupB: [], combatLog: [] });
+        return;
+      }
+  
     if (!this.state.selectedNPC) {
-      return;
-    }
-
+      return ;
+      }
+  
     if (buttonId === "remove") {
-      let newGroupA = this.state.groupA.filter(obj => {
+          let newGroupA = this.state.groupA.filter(obj => {
         return obj.name !== this.state.selectedNPC
       });
       let newGroupB = this.state.groupB.filter(obj => {
         return obj.name !== this.state.selectedNPC
       });
-      this.setState({ groupA: newGroupA, groupB: newGroupB });
-      return;
-    }
-
+      this.setState({groupA: newGroupA, groupB: newGroupB });
+        return;
+      }
+  
     let selectedNPCObject = this.state.NPCList.filter(obj => {
       return obj.name === this.state.selectedNPC;
-    });
-    let newGroupA = this.state.groupA;
-    let newGroupB = this.state.groupB;
-    
+      });
+      let newGroupA = this.state.groupA;
+      let newGroupB = this.state.groupB;
+  
     if (buttonId === "A") {
       if (this.state.groupA.some(obj => obj.name === this.state.selectedNPC)) {
-        return;
+        return ;
       };
       newGroupA.push(selectedNPCObject[0]);
       newGroupB = newGroupB.filter(obj => {
@@ -138,20 +180,20 @@ class Combat extends Component {
       });
     } else if (buttonId === "B") {
       if (this.state.groupB.some(obj => obj.name === this.state.selectedNPC)) {
-        return;
+        return ;
       };
       newGroupB.push(selectedNPCObject[0]);
       newGroupA = newGroupA.filter(obj => {
         return obj.name !== this.state.selectedNPC;
       });
     }
-    this.setState({ groupA: newGroupA, groupB: newGroupB});
-  }
-
+    this.setState({groupA: newGroupA, groupB: newGroupB });
+      }
+    
   doAFight = () => {
-    let log = fight(this.state.groupA, this.state.groupB);
-    this.setState({ combatLog: log });
-  }
-}
-
+          let log = fight(this.state.groupA, this.state.groupB);
+    this.setState({combatLog: log });
+      }
+    }
+    
 export default Combat;
