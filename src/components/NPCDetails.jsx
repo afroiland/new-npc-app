@@ -86,7 +86,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              // style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              style={{ width: 50 }}
               onChange={this.handleInputChange('int')}
             />
           </Grid>
@@ -97,7 +98,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              // style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              style={{ width: 50 }}
               onChange={this.handleInputChange('dex')}
             />
           </Grid>
@@ -108,7 +110,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              // style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              style={{ width: 50 }}
               onChange={this.handleInputChange('con')}
             />
           </Grid>
@@ -119,7 +122,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              // style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              style={{ width: 50 }}
               onChange={this.handleInputChange('wis')}
             />
           </Grid>
@@ -130,11 +134,12 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              // style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              style={{ width: 50 }}
               onChange={this.handleInputChange('cha')}
             />
           </Grid>
-          {/* <div style={{ flexGrow: 1 }}></div> */}
+          <div style={{ flexGrow: .1 }}></div>
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Gold"
@@ -142,18 +147,20 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ textAlign: "right", marginLeft: 3, marginRight: 3, width: 100 }}
+              // style={{ textAlign: "right", marginLeft: 3, marginRight: 3, width: 100 }}
+              style={{ width: 100 }}
               onChange={this.handleInputChange('gold')}
             />
           </Grid>
-          {/* <div style={{ flexGrow: 1 }}></div> */}
+          <div style={{ flexGrow: .1 }}></div>
           <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Status"
               value={status}
               margin="normal"
               variant="outlined"
-              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('status')}
             />
           </Grid>
@@ -165,7 +172,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ marginLeft: 3, marginRight: 3, width: 60 }}
+              // style={{ marginLeft: 3, marginRight: 3, width: 60 }}
+              style={{ width: 60 }}
               onChange={this.handleInputChange('currentHP')}
             />
           </Grid>
@@ -176,7 +184,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ marginLeft: 3, marginRight: 3, width: 60 }}
+              // style={{ marginLeft: 3, marginRight: 3, width: 60 }}
+              style={{ width: 60 }}
               onChange={this.handleInputChange('maxHP')}
             />
           </Grid>
@@ -188,10 +197,12 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              // style={{ marginLeft: 3, marginRight: 3, width: 50 }}
+              style={{ width: 50 }}
               onChange={this.handleInputChange('ac')}
             />
-          </Grid><div style={{ flexGrow: 1 }}></div>
+          </Grid>
+          {/* <div style={{ flexGrow: 1 }}></div> */}
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Thac0"
@@ -199,7 +210,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ marginLeft: 3, marginRight: 3, width: 65 }}
+              // style={{ marginLeft: 3, marginRight: 3, width: 65 }}
+              style={{ width: 65 }}
               onChange={this.handleInputChange('thac0')}
             />
           </Grid>
@@ -211,7 +223,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ marginLeft: 3, marginRight: 3, width: 65 }}
+              // style={{ marginLeft: 3, marginRight: 3, width: 65 }}
+              style={{ width: 65 }}
               onChange={this.handleInputChange('probity')}
             />
           </Grid>
@@ -222,18 +235,20 @@ class NPCDetails extends Component {
               value={weapon}
               margin="normal"
               variant="outlined"
-              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('weapon')}
             />
           </Grid>
-          <div style={{ flexGrow: 1 }}></div>
+          {/* <div style={{ flexGrow: 1 }}></div> */}
           <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Affiliation" 
               value={affiliation}
               margin="normal"
               variant="outlined"
-              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('affiliation')}
             />
           </Grid>
@@ -244,7 +259,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               multiline
-              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('items')}
             />
           </Grid>
@@ -255,7 +271,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               multiline
-              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('notes')}
             />
           </Grid>
@@ -266,7 +283,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               multiline
-              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('memorized')}
             />
           </Grid>}
@@ -277,7 +295,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               multiline
-              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('spellbookLvl_1')}
             />
           </Grid>}
@@ -288,7 +307,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               multiline
-              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('spellbookLvl_2')}
             />
           </Grid>}
@@ -299,7 +319,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               multiline
-              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('spellbookLvl_3')}
             />
           </Grid>}
@@ -310,7 +331,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               multiline
-              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('spellbookLvl_4')}
             />
           </Grid>}
@@ -321,7 +343,8 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               multiline
-              style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              // style={{ marginLeft: 3, marginRight: 3, width: '100%' }}
+              style={{ width: '100%' }}
               onChange={this.handleInputChange('spellbookLvl_5')}
             />
           </Grid>}
