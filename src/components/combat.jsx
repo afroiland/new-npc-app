@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import CombatBar from "./combatBar";
 import NPCList from "./NPCList";
 import GroupList from "./groupList";
-import { Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
+// import { Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import Grid from "@material-ui/core/Grid";
+import TextField from '@material-ui/core/TextField';
+import { Paper, InputLabel } from "@material-ui/core";
 import axios from "axios";
 import { fight } from "./../functions/combat";
 
@@ -17,9 +22,44 @@ class Combat extends Component {
   }
 
   render() {
+    const {selectedNPC, searchString} = this.state;
     return (
       <div>
-        <CombatBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
+        <Grid container>
+          <Grid item xs={2}>
+            <Paper style={{ marginLeft: 5, marginTop: 5, height: "100%" }}>
+              <TextField
+                id="standard-search"
+                label="Search..."
+                type="search"
+                className="textList"
+                margin="normal"
+                style={{ width: "95%" }}
+                onChange={e => this.handleSearchChange(e.target.value)}
+              />
+              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
+                searchString={searchString} />
+            </Paper>
+          </Grid>
+          <Grid item xs={10}>
+          <Paper style={{ margin: 5 }}>
+            <div style={{ height: 15 }}></div>
+              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+                // onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
+                >Generate</Button>
+              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+                // onClick={() => this.handleSave(this.state)}>Save</Button>
+                >Save</Button>
+              <Button variant='contained' color='primary' style={{ marginTop: 6 }}
+                // onClick={() => this.handleClear()}>Clear</Button>
+                >Clear</Button>
+              <br />
+              <div style={{ height: 15 }}></div>
+            </Paper>
+          </Grid>
+        </Grid>
+
+        {/* <CombatBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
         <Grid>
           <Row>
             <Col sm={2}>
@@ -42,7 +82,7 @@ class Combat extends Component {
               <ul className="combatLog">{this.state.combatLog.map((string, index) => <li key={index} className="notHidden">{string}</li>)}</ul>
             </Col>
           </Row>
-        </Grid>
+        </Grid> */}
       </div>
     );
   }

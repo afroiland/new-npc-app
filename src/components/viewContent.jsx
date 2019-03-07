@@ -104,8 +104,8 @@ class ViewContent extends Component {
                 onClick={() => this.handleClear()}>Clear</Button>
               <br />
               <div style={{ height: 15 }}></div>
-              </Paper>
-              <Paper style={{ marginLeft: 5, marginRight: 5, height: "100%" }}>
+            </Paper>
+            <Paper style={{ marginLeft: 5, marginRight: 5, height: "100%" }}>
               <NPCDetails handleChange={this.handleChange}
                 name={name}
                 title={title}

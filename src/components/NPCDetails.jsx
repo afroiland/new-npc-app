@@ -221,7 +221,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('weapon')}
             />
           </Grid>
-          {/* <div style={{ flexGrow: 1 }}></div> */}
           <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Affiliation"
