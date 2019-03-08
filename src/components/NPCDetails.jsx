@@ -59,7 +59,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 50 }}
+              style={{ width: 55 }}
               onChange={this.handleInputChange('str')}
             />
           </Grid>
@@ -81,7 +81,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 50 }}
+              style={{ width: 55 }}
               onChange={this.handleInputChange('int')}
             />
           </Grid>
@@ -92,7 +92,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 50 }}
+              style={{ width: 55 }}
               onChange={this.handleInputChange('dex')}
             />
           </Grid>
@@ -103,7 +103,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 50 }}
+              style={{ width: 55 }}
               onChange={this.handleInputChange('con')}
             />
           </Grid>
@@ -114,7 +114,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 50 }}
+              style={{ width: 55 }}
               onChange={this.handleInputChange('wis')}
             />
           </Grid>
@@ -125,7 +125,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 50 }}
+              style={{ width: 55 }}
               onChange={this.handleInputChange('cha')}
             />
           </Grid>
@@ -206,7 +206,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 65 }}
+              style={{ width: 75 }}
               onChange={this.handleInputChange('probity')}
             />
           </Grid>

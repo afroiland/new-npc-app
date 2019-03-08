@@ -62,7 +62,7 @@ class Combat extends Component {
               <br />
               <div style={{ height: 15 }}></div>
             </Paper>
-            <Paper>
+            <Paper style={{ marginLeft: 5, marginRight: 5, height: "100%" }}>
               <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '95%' }}>
                 <Grid item style={{ padding: 5, flexGrow: 1 }}>
                   <TextField
@@ -70,8 +70,9 @@ class Combat extends Component {
                     value=""
                     margin="normal"
                     variant="outlined"
-                    style={{ width: '100%' }}
-                    // onChange={this.handleInputChange('name')}
+                    multiline
+                    style={{ width: '100%', height: 500 }}
+                  // onChange={this.handleInputChange('name')}
                   />
                 </Grid>
                 <Grid item style={{ padding: 5, flexGrow: 1 }}>
@@ -80,9 +81,10 @@ class Combat extends Component {
                     value=""
                     margin="normal"
                     variant="outlined"
+                    multiline
                     inputProps={{ style: { textAlign: "center" } }}
                     style={{ width: '100%' }}
-                    // onChange={this.handleInputChange('level')}
+                  // onChange={this.handleInputChange('level')}
                   />
                 </Grid>
                 <Grid item style={{ padding: 5, flexGrow: 1 }}>
@@ -91,88 +93,89 @@ class Combat extends Component {
                     value=""
                     margin="normal"
                     variant="outlined"
+                    multiline
                     style={{ width: '100%' }}
-                    // onChange={this.handleInputChange('npcClass')}
+                  // onChange={this.handleInputChange('npcClass')}
                   />
                 </Grid>
               </Grid>
             </Paper>
           </Grid>
-          </Grid>
-          </div>
-          
-        //    <CombatBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
-        // <Grid>
-        //   <Row>
-        //     <Col sm={2}>
-        //       <FormGroup>
-        //         <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
-        //       </FormGroup>
-        //       <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC}
-        //         searchString={this.state.searchString} />
-        //     </Col>
-        //     <Col sm={3}>
-        //       <p>Group A</p>
-        //       <GroupList list={this.state.groupA} />
-        //     </Col>
-        //     <Col sm={3}>
-        //       <p>Group B</p>
-        //       <GroupList list={this.state.groupB} />
-        //     </Col>
-        //     <Col sm={4}>
-        //       <p>Log / Results</p>
-        //       <ul className="combatLog">{this.state.combatLog.map((string, index) => <li key={index} className="notHidden">{string}</li>)}</ul>
-        //     </Col>
-        //   </Row>
-        // </Grid> 
-      
-        );
-      }
-    
+        </Grid>
+      </div>
+
+      //    <CombatBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
+      // <Grid>
+      //   <Row>
+      //     <Col sm={2}>
+      //       <FormGroup>
+      //         <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
+      //       </FormGroup>
+      //       <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC}
+      //         searchString={this.state.searchString} />
+      //     </Col>
+      //     <Col sm={3}>
+      //       <p>Group A</p>
+      //       <GroupList list={this.state.groupA} />
+      //     </Col>
+      //     <Col sm={3}>
+      //       <p>Group B</p>
+      //       <GroupList list={this.state.groupB} />
+      //     </Col>
+      //     <Col sm={4}>
+      //       <p>Log / Results</p>
+      //       <ul className="combatLog">{this.state.combatLog.map((string, index) => <li key={index} className="notHidden">{string}</li>)}</ul>
+      //     </Col>
+      //   </Row>
+      // </Grid> 
+
+    );
+  }
+
   componentDidMount() {
-          axios.get('http://localhost:3001/getNPCs').then(res => {
-            this.setState({ NPCList: res.data });
-          });
-        }
-      
+    axios.get('http://localhost:3001/getNPCs').then(res => {
+      this.setState({ NPCList: res.data });
+    });
+  }
+
   handleSearchChange = (newSearchString) => {
-          this.setState({ searchString: newSearchString });
-        }
-      
+    this.setState({ searchString: newSearchString });
+  }
+
   handleNameClick = (name) => {
-          this.setState({ selectedNPC: name });
-        }
-      
+    this.setState({ selectedNPC: name });
+  }
+
   handleButtonClick = (buttonId) => {
     if (buttonId === "clear") {
-          this.setState({ groupA: [], groupB: [], combatLog: [] });
-        return;
-      }
-  
+      this.setState({ groupA: [], groupB: [], combatLog: [] });
+      return;
+    }
+
     if (!this.state.selectedNPC) {
-      return ;
-      }
-  
+      return;
+    }
+
     if (buttonId === "remove") {
-          let newGroupA = this.state.groupA.filter(obj => {
+      let newGroupA = this.state.groupA.filter(obj => {
         return obj.name !== this.state.selectedNPC
       });
       let newGroupB = this.state.groupB.filter(obj => {
         return obj.name !== this.state.selectedNPC
       });
-      this.setState({groupA: newGroupA, groupB: newGroupB });
-        return;
-      }
-  
+      this.setState({ groupA: newGroupA, groupB: newGroupB });
+      return;
+    }
+
     let selectedNPCObject = this.state.NPCList.filter(obj => {
       return obj.name === this.state.selectedNPC;
-      });
-      let newGroupA = this.state.groupA;
-      let newGroupB = this.state.groupB;
-  
+    });
+    let newGroupA = this.state.groupA;
+    let newGroupB = this.state.groupB;
+
     if (buttonId === "A") {
       if (this.state.groupA.some(obj => obj.name === this.state.selectedNPC)) {
-        return ;
+        return;
       };
       newGroupA.push(selectedNPCObject[0]);
       newGroupB = newGroupB.filter(obj => {
@@ -180,20 +183,20 @@ class Combat extends Component {
       });
     } else if (buttonId === "B") {
       if (this.state.groupB.some(obj => obj.name === this.state.selectedNPC)) {
-        return ;
+        return;
       };
       newGroupB.push(selectedNPCObject[0]);
       newGroupA = newGroupA.filter(obj => {
         return obj.name !== this.state.selectedNPC;
       });
     }
-    this.setState({groupA: newGroupA, groupB: newGroupB });
-      }
-    
+    this.setState({ groupA: newGroupA, groupB: newGroupB });
+  }
+
   doAFight = () => {
-          let log = fight(this.state.groupA, this.state.groupB);
-    this.setState({combatLog: log });
-      }
-    }
-    
+    let log = fight(this.state.groupA, this.state.groupB);
+    this.setState({ combatLog: log });
+  }
+}
+
 export default Combat;
