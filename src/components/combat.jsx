@@ -45,20 +45,15 @@ class Combat extends Component {
             <Paper style={{ margin: 5 }}>
               <div style={{ height: 15 }}></div>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-              // onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
-              >Add to Group A</Button>
+                onClick={() => this.handleButtonClick("A")}>Add to Group A</Button>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-              // onClick={() => this.handleSave(this.state)}>Save</Button>
-              >Add to Group B</Button>
-              <Button variant='contained' color='primary' style={{ marginTop: 6 }}
-              // onClick={() => this.handleClear()}>Clear</Button>
-              >Remove</Button>
-              <Button variant='contained' color='primary' style={{ marginTop: 6 }}
-              // onClick={() => this.handleClear()}>Clear</Button>
-              >Clear All</Button>
-              <Button variant='contained' color='primary' style={{ marginTop: 6 }}
-              // onClick={() => this.handleClear()}>Clear</Button>
-              >Fight</Button>
+              onClick={() => this.handleButtonClick("B")}>Add to Group B</Button>
+              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+              onClick={() => this.handleButtonClick("remove")}>Remove</Button>
+              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+              onClick={() => this.handleButtonClick("clear")}>Clear All</Button>
+              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+              onClick={() => this.doAFight()}>Fight</Button>
               <br />
               <div style={{ height: 15 }}></div>
             </Paper>
@@ -148,6 +143,9 @@ class Combat extends Component {
   }
 
   handleButtonClick = (buttonId) => {
+    console.log("handleButtonClick getting hit");
+    console.log("buttonId: ", buttonId);
+    console.log("this.state: ", this.state);
     if (buttonId === "clear") {
       this.setState({ groupA: [], groupB: [], combatLog: [] });
       return;
