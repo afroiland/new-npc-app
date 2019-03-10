@@ -63,15 +63,16 @@ class Combat extends Component {
               <div style={{ height: 15 }}></div>
             </Paper>
             <Paper style={{ marginLeft: 5, marginRight: 5, height: "100%" }}>
-              <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '95%' }}>
-                <Grid item style={{ padding: 5, flexGrow: 1 }}>
+              <Grid container spacing={24} justify="flex-start" alignItems="stretch" style={{ marginTop: 5, marginLeft: 20, width: '95%' }}>
+                <Grid item style={{ padding: 5, flexGrow: 1, height: "100%" }}>
                   <TextField
                     label="Group A"
                     value=""
                     margin="normal"
                     variant="outlined"
                     multiline
-                    style={{ width: '100%', height: 500 }}
+                    inputProps={{ style: { height: "100%" } }}
+                    style={{ width: '100%', height: "100%" }}
                   // onChange={this.handleInputChange('name')}
                   />
                 </Grid>
