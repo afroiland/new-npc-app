@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
-import { Paper, InputLabel } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
 import axios from "axios";
 import { fight } from "./../functions/combat";
 
@@ -49,7 +49,7 @@ class Combat extends Component {
                 onClick={() => this.handleButtonClick("remove")}>Remove</Button>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
                 onClick={() => this.handleButtonClick("clear")}>Clear All</Button>
-              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+              <Button variant='contained' color='secondary' style={{ marginRight: 20, marginTop: 6 }}
                 onClick={() => this.doAFight()}>Fight</Button>
               <br />
               <div style={{ height: 15 }}></div>

@@ -7,7 +7,7 @@ import Combat from "./combat";
 
 class NavTabs extends Component {
   state = {
-    value: 1
+    value: 0
   };
 
   handleChange = (event, value) => {

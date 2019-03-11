@@ -194,7 +194,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 65 }}
+              style={{ width: 75 }}
               onChange={this.handleInputChange('thac0')}
             />
           </Grid>
