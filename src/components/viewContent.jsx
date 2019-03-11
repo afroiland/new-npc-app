@@ -2,8 +2,14 @@ import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
-import { Button, Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import Grid from "@material-ui/core/Grid";
+import TextField from '@material-ui/core/TextField';
 import axios from "axios";
+import { Paper, InputLabel } from "@material-ui/core";
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
@@ -16,30 +22,31 @@ class ViewContent extends Component {
     NPCList: [],
     name: "",
     title: "",
-    level: 0,
+    level: "",
     npcClass: "",
     race: "",
-    currentHP: 0,
-    maxHP: 0,
-    ac: 0,
-    thac0: 0,
-    str: 0,
-    ex_str: 0,
-    int: 0,
-    dex: 0,
-    con: 0,
-    wis: 0,
-    cha: 0,
+    currentHP: "",
+    maxHP: "",
+    status: "",
+    ac: "",
+    thac0: "",
+    str: "",
+    ex_str: "",
+    int: "",
+    dex: "",
+    con: "",
+    wis: "",
+    cha: "",
     spellbookLvl_1: "",
     spellbookLvl_2: "",
     spellbookLvl_3: "",
     spellbookLvl_4: "",
     spellbookLvl_5: "",
     memorized: "",
-    gold: 0,
+    gold: "",
     weapon: "",
     items: "",
-    probity: 0,
+    probity: "",
     affiliation: "",
     notes: "",
     selectedNPC: "",
@@ -47,38 +54,58 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, ac, thac0, str, ex_str, int, dex, con, wis, cha,
+    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, status, ac, thac0, str, ex_str, int, dex, con, wis, cha,
       spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, memorized, gold, weapon, items,
       probity, affiliation, notes, selectedNPC, searchString } = this.state;
     return (
       <div>
-        <Grid>
-          <Row>
-            <Col sm={2}>
-              <FormGroup>
-                <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
-              </FormGroup>
+        <Grid container>
+          <Grid item xs={2}>
+            <Paper style={{ marginLeft: 5, marginTop: 5, height: "100%" }}>
+              <TextField
+                id="standard-search"
+                label="Search..."
+                type="search"
+                className="textList"
+                margin="normal"
+                style={{ width: "95%" }}
+                onChange={e => this.handleSearchChange(e.target.value)}
+              />
               <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
                 searchString={searchString} />
-            </Col>
-            <Col sm={8}>
-              <Row style={{marginLeft: 5}}>
-              <Col md={3}></Col>
-                <Col md={3}>
-                  <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ classSelect: e.target.value })}>
-                    {classes.map(pcClass => <option key={pcClass} value={pcClass}>{pcClass}</option>)}
-                  </FormControl>
-                </Col>
-                <Col md={2}>
-                  <FormControl componentClass="select" placeholder="select" onChange={e => this.setState({ levelSelect: parseInt(e.target.value) })}>
-                    {levelRange.map(level => <option key={level} value={level}>{level}</option>)}
-                  </FormControl>
-                </Col>
-              <Button onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
-              <Button onClick={() => this.handleSave(this.state)}>Save</Button>
-              <Button onClick={() => this.handleClear()}>Clear</Button>
-              </Row>
+            </Paper>
+          </Grid>
+          <Grid item xs={10}>
+            <Paper style={{ margin: 5 }}>
+              <div style={{ height: 15 }}></div>
+              <FormControl style={{ marginRight: 30 }}>
+                <InputLabel>Class</InputLabel>
+                <Select value={this.state.classSelect}
+                  onChange={e => this.setState({ classSelect: e.target.value })}
+                  style={{ width: "150px" }}
+                >
+                  {classes.map(pcClass => <MenuItem key={pcClass} value={pcClass}>{pcClass}</MenuItem>)}
+                </Select>
+              </FormControl>
+              <FormControl style={{ marginRight: 30 }}>
+                <InputLabel>Level</InputLabel>
+                <Select value={this.state.levelSelect}
+                  onChange={e => this.setState({ levelSelect: e.target.value })}
+                  style={{ width: "75px" }}
+                >
+                  {levelRange.map(level => <MenuItem key={level} value={level}>{level}</MenuItem>)}
+                </Select>
+              </FormControl>
+              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+                onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
+              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+                onClick={() => this.handleSave(this.state)}>Save</Button>
+              <Button variant='contained' color='primary' style={{ marginTop: 6 }}
+                onClick={() => this.handleClear()}>Clear</Button>
               <br />
+              <div style={{ height: 15 }}></div>
+            </Paper>
+            <Paper style={{ marginLeft: 5, marginRight: 5, height: "100%" }}>
               <NPCDetails handleChange={this.handleChange}
                 name={name}
                 title={title}
@@ -87,6 +114,7 @@ class ViewContent extends Component {
                 race={race}
                 currentHP={currentHP}
                 maxHP={maxHP}
+                status={status}
                 ac={ac}
                 thac0={thac0}
                 gold={gold}
@@ -109,8 +137,8 @@ class ViewContent extends Component {
                 affiliation={affiliation}
                 notes={notes}
               />
-            </Col>
-          </Row>
+            </Paper>
+          </Grid>
         </Grid>
       </div>
     );
@@ -141,6 +169,7 @@ class ViewContent extends Component {
   }
 
   handleSearchChange = (newSearchString) => {
+    console.log("newSearchString: ", newSearchString);
     this.setState({ searchString: newSearchString });
   }
 
@@ -156,6 +185,7 @@ class ViewContent extends Component {
       race: selectedNPC[0].race,
       currentHP: selectedNPC[0].currentHP,
       maxHP: selectedNPC[0].maxHP,
+      status: selectedNPC[0].status,
       ac: selectedNPC[0].ac,
       thac0: selectedNPC[0].thac0,
       str: selectedNPC[0].str,
@@ -191,6 +221,7 @@ class ViewContent extends Component {
       race: newNPC.race,
       currentHP: newNPC.currentHP,
       maxHP: newNPC.maxHP,
+      status: "Normal",
       ac: newNPC.ac,
       thac0: newNPC.thac0,
       str: newNPC.str,
@@ -217,7 +248,7 @@ class ViewContent extends Component {
 
   handleSave = (state) => {
     let nameExists = false;
-    for (let i = 0; i < state.NPCList.length; i++) {
+    for (let i = 0, j = state.NPCList.length; i < j; i++) {
       if (state.NPCList[i].name === state.name) {
         nameExists = true;
       }
@@ -235,38 +266,39 @@ class ViewContent extends Component {
     }
   }
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleChange = (name, value) => {
+    this.setState({ [name]: value });
   }
 
   handleClear = () => {
     this.setState({
       name: "",
       title: "",
-      level: 0,
+      level: "",
       npcClass: "",
       race: "",
-      currentHP: 0,
-      maxHP: 0,
-      ac: 0,
-      thac0: 0,
-      str: 0,
-      ex_str: 0,
-      int: 0,
-      dex: 0,
-      con: 0,
-      wis: 0,
-      cha: 0,
-      spellbookLvl_1: [""],
-      spellbookLvl_2: [""],
-      spellbookLvl_3: [""],
-      spellbookLvl_4: [""],
-      spellbookLvl_5: [""],
-      memorized: [""],
-      gold: 0,
+      currentHP: "",
+      maxHP: "",
+      status: "",
+      ac: "",
+      thac0: "",
+      str: "",
+      ex_str: "",
+      int: "",
+      dex: "",
+      con: "",
+      wis: "",
+      cha: "",
+      spellbookLvl_1: null,
+      spellbookLvl_2: null,
+      spellbookLvl_3: null,
+      spellbookLvl_4: null,
+      spellbookLvl_5: null,
+      memorized: null,
+      gold: "",
       weapon: "",
       items: "",
-      probity: 0,
+      probity: "",
       affiliation: "",
       notes: ""
     });

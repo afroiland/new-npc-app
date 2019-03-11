@@ -5,7 +5,7 @@ import { calcThac0 } from "./thac0";
 import { getWeapon } from "./weapons"
 
 const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Business", "Church",
-  "Crown", "Street", "Inmate", "Dwarf", "Burquone", "Tellerue"];
+  "Crown", "Street", "Inmates", "Dwarves", "House Burquone", "House Tellerue"];
 
 export function generate(level, pcClass) {
   let pc = { level: level, npcClass: pcClass };
@@ -121,7 +121,7 @@ export function generate(level, pcClass) {
 
 function listify(spellsForLevel) {
   let list = "";
-  for (let i = 0; i < spellsForLevel.length; i++) {
+  for (let i = 0, j = spellsForLevel.length; i < j; i++) {
     list += spellsForLevel[i] + ", ";
   }
   return list.slice(0, (list.length - 2));

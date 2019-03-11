@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { Button, Navbar } from "react-bootstrap";
+import React, { Component } from 'react';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
 
 class SearchBar extends Component {
   render() {
-    const { doAFight, handleClick } = this.props;
+    const { classes } = this.props;
     return (
-      <Navbar>
-        <Navbar.Header>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Navbar.Form pullLeft>
-            <Button onClick={() => handleClick("A")}>Add to Group A</Button>
-            <Button onClick={() => handleClick("B")}>Add to Group B</Button>
-            <Button onClick={() => handleClick("remove")}>Remove Selected</Button>
-            <Button onClick={() => handleClick("clear")}>Clear All</Button>
-            <Button onClick={() => doAFight()}>Fight</Button>
-          </Navbar.Form>
-        </Navbar.Collapse>
-      </Navbar>
+      <div className={classes.search}>
+        <div className={classes.searchIcon}>
+          <SearchIcon />
+        </div>
+        <InputBase
+          placeholder="Search…"
+          classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput,
+          }}
+          onChange={e => this.props.handleSearchChange(e.target.value)}
+        />
+      </div>
     );
   }
 }

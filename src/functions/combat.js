@@ -53,17 +53,17 @@ export function fight(incomingGroupA, incomingGroupB) {
     let defendingGroup = attackingGroupId === "A" ? groupB : groupA;
 
     // loop through each npc in attacking group
-    for (let i = 0; i < attackingGroup.length; i++) {
+    for (let i = 0, l = attackingGroup.length; i < l; i++) {
       // check that each side has one person standing
       groupAHasOnePersonStanding = false;
-      for (let j = 0; j < groupA.length; j++) {
+      for (let j = 0, m = groupA.length; j < m; j++) {
         if (groupA[j].incap === false) {
           groupAHasOnePersonStanding = true;
           break;
         }
       }
       groupBHasOnePersonStanding = false;
-      for (let k = 0; k < groupB.length; k++) {
+      for (let k = 0, n = groupB.length; k < n; k++) {
         if (groupB[k].incap === false) {
           groupBHasOnePersonStanding = true;
           break;
