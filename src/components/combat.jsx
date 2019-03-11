@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
+import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 import { Paper, InputLabel } from "@material-ui/core";
 import axios from "axios";
 import { fight } from "./../functions/combat";
@@ -22,7 +23,7 @@ class Combat extends Component {
   }
 
   render() {
-    const { selectedNPC, searchString } = this.state;
+    const { groupA, groupB, selectedNPC, searchString } = this.state;
     return (
       <div>
         <Grid container>
@@ -47,20 +48,20 @@ class Combat extends Component {
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
                 onClick={() => this.handleButtonClick("A")}>Add to Group A</Button>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-              onClick={() => this.handleButtonClick("B")}>Add to Group B</Button>
+                onClick={() => this.handleButtonClick("B")}>Add to Group B</Button>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-              onClick={() => this.handleButtonClick("remove")}>Remove</Button>
+                onClick={() => this.handleButtonClick("remove")}>Remove</Button>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-              onClick={() => this.handleButtonClick("clear")}>Clear All</Button>
+                onClick={() => this.handleButtonClick("clear")}>Clear All</Button>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-              onClick={() => this.doAFight()}>Fight</Button>
+                onClick={() => this.doAFight()}>Fight</Button>
               <br />
               <div style={{ height: 15 }}></div>
             </Paper>
             <Paper style={{ marginLeft: 5, marginRight: 5, height: "100%" }}>
               <Grid container spacing={24} justify="flex-start" alignItems="stretch" style={{ marginTop: 5, marginLeft: 20, width: '95%' }}>
                 <Grid item style={{ padding: 5, flexGrow: 1, height: "100%" }}>
-                  <TextField
+                  {/* <TextField
                     label="Group A"
                     value=""
                     margin="normal"
@@ -69,7 +70,21 @@ class Combat extends Component {
                     inputProps={{ style: { height: "100%" } }}
                     style={{ width: '100%', height: "100%" }}
                   // onChange={this.handleInputChange('name')}
-                  />
+                  /> */}
+
+                  <List component="ul">
+                    {groupA.map(npc => <ListItem dense button key={npc.name} style={{
+                      // display: this.determineDisplay(npc, searchString),
+                      textAlign: 'right'
+                    }} 
+                    // onClick={() => handleNameClick(npc.name)}
+                    >
+                      <ListItemText>
+                        <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{npc.name}</Typography>
+                      </ListItemText>
+                    </ListItem>)}
+                  </List>
+
                 </Grid>
                 <Grid item style={{ padding: 5, flexGrow: 1 }}>
                   <TextField
