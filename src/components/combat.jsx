@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-// import CombatBar from "./combatBar";
 import NPCList from "./NPCList";
-import GroupList from "./groupList";
-// import { Col, FormControl, FormGroup, Grid, Row } from "react-bootstrap";
 import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
@@ -61,84 +57,33 @@ class Combat extends Component {
             <Paper style={{ marginLeft: 5, marginRight: 5, height: "100%" }}>
               <Grid container spacing={24} justify="flex-start" alignItems="stretch" style={{ marginTop: 5, marginLeft: 20, width: '95%' }}>
                 <Grid item style={{ padding: 5, flexGrow: 1, height: "100%" }}>
-                  {/* <TextField
-                    label="Group A"
-                    value=""
-                    margin="normal"
-                    variant="outlined"
-                    multiline
-                    inputProps={{ style: { height: "100%" } }}
-                    style={{ width: '100%', height: "100%" }}
-                  // onChange={this.handleInputChange('name')}
-                  /> */}
-
+                  <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>Group A</Typography>
                   <List component="ul">
-                    {groupA.map(npc => <ListItem dense button key={npc.name} style={{
-                      // display: this.determineDisplay(npc, searchString),
-                      textAlign: 'right'
-                    }}
-                    // onClick={() => handleNameClick(npc.name)}
-                    >
+                    {groupA.map(npc => <ListItem dense button key={npc.name} style={{ textAlign: 'right' }}>
                       <ListItemText>
                         <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{npc.name}</Typography>
                       </ListItemText>
                     </ListItem>)}
                   </List>
-
                 </Grid>
                 <Grid item style={{ padding: 5, flexGrow: 1 }}>
-                  {/* <TextField
-                    label="Group B"
-                    value=""
-                    margin="normal"
-                    variant="outlined"
-                    multiline
-                    inputProps={{ style: { textAlign: "center" } }}
-                    style={{ width: '100%' }}
-                  // onChange={this.handleInputChange('level')}
-                  /> */}
-
+                  <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>Group B</Typography>
                   <List component="ul">
-                    {groupB.map(npc => <ListItem dense button key={npc.name} style={{
-                      // display: this.determineDisplay(npc, searchString),
-                      textAlign: 'right'
-                    }}
-                    // onClick={() => handleNameClick(npc.name)}
-                    >
+                    {groupB.map(npc => <ListItem dense button key={npc.name} style={{ textAlign: 'right' }}>
                       <ListItemText>
                         <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{npc.name}</Typography>
                       </ListItemText>
                     </ListItem>)}
                   </List>
-
                 </Grid>
                 <Grid item style={{ padding: 5, flexGrow: 1 }}>
-                  {/* <TextField
-                    label="Combat Log"
-                    value=""
-                    margin="normal"
-                    variant="outlined"
-                    multiline
-                    style={{ width: '100%' }}
-                  // onChange={this.handleInputChange('npcClass')}
-                  /> */}
-
+                  <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>Combat Log</Typography>
                   <List component="ul">
-
                     {this.state.combatLog.map((string, index) => <ListItem dense key={index} style={{ textAlign: 'right' }}>
-                    <ListItemText>
-                      <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{string}</Typography>
+                      <ListItemText>
+                        <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{string}</Typography>
                       </ListItemText>
                     </ListItem>)}
-
-                    {/* {groupA.map(npc => <ListItem dense button key={npc.name} style={{
-                      // display: this.determineDisplay(npc, searchString),
-                      textAlign: 'right'
-                    }}>
-                      <ListItemText>
-                        <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{npc.name}</Typography>
-                      </ListItemText>
-                    </ListItem>)} */}
                   </List>
                 </Grid>
               </Grid>
@@ -146,32 +91,6 @@ class Combat extends Component {
           </Grid>
         </Grid>
       </div>
-
-      //    <CombatBar selectedNPC={this.state.selectedNPC} handleClick={this.handleButtonClick} doAFight={this.doAFight} />
-      // <Grid>
-      //   <Row>
-      //     <Col sm={2}>
-      //       <FormGroup>
-      //         <FormControl type="text" placeholder="Search" onChange={e => this.handleSearchChange(e.target.value)} />
-      //       </FormGroup>
-      //       <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={this.state.selectedNPC}
-      //         searchString={this.state.searchString} />
-      //     </Col>
-      //     <Col sm={3}>
-      //       <p>Group A</p>
-      //       <GroupList list={this.state.groupA} />
-      //     </Col>
-      //     <Col sm={3}>
-      //       <p>Group B</p>
-      //       <GroupList list={this.state.groupB} />
-      //     </Col>
-      //     <Col sm={4}>
-      //       <p>Log / Results</p>
-      //       <ul className="combatLog">{this.state.combatLog.map((string, index) => <li key={index} className="notHidden">{string}</li>)}</ul>
-      //     </Col>
-      //   </Row>
-      // </Grid> 
-
     );
   }
 
