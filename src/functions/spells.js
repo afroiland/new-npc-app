@@ -221,7 +221,7 @@ export function getMemdSpells(spellbook, level, pcClass) {
   }
 
   let list = "";
-  for (let i = 0; i < memdList.length; i++) {
+  for (let i = 0, j = memdList.length; i < j; i++) {
     list += memdList[i] + ", ";
   }
   let finalList = list.slice(0, (list.length - 2));

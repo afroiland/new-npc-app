@@ -1,19 +1,24 @@
 import React, { Component } from "react";
+import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 
 class NPCList extends Component {
   render() {
     const { list, handleNameClick, searchString } = this.props;
     return (
-      <div className="textList">
-        <ul>{list.map(npc => <li key={npc.name} className={this.determineDisplay(npc, searchString)}
-          onClick={() => handleNameClick(npc.name)}>{npc.name}</li>)}</ul>
-      </div>
+      <List component="ul">
+          {list.map(npc => <ListItem dense button key={npc.name} style={{ display: this.determineDisplay(npc, searchString),
+          textAlign: 'right' }} onClick={() => handleNameClick(npc.name)}>
+            <ListItemText>
+            <Typography style={{color: "white"}}>{npc.name}</Typography>
+          </ListItemText>
+          </ListItem>)}
+      </List>
     );
   }
 
   determineDisplay = (npc, searchString) => {
     let classes = "";
-    classes += npc.name === this.props.selectedNPC ? "selected " : "notSelected ";
+    // classes += npc.name === this.props.selectedNPC ? "selected " : "notSelected ";
 
     let allWordList = "";
     allWordList += npc.name;
@@ -31,9 +36,11 @@ class NPCList extends Component {
     allWordList += npc.affiliation;
     allWordList += npc.notes;
     if (allWordList.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) {
-      classes += "notHidden";
+      // classes += "notHidden";
+      classes = "block"
     } else {
-      classes += "hidden";
+      // classes += "hidden";
+      classes = "none"
     }
     return classes;
   }
