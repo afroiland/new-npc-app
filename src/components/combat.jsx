@@ -55,10 +55,10 @@ class Combat extends Component {
               <div style={{ height: 15 }}></div>
             </Paper>
             <Paper style={{ marginLeft: 5, marginRight: 5, height: "100%" }}>
-              <Grid container spacing={24} justify="flex-start" alignItems="stretch" style={{ marginTop: 5, marginLeft: 20, width: '95%' }}>
+              <Grid container spacing={24} justify="flex-start" alignItems="stretch" style={{ marginTop: 5, marginLeft: 20, width: '95%', height: '100%' }}>
                 <Grid item style={{ padding: 5, flexGrow: 1, height: "100%" }}>
                   <Typography variant="h6" style={{ marginTop: 15, color: "rgba(255, 255, 255, 0.7)" }}>Group A</Typography>
-                  <List component="ul" style={{border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4}}>
+                  <List component="ul" style={{border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4, height: '100%'}}>
                     {groupA.map(npc => <ListItem dense button key={npc.name} style={{ textAlign: 'right' }}>
                       <ListItemText>
                         <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{npc.name}</Typography>
@@ -68,7 +68,7 @@ class Combat extends Component {
                 </Grid>
                 <Grid item style={{ padding: 5, flexGrow: 1 }}>
                   <Typography variant="h6" style={{ marginTop: 15, color: "rgba(255, 255, 255, 0.7)" }}>Group B</Typography>
-                  <List component="ul" style={{border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4}}>
+                  <List component="ul" style={{border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4, height: '100%'}}>
                     {groupB.map(npc => <ListItem dense button key={npc.name} style={{ textAlign: 'right' }}>
                       <ListItemText>
                         <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{npc.name}</Typography>
@@ -78,7 +78,7 @@ class Combat extends Component {
                 </Grid>
                 <Grid item style={{ padding: 5, flexGrow: 1 }}>
                   <Typography variant="h6" style={{ marginTop: 15, color: "rgba(255, 255, 255, 0.7)" }}>Combat Log</Typography>
-                  <List component="ul" style={{border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4}}>
+                  <List component="ul" style={{border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4, height: '100%'}}>
                     {this.state.combatLog.map((string, index) => <ListItem dense key={index} style={{ textAlign: 'right' }}>
                       <ListItemText>
                         <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{string}</Typography>
