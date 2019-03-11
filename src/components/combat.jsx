@@ -76,7 +76,7 @@ class Combat extends Component {
                     {groupA.map(npc => <ListItem dense button key={npc.name} style={{
                       // display: this.determineDisplay(npc, searchString),
                       textAlign: 'right'
-                    }} 
+                    }}
                     // onClick={() => handleNameClick(npc.name)}
                     >
                       <ListItemText>
@@ -87,7 +87,7 @@ class Combat extends Component {
 
                 </Grid>
                 <Grid item style={{ padding: 5, flexGrow: 1 }}>
-                  <TextField
+                  {/* <TextField
                     label="Group B"
                     value=""
                     margin="normal"
@@ -96,10 +96,24 @@ class Combat extends Component {
                     inputProps={{ style: { textAlign: "center" } }}
                     style={{ width: '100%' }}
                   // onChange={this.handleInputChange('level')}
-                  />
+                  /> */}
+
+                  <List component="ul">
+                    {groupB.map(npc => <ListItem dense button key={npc.name} style={{
+                      // display: this.determineDisplay(npc, searchString),
+                      textAlign: 'right'
+                    }}
+                    // onClick={() => handleNameClick(npc.name)}
+                    >
+                      <ListItemText>
+                        <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{npc.name}</Typography>
+                      </ListItemText>
+                    </ListItem>)}
+                  </List>
+
                 </Grid>
                 <Grid item style={{ padding: 5, flexGrow: 1 }}>
-                  <TextField
+                  {/* <TextField
                     label="Combat Log"
                     value=""
                     margin="normal"
@@ -107,7 +121,25 @@ class Combat extends Component {
                     multiline
                     style={{ width: '100%' }}
                   // onChange={this.handleInputChange('npcClass')}
-                  />
+                  /> */}
+
+                  <List component="ul">
+
+                    {this.state.combatLog.map((string, index) => <ListItem dense key={index} style={{ textAlign: 'right' }}>
+                    <ListItemText>
+                      <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{string}</Typography>
+                      </ListItemText>
+                    </ListItem>)}
+
+                    {/* {groupA.map(npc => <ListItem dense button key={npc.name} style={{
+                      // display: this.determineDisplay(npc, searchString),
+                      textAlign: 'right'
+                    }}>
+                      <ListItemText>
+                        <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{npc.name}</Typography>
+                      </ListItemText>
+                    </ListItem>)} */}
+                  </List>
                 </Grid>
               </Grid>
             </Paper>
