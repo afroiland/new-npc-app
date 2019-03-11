@@ -18,6 +18,22 @@ const level_5_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby'
   "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
   "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
   "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
+const level_6_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby's Interposing Hand", "Cloudkill", "Conjure Elemental",
+  "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
+  "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
+  "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
+const level_7_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby's Interposing Hand", "Cloudkill", "Conjure Elemental",
+  "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
+  "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
+  "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
+const level_8_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby's Interposing Hand", "Cloudkill", "Conjure Elemental",
+  "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
+  "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
+  "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
+const level_9_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby's Interposing Hand", "Cloudkill", "Conjure Elemental",
+  "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
+  "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
+  "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
 
 const level_1_spellsCleric = ["Bless", "Command", "Create Water", "Cure Light Wounds", "Detect Evil", "Detect Magic",
   "Light", "Protection from Evil", "Purify Food and Drink", "Remove Fear", "Resist Cold", "Sanctuary"];
@@ -28,6 +44,25 @@ const level_3_spellsCleric = ["Animate Dead", "Continual Light", "Create Food an
 const level_4_spellsCleric = ["Cure Serious Wounds", "Detect Lie", "Divination", "Exorcise", "Lower Water", "Neutralize Poison",
   "Protection from Evil 15' Radius", "Speak with Plants", "Sticks to Snakes", "Tongues"];
 const level_5_spellsCleric = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
+  "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
+const level_6_spellsCleric = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
+  "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
+const level_7_spellsCleric = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
+  "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
+
+const level_1_spellsDruid = ["Bless", "Command", "Create Water", "Cure Light Wounds", "Detect Evil", "Detect Magic",
+  "Light", "Protection from Evil", "Purify Food and Drink", "Remove Fear", "Resist Cold", "Sanctuary"];
+const level_2_spellsDruid = ["Augury", "Chant", "Detect Charm", "Find Traps", "Hold Person", "Know Alignment",
+  "Resist Fire", "Silence 15' Radius", "Slow Poison", "Snake Charm", "Speak with Animals", "Spiritual Hammer"];
+const level_3_spellsDruid = ["Animate Dead", "Continual Light", "Create Food and Water", "Cure Blindness", "Cure Disease",
+  "Dispel Magic", "Feign Death", "Glyph of Warding", "Locate Object", "Prayer", "Remove Curse", "Speak with Dead"];
+const level_4_spellsDruid = ["Cure Serious Wounds", "Detect Lie", "Divination", "Exorcise", "Lower Water", "Neutralize Poison",
+  "Protection from Evil 15' Radius", "Speak with Plants", "Sticks to Snakes", "Tongues"];
+const level_5_spellsDruid = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
+  "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
+const level_6_spellsDruid = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
+  "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
+const level_7_spellsDruid = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
   "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
 
 export function generateSpellbook(pcLevel) {
@@ -212,6 +247,13 @@ export function getMemdSpells(spellbook, level, pcClass) {
     addByLevel(spellsByLevel.three, level_3_spellsCleric);
     addByLevel(spellsByLevel.four, level_4_spellsCleric);
     addByLevel(spellsByLevel.five, level_5_spellsCleric);
+  }
+  if (pcClass === "Druid") {
+    addByLevel(spellsByLevel.one, level_1_spellsDruid);
+    addByLevel(spellsByLevel.two, level_2_spellsDruid);
+    addByLevel(spellsByLevel.three, level_3_spellsDruid);
+    addByLevel(spellsByLevel.four, level_4_spellsDruid);
+    addByLevel(spellsByLevel.five, level_5_spellsDruid);
   }
 
   function addByLevel(level, listName) {

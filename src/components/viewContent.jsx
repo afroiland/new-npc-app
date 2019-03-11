@@ -12,7 +12,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
+const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin"]
 
 class ViewContent extends Component {
   _isMounted = false;
