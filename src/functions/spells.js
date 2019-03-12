@@ -18,18 +18,16 @@ const level_5_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby'
   "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
   "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
   "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
-const level_6_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby's Interposing Hand", "Cloudkill", "Conjure Elemental",
-  "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
-  "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
-  "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
-const level_7_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby's Interposing Hand", "Cloudkill", "Conjure Elemental",
-  "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
-  "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
-  "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
-const level_8_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby's Interposing Hand", "Cloudkill", "Conjure Elemental",
-  "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
-  "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
-  "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
+const level_6_spellsMU = ["Anti-Magic Shell", "Bigby's Forceful Hand", "Control Weather", "Death Spell", "Disintegrate", "Enchant an Item",
+  "Extension III", "Geas", "Glassee", "Glode of Invulnerability", "Guards and Wards", "Invisible Stalker", "Legend Lore",
+  "Lower Water", "Monster Summoning IV", "Move Earth", "Otiluke's Freezing Sphere", "Part Water", "Project Image", "Reincarnation",
+  "Repulsion", "Spiritwrack", "Stone to Flesh", "Tenser's Transformation"];
+const level_7_spellsMU = ["Bigby's Grasping Hand", "Cacodemon", "Charm Plants", "Delayed Blast Fireball", "Drawmij's Instant Summons",
+  "Duo-Dimension", "Limited Wish", "Mass Invisibility", "Monster Summoning V", "Mordenkainen's Sword", "Phase Door", "Power Word, Stun",
+  "Reverse Gravity", "Simulacrum", "Statue", "Vanish"];
+const level_8_spellsMU = ["Anitpathy/Sympathy", "Bigby's Clenched Fist", "Clone", "Glassteel", "Incendiary Cloud", "Mass Charm",
+  "Maze", "Mind Blank", "Monster Summoning VI", "Otto's Irresistible Dance", "Permanency", "Polymorph any Object", "Power Word, Blind",
+  "Serten's Spell Immunity", "Symbol", "Trap the Soul"];
 const level_9_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby's Interposing Hand", "Cloudkill", "Conjure Elemental",
   "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
   "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
