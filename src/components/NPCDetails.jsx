@@ -6,7 +6,7 @@ class NPCDetails extends Component {
   render() {
     const { ac, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name,
       notes, npcClass, probity, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, status, str,
-      thac0, title, weapon, wis } = this.props;
+      thac0, title, armor, weapon, wis } = this.props;
     return (
       <div>
         <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '95%' }}>
@@ -219,6 +219,16 @@ class NPCDetails extends Component {
               variant="outlined"
               style={{ width: '100%' }}
               onChange={this.handleInputChange('weapon')}
+            />
+          </Grid>
+          <Grid item style={{ padding: 5, flexGrow: 1 }}>
+            <TextField
+              label="Armor"
+              value={armor}
+              margin="normal"
+              variant="outlined"
+              style={{ width: '100%' }}
+              onChange={this.handleInputChange('armor')}
             />
           </Grid>
           <Grid item style={{ padding: 5, flexGrow: 1 }}>

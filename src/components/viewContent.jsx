@@ -44,6 +44,7 @@ class ViewContent extends Component {
     spellbookLvl_5: "",
     memorized: "",
     gold: "",
+    armor: "",
     weapon: "",
     items: "",
     probity: "",
@@ -55,7 +56,7 @@ class ViewContent extends Component {
 
   render() {
     const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, status, ac, thac0, str, ex_str, int, dex, con, wis, cha,
-      spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, memorized, gold, weapon, items,
+      spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, memorized, gold, armor, weapon, items,
       probity, affiliation, notes, selectedNPC, searchString } = this.state;
     return (
       <div>
@@ -131,6 +132,7 @@ class ViewContent extends Component {
                 spellbookLvl_4={spellbookLvl_4}
                 spellbookLvl_5={spellbookLvl_5}
                 memorized={memorized}
+                armor={armor}
                 weapon={weapon}
                 items={items}
                 probity={probity}
@@ -202,6 +204,7 @@ class ViewContent extends Component {
       spellbookLvl_5: selectedNPC[0].SBLvl_5,
       memorized: selectedNPC[0].memorized,
       gold: selectedNPC[0].gold,
+      armor: selectedNPC[0].armor,
       weapon: selectedNPC[0].weapon,
       items: selectedNPC[0].items,
       probity: selectedNPC[0].probity,
@@ -238,6 +241,7 @@ class ViewContent extends Component {
       spellbookLvl_5: newNPC.spellbookLvl_5,
       memorized: newNPC.memorized,
       gold: newNPC.gold,
+      armor: newNPC.armor,
       weapon: newNPC.weapon,
       items: newNPC.items,
       probity: newNPC.probity,
@@ -296,6 +300,7 @@ class ViewContent extends Component {
       spellbookLvl_5: null,
       memorized: null,
       gold: "",
+      armor: "",
       weapon: "",
       items: "",
       probity: "",

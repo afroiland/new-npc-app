@@ -2,7 +2,8 @@ import { generateSpellbook, getMemdSpells } from "./spells";
 import { rollDice } from "./dice";
 import { getTitle } from "./titles";
 import { calcThac0 } from "./thac0";
-import { getWeapon } from "./weapons"
+import { getArmor } from "./armor";
+import { getWeapon } from "./weapons";
 
 const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Business", "Church",
   "Crown", "Street", "Inmates", "Dwarves", "House Burquone", "House Tellerue"];
@@ -62,7 +63,6 @@ export function generate(level, pcClass) {
 
   pc.currentHP = hp;
   pc.maxHP = hp;
-  pc.ac = 10;
   pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
 
   //Spell stuff
@@ -109,6 +109,9 @@ export function generate(level, pcClass) {
   }
 
   pc.gold = setStartingGold(pcClass);
+  pc.armor = getArmor(pcClass);
+  // TODO: determine ac based on armor
+  pc.ac = 10;
   pc.weapon = getWeapon(pcClass);
   pc.items = "";
   pc.notes = "";
