@@ -109,10 +109,10 @@ export function generate(level, pcClass) {
   }
 
   pc.gold = setStartingGold(pcClass);
-  pc.armor = getArmor(pcClass);
+  pc.weapon = getWeapon(pcClass);
+  pc.armor = getArmor(pcClass, pc.weapon);
   // TODO: determine ac based on armor
   pc.ac = 10;
-  pc.weapon = getWeapon(pcClass);
   pc.items = "";
   pc.notes = "";
   pc.probity = 0;

@@ -1,36 +1,36 @@
 import { rollDice } from "./dice";
 
 const armorList = ["Leather", "Studded Leather", "Scale Mail", "Chain Mail", "Banded Mail", "Plate Mail"];
-const fighterChanceForShieldPerCent = 80;
-const nonFighterChanceForShieldPerCent = 50;
 
-
-export function getArmor(pcClass) {
+export function getArmor(pcClass, weapon) {
   let armor;
-  let chanceForShield;
+  let canUseShield;
   switch (pcClass) {
     case "Fighter":
     case "Cleric":
     case "Paladin":
       armor = armorList[rollDice(1, armorList.length) - 1];
-      chanceForShield = fighterChanceForShieldPerCent;
+      canUseShield = true;
+      break;
+    case "Druid":
+    case "Assassin":
+      armor = "Leather";
+      canUseShield = true;
       break;
     case "Thief":
-    case "Assassin":
-    case "Druid":
       armor = "Leather";
-      chanceForShield = nonFighterChanceForShieldPerCent;
+      canUseShield = false;
       break;
     case "Magic-User":
     case "Monk":
       armor = "None";
-      break;  
+      canUseShield = false;
+      break;
     default:
   }
-  if (rollDice(1, 100) < chanceForShield) {
+  if (canUseShield && weapon !== "Halberd" && weapon !== "Two-Handed Sword" && weapon !== "Staff" && weapon !== "Spear") {
     armor += " + Shield"
   }
   console.log("armor: ", armor);
   return armor;
 }
- 
