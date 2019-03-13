@@ -28,10 +28,8 @@ const level_7_spellsMU = ["Bigby's Grasping Hand", "Cacodemon", "Charm Plants", 
 const level_8_spellsMU = ["Anitpathy/Sympathy", "Bigby's Clenched Fist", "Clone", "Glassteel", "Incendiary Cloud", "Mass Charm",
   "Maze", "Mind Blank", "Monster Summoning VI", "Otto's Irresistible Dance", "Permanency", "Polymorph any Object", "Power Word, Blind",
   "Serten's Spell Immunity", "Symbol", "Trap the Soul"];
-const level_9_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby's Interposing Hand", "Cloudkill", "Conjure Elemental",
-  "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
-  "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
-  "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
+const level_9_spellsMU = ["Astral Spell", "Bigby's Crushing Hand", "Gate", "Imprisonment", "Meteor Swarm", "Monster Summoning VII",
+  "Power Word, Kill", "Prismatic Sphere", "Shape Change", "Temporal Stasis", "Time Stop", "Wish"];
 
 const level_1_spellsCleric = ["Bless", "Command", "Create Water", "Cure Light Wounds", "Detect Evil", "Detect Magic",
   "Light", "Protection from Evil", "Purify Food and Drink", "Remove Fear", "Resist Cold", "Sanctuary"];
@@ -43,10 +41,10 @@ const level_4_spellsCleric = ["Cure Serious Wounds", "Detect Lie", "Divination",
   "Protection from Evil 15' Radius", "Speak with Plants", "Sticks to Snakes", "Tongues"];
 const level_5_spellsCleric = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
   "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
-const level_6_spellsCleric = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
-  "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
-const level_7_spellsCleric = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
-  "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
+const level_6_spellsCleric = ["Aerial Servant", "Animate Object", "Blade Barrier", "Conjure Animals", "Find the Path", "Heal",
+  "Part Water", "Speak with Monsters", "Stone Tell", "Word of Recall"];
+const level_7_spellsCleric = ["Astral Spell", "Control Weather", "Earthquake", "Gate", "Holy/Unholy Word", "Regenerate",
+  "Restoration", "Resurrection", "Symbol", "Wind Walk"];
 
 const level_1_spellsDruid = ["Bless", "Command", "Create Water", "Cure Light Wounds", "Detect Evil", "Detect Magic",
   "Light", "Protection from Evil", "Purify Food and Drink", "Remove Fear", "Resist Cold", "Sanctuary"];
