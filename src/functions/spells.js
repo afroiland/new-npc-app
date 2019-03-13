@@ -154,7 +154,7 @@ export function generateSpellbook(pcLevel) {
   }
 }
 
-export function getMemdSpells(spellbook, level, pcClass) {
+export function getMemdSpells(spellbook, level, pcClass, int, wis) {
   let memdList = [];
   let spellsByLevel = {};
   switch (level) {
@@ -228,6 +228,39 @@ export function getMemdSpells(spellbook, level, pcClass) {
       spellsByLevel.three = 3;
       spellsByLevel.four = 2;
       spellsByLevel.five = 1;
+      break;
+    case 10:
+
+      break;
+    case 11:
+
+      break;
+    case 12:
+
+      break;
+    case 13: 
+
+      break;
+    case 14:
+
+      break;
+    case 15:
+
+      break;
+    case 16:
+
+      break;
+    case 17:
+
+      break;
+    case 18:
+
+      break;
+    case 19:
+
+      break;
+    case 20:
+
       break;
     default:
   }

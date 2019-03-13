@@ -91,14 +91,38 @@ export function generate(level, pcClass) {
       } else {
         pc.spellbookLvl_5 = "";
       }
+      if (spellbook.sixthLvlSpells.length > 0) {
+        pc.spellbookLvl_6 = listify(spellbook.sixthLvlSpells);
+      } else {
+        pc.spellbookLvl_6 = "";
+      }
+      if (spellbook.seventhLvlSpells.length > 0) {
+        pc.spellbookLvl_7 = listify(spellbook.seventhLvlSpells);
+      } else {
+        pc.spellbookLvl_7 = "";
+      }
+      if (spellbook.eighthLvlSpells.length > 0) {
+        pc.spellbookLvl_8 = listify(spellbook.eighthLvlSpells);
+      } else {
+        pc.spellbookLvl_8 = "";
+      }
+      if (spellbook.ninthLvlSpells.length > 0) {
+        pc.spellbookLvl_9 = listify(spellbook.ninthLvlSpells);
+      } else {
+        pc.spellbookLvl_9 = "";
+      }
     } else {
       pc.spellbookLvl_1 = "";
       pc.spellbookLvl_2 = "";
       pc.spellbookLvl_3 = "";
       pc.spellbookLvl_4 = "";
       pc.spellbookLvl_5 = "";
+      pc.spellbookLvl_6 = "";
+      pc.spellbookLvl_7 = "";
+      pc.spellbookLvl_8 = "";
+      pc.spellbookLvl_9 = "";
     }
-    pc.memorized = getMemdSpells(spellbook, level, pcClass);
+    pc.memorized = getMemdSpells(spellbook, level, pcClass, pc.int, pc.wis);
   } else {
     pc.memorized = "";
     pc.spellbookLvl_1 = "";
@@ -106,6 +130,10 @@ export function generate(level, pcClass) {
     pc.spellbookLvl_3 = "";
     pc.spellbookLvl_4 = "";
     pc.spellbookLvl_5 = "";
+    pc.spellbookLvl_6 = "";
+    pc.spellbookLvl_7 = "";
+    pc.spellbookLvl_8 = "";
+    pc.spellbookLvl_9 = "";
   }
 
   pc.gold = setStartingGold(pcClass);
