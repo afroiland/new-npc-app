@@ -46,20 +46,22 @@ const level_6_spellsCleric = ["Aerial Servant", "Animate Object", "Blade Barrier
 const level_7_spellsCleric = ["Astral Spell", "Control Weather", "Earthquake", "Gate", "Holy/Unholy Word", "Regenerate",
   "Restoration", "Resurrection", "Symbol", "Wind Walk"];
 
-const level_1_spellsDruid = ["Bless", "Command", "Create Water", "Cure Light Wounds", "Detect Evil", "Detect Magic",
-  "Light", "Protection from Evil", "Purify Food and Drink", "Remove Fear", "Resist Cold", "Sanctuary"];
-const level_2_spellsDruid = ["Augury", "Chant", "Detect Charm", "Find Traps", "Hold Person", "Know Alignment",
-  "Resist Fire", "Silence 15' Radius", "Slow Poison", "Snake Charm", "Speak with Animals", "Spiritual Hammer"];
-const level_3_spellsDruid = ["Animate Dead", "Continual Light", "Create Food and Water", "Cure Blindness", "Cure Disease",
-  "Dispel Magic", "Feign Death", "Glyph of Warding", "Locate Object", "Prayer", "Remove Curse", "Speak with Dead"];
-const level_4_spellsDruid = ["Cure Serious Wounds", "Detect Lie", "Divination", "Exorcise", "Lower Water", "Neutralize Poison",
-  "Protection from Evil 15' Radius", "Speak with Plants", "Sticks to Snakes", "Tongues"];
-const level_5_spellsDruid = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
-  "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
-const level_6_spellsDruid = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
-  "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
-const level_7_spellsDruid = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
-  "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
+const level_1_spellsDruid = ["Animal Friendship", "Detect Magic", "Detect Snares and Pits", "Entangle", "Faerie Fire",
+  "Invisibility to Animals", "Locate Animals", "Pass without Trace", "Predict Weather", "Purify Water", "Shillelagh",
+  "Speak with Animals"];
+const level_2_spellsDruid = ["Barkskin", "Charm Person or Mammal", "Create Water", "Cure Light Wounds", "Feign Death", "Fire Trap",
+  "Heat Metal", "Locate Plants", "Obscurement", "Produce Flame", "Trip", "Warp Wood"];
+const level_3_spellsDruid = ["Call Lightning", "Cure Disease", "Hold Animal", "Neutralize Poison", "Plant Growth",
+  "Protection from Fire", "Pyrotechnics", "Snare", "Stone Shape", "Summon Insects", "Tree", "Waterbreathing"];
+const level_4_spellsDruid = ["Animal Summoning I", "Call Woodland Beings", "Control Temperature, 10' Radius", "Cure Serious Wounds",
+  "Dispel Magic", "Hallucinatory Forest", "Hold Plant", "Plant Door", "Produce Fire", "Protection from Lightning", "Repel Insects",
+  "Speak with Plants"];
+const level_5_spellsDruid = ["Animal Growth", "Animal Summoing II", "Anti-Plant Shell", "Commune with Nature", "Control Winds",
+  "Insect Plague", "Pass Plant", "Sticks to Snakes", "Transmute Rock to Mud", "Wall of Fire"];
+const level_6_spellsDruid = ["Animal Summoning III", "Anti-Animal Shell", "Conjure Fire Elemental", "Cure Critical Wounds", "Feeblemind",
+  "Fire Seeds", "Transport via Plants", "Turn Wood", "Wall of Thorns", "Weather Summoning"];
+const level_7_spellsDruid = ["Animate Rock", "Chariot of Sustarre", "Confusion", "Conjure Earth Elemental", "Control Weather",
+  "Creeping Doom", "Finger of Death", "Fire Storm", "Reincarnate", "Transmute Metal to Wood"];
 
 export function generateSpellbook(pcLevel) {
   let spellbook = {};
