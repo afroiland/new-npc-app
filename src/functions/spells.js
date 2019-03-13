@@ -339,28 +339,231 @@ export function getMemdSpells(spellbook, level, pcClass, int, wis) {
       }
       break;
     case 13:
-
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 4;
+        spellsByLevel.five = 4;
+        spellsByLevel.six = 2;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 4;
+        spellsByLevel.five = 2;
+        spellsByLevel.six = 2;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 4;
+        spellsByLevel.six = 3;
+        spellsByLevel.seven = 2;
+      }
       break;
     case 14:
-
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 4;
+        spellsByLevel.five = 4;
+        spellsByLevel.six = 2;
+        spellsByLevel.seven = 1;
+      } else {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        if (pcClass === "Cleric") {
+          spellsByLevel.four = 5;
+          spellsByLevel.five = 3;
+          spellsByLevel.six = 2;
+        }
+        if (pcClass === "Druid") {
+          spellsByLevel.four = 6;
+          spellsByLevel.five = 5;
+          spellsByLevel.six = 4;
+          spellsByLevel.seven = 3;
+        }
+      }
       break;
     case 15:
-
+      spellsByLevel.six = 2;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 5;
+        spellsByLevel.seven = 1;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 7;
+        spellsByLevel.two = 7;
+        spellsByLevel.three = 7;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 4;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
       break;
     case 16:
-
+      spellsByLevel.five = 5;
+      spellsByLevel.six = 3;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.seven = 2;
+        spellsByLevel.eight = 1;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 7;
+        spellsByLevel.two = 7;
+        spellsByLevel.three = 7;
+        spellsByLevel.four = 6;
+        spellsByLevel.seven = 1;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
       break;
     case 17:
-
+      spellsByLevel.five = 5;
+      spellsByLevel.six = 3;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.seven = 3;
+        spellsByLevel.eight = 2;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 8;
+        spellsByLevel.two = 8;
+        spellsByLevel.three = 8;
+        spellsByLevel.four = 6;
+        spellsByLevel.seven = 1;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
       break;
     case 18:
-
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 3;
+        spellsByLevel.seven = 3;
+        spellsByLevel.eight = 2;
+        spellsByLevel.nine = 1;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 8;
+        spellsByLevel.two = 8;
+        spellsByLevel.three = 8;
+        spellsByLevel.four = 7;
+        spellsByLevel.five = 6;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 1;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
       break;
     case 19:
-
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 3;
+        spellsByLevel.seven = 3;
+        spellsByLevel.eight = 3;
+        spellsByLevel.nine = 1;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 9;
+        spellsByLevel.two = 9;
+        spellsByLevel.three = 9;
+        spellsByLevel.four = 7;
+        spellsByLevel.five = 6;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 2;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
       break;
     case 20:
-
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+        spellsByLevel.eight = 3;
+        spellsByLevel.nine = 2;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 9;
+        spellsByLevel.two = 9;
+        spellsByLevel.three = 9;
+        spellsByLevel.four = 8;
+        spellsByLevel.five = 7;
+        spellsByLevel.six = 5;
+        spellsByLevel.seven = 2;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
       break;
     default:
   }
