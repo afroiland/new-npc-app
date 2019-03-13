@@ -70,11 +70,19 @@ export function generateSpellbook(pcLevel) {
   let thirdLvlSpells = [];
   let fourthLvlSpells = [];
   let fifthLvlSpells = [];
+  let sixthLvlSpells = [];
+  let seventhLvlSpells = [];
+  let eighthLvlSpells = [];
+  let ninthLvlSpells = [];
   let numberOfLevel1Spells = 4;
   let numberOfLevel2Spells = 0;
   let numberOfLevel3Spells = 0;
   let numberOfLevel4Spells = 0;
   let numberOfLevel5Spells = 0;
+  let numberOfLevel6Spells = 0;
+  let numberOfLevel7Spells = 0;
+  let numberOfLevel8Spells = 0;
+  let numberOfLevel9Spells = 0;
 
   switch (pcLevel) {
     case 2:
@@ -117,6 +125,107 @@ export function generateSpellbook(pcLevel) {
       numberOfLevel4Spells = 2;
       numberOfLevel5Spells = 1;
       break;
+    case 10:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      break;
+    case 11:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      break;
+    case 12:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      numberOfLevel6Spells = 1;
+      break;
+    case 13:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      numberOfLevel6Spells = 1;
+      break;
+    case 14:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      numberOfLevel6Spells = 1;
+      numberOfLevel7Spells = 1;
+      break;
+    case 15:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      numberOfLevel6Spells = 1;
+      numberOfLevel7Spells = 1;
+      break;
+    case 16:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      numberOfLevel6Spells = 1;
+      numberOfLevel7Spells = 1;
+      numberOfLevel8Spells = 1;
+      break;
+    case 17:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      numberOfLevel6Spells = 1;
+      numberOfLevel7Spells = 1;
+      numberOfLevel8Spells = 1;
+      break;
+    case 18:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      numberOfLevel6Spells = 1;
+      numberOfLevel7Spells = 1;
+      numberOfLevel8Spells = 1;
+      numberOfLevel9Spells = 1;
+      break;
+    case 19:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      numberOfLevel6Spells = 1;
+      numberOfLevel7Spells = 1;
+      numberOfLevel8Spells = 1;
+      numberOfLevel9Spells = 1;
+      break;
+    case 20:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 4;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      numberOfLevel6Spells = 1;
+      numberOfLevel7Spells = 1;
+      numberOfLevel8Spells = 1;
+      numberOfLevel9Spells = 1;
+      break;
     default:
   }
 
@@ -135,12 +244,28 @@ export function generateSpellbook(pcLevel) {
   while (fifthLvlSpells.length < numberOfLevel5Spells) {
     addSpell(fifthLvlSpells, level_5_spellsMU);
   }
+  while (sixthLvlSpells.length < numberOfLevel6Spells) {
+    addSpell(sixthLvlSpells, level_6_spellsMU);
+  }
+  while (seventhLvlSpells.length < numberOfLevel7Spells) {
+    addSpell(seventhLvlSpells, level_7_spellsMU);
+  }
+  while (eighthLvlSpells.length < numberOfLevel8Spells) {
+    addSpell(eighthLvlSpells, level_8_spellsMU);
+  }
+  while (ninthLvlSpells.length < numberOfLevel9Spells) {
+    addSpell(ninthLvlSpells, level_9_spellsMU);
+  }
 
   spellbook.firstLvlSpells = firstLvlSpells;
   spellbook.secondLvlSpells = secondLvlSpells;
   spellbook.thirdLvlSpells = thirdLvlSpells;
   spellbook.fourthLvlSpells = fourthLvlSpells;
   spellbook.fifthLvlSpells = fifthLvlSpells;
+  spellbook.sixthLvlSpells = sixthLvlSpells;
+  spellbook.seventhLvlSpells = seventhLvlSpells;
+  spellbook.eighthLvlSpells = eighthLvlSpells;
+  spellbook.ninthLvlSpells = ninthLvlSpells;
 
   return spellbook;
 
@@ -163,8 +288,8 @@ export function getMemdSpells(spellbook, level, pcClass, int, wis) {
         spellsByLevel.one = 2;
       } else {
         spellsByLevel.one = 1;
-        break;
       }
+      break;
     case 2:
       spellsByLevel.one = 2;
       if (pcClass === "Druid") {
@@ -574,6 +699,10 @@ export function getMemdSpells(spellbook, level, pcClass, int, wis) {
     addByLevel(spellsByLevel.three, spellbook.thirdLvlSpells);
     addByLevel(spellsByLevel.four, spellbook.fourthLvlSpells);
     addByLevel(spellsByLevel.five, spellbook.fifthLvlSpells);
+    addByLevel(spellsByLevel.six, spellbook.sixthLvlSpells);
+    addByLevel(spellsByLevel.seven, spellbook.seventhLvlSpells);
+    addByLevel(spellsByLevel.eight, spellbook.eighthLvlSpells);
+    addByLevel(spellsByLevel.nine, spellbook.ninthLvlSpells);
   }
   if (pcClass === "Cleric") {
     addByLevel(spellsByLevel.one, level_1_spellsCleric);
@@ -581,6 +710,8 @@ export function getMemdSpells(spellbook, level, pcClass, int, wis) {
     addByLevel(spellsByLevel.three, level_3_spellsCleric);
     addByLevel(spellsByLevel.four, level_4_spellsCleric);
     addByLevel(spellsByLevel.five, level_5_spellsCleric);
+    addByLevel(spellsByLevel.six, level_6_spellsCleric);
+    addByLevel(spellsByLevel.seven, level_7_spellsCleric);
   }
   if (pcClass === "Druid") {
     addByLevel(spellsByLevel.one, level_1_spellsDruid);
@@ -588,6 +719,8 @@ export function getMemdSpells(spellbook, level, pcClass, int, wis) {
     addByLevel(spellsByLevel.three, level_3_spellsDruid);
     addByLevel(spellsByLevel.four, level_4_spellsDruid);
     addByLevel(spellsByLevel.five, level_5_spellsDruid);
+    addByLevel(spellsByLevel.six, level_6_spellsDruid);
+    addByLevel(spellsByLevel.seven, level_7_spellsDruid);
   }
 
   function addByLevel(level, listName) {

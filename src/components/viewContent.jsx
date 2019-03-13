@@ -11,7 +11,7 @@ import { Paper, InputLabel } from "@material-ui/core";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin"]
 
 class ViewContent extends Component {
