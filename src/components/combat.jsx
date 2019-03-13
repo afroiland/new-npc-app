@@ -49,7 +49,8 @@ class Combat extends Component {
                 onClick={() => this.handleButtonClick("remove")}>Remove</Button>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
                 onClick={() => this.handleButtonClick("clear")}>Clear All</Button>
-              <Button variant='contained' color='secondary' style={{ marginRight: 20, marginTop: 6 }}
+              {/* <Button variant='contained' color='secondary' style={{ marginRight: 20, marginTop: 6 }} */}
+              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
                 onClick={() => this.doAFight()}>Fight</Button>
               <br />
               <div style={{ height: 15 }}></div>
