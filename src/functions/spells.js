@@ -18,6 +18,18 @@ const level_5_spellsMU = ["Airy Water", "Animal Growth", "Animate Dead", "Bigby'
   "Cone of Cold", "Contact Other Plane", "Distance Distortion", "Extension II", "Feeblemind", "Hold Monster", "Leomund's Secret Chest",
   "Magic Jar", "Monster Summoning III", "Mordenkainen's Faithful Hound", "Passwall", "Stone Shape", "Telekinesis", "Teleport",
   "Transmute Rock to Mud", "Wall of Force", "Wall of Iron", "Wall of Stone"];
+const level_6_spellsMU = ["Anti-Magic Shell", "Bigby's Forceful Hand", "Control Weather", "Death Spell", "Disintegrate", "Enchant an Item",
+  "Extension III", "Geas", "Glassee", "Glode of Invulnerability", "Guards and Wards", "Invisible Stalker", "Legend Lore",
+  "Lower Water", "Monster Summoning IV", "Move Earth", "Otiluke's Freezing Sphere", "Part Water", "Project Image", "Reincarnation",
+  "Repulsion", "Spiritwrack", "Stone to Flesh", "Tenser's Transformation"];
+const level_7_spellsMU = ["Bigby's Grasping Hand", "Cacodemon", "Charm Plants", "Delayed Blast Fireball", "Drawmij's Instant Summons",
+  "Duo-Dimension", "Limited Wish", "Mass Invisibility", "Monster Summoning V", "Mordenkainen's Sword", "Phase Door", "Power Word, Stun",
+  "Reverse Gravity", "Simulacrum", "Statue", "Vanish"];
+const level_8_spellsMU = ["Anitpathy/Sympathy", "Bigby's Clenched Fist", "Clone", "Glassteel", "Incendiary Cloud", "Mass Charm",
+  "Maze", "Mind Blank", "Monster Summoning VI", "Otto's Irresistible Dance", "Permanency", "Polymorph any Object", "Power Word, Blind",
+  "Serten's Spell Immunity", "Symbol", "Trap the Soul"];
+const level_9_spellsMU = ["Astral Spell", "Bigby's Crushing Hand", "Gate", "Imprisonment", "Meteor Swarm", "Monster Summoning VII",
+  "Power Word, Kill", "Prismatic Sphere", "Shape Change", "Temporal Stasis", "Time Stop", "Wish"];
 
 const level_1_spellsCleric = ["Bless", "Command", "Create Water", "Cure Light Wounds", "Detect Evil", "Detect Magic",
   "Light", "Protection from Evil", "Purify Food and Drink", "Remove Fear", "Resist Cold", "Sanctuary"];
@@ -29,6 +41,27 @@ const level_4_spellsCleric = ["Cure Serious Wounds", "Detect Lie", "Divination",
   "Protection from Evil 15' Radius", "Speak with Plants", "Sticks to Snakes", "Tongues"];
 const level_5_spellsCleric = ["Atonement", "Commune", "Cure Critical Wounds", "Dispel Evil", "Flame Strike", "Insect Plague",
   "Plane Shift", "Quest", "Raise Dead", "True Seeing"];
+const level_6_spellsCleric = ["Aerial Servant", "Animate Object", "Blade Barrier", "Conjure Animals", "Find the Path", "Heal",
+  "Part Water", "Speak with Monsters", "Stone Tell", "Word of Recall"];
+const level_7_spellsCleric = ["Astral Spell", "Control Weather", "Earthquake", "Gate", "Holy/Unholy Word", "Regenerate",
+  "Restoration", "Resurrection", "Symbol", "Wind Walk"];
+
+const level_1_spellsDruid = ["Animal Friendship", "Detect Magic", "Detect Snares and Pits", "Entangle", "Faerie Fire",
+  "Invisibility to Animals", "Locate Animals", "Pass without Trace", "Predict Weather", "Purify Water", "Shillelagh",
+  "Speak with Animals"];
+const level_2_spellsDruid = ["Barkskin", "Charm Person or Mammal", "Create Water", "Cure Light Wounds", "Feign Death", "Fire Trap",
+  "Heat Metal", "Locate Plants", "Obscurement", "Produce Flame", "Trip", "Warp Wood"];
+const level_3_spellsDruid = ["Call Lightning", "Cure Disease", "Hold Animal", "Neutralize Poison", "Plant Growth",
+  "Protection from Fire", "Pyrotechnics", "Snare", "Stone Shape", "Summon Insects", "Tree", "Waterbreathing"];
+const level_4_spellsDruid = ["Animal Summoning I", "Call Woodland Beings", "Control Temperature, 10' Radius", "Cure Serious Wounds",
+  "Dispel Magic", "Hallucinatory Forest", "Hold Plant", "Plant Door", "Produce Fire", "Protection from Lightning", "Repel Insects",
+  "Speak with Plants"];
+const level_5_spellsDruid = ["Animal Growth", "Animal Summoing II", "Anti-Plant Shell", "Commune with Nature", "Control Winds",
+  "Insect Plague", "Pass Plant", "Sticks to Snakes", "Transmute Rock to Mud", "Wall of Fire"];
+const level_6_spellsDruid = ["Animal Summoning III", "Anti-Animal Shell", "Conjure Fire Elemental", "Cure Critical Wounds", "Feeblemind",
+  "Fire Seeds", "Transport via Plants", "Turn Wood", "Wall of Thorns", "Weather Summoning"];
+const level_7_spellsDruid = ["Animate Rock", "Chariot of Sustarre", "Confusion", "Conjure Earth Elemental", "Control Weather",
+  "Creeping Doom", "Finger of Death", "Fire Storm", "Reincarnate", "Transmute Metal to Wood"];
 
 export function generateSpellbook(pcLevel) {
   let spellbook = {};
@@ -37,11 +70,19 @@ export function generateSpellbook(pcLevel) {
   let thirdLvlSpells = [];
   let fourthLvlSpells = [];
   let fifthLvlSpells = [];
+  let sixthLvlSpells = [];
+  let seventhLvlSpells = [];
+  let eighthLvlSpells = [];
+  let ninthLvlSpells = [];
   let numberOfLevel1Spells = 4;
   let numberOfLevel2Spells = 0;
   let numberOfLevel3Spells = 0;
   let numberOfLevel4Spells = 0;
   let numberOfLevel5Spells = 0;
+  let numberOfLevel6Spells = 0;
+  let numberOfLevel7Spells = 0;
+  let numberOfLevel8Spells = 0;
+  let numberOfLevel9Spells = 0;
 
   switch (pcLevel) {
     case 2:
@@ -84,6 +125,107 @@ export function generateSpellbook(pcLevel) {
       numberOfLevel4Spells = 2;
       numberOfLevel5Spells = 1;
       break;
+    case 10:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 5;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 1;
+      break;
+    case 11:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 5;
+      numberOfLevel3Spells = 3;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 2;
+      break;
+    case 12:
+      numberOfLevel1Spells = 8;
+      numberOfLevel2Spells = 5;
+      numberOfLevel3Spells = 5;
+      numberOfLevel4Spells = 2;
+      numberOfLevel5Spells = 2;
+      numberOfLevel6Spells = 1;
+      break;
+    case 13:
+      numberOfLevel1Spells = 9;
+      numberOfLevel2Spells = 5;
+      numberOfLevel3Spells = 5;
+      numberOfLevel4Spells = 3;
+      numberOfLevel5Spells = 2;
+      numberOfLevel6Spells = 1;
+      break;
+    case 14:
+      numberOfLevel1Spells = 9;
+      numberOfLevel2Spells = 5;
+      numberOfLevel3Spells = 5;
+      numberOfLevel4Spells = 3;
+      numberOfLevel5Spells = 2;
+      numberOfLevel6Spells = 1;
+      numberOfLevel7Spells = 1;
+      break;
+    case 15:
+      numberOfLevel1Spells = 9;
+      numberOfLevel2Spells = 6;
+      numberOfLevel3Spells = 5;
+      numberOfLevel4Spells = 3;
+      numberOfLevel5Spells = 2;
+      numberOfLevel6Spells = 1;
+      numberOfLevel7Spells = 1;
+      break;
+    case 16:
+      numberOfLevel1Spells = 9;
+      numberOfLevel2Spells = 6;
+      numberOfLevel3Spells = 5;
+      numberOfLevel4Spells = 4;
+      numberOfLevel5Spells = 3;
+      numberOfLevel6Spells = 2;
+      numberOfLevel7Spells = 1;
+      numberOfLevel8Spells = 1;
+      break;
+    case 17:
+      numberOfLevel1Spells = 9;
+      numberOfLevel2Spells = 7;
+      numberOfLevel3Spells = 5;
+      numberOfLevel4Spells = 4;
+      numberOfLevel5Spells = 3;
+      numberOfLevel6Spells = 2;
+      numberOfLevel7Spells = 1;
+      numberOfLevel8Spells = 1;
+      break;
+    case 18:
+      numberOfLevel1Spells = 9;
+      numberOfLevel2Spells = 7;
+      numberOfLevel3Spells = 5;
+      numberOfLevel4Spells = 4;
+      numberOfLevel5Spells = 3;
+      numberOfLevel6Spells = 2;
+      numberOfLevel7Spells = 1;
+      numberOfLevel8Spells = 1;
+      numberOfLevel9Spells = 1;
+      break;
+    case 19:
+      numberOfLevel1Spells = 9;
+      numberOfLevel2Spells = 7;
+      numberOfLevel3Spells = 5;
+      numberOfLevel4Spells = 4;
+      numberOfLevel5Spells = 3;
+      numberOfLevel6Spells = 2;
+      numberOfLevel7Spells = 2;
+      numberOfLevel8Spells = 1;
+      numberOfLevel9Spells = 1;
+      break;
+    case 20:
+      numberOfLevel1Spells = 9;
+      numberOfLevel2Spells = 7;
+      numberOfLevel3Spells = 6;
+      numberOfLevel4Spells = 4;
+      numberOfLevel5Spells = 4;
+      numberOfLevel6Spells = 2;
+      numberOfLevel7Spells = 2;
+      numberOfLevel8Spells = 1;
+      numberOfLevel9Spells = 1;
+      break;
     default:
   }
 
@@ -102,12 +244,28 @@ export function generateSpellbook(pcLevel) {
   while (fifthLvlSpells.length < numberOfLevel5Spells) {
     addSpell(fifthLvlSpells, level_5_spellsMU);
   }
+  while (sixthLvlSpells.length < numberOfLevel6Spells) {
+    addSpell(sixthLvlSpells, level_6_spellsMU);
+  }
+  while (seventhLvlSpells.length < numberOfLevel7Spells) {
+    addSpell(seventhLvlSpells, level_7_spellsMU);
+  }
+  while (eighthLvlSpells.length < numberOfLevel8Spells) {
+    addSpell(eighthLvlSpells, level_8_spellsMU);
+  }
+  while (ninthLvlSpells.length < numberOfLevel9Spells) {
+    addSpell(ninthLvlSpells, level_9_spellsMU);
+  }
 
   spellbook.firstLvlSpells = firstLvlSpells;
   spellbook.secondLvlSpells = secondLvlSpells;
   spellbook.thirdLvlSpells = thirdLvlSpells;
   spellbook.fourthLvlSpells = fourthLvlSpells;
   spellbook.fifthLvlSpells = fifthLvlSpells;
+  spellbook.sixthLvlSpells = sixthLvlSpells;
+  spellbook.seventhLvlSpells = seventhLvlSpells;
+  spellbook.eighthLvlSpells = eighthLvlSpells;
+  spellbook.ninthLvlSpells = ninthLvlSpells;
 
   return spellbook;
 
@@ -121,34 +279,56 @@ export function generateSpellbook(pcLevel) {
   }
 }
 
-export function getMemdSpells(spellbook, level, pcClass) {
+export function getMemdSpells(spellbook, level, pcClass, int, wis) {
   let memdList = [];
   let spellsByLevel = {};
   switch (level) {
     case 1:
-      spellsByLevel.one = 1;
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 2;
+      } else {
+        spellsByLevel.one = 1;
+      }
       break;
     case 2:
       spellsByLevel.one = 2;
+      if (pcClass === "Druid") {
+        spellsByLevel.two = 1;
+      }
       break;
     case 3:
       spellsByLevel.one = 2;
       spellsByLevel.two = 1;
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 3;
+        spellsByLevel.two = 2;
+        spellsByLevel.three = 1;
+      }
       break;
     case 4:
       spellsByLevel.one = 3;
       spellsByLevel.two = 2;
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 4;
+        spellsByLevel.three = 2;
+      }
       break;
     case 5:
       if (pcClass === "Magic-User") {
         spellsByLevel.one = 4;
         spellsByLevel.two = 2;
+        spellsByLevel.three = 1;
       }
       if (pcClass === "Cleric") {
         spellsByLevel.one = 3;
         spellsByLevel.two = 3;
+        spellsByLevel.three = 1;
       }
-      spellsByLevel.three = 1;
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 4;
+        spellsByLevel.two = 3;
+        spellsByLevel.three = 2;
+      }
       break;
     case 6:
       if (pcClass === "Magic-User") {
@@ -159,42 +339,356 @@ export function getMemdSpells(spellbook, level, pcClass) {
         spellsByLevel.one = 3;
         spellsByLevel.two = 3;
       }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 4;
+        spellsByLevel.two = 3;
+        spellsByLevel.four = 1;
+      }
       spellsByLevel.three = 2;
       break;
     case 7:
       if (pcClass === "Magic-User") {
         spellsByLevel.one = 4;
         spellsByLevel.two = 2;
+        spellsByLevel.three = 2;
       }
       if (pcClass === "Cleric") {
         spellsByLevel.one = 3;
         spellsByLevel.two = 3;
+        spellsByLevel.three = 2;
       }
-      spellsByLevel.three = 2;
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 4;
+        spellsByLevel.two = 4;
+        spellsByLevel.four = 3;
+      }
       spellsByLevel.four = 1;
       break;
     case 8:
       if (pcClass === "Magic-User") {
         spellsByLevel.one = 4;
+        spellsByLevel.two = 3;
       }
       if (pcClass === "Cleric") {
         spellsByLevel.one = 3;
+        spellsByLevel.two = 3;
       }
-      spellsByLevel.two = 3;
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 4;
+        spellsByLevel.two = 4;
+      }
       spellsByLevel.three = 3;
       spellsByLevel.four = 2;
       break;
     case 9:
-      spellsByLevel.one = 4;
       if (pcClass === "Magic-User") {
+        spellsByLevel.one = 4;
         spellsByLevel.two = 3;
       }
       if (pcClass === "Cleric") {
+        spellsByLevel.one = 4;
+        spellsByLevel.two = 4;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 5;
         spellsByLevel.two = 4;
       }
       spellsByLevel.three = 3;
       spellsByLevel.four = 2;
       spellsByLevel.five = 1;
+      break;
+    case 10:
+      spellsByLevel.one = 4;
+      spellsByLevel.two = 4;
+      spellsByLevel.three = 3;
+      spellsByLevel.five = 2;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.four = 2;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.four = 3;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 5;
+        spellsByLevel.four = 3;
+      }
+      break;
+    case 11:
+      spellsByLevel.four = 3;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 4;
+        spellsByLevel.two = 4;
+        spellsByLevel.three = 4;
+        spellsByLevel.five = 3;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 4;
+        spellsByLevel.three = 4;
+        spellsByLevel.five = 2;
+        spellsByLevel.six = 1;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 3;
+        spellsByLevel.five = 2;
+        spellsByLevel.six = 1;
+      }
+      break;
+    case 12:
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 4;
+        spellsByLevel.two = 4;
+        spellsByLevel.three = 4;
+        spellsByLevel.four = 4;
+        spellsByLevel.five = 4;
+        spellsByLevel.six = 1;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 3;
+        spellsByLevel.five = 2;
+        spellsByLevel.six = 2;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 4;
+        spellsByLevel.four = 4;
+        spellsByLevel.five = 3;
+        spellsByLevel.six = 2;
+        spellsByLevel.seven = 1;
+      }
+      break;
+    case 13:
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 4;
+        spellsByLevel.five = 4;
+        spellsByLevel.six = 2;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 4;
+        spellsByLevel.five = 2;
+        spellsByLevel.six = 2;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 4;
+        spellsByLevel.six = 3;
+        spellsByLevel.seven = 2;
+      }
+      break;
+    case 14:
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 4;
+        spellsByLevel.five = 4;
+        spellsByLevel.six = 2;
+        spellsByLevel.seven = 1;
+      } else {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        if (pcClass === "Cleric") {
+          spellsByLevel.four = 5;
+          spellsByLevel.five = 3;
+          spellsByLevel.six = 2;
+        }
+        if (pcClass === "Druid") {
+          spellsByLevel.four = 6;
+          spellsByLevel.five = 5;
+          spellsByLevel.six = 4;
+          spellsByLevel.seven = 3;
+        }
+      }
+      break;
+    case 15:
+      spellsByLevel.six = 2;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 5;
+        spellsByLevel.seven = 1;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 7;
+        spellsByLevel.two = 7;
+        spellsByLevel.three = 7;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 4;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
+      break;
+    case 16:
+      spellsByLevel.five = 5;
+      spellsByLevel.six = 3;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.seven = 2;
+        spellsByLevel.eight = 1;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 7;
+        spellsByLevel.two = 7;
+        spellsByLevel.three = 7;
+        spellsByLevel.four = 6;
+        spellsByLevel.seven = 1;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
+      break;
+    case 17:
+      spellsByLevel.five = 5;
+      spellsByLevel.six = 3;
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.seven = 3;
+        spellsByLevel.eight = 2;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 8;
+        spellsByLevel.two = 8;
+        spellsByLevel.three = 8;
+        spellsByLevel.four = 6;
+        spellsByLevel.seven = 1;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
+      break;
+    case 18:
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 3;
+        spellsByLevel.seven = 3;
+        spellsByLevel.eight = 2;
+        spellsByLevel.nine = 1;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 8;
+        spellsByLevel.two = 8;
+        spellsByLevel.three = 8;
+        spellsByLevel.four = 7;
+        spellsByLevel.five = 6;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 1;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
+      break;
+    case 19:
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 3;
+        spellsByLevel.seven = 3;
+        spellsByLevel.eight = 3;
+        spellsByLevel.nine = 1;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 9;
+        spellsByLevel.two = 9;
+        spellsByLevel.three = 9;
+        spellsByLevel.four = 7;
+        spellsByLevel.five = 6;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 2;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
+      break;
+    case 20:
+      if (pcClass === "Magic-User") {
+        spellsByLevel.one = 5;
+        spellsByLevel.two = 5;
+        spellsByLevel.three = 5;
+        spellsByLevel.four = 5;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+        spellsByLevel.eight = 3;
+        spellsByLevel.nine = 2;
+      }
+      if (pcClass === "Cleric") {
+        spellsByLevel.one = 9;
+        spellsByLevel.two = 9;
+        spellsByLevel.three = 9;
+        spellsByLevel.four = 8;
+        spellsByLevel.five = 7;
+        spellsByLevel.six = 5;
+        spellsByLevel.seven = 2;
+      }
+      if (pcClass === "Druid") {
+        spellsByLevel.one = 6;
+        spellsByLevel.two = 6;
+        spellsByLevel.three = 6;
+        spellsByLevel.four = 6;
+        spellsByLevel.five = 5;
+        spellsByLevel.six = 4;
+        spellsByLevel.seven = 3;
+      }
       break;
     default:
   }
@@ -205,6 +699,10 @@ export function getMemdSpells(spellbook, level, pcClass) {
     addByLevel(spellsByLevel.three, spellbook.thirdLvlSpells);
     addByLevel(spellsByLevel.four, spellbook.fourthLvlSpells);
     addByLevel(spellsByLevel.five, spellbook.fifthLvlSpells);
+    addByLevel(spellsByLevel.six, spellbook.sixthLvlSpells);
+    addByLevel(spellsByLevel.seven, spellbook.seventhLvlSpells);
+    addByLevel(spellsByLevel.eight, spellbook.eighthLvlSpells);
+    addByLevel(spellsByLevel.nine, spellbook.ninthLvlSpells);
   }
   if (pcClass === "Cleric") {
     addByLevel(spellsByLevel.one, level_1_spellsCleric);
@@ -212,6 +710,17 @@ export function getMemdSpells(spellbook, level, pcClass) {
     addByLevel(spellsByLevel.three, level_3_spellsCleric);
     addByLevel(spellsByLevel.four, level_4_spellsCleric);
     addByLevel(spellsByLevel.five, level_5_spellsCleric);
+    addByLevel(spellsByLevel.six, level_6_spellsCleric);
+    addByLevel(spellsByLevel.seven, level_7_spellsCleric);
+  }
+  if (pcClass === "Druid") {
+    addByLevel(spellsByLevel.one, level_1_spellsDruid);
+    addByLevel(spellsByLevel.two, level_2_spellsDruid);
+    addByLevel(spellsByLevel.three, level_3_spellsDruid);
+    addByLevel(spellsByLevel.four, level_4_spellsDruid);
+    addByLevel(spellsByLevel.five, level_5_spellsDruid);
+    addByLevel(spellsByLevel.six, level_6_spellsDruid);
+    addByLevel(spellsByLevel.seven, level_7_spellsDruid);
   }
 
   function addByLevel(level, listName) {

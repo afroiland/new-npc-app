@@ -11,8 +11,8 @@ import { Paper, InputLabel } from "@material-ui/core";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin"]
+const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin"]
 
 class ViewContent extends Component {
   _isMounted = false;
@@ -42,8 +42,13 @@ class ViewContent extends Component {
     spellbookLvl_3: "",
     spellbookLvl_4: "",
     spellbookLvl_5: "",
+    spellbookLvl_6: "",
+    spellbookLvl_7: "",
+    spellbookLvl_8: "",
+    spellbookLvl_9: "",
     memorized: "",
     gold: "",
+    armor: "",
     weapon: "",
     items: "",
     probity: "",
@@ -54,9 +59,10 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, status, ac, thac0, str, ex_str, int, dex, con, wis, cha,
-      spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, memorized, gold, weapon, items,
-      probity, affiliation, notes, selectedNPC, searchString } = this.state;
+    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, status, ac, thac0, str, ex_str, int,
+      dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, spellbookLvl_6,
+      spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity, affiliation, notes,
+      selectedNPC, searchString } = this.state;
     return (
       <div>
         <Grid container>
@@ -130,7 +136,12 @@ class ViewContent extends Component {
                 spellbookLvl_3={spellbookLvl_3}
                 spellbookLvl_4={spellbookLvl_4}
                 spellbookLvl_5={spellbookLvl_5}
+                spellbookLvl_6={spellbookLvl_6}
+                spellbookLvl_7={spellbookLvl_7}
+                spellbookLvl_8={spellbookLvl_8}
+                spellbookLvl_9={spellbookLvl_9}
                 memorized={memorized}
+                armor={armor}
                 weapon={weapon}
                 items={items}
                 probity={probity}
@@ -200,8 +211,13 @@ class ViewContent extends Component {
       spellbookLvl_3: selectedNPC[0].SBLvl_3,
       spellbookLvl_4: selectedNPC[0].SBLvl_4,
       spellbookLvl_5: selectedNPC[0].SBLvl_5,
+      spellbookLvl_6: selectedNPC[0].SBLvl_6,
+      spellbookLvl_7: selectedNPC[0].SBLvl_7,
+      spellbookLvl_8: selectedNPC[0].SBLvl_8,
+      spellbookLvl_9: selectedNPC[0].SBLvl_9,
       memorized: selectedNPC[0].memorized,
       gold: selectedNPC[0].gold,
+      armor: selectedNPC[0].armor,
       weapon: selectedNPC[0].weapon,
       items: selectedNPC[0].items,
       probity: selectedNPC[0].probity,
@@ -236,8 +252,13 @@ class ViewContent extends Component {
       spellbookLvl_3: newNPC.spellbookLvl_3,
       spellbookLvl_4: newNPC.spellbookLvl_4,
       spellbookLvl_5: newNPC.spellbookLvl_5,
+      spellbookLvl_6: newNPC.spellbookLvl_6,
+      spellbookLvl_7: newNPC.spellbookLvl_7,
+      spellbookLvl_8: newNPC.spellbookLvl_8,
+      spellbookLvl_9: newNPC.spellbookLvl_9,
       memorized: newNPC.memorized,
       gold: newNPC.gold,
+      armor: newNPC.armor,
       weapon: newNPC.weapon,
       items: newNPC.items,
       probity: newNPC.probity,
@@ -294,8 +315,13 @@ class ViewContent extends Component {
       spellbookLvl_3: null,
       spellbookLvl_4: null,
       spellbookLvl_5: null,
+      spellbookLvl_6: null,
+      spellbookLvl_7: null,
+      spellbookLvl_8: null,
+      spellbookLvl_9: null,
       memorized: null,
       gold: "",
+      armor: "",
       weapon: "",
       items: "",
       probity: "",

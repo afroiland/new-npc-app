@@ -2,7 +2,8 @@ import { generateSpellbook, getMemdSpells } from "./spells";
 import { rollDice } from "./dice";
 import { getTitle } from "./titles";
 import { calcThac0 } from "./thac0";
-import { getWeapon } from "./weapons"
+import { getArmor } from "./armor";
+import { getWeapon } from "./weapons";
 
 const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Business", "Church",
   "Crown", "Street", "Inmates", "Dwarves", "House Burquone", "House Tellerue"];
@@ -62,7 +63,6 @@ export function generate(level, pcClass) {
 
   pc.currentHP = hp;
   pc.maxHP = hp;
-  pc.ac = 10;
   pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
 
   //Spell stuff
@@ -91,14 +91,38 @@ export function generate(level, pcClass) {
       } else {
         pc.spellbookLvl_5 = "";
       }
+      if (spellbook.sixthLvlSpells.length > 0) {
+        pc.spellbookLvl_6 = listify(spellbook.sixthLvlSpells);
+      } else {
+        pc.spellbookLvl_6 = "";
+      }
+      if (spellbook.seventhLvlSpells.length > 0) {
+        pc.spellbookLvl_7 = listify(spellbook.seventhLvlSpells);
+      } else {
+        pc.spellbookLvl_7 = "";
+      }
+      if (spellbook.eighthLvlSpells.length > 0) {
+        pc.spellbookLvl_8 = listify(spellbook.eighthLvlSpells);
+      } else {
+        pc.spellbookLvl_8 = "";
+      }
+      if (spellbook.ninthLvlSpells.length > 0) {
+        pc.spellbookLvl_9 = listify(spellbook.ninthLvlSpells);
+      } else {
+        pc.spellbookLvl_9 = "";
+      }
     } else {
       pc.spellbookLvl_1 = "";
       pc.spellbookLvl_2 = "";
       pc.spellbookLvl_3 = "";
       pc.spellbookLvl_4 = "";
       pc.spellbookLvl_5 = "";
+      pc.spellbookLvl_6 = "";
+      pc.spellbookLvl_7 = "";
+      pc.spellbookLvl_8 = "";
+      pc.spellbookLvl_9 = "";
     }
-    pc.memorized = getMemdSpells(spellbook, level, pcClass);
+    pc.memorized = getMemdSpells(spellbook, level, pcClass, pc.int, pc.wis);
   } else {
     pc.memorized = "";
     pc.spellbookLvl_1 = "";
@@ -106,10 +130,18 @@ export function generate(level, pcClass) {
     pc.spellbookLvl_3 = "";
     pc.spellbookLvl_4 = "";
     pc.spellbookLvl_5 = "";
+    pc.spellbookLvl_6 = "";
+    pc.spellbookLvl_7 = "";
+    pc.spellbookLvl_8 = "";
+    pc.spellbookLvl_9 = "";
   }
 
+  pc.race = "Human";
   pc.gold = setStartingGold(pcClass);
   pc.weapon = getWeapon(pcClass);
+  pc.armor = getArmor(pcClass, pc.weapon);
+  // TODO: determine ac based on armor
+  pc.ac = 10;
   pc.items = "";
   pc.notes = "";
   pc.probity = 0;
@@ -188,20 +220,54 @@ function setHP(level, pcClass) {
   let hp;
   switch (pcClass) {
     case 'Fighter':
-      hp = calcHpPerLevel(level, 10);
+    case 'Paladin':
+      if (level <= 9) {
+        hp = calcHpPerLevel(level, 10);
+      } else {
+        hp = calcHpPerLevel(9, 10) + ((level - 9) * 3);
+      }
       break;
     case 'Thief':
+      if (level <= 10) {
+        hp = calcHpPerLevel(level, 6);
+      } else {
+        hp = calcHpPerLevel(10, 6) + ((level - 10) * 2);
+      }
+      break;
     case 'Assassin':
-      hp = calcHpPerLevel(level, 6);
+      if (level <= 15) {
+        hp = calcHpPerLevel(level, 6);
+      } else {
+        hp = calcHpPerLevel(15, 6)
+      }
       break;
     case 'Cleric':
-      hp = calcHpPerLevel(level, 8);
+      if (level <= 9) {
+        hp = calcHpPerLevel(level, 8);
+      } else {
+        hp = calcHpPerLevel(9, 8) + ((level - 9) * 2);
+      }
       break;
     case 'Magic-User':
-      hp = calcHpPerLevel(level, 4);
+      if (level <= 11) {
+        hp = calcHpPerLevel(level, 4);
+      } else {
+        hp = calcHpPerLevel(11, 4) + (level - 11);
+      }
       break;
     case 'Monk':
-      hp = calcHpPerLevel(level, 4) + 4;
+      if (level <= 17) {
+        hp = calcHpPerLevel(level, 4) + 4;
+      } else {
+        hp = calcHpPerLevel(17, 4) + 4;
+      }
+      break;
+    case 'Druid':
+      if (level <= 14) {
+        hp = calcHpPerLevel(level, 8);
+      } else {
+        hp = calcHpPerLevel(14, 8)
+      }
       break;
     default:
   }
