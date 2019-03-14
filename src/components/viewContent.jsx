@@ -42,6 +42,10 @@ class ViewContent extends Component {
     spellbookLvl_3: "",
     spellbookLvl_4: "",
     spellbookLvl_5: "",
+    spellbookLvl_6: "",
+    spellbookLvl_7: "",
+    spellbookLvl_8: "",
+    spellbookLvl_9: "",
     memorized: "",
     gold: "",
     armor: "",
@@ -55,9 +59,10 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, status, ac, thac0, str, ex_str, int, dex, con, wis, cha,
-      spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, memorized, gold, armor, weapon, items,
-      probity, affiliation, notes, selectedNPC, searchString } = this.state;
+    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, status, ac, thac0, str, ex_str, int,
+      dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, spellbookLvl_6,
+      spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity, affiliation, notes,
+      selectedNPC, searchString } = this.state;
     return (
       <div>
         <Grid container>
@@ -131,6 +136,10 @@ class ViewContent extends Component {
                 spellbookLvl_3={spellbookLvl_3}
                 spellbookLvl_4={spellbookLvl_4}
                 spellbookLvl_5={spellbookLvl_5}
+                spellbookLvl_6={spellbookLvl_6}
+                spellbookLvl_7={spellbookLvl_7}
+                spellbookLvl_8={spellbookLvl_8}
+                spellbookLvl_9={spellbookLvl_9}
                 memorized={memorized}
                 armor={armor}
                 weapon={weapon}
@@ -202,6 +211,10 @@ class ViewContent extends Component {
       spellbookLvl_3: selectedNPC[0].SBLvl_3,
       spellbookLvl_4: selectedNPC[0].SBLvl_4,
       spellbookLvl_5: selectedNPC[0].SBLvl_5,
+      spellbookLvl_6: selectedNPC[0].SBLvl_6,
+      spellbookLvl_7: selectedNPC[0].SBLvl_7,
+      spellbookLvl_8: selectedNPC[0].SBLvl_8,
+      spellbookLvl_9: selectedNPC[0].SBLvl_9,
       memorized: selectedNPC[0].memorized,
       gold: selectedNPC[0].gold,
       armor: selectedNPC[0].armor,
@@ -239,6 +252,10 @@ class ViewContent extends Component {
       spellbookLvl_3: newNPC.spellbookLvl_3,
       spellbookLvl_4: newNPC.spellbookLvl_4,
       spellbookLvl_5: newNPC.spellbookLvl_5,
+      spellbookLvl_6: newNPC.spellbookLvl_6,
+      spellbookLvl_7: newNPC.spellbookLvl_7,
+      spellbookLvl_8: newNPC.spellbookLvl_8,
+      spellbookLvl_9: newNPC.spellbookLvl_9,
       memorized: newNPC.memorized,
       gold: newNPC.gold,
       armor: newNPC.armor,
@@ -298,6 +315,10 @@ class ViewContent extends Component {
       spellbookLvl_3: null,
       spellbookLvl_4: null,
       spellbookLvl_5: null,
+      spellbookLvl_6: null,
+      spellbookLvl_7: null,
+      spellbookLvl_8: null,
+      spellbookLvl_9: null,
       memorized: null,
       gold: "",
       armor: "",

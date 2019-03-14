@@ -136,6 +136,7 @@ export function generate(level, pcClass) {
     pc.spellbookLvl_9 = "";
   }
 
+  pc.race = "Human";
   pc.gold = setStartingGold(pcClass);
   pc.weapon = getWeapon(pcClass);
   pc.armor = getArmor(pcClass, pc.weapon);
