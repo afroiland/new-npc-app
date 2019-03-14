@@ -219,20 +219,54 @@ function setHP(level, pcClass) {
   let hp;
   switch (pcClass) {
     case 'Fighter':
-      hp = calcHpPerLevel(level, 10);
+    case 'Paladin':
+      if (level <= 9) {
+        hp = calcHpPerLevel(level, 10);
+      } else {
+        hp = calcHpPerLevel(9, 10) + ((level - 9) * 3);
+      }
       break;
     case 'Thief':
+      if (level <= 10) {
+        hp = calcHpPerLevel(level, 6);
+      } else {
+        hp = calcHpPerLevel(10, 6) + ((level - 10) * 2);
+      }
+      break;
     case 'Assassin':
-      hp = calcHpPerLevel(level, 6);
+      if (level <= 15) {
+        hp = calcHpPerLevel(level, 6);
+      } else {
+        hp = calcHpPerLevel(15, 6)
+      }
       break;
     case 'Cleric':
-      hp = calcHpPerLevel(level, 8);
+      if (level <= 9) {
+        hp = calcHpPerLevel(level, 8);
+      } else {
+        hp = calcHpPerLevel(9, 8) + ((level - 9) * 2);
+      }
       break;
     case 'Magic-User':
-      hp = calcHpPerLevel(level, 4);
+      if (level <= 11) {
+        hp = calcHpPerLevel(level, 4);
+      } else {
+        hp = calcHpPerLevel(11, 4) + (level - 11);
+      }
       break;
     case 'Monk':
-      hp = calcHpPerLevel(level, 4) + 4;
+      if (level <= 17) {
+        hp = calcHpPerLevel(level, 4) + 4;
+      } else {
+        hp = calcHpPerLevel(17, 4) + 4;
+      }
+      break;
+    case 'Druid':
+      if (level <= 14) {
+        hp = calcHpPerLevel(level, 8);
+      } else {
+        hp = calcHpPerLevel(14, 8)
+      }
       break;
     default:
   }
