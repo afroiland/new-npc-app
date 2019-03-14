@@ -11,7 +11,7 @@ class NPCDetails extends Component {
     return (
       <div>
         <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '95%' }}>
-        {/* <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: 500 }}> */}
+          {/* <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: 500 }}> */}
           <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Name"
@@ -53,7 +53,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('title')}
             />
           </Grid>
-          {/* <Grid item style={{ padding: 5, flexGrow: 1 }}> */}
           <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Race"
@@ -65,10 +64,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('race')}
             />
           </Grid>
-          {/* <div style={{ width: '100%' }}></div> */}
-
-          
-
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Str"
@@ -146,10 +141,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('cha')}
             />
           </Grid>
-
-
-
-          {/* <div style={{ flexGrow: .1 }}></div> */}
           <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Gold"
@@ -158,7 +149,6 @@ class NPCDetails extends Component {
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
               style={{ width: '100%' }}
-              // style={{ width: 80 }}
               onChange={this.handleInputChange('gold')}
             />
           </Grid>
@@ -172,7 +162,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('affiliation')}
             />
           </Grid>
-          {/* <div style={{ flexGrow: .1 }}></div> */}
           <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Status"
@@ -206,7 +195,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('maxHP')}
             />
           </Grid>
-          {/* <div style={{ flexGrow: 1 }}></div> */}
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="AC"
@@ -229,7 +217,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('thac0')}
             />
           </Grid>
-          {/* <div style={{ flexGrow: 1 }}></div> */}
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Probity"
@@ -241,7 +228,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('probity')}
             />
           </Grid>
-          {/* <div style={{ flexGrow: 1 }}></div> */}
           <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Weapon"
@@ -262,16 +248,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('armor')}
             />
           </Grid>
-          {/* <Grid item style={{ padding: 5, flexGrow: 1 }}>
-            <TextField
-              label="Affiliation"
-              value={affiliation}
-              margin="normal"
-              variant="outlined"
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('affiliation')}
-            />
-          </Grid> */}
           <Grid item style={{ padding: 5, width: '100%' }}>
             <TextField
               label="Items"
@@ -301,7 +277,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               multiline
-              rowsMax = "7"
+              rowsMax="7"
               style={{ width: '100%' }}
               onChange={this.handleInputChange('memorized')}
             />
