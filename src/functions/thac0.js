@@ -1,12 +1,13 @@
-const fighterThac0s = [20, 19, 18, 17, 16, 15, 14, 13, 12];
-const thiefThac0s = [20, 20, 20, 20, 19, 19, 19, 19, 16];
-const clericThac0s = [20, 20, 20, 18, 18, 18, 16, 16, 16];
-const muThac0s = [20, 20, 20, 20, 20, 19, 19, 19, 19];
+const fighterThac0s = [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 4, 4, 4];
+const thiefThac0s = [20, 20, 20, 20, 19, 19, 19, 19, 16, 16, 16, 16, 14, 14, 14, 14, 12, 12, 12, 12];
+const clericThac0s = [20, 20, 20, 18, 18, 18, 16, 16, 16, 14, 14, 14, 12, 12, 12, 10, 10, 10, 9, 9];
+const muThac0s = [20, 20, 20, 20, 20, 19, 19, 19, 19, 19, 16, 16, 16, 16, 16, 13, 13, 13, 13, 13];
 
 export function calcThac0(level, pcClass, str, ex_str) {
   let thac0;
   switch (pcClass) {
     case 'Fighter':
+    case 'Paladin':
       thac0 = fighterThac0s[level - 1];
       break;
     case 'Thief':
@@ -15,6 +16,7 @@ export function calcThac0(level, pcClass, str, ex_str) {
       break;
     case 'Cleric':
     case 'Monk':
+    case 'Druid':
       thac0 = clericThac0s[level - 1];
       break;
     case 'Magic-User':

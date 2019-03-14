@@ -31,6 +31,5 @@ export function getArmor(pcClass, weapon) {
   if (canUseShield && weapon !== "Halberd" && weapon !== "Two-Handed Sword" && weapon !== "Staff" && weapon !== "Spear") {
     armor += " + Shield"
   }
-  console.log("armor: ", armor);
   return armor;
 }
