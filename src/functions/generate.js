@@ -2,6 +2,7 @@ import { generateSpellbook, getMemdSpells } from "./spells";
 import { rollDice } from "./dice";
 import { getTitle } from "./titles";
 import { calcThac0 } from "./thac0";
+import { calcAC } from "./ac";
 import { getArmor } from "./armor";
 import { getWeapon } from "./weapons";
 
@@ -140,8 +141,7 @@ export function generate(level, pcClass) {
   pc.gold = setStartingGold(pcClass);
   pc.weapon = getWeapon(pcClass);
   pc.armor = getArmor(pcClass, pc.weapon);
-  // TODO: determine ac based on armor
-  pc.ac = 10;
+  pc.ac = calcAC(pc.npcClass, pc.level, pc.armor, pc.dex);
   pc.items = "";
   pc.notes = "";
   pc.probity = 0;
