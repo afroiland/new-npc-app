@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import { List, ListItem, ListItemText } from "@material-ui/core";
 
 class NPCList extends Component {
   render() {
     const { list, handleNameClick, searchString } = this.props;
     return (
       <List component="ul">
-          {list.map(npc => <ListItem dense button key={npc.name} style={{ display: this.determineDisplay(npc, searchString),
-          textAlign: 'right' }} onClick={() => handleNameClick(npc.name)}>
-            <ListItemText>
-            <Typography style={{color: "white"}}>{npc.name}</Typography>
-          </ListItemText>
-          </ListItem>)}
+        {list.map(npc => <ListItem dense button key={npc.name} style={{
+          display: this.determineDisplay(npc, searchString),
+          textAlign: 'right'
+        }} onClick={() => handleNameClick(npc.name)}>
+          <ListItemText primary={npc.name} secondary={"Lv" + npc.level + " " + npc.class} />
+        </ListItem>)}
       </List>
     );
   }
