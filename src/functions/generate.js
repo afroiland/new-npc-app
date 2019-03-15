@@ -290,6 +290,7 @@ function setStartingGold(pcClass) {
   let gold;
   switch (pcClass) {
     case 'Fighter':
+    case'Paladin':
       gold = rollDice(5, 4) * 10;
       break;
     case 'Thief':
@@ -297,6 +298,7 @@ function setStartingGold(pcClass) {
       gold = rollDice(2, 6) * 10;
       break;
     case 'Cleric':
+    case 'Druid':
       gold = rollDice(3, 6) * 10;
       break;
     case 'Magic-User':
