@@ -8,6 +8,7 @@ export function calcThac0(level, pcClass, str, ex_str) {
   switch (pcClass) {
     case 'Fighter':
     case 'Paladin':
+    case 'Ranger':
       thac0 = fighterThac0s[level - 1];
       break;
     case 'Thief':

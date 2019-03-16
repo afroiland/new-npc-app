@@ -298,6 +298,7 @@ function setStartingGold(pcClass) {
   switch (pcClass) {
     case 'Fighter':
     case 'Paladin':
+    case 'Ranger':
       gold = rollDice(5, 4) * 10;
       break;
     case 'Thief':
