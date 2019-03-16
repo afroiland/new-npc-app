@@ -1,5 +1,6 @@
 import { generateSpellbook, getMemdSpells } from "./spells";
 import { rollDice } from "./dice";
+import { getName } from "./name";
 import { getTitle } from "./titles";
 import { calcThac0 } from "./thac0";
 import { calcAC } from "./ac";
@@ -157,17 +158,6 @@ function listify(spellsForLevel) {
     list += spellsForLevel[i] + ", ";
   }
   return list.slice(0, (list.length - 2));
-}
-
-function getName() {
-  let chars = "abcdefghijklmnopqrstuvwxyz"
-  let name = "";
-  let nameLength = rollDice(3, 4);
-  for (let i = 0; i < nameLength; i++) {
-    name += chars.charAt(rollDice(1, 26));
-  }
-  name = name.charAt(0).toUpperCase() + name.slice(1);
-  return name;
 }
 
 function setAttributes(pcClass) {
