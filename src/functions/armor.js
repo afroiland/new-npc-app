@@ -9,6 +9,7 @@ export function getArmor(pcClass, weapon) {
     case "Fighter":
     case "Cleric":
     case "Paladin":
+    case "Ranger":
       armor = armorList[rollDice(1, armorList.length) - 1];
       canUseShield = true;
       break;

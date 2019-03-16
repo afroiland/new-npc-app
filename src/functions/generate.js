@@ -32,7 +32,7 @@ export function generate(level, pcClass) {
   let hp = setHP(level, pcClass);
 
   //Adjust HP based on con
-  if (pcClass === "Fighter") {
+  if (pcClass === "Fighter" || pcClass === "Paladin" || pcClass === "Ranger") {
     switch (pc.con) {
       case 15:
         hp += (level);
@@ -269,6 +269,13 @@ function setHP(level, pcClass) {
         hp = calcHpPerLevel(14, 8)
       }
       break;
+    case 'Ranger':
+      if (level <= 10) {
+        hp = calcHpPerLevel(level, 8) + 8;
+      } else {
+        hp = calcHpPerLevel(10, 8) + ((level - 10) * 2);
+      }
+      break;
     default:
   }
   return hp;
@@ -290,7 +297,7 @@ function setStartingGold(pcClass) {
   let gold;
   switch (pcClass) {
     case 'Fighter':
-    case'Paladin':
+    case 'Paladin':
       gold = rollDice(5, 4) * 10;
       break;
     case 'Thief':
