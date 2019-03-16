@@ -12,6 +12,7 @@ const druidTitles = ["Aspirant", "Ovate", "Initiate of the 1st Circle", "Initiat
   "Initiate of the 4th Circle", "Initiate of the 5th Circle", "Initiate of the 6th Circle", "Initiate of the 7th Circle",
   "Initiate of the 8th Circle", "Initiate of the 9th Circle", "Druid", "ArchDruid"];
 const paladinTitles = ["Gallant", "Keeper", "Protector", "Defender", "Warder", "Guardian", "Chevalier", "Justicar"];
+const rangerTitles = ["Runner", "Strider", "Scout", "Courser", "Tracker", "Guide", "Pathfinder", "Ranger", "Ranger Knight"];
 
 export function getTitle(pcClass, level) {
   let title = "";
@@ -70,6 +71,13 @@ export function getTitle(pcClass, level) {
         title = "Paladin";
       } else {
         title = paladinTitles[level - 1];
+      }
+      break;
+    case "Ranger":
+      if (level >= 10) {
+        title = "Ranger Lord";
+      } else {
+        title = rangerTitles[level - 1];
       }
       break;
     default:

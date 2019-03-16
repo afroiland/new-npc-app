@@ -195,6 +195,23 @@ function setAttributes(pcClass) {
       mins.dex = 15;
       mins.con = 11;
       break;
+    case 'Druid':
+      mins.wis = 12;
+      mins.cha = 15;
+      break;
+    case 'Paladin':
+      mins.str = 12;
+      mins.int = 9;
+      mins.wis = 13;
+      mins.con = 9;
+      mins.cha = 17;
+      break;
+    case 'Ranger':
+      mins.str = 13;
+      mins.int = 13;
+      mins.wis = 14;
+      mins.con = 14;
+      break;
     default:
   }
 
@@ -298,6 +315,7 @@ function setStartingGold(pcClass) {
   switch (pcClass) {
     case 'Fighter':
     case 'Paladin':
+    case 'Ranger':
       gold = rollDice(5, 4) * 10;
       break;
     case 'Thief':
