@@ -729,6 +729,7 @@ export function getMemdSpells(spellbook, level, pcClass, int, wis) {
     }
   }
 
+  // Convert array of memorized spells to list and slice off last comma and space
   let list = "";
   for (let i = 0, j = memdList.length; i < j; i++) {
     list += memdList[i] + ", ";

@@ -12,7 +12,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin"]
+const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger"]
 
 class ViewContent extends Component {
   _isMounted = false;
@@ -66,7 +66,7 @@ class ViewContent extends Component {
     return (
       <div>
         <Grid container>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
             <Paper style={{ marginLeft: 5, marginTop: 5, height: "100%" }}>
               <TextField
                 id="standard-search"
@@ -81,7 +81,7 @@ class ViewContent extends Component {
                 searchString={searchString} />
             </Paper>
           </Grid>
-          <Grid item xs={10}>
+          <Grid item xs={9}>
             <Paper style={{ margin: 5 }}>
               <div style={{ height: 15 }}></div>
               <FormControl style={{ marginRight: 30 }}>
@@ -180,7 +180,6 @@ class ViewContent extends Component {
   }
 
   handleSearchChange = (newSearchString) => {
-    console.log("newSearchString: ", newSearchString);
     this.setState({ searchString: newSearchString });
   }
 

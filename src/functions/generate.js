@@ -2,6 +2,7 @@ import { generateSpellbook, getMemdSpells } from "./spells";
 import { rollDice } from "./dice";
 import { getTitle } from "./titles";
 import { calcThac0 } from "./thac0";
+import { calcAC } from "./ac";
 import { getArmor } from "./armor";
 import { getWeapon } from "./weapons";
 
@@ -31,7 +32,7 @@ export function generate(level, pcClass) {
   let hp = setHP(level, pcClass);
 
   //Adjust HP based on con
-  if (pcClass === "Fighter") {
+  if (pcClass === "Fighter" || pcClass === "Paladin" || pcClass === "Ranger") {
     switch (pc.con) {
       case 15:
         hp += (level);
@@ -140,8 +141,7 @@ export function generate(level, pcClass) {
   pc.gold = setStartingGold(pcClass);
   pc.weapon = getWeapon(pcClass);
   pc.armor = getArmor(pcClass, pc.weapon);
-  // TODO: determine ac based on armor
-  pc.ac = 10;
+  pc.ac = calcAC(pc.npcClass, pc.level, pc.armor, pc.dex);
   pc.items = "";
   pc.notes = "";
   pc.probity = 0;
@@ -269,6 +269,13 @@ function setHP(level, pcClass) {
         hp = calcHpPerLevel(14, 8)
       }
       break;
+    case 'Ranger':
+      if (level <= 10) {
+        hp = calcHpPerLevel(level, 8) + 8;
+      } else {
+        hp = calcHpPerLevel(10, 8) + ((level - 10) * 2);
+      }
+      break;
     default:
   }
   return hp;
@@ -290,6 +297,7 @@ function setStartingGold(pcClass) {
   let gold;
   switch (pcClass) {
     case 'Fighter':
+    case 'Paladin':
       gold = rollDice(5, 4) * 10;
       break;
     case 'Thief':
@@ -297,6 +305,7 @@ function setStartingGold(pcClass) {
       gold = rollDice(2, 6) * 10;
       break;
     case 'Cleric':
+    case 'Druid':
       gold = rollDice(3, 6) * 10;
       break;
     case 'Magic-User':

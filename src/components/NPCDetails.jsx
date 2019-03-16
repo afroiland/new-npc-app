@@ -277,7 +277,7 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               multiline
-              rowsMax="7"
+              rowsMax="15"
               style={{ width: '100%' }}
               onChange={this.handleInputChange('memorized')}
             />
