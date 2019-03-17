@@ -9,17 +9,19 @@ const vowels = ["a", "e", "i", "o", "u", "y", "aa", "ae", "ai", "ao", "au", "ea"
 
 export function getName() {
   let characterArray = [];
-  let patternArrayLength = rollDice(1, 6) + 2;
+  let patternArrayLength = rollDice(1, 5) + 2;
   let patternArray = [];
 
   patternArray.push(rollDice(1, 4));
   while (patternArray.length < patternArrayLength) {
+    // Ensure vowels alternate with non-vowels
     if (patternArray[patternArray.length - 1] !== 4) {
       patternArray.push(4);
     } else {
       patternArray.push(rollDice(1, 3));
     }
-    if (patternArray[patternArrayLength - 1] && patternArray[patternArrayLength - 1] === 2) {
+    // Ensure name does not end in startingBlend of consonants
+    if (patternArray[patternArrayLength - 1] === 2) {
       patternArray.pop();
     }
   }
