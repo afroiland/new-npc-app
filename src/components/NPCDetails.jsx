@@ -392,7 +392,7 @@ class NPCDetails extends Component {
 
   showEx_str() {
     const { npcClass, str } = this.props;
-    if (npcClass === "Fighter" && str > 17) {
+    if ((npcClass === "Fighter" || npcClass === "Paladin" || npcClass === "Ranger") && str > 17) {
       return true;
     }
   }
