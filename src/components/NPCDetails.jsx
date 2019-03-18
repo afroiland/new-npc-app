@@ -99,6 +99,17 @@ class NPCDetails extends Component {
           </Grid>
           <Grid item style={{ padding: 5 }}>
             <TextField
+              label="Wis"
+              value={wis}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              style={{ width: 55 }}
+              onChange={this.handleInputChange('wis')}
+            />
+          </Grid>
+          <Grid item style={{ padding: 5 }}>
+            <TextField
               label="Dex"
               value={dex}
               margin="normal"
@@ -117,17 +128,6 @@ class NPCDetails extends Component {
               inputProps={{ style: { textAlign: "center" } }}
               style={{ width: 55 }}
               onChange={this.handleInputChange('con')}
-            />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
-            <TextField
-              label="Wis"
-              value={wis}
-              margin="normal"
-              variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 55 }}
-              onChange={this.handleInputChange('wis')}
             />
           </Grid>
           <Grid item style={{ padding: 5 }}>

@@ -1,6 +1,7 @@
 import { rollDice } from "./dice"
 
-export function setAttributes(pcClass) {
+export function setAttributes(pcClass, method) {
+  console.log("method: ", method);
   let attributes = {};
 
   // Set minimums for class
@@ -45,21 +46,31 @@ export function setAttributes(pcClass) {
     default:
   }
 
-  // attributes.str = setAttribute(mins.str);
-  attributes.str = 18;
-  attributes.int = setAttribute(mins.int);
-  attributes.dex = setAttribute(mins.dex);
-  attributes.con = setAttribute(mins.con);
-  attributes.wis = setAttribute(mins.wis);
-  attributes.cha = setAttribute(mins.cha);
+  attributes.str = setAttribute(mins.str, method);
+  attributes.int = setAttribute(mins.int, method);
+  attributes.dex = setAttribute(mins.dex, method);
+  attributes.con = setAttribute(mins.con, method);
+  attributes.wis = setAttribute(mins.wis, method);
+  attributes.cha = setAttribute(mins.cha, method);
 
   return attributes;
 }
 
-function setAttribute(minimum) {
-  let score = rollDice(3, 6);
-  while (score < minimum) {
+function setAttribute(minimum, method) {
+  let score;
+  if (method === "traditional") {
     score = rollDice(3, 6);
+    while (score < minimum) {
+      score = rollDice(3, 6);
+    }
+  }
+  if (method === "variant") {
+    score = Math.floor(Math.random() * 15 + 4);
+    console.log("score: ", score);
+    while (score < minimum) {
+      score = Math.floor(Math.random() *  15 + 4);
+      console.log("updated score: ", score);
+    }
   }
   return score;
 }

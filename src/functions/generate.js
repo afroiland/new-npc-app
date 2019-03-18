@@ -19,7 +19,8 @@ export function generate(level, pcClass) {
   pc.title = getTitle(pcClass, level);
 
   //Set attributes
-  let attributes = setAttributes(pcClass);
+  // let attributes = setAttributes(pcClass, 'traditional');
+  let attributes = setAttributes(pcClass, 'variant');
   pc.str = attributes.str;
   if ((pc.npcClass === "Fighter" || pc.npcClass === "Paladin" || pc.npcClass === "Ranger") && pc.str === 18) {
     pc.ex_str = rollDice(1, 100);
