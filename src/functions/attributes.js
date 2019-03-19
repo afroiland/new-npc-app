@@ -66,10 +66,8 @@ function setAttribute(minimum, method) {
   }
   if (method === "variant") {
     score = Math.floor(Math.random() * 15 + 4);
-    console.log("score: ", score);
     while (score < minimum) {
       score = Math.floor(Math.random() *  15 + 4);
-      console.log("updated score: ", score);
     }
   }
   return score;
