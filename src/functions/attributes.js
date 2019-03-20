@@ -1,7 +1,6 @@
 import { rollDice } from "./dice"
 
 export function setAttributes(pcClass, method) {
-  console.log("method: ", method);
   let attributes = {};
 
   // Set minimums for class

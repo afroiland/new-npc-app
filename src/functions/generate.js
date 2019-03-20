@@ -12,7 +12,6 @@ const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Busine
   "Crown", "Street", "Inmates", "Dwarves", "House Burquone", "House Tellerue"];
 
 export function generate(level, pcClass) {
-  console.log("pcClass: ", pcClass);
   let pc = { level: level, npcClass: pcClass };
 
   pc.name = getName();
