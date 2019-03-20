@@ -3,7 +3,11 @@ const monkArmorClassList = [10, 9, 8, 7, 7, 6, 5, 4, 3, 3, 2, 1, 0, -1, -1, -2, 
 export function calcAC(npcClass, level, armor, dex) {
   let ac;
   if (npcClass === "Monk") {
-    ac = monkArmorClassList[level - 1];
+    if (level <= 17) {
+      ac = monkArmorClassList[level - 1];
+    } else {
+      ac = monkArmorClassList[monkArmorClassList.length - 1];
+    }
   } else {
     switch (armor) {
       case 'None':
