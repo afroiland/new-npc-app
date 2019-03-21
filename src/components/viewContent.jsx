@@ -64,10 +64,11 @@ class ViewContent extends Component {
       spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity, affiliation, notes,
       selectedNPC, searchString } = this.state;
     return (
-      <div>
-        <Grid container>
-          <Grid item xs={3}>
-            <Paper style={{ marginLeft: 5, marginTop: 5, height: "100%" }}>
+      <div style={{height:'calc(100% - 48px)'}}>
+        <Grid container style={{height:'100%'}}>
+          <Grid item xs={3} style={{height:'100%'}}>
+            <Paper style={{ marginLeft: 5, marginTop: 5, height: "calc(100% - 10px)" }}>
+            {/* <Paper style={{ marginLeft: 5, marginTop: 5, maxHeight: "100%", overflow: 'auto' }}> */}
               <TextField
                 id="standard-search"
                 label="Search..."
@@ -82,7 +83,7 @@ class ViewContent extends Component {
             </Paper>
           </Grid>
           <Grid item xs={9}>
-            <Paper style={{ margin: 5 }}>
+            <Paper style={{ margin: 5, maxHeight: "100%", overflow: 'auto' }}>
               <div style={{ height: 15 }}></div>
               <FormControl style={{ marginRight: 30 }}>
                 <InputLabel>Class</InputLabel>

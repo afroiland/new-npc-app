@@ -70,7 +70,7 @@ export function generate(level, pcClass) {
   pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
 
   //Spell stuff
-  if (pcClass === "Magic-User" || pcClass === "Cleric") {
+  if (pcClass === "Magic-User" || pcClass === "Cleric" || pcClass === "Druid" || pcClass === "Paladin" || pcClass === "Ranger") {
     let spellbook = {};
     if (pcClass === "Magic-User") {
       spellbook = generateSpellbook(level);

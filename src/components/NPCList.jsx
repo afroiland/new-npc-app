@@ -5,7 +5,7 @@ class NPCList extends Component {
   render() {
     const { list, handleNameClick, searchString } = this.props;
     return (
-      <List component="ul">
+      <List component="ul" style={{height: 'calc(100% - 95px)', overflow: 'auto'}}>
         {list.map(npc => <ListItem dense button key={npc.name} style={{
           display: this.determineDisplay(npc, searchString),
           textAlign: 'right'
