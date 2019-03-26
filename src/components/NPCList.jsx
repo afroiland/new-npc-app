@@ -31,7 +31,12 @@ class NPCList extends Component {
     allWordList += npc.SBLvl_3;
     allWordList += npc.SBLvl_4;
     allWordList += npc.SBLvl_5;
+    allWordList += npc.SBLvl_6;
+    allWordList += npc.SBLvl_7;
+    allWordList += npc.SBLvl_8;
+    allWordList += npc.SBLvl_9;
     allWordList += npc.weapon;
+    allWordList += npc.armor;
     allWordList += npc.items;
     allWordList += npc.affiliation;
     allWordList += npc.notes;
