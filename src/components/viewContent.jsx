@@ -68,7 +68,6 @@ class ViewContent extends Component {
         <Grid container style={{height:'100%'}}>
           <Grid item xs={3} style={{height:'100%'}}>
             <Paper style={{ marginLeft: 5, marginTop: 5, height: "calc(100% - 10px)" }}>
-            {/* <Paper style={{ marginLeft: 5, marginTop: 5, maxHeight: "100%", overflow: 'auto' }}> */}
               <TextField
                 id="standard-search"
                 label="Search..."
@@ -82,8 +81,8 @@ class ViewContent extends Component {
                 searchString={searchString} />
             </Paper>
           </Grid>
-          <Grid item xs={9}>
-            <Paper style={{ margin: 5, maxHeight: "100%", overflow: 'auto' }}>
+          <Grid item xs={9} style={{height:'100%'}}>
+            <Paper style={{ margin: 5 }}>
               <div style={{ height: 15 }}></div>
               <FormControl style={{ marginRight: 30 }}>
                 <InputLabel>Class</InputLabel>
@@ -112,7 +111,7 @@ class ViewContent extends Component {
               <br />
               <div style={{ height: 15 }}></div>
             </Paper>
-            <Paper style={{ marginLeft: 5, marginRight: 5, height: "100%" }}>
+            <Paper style={{ marginLeft: 5, marginRight: 5, height: 'calc(100% - 93px)', overflow: 'auto' }}>
               <NPCDetails handleChange={this.handleChange}
                 name={name}
                 title={title}

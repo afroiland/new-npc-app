@@ -9,8 +9,9 @@ class NPCDetails extends Component {
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, status, str, thac0, title, armor, weapon,
       wis } = this.props;
     return (
-      <div>
-        <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '95%' }}>
+      <div style={{width: 'calc(100% - 30px)'}}>
+      {/* <div style={{flexGrow: 1}}> */}
+        <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '100%' }}>
           {/* <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: 500 }}> */}
           <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
