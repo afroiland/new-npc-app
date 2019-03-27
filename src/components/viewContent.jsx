@@ -262,7 +262,8 @@ class ViewContent extends Component {
       items: newNPC.items,
       probity: newNPC.probity,
       affiliation: newNPC.affiliation,
-      notes: newNPC.notes
+      notes: newNPC.notes,
+      selectedNPC: ""
     });
   }
 
@@ -283,6 +284,8 @@ class ViewContent extends Component {
         .then(res => {
           console.log("add res: ", res);
         });
+        // TODO: When NPCList gets updated upon NPC generation, try something like the follwing code to make that new NPC selected
+        // this.setState({selectedNPC: state.name})
     }
   }
 
