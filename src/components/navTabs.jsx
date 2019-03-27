@@ -18,7 +18,7 @@ class NavTabs extends Component {
     const { value } = this.state;
 
     return (
-      <div>
+      <div style={{height: '100%'}}>
         <AppBar position="static" color="default">
           <Tabs
             value={value}

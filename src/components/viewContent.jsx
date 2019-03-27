@@ -64,10 +64,10 @@ class ViewContent extends Component {
       spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity, affiliation, notes,
       selectedNPC, searchString } = this.state;
     return (
-      <div>
-        <Grid container>
-          <Grid item xs={3}>
-            <Paper style={{ marginLeft: 5, marginTop: 5, height: "100%" }}>
+      <div style={{height:'calc(100% - 48px)'}}>
+        <Grid container style={{height:'100%'}}>
+          <Grid item xs={3} style={{height:'100%'}}>
+            <Paper style={{ marginLeft: 5, marginTop: 5, height: "calc(100% - 10px)" }}>
               <TextField
                 id="standard-search"
                 label="Search..."
@@ -81,7 +81,7 @@ class ViewContent extends Component {
                 searchString={searchString} />
             </Paper>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={9} style={{height:'100%'}}>
             <Paper style={{ margin: 5 }}>
               <div style={{ height: 15 }}></div>
               <FormControl style={{ marginRight: 30 }}>
@@ -111,7 +111,7 @@ class ViewContent extends Component {
               <br />
               <div style={{ height: 15 }}></div>
             </Paper>
-            <Paper style={{ marginLeft: 5, marginRight: 5, height: "100%" }}>
+            <Paper style={{ marginLeft: 5, marginRight: 5, height: 'calc(100% - 93px)', overflow: 'auto' }}>
               <NPCDetails handleChange={this.handleChange}
                 name={name}
                 title={title}
@@ -262,7 +262,8 @@ class ViewContent extends Component {
       items: newNPC.items,
       probity: newNPC.probity,
       affiliation: newNPC.affiliation,
-      notes: newNPC.notes
+      notes: newNPC.notes,
+      selectedNPC: ""
     });
   }
 
@@ -283,6 +284,8 @@ class ViewContent extends Component {
         .then(res => {
           console.log("add res: ", res);
         });
+        // TODO: When NPCList gets updated upon NPC generation, try something like the follwing code to make that new NPC selected
+        // this.setState({selectedNPC: state.name})
     }
   }
 

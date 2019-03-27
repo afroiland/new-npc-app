@@ -396,6 +396,13 @@ export function getMemdSpells(spellbook, level, pcClass, int, wis) {
       spellsByLevel.three = 3;
       spellsByLevel.four = 2;
       spellsByLevel.five = 1;
+      if (pcClass === "Paladin") {
+        spellsByLevel.one = 1;
+        spellsByLevel.two = 0;
+        spellsByLevel.three = 0;
+        spellsByLevel.four = 0;
+        spellsByLevel.five = 0;
+      }
       break;
     case 10:
       spellsByLevel.one = 4;
@@ -704,7 +711,7 @@ export function getMemdSpells(spellbook, level, pcClass, int, wis) {
     addByLevel(spellsByLevel.eight, spellbook.eighthLvlSpells);
     addByLevel(spellsByLevel.nine, spellbook.ninthLvlSpells);
   }
-  if (pcClass === "Cleric") {
+  if (pcClass === "Cleric" || pcClass === "Paladin") {
     addByLevel(spellsByLevel.one, level_1_spellsCleric);
     addByLevel(spellsByLevel.two, level_2_spellsCleric);
     addByLevel(spellsByLevel.three, level_3_spellsCleric);

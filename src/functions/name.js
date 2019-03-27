@@ -4,7 +4,8 @@ const consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", 
 const startingBlends = ["bl", "br", "cl", "cr", "dr", "fl", "fr", "gl", "gr", "pl", "pr", "sl",
   "sn", "sw", "tr", "tw", "wh", "wr", "scr", "shr", "sph", "spl", "spr", "squ", "str", "thr"];
 const endingBlends = ["ch", "sc", "sh", "sk", "sm", "sp", "st", "th", "sch"];
-const vowels = ["a", "e", "i", "o", "u", "y", "aa", "ae", "ai", "ao", "au", "ea", "ee", "ei", "eo", "eu", "ia", "ie",
+const vowels = ["a", "e", "i", "o", "u", "y"];
+const doubleVowels = ["aa", "ae", "ai", "ao", "au", "ea", "ee", "ei", "eo", "eu", "ia", "ie",
   "io", "iu", "oa", "oe", "oi", "oo", "ou", "ua", "ue", "ui", "uo"];
 
 export function getName() {
@@ -38,7 +39,11 @@ export function getName() {
         characterArray.push(endingBlends[rollDice(1, endingBlends.length - 1)]);
         break;
       case 4:
-        characterArray.push(vowels[rollDice(1, vowels.length - 1)]);
+        if (Math.floor(Math.random() * 10) > 4) {
+          characterArray.push(vowels[rollDice(1, vowels.length - 1)]);
+        } else {
+          characterArray.push(doubleVowels[rollDice(1, doubleVowels.length - 1)]);
+        }
         break;
       default:
     }
