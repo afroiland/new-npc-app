@@ -328,7 +328,8 @@ class ViewContent extends Component {
       items: "",
       probity: "",
       affiliation: "",
-      notes: ""
+      notes: "",
+      selectedNPC: ""
     });
   }
 }

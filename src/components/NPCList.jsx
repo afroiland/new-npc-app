@@ -10,7 +10,7 @@ class NPCList extends Component {
         {list.map(npc => <ListItem dense button key={npc.name} style={{
           display: this.determineDisplay(npc, searchString),
           textAlign: 'right',
-          backgroundColor: (selectedNPC == npc.name) ? "#009688" : "",
+          backgroundColor: (selectedNPC === npc.name) ? "#009688" : "",
         }} onClick={() => handleNameClick(npc.name)}>
           <ListItemText primary={npc.name} secondary={"Lv" + npc.level + " " + npc.class} />
         </ListItem>)}
