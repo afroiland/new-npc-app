@@ -1,7 +1,7 @@
-const fighterTitles = ["Person-at-Arms", "Warrior", "Swordsperson", "Hero", "Swashbuckler", "Myrmidon", "Champion", "Superhero"];
+const fighterTitles = ["Veteran", "Warrior", "Swordsperson", "Hero", "Swashbuckler", "Myrmidon", "Champion", "Superhero"];
 const muTitles = ["Prestidigitator", "Evoker", "Conjurer", "Theurgist", "Thaumaturgist", "Magician", "Enchanter", "Warlock",
   "Sorcerer", "Necromancer"];
-const clericTitles = ["Acolyte", "Adept", "Priest", "Curate", "???", "Canon", "Lama", "Patriarch/Matriarch"];
+const clericTitles = ["Acolyte", "Adept", "Priest", "Curate", "", "Canon", "Lama", "Patriarch/Matriarch"];
 const thiefTitles = ["Rogue", "Footpad", "Cutpurse", "Robber", "Burglar", "Filcher", "Sharper", "Magsman", "Thief"];
 const monkTitles = ["Novice", "Initiate", "Brother", "Disciple", "Immaculate", "Master", "Superior Master", "Master of Dragons",
   "Master of the North Wind", "Master of the West Wind", "Master of the South Wind", "Master of the East Wind", "Master of Winter",

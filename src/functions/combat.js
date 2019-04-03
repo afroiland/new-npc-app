@@ -1,16 +1,16 @@
-import { rollDice } from "./dice";
+import { rollDice } from './dice';
 
 export function fight(incomingGroupA, incomingGroupB) {
   let log = [];
 
   let groupA = incomingGroupA.map(npc => ({
-    "name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
-    "damage": getDamage(npc.weapon), "dmgBonus": getDmgBonus(npc.str, npc.ex_str), "spells": npc.memorized, "incap": false
+    'name': npc.name, 'ac': npc.ac, 'hp': npc.currentHP, 'thac0': npc.thac0,
+    'damage': getDamage(npc.weapon), 'dmgBonus': getDmgBonus(npc.str, npc.ex_str), 'spells': npc.memorized, 'incap': false
   }));
 
   let groupB = incomingGroupB.map(npc => ({
-    "name": npc.name, "ac": npc.ac, "hp": npc.currentHP, "thac0": npc.thac0,
-    "damage": getDamage(npc.weapon), "dmgBonus": getDmgBonus(npc.str, npc.ex_str), "spells": npc.memorized, "incap": false
+    'name': npc.name, 'ac': npc.ac, 'hp': npc.currentHP, 'thac0': npc.thac0,
+    'damage': getDamage(npc.weapon), 'dmgBonus': getDmgBonus(npc.str, npc.ex_str), 'spells': npc.memorized, 'incap': false
   }));
 
   let eachSideHasOnePersonStanding = true;
@@ -19,14 +19,14 @@ export function fight(incomingGroupA, incomingGroupB) {
 
   while (eachSideHasOnePersonStanding) {
     if (!groupAHasOnePersonStanding) {
-      log.push("Group B is victorious.");
+      log.push('Group B is victorious.');
       eachSideHasOnePersonStanding = false;
-      console.log("log: ", log);
+      console.log('log: ', log);
     }
     if (!groupBHasOnePersonStanding) {
       eachSideHasOnePersonStanding = false;
-      log.push("Group A is victorious.");
-      console.log("log: ", log);
+      log.push('Group A is victorious.');
+      console.log('log: ', log);
     }
     if (eachSideHasOnePersonStanding) {
       doOneRound();
@@ -38,19 +38,19 @@ export function fight(incomingGroupA, incomingGroupB) {
     let groupBInit = rollDice(1, 6);
 
     if (groupAInit > groupBInit) {
-      oneSideGoes("A");
-      oneSideGoes("B");
+      oneSideGoes('A');
+      oneSideGoes('B');
     } else if (groupAInit < groupBInit) {
-      oneSideGoes("B");
-      oneSideGoes("A");
+      oneSideGoes('B');
+      oneSideGoes('A');
     } else if (groupAInit === groupBInit) {
       // simultaneous combat
     }
   }
 
   function oneSideGoes(attackingGroupId) {
-    let attackingGroup = attackingGroupId === "A" ? groupA : groupB;
-    let defendingGroup = attackingGroupId === "A" ? groupB : groupA;
+    let attackingGroup = attackingGroupId === 'A' ? groupA : groupB;
+    let defendingGroup = attackingGroupId === 'A' ? groupB : groupA;
 
     // loop through each npc in attacking group
     for (let i = 0, l = attackingGroup.length; i < l; i++) {
@@ -71,7 +71,7 @@ export function fight(incomingGroupA, incomingGroupB) {
       }
       if (groupAHasOnePersonStanding && groupBHasOnePersonStanding) {
         if (attackingGroup[i].incap) {
-          //console.log("No action for fallen NPC");
+          //console.log('No action for fallen NPC');
         } else {
           // select target
           let target = {};
@@ -95,7 +95,7 @@ export function fight(incomingGroupA, incomingGroupB) {
             }
             damage += attackingGroup[i].dmgBonus;
 
-            log.push(attackingGroup[i].name + " hits " + target.name + " for " + damage + ".");
+            log.push(attackingGroup[i].name + ' hits ' + target.name + ' for ' + damage + '.');
 
             // subtract dmg from hp and change incap status of target if necessary
             let groupAIndex = groupA.findIndex(obj => obj.name === target.name);
@@ -104,14 +104,14 @@ export function fight(incomingGroupA, incomingGroupB) {
               groupA[groupAIndex].hp -= damage;
               if (groupA[groupAIndex].hp <= 0) {
                 groupA[groupAIndex].incap = true;
-                log.push(groupA[groupAIndex].name + " has fallen.");
+                log.push(groupA[groupAIndex].name + ' has fallen.');
               }
             }
             if (groupBIndex !== -1) {
               groupB[groupBIndex].hp -= damage;
               if (groupB[groupBIndex].hp <= 0) {
                 groupB[groupBIndex].incap = true;
-                log.push(groupB[groupBIndex].name + " has fallen.");
+                log.push(groupB[groupBIndex].name + ' has fallen.');
               }
             }
           }
@@ -125,31 +125,31 @@ export function fight(incomingGroupA, incomingGroupB) {
 function getDamage(weapon) {
   let damage;
   switch (weapon) {
-    case "Darts":
-      damage = "1-3";
+    case 'Darts':
+      damage = '1-3';
       break;
-    case "Dagger":
-      damage = "1-4";
+    case 'Dagger':
+      damage = '1-4';
       break;
-    case "Hammer":
-      damage = "2-5";
+    case 'Hammer':
+      damage = '2-5';
       break;
-    case "Club":
-    case "Mace":
-    case "Shortsword":
-    case "Staff":
-      damage = "1-6";
+    case 'Club':
+    case 'Mace':
+    case 'Shortsword':
+    case 'Staff':
+      damage = '1-6';
       break;
-    case "Flail":
-      damage = "2-7";
+    case 'Flail':
+      damage = '2-7';
       break;
-    case "Axe":
-    case "Longsword":
-      damage = "1-8";
+    case 'Axe':
+    case 'Longsword':
+      damage = '1-8';
       break;
-    case "Halberd":
-    case "Two-Handed Sword":
-      damage = "1-10";
+    case 'Halberd':
+    case 'Two-Handed Sword':
+      damage = '1-10';
       break;
     default:
   }
