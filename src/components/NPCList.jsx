@@ -4,13 +4,12 @@ import { List, ListItem, ListItemText } from "@material-ui/core";
 class NPCList extends Component {
   render() {
     const { list, handleNameClick, searchString, selectedNPC } = this.props;
-    console.log("selectedNPC: ", selectedNPC);
     return (
       <List component="ul" style={{height: 'calc(100% - 95px)', overflow: 'auto'}}>
         {list.map(npc => <ListItem dense button key={npc.name} style={{
           display: this.determineDisplay(npc, searchString),
           textAlign: 'right',
-          backgroundColor: (selectedNPC == npc.name) ? "#009688" : "",
+          backgroundColor: (selectedNPC === npc.name) ? "#009688" : "",
         }} onClick={() => handleNameClick(npc.name)}>
           <ListItemText primary={npc.name} secondary={"Lv" + npc.level + " " + npc.class} />
         </ListItem>)}

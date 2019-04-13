@@ -66,7 +66,7 @@ class ViewContent extends Component {
     return (
       <div style={{height:'calc(100% - 48px)'}}>
         <Grid container style={{height:'100%'}}>
-          <Grid item xs={3} style={{height:'100%'}}>
+          <Grid item xs={2} style={{height:'100%'}}>
             <Paper style={{ marginLeft: 5, marginTop: 5, height: "calc(100% - 10px)" }}>
               <TextField
                 id="standard-search"
@@ -81,7 +81,7 @@ class ViewContent extends Component {
                 searchString={searchString} />
             </Paper>
           </Grid>
-          <Grid item xs={9} style={{height:'100%'}}>
+          <Grid item xs={10} style={{height:'100%'}}>
             <Paper style={{ margin: 5 }}>
               <div style={{ height: 15 }}></div>
               <FormControl style={{ marginRight: 30 }}>
@@ -104,6 +104,8 @@ class ViewContent extends Component {
               </FormControl>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
                 onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
+              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+                onClick={() => this.handleLevelUp(this.state)}>Level Up</Button>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
                 onClick={() => this.handleSave(this.state)}>Save</Button>
               <Button variant='contained' color='primary' style={{ marginTop: 6 }}
@@ -267,6 +269,10 @@ class ViewContent extends Component {
     });
   }
 
+  handleLevelUp = (state) => {
+    console.log("level up state: ", state);
+  }
+
   handleSave = (state) => {
     let nameExists = false;
     for (let i = 0, j = state.NPCList.length; i < j; i++) {
@@ -328,7 +334,8 @@ class ViewContent extends Component {
       items: "",
       probity: "",
       affiliation: "",
-      notes: ""
+      notes: "",
+      selectedNPC: ""
     });
   }
 }
