@@ -34,6 +34,8 @@ app.get('/getNPCs', (req, res) => {
   });
 });
 
+//New Route to get Marathea NPCs
+
 app.post('/add', (req, res) => {
   console.log("add req body: ", req.body);
   let sql = 'INSERT INTO new_schema.npcs (name, level, title, class, race, currentHP, maxHP, status, ac, thac0, str, ex_str,\

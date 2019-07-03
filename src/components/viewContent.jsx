@@ -12,13 +12,15 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger"]
+const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger"];
+const tables = ["Test", "Marathea"];
 
 class ViewContent extends Component {
   _isMounted = false;
   state = {
     levelSelect: 1,
     classSelect: "Fighter",
+    tableSelect: "Marathea",
     NPCList: [],
     name: "",
     title: "",
@@ -110,6 +112,17 @@ class ViewContent extends Component {
                 onClick={() => this.handleSave(this.state)}>Save</Button>
               <Button variant='contained' color='primary' style={{ marginTop: 6 }}
                 onClick={() => this.handleClear()}>Clear</Button>
+
+              {/* <FormControl style={{ marginRight: 30 }}>
+                <InputLabel>Table</InputLabel>
+                <Select value={this.state.tableSelect}
+                  onChange={e => this.setState({ tableSelect: e.target.value })}
+                  style={{ width: "100px" }}
+                >
+                  {tables.map(table => <MenuItem key={table} value={table}>{table}</MenuItem>)}
+                </Select>
+              </FormControl> */}
+
               <br />
               <div style={{ height: 15 }}></div>
             </Paper>
@@ -159,6 +172,7 @@ class ViewContent extends Component {
 
   componentDidMount() {
     this._isMounted = true;
+    //determine which schema from which to get NPCs
     axios.get('http://localhost:3001/getNPCs').then(res => {
       if (this._isMounted) {
         this.setState({ NPCList: res.data });
