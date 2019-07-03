@@ -12,8 +12,8 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger"];
-const tables = ["Test", "Marathea"];
+const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Civilian"];
+//const tables = ["Test", "Marathea"];
 
 class ViewContent extends Component {
   _isMounted = false;
@@ -28,6 +28,26 @@ class ViewContent extends Component {
     npcClass: "",
     race: "",
     currentHP: "",
+    Lv1_HP: "",
+    Lv2_HP: "",
+    Lv3_HP: "",
+    Lv4_HP: "",
+    Lv5_HP: "",
+    Lv6_HP: "",
+    Lv7_HP: "",
+    Lv8_HP: "",
+    Lv9_HP: "",
+    Lv10_HP: "",
+    Lv11_HP: "",
+    Lv12_HP: "",
+    Lv13_HP: "",
+    Lv14_HP: "",
+    Lv15_HP: "",
+    Lv16_HP: "",
+    Lv17_HP: "",
+    Lv18_HP: "",
+    Lv19_HP: "",
+    Lv20_HP: "",
     maxHP: "",
     status: "",
     ac: "",
@@ -61,10 +81,11 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, status, ac, thac0, str, ex_str, int,
-      dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, spellbookLvl_6,
-      spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity, affiliation, notes,
-      selectedNPC, searchString } = this.state;
+    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, Lv1_HP, Lv2_HP, Lv3_HP, Lv4_HP,
+      Lv5_HP, Lv6_HP, Lv7_HP, Lv8_HP, Lv9_HP, Lv10_HP, Lv11_HP, Lv12_HP, Lv13_HP, Lv14_HP, Lv15_HP, Lv16_HP, Lv17_HP,
+      Lv18_HP, Lv19_HP, Lv20_HP, status, ac, thac0, str, ex_str, int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2,
+      spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9,
+      memorized, gold, armor, weapon, items, probity, affiliation, notes, selectedNPC, searchString } = this.state;
     return (
       <div style={{height:'calc(100% - 48px)'}}>
         <Grid container style={{height:'100%'}}>
@@ -134,7 +155,26 @@ class ViewContent extends Component {
                 npcClass={npcClass}
                 race={race}
                 currentHP={currentHP}
-                maxHP={maxHP}
+                Lv1_HP={Lv1_HP}
+                Lv2_HP={Lv2_HP}
+                Lv3_HP={Lv3_HP}
+                Lv4_HP={Lv4_HP}
+                Lv5_HP={Lv5_HP}
+                Lv6_HP={Lv6_HP}
+                Lv7_HP={Lv7_HP}
+                Lv8_HP={Lv8_HP}
+                Lv9_HP={Lv9_HP}
+                Lv10_HP={Lv10_HP}
+                Lv11_HP={Lv11_HP}
+                Lv12_HP={Lv12_HP}
+                Lv13_HP={Lv13_HP}
+                Lv14_HP={Lv14_HP}
+                Lv15_HP={Lv15_HP}
+                Lv16_HP={Lv16_HP}
+                Lv17_HP={Lv17_HP}
+                Lv18_HP={Lv18_HP}
+                Lv19_HP={Lv19_HP}
+                Lv20_HP={Lv20_HP}
                 status={status}
                 ac={ac}
                 thac0={thac0}
@@ -172,7 +212,7 @@ class ViewContent extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    //determine which schema from which to get NPCs
+    //determine schema from which to get NPCs
     axios.get('http://localhost:3001/getNPCs').then(res => {
       if (this._isMounted) {
         this.setState({ NPCList: res.data });
