@@ -155,26 +155,9 @@ class ViewContent extends Component {
                 npcClass={npcClass}
                 race={race}
                 currentHP={currentHP}
-                Lv1_HP={Lv1_HP}
-                Lv2_HP={Lv2_HP}
-                Lv3_HP={Lv3_HP}
-                Lv4_HP={Lv4_HP}
-                Lv5_HP={Lv5_HP}
-                Lv6_HP={Lv6_HP}
-                Lv7_HP={Lv7_HP}
-                Lv8_HP={Lv8_HP}
-                Lv9_HP={Lv9_HP}
-                Lv10_HP={Lv10_HP}
-                Lv11_HP={Lv11_HP}
-                Lv12_HP={Lv12_HP}
-                Lv13_HP={Lv13_HP}
-                Lv14_HP={Lv14_HP}
-                Lv15_HP={Lv15_HP}
-                Lv16_HP={Lv16_HP}
-                Lv17_HP={Lv17_HP}
-                Lv18_HP={Lv18_HP}
-                Lv19_HP={Lv19_HP}
-                Lv20_HP={Lv20_HP}
+                maxHP={Lv1_HP + Lv2_HP + Lv3_HP + Lv4_HP + Lv5_HP + Lv6_HP + Lv7_HP + Lv8_HP +
+                  Lv9_HP + Lv10_HP + Lv11_HP + Lv12_HP + Lv13_HP + Lv14_HP + Lv15_HP + Lv16_HP +
+                  Lv17_HP + Lv18_HP + Lv19_HP + Lv20_HP}
                 status={status}
                 ac={ac}
                 thac0={thac0}

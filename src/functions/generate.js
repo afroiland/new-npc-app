@@ -3,6 +3,7 @@ import { rollDice } from "./dice";
 import { getName } from "./name";
 import { getTitle } from "./titles";
 import { setAttributes } from "./attributes";
+import { getHP } from "./hp";
 import { calcThac0 } from "./thac0";
 import { calcAC } from "./ac";
 import { getArmor } from "./armor";
@@ -31,42 +32,43 @@ export function generate(level, pcClass) {
   pc.con = attributes.con;
   pc.wis = attributes.wis;
   pc.cha = attributes.cha;
-
-  let hp = setHP(level, pcClass);
+ 
+  let hp = getHP(level, pcClass, pc.con);
+  console.log('hp: ', hp);
 
   //Adjust HP based on con
-  if (pcClass === "Fighter" || pcClass === "Paladin" || pcClass === "Ranger") {
-    switch (pc.con) {
-      case 15:
-        hp += (level);
-        break;
-      case 16:
-        hp += (level * 2);
-        break;
-      case 17:
-        hp += (level * 3);
-        break;
-      case 18:
-        hp += (level * 4);
-        break;
-      default:
-    }
-  } else {
-    switch (pc.con) {
-      case 15:
-        hp += (level);
-        break;
-      case 16:
-      case 17:
-      case 18:
-        hp += (level * 2);
-        break;
-      default:
-    }
-  }
+  // if (pcClass === "Fighter" || pcClass === "Paladin" || pcClass === "Ranger") {
+  //   switch (pc.con) {
+  //     case 15:
+  //       hp += (level);
+  //       break;
+  //     case 16:
+  //       hp += (level * 2);
+  //       break;
+  //     case 17:
+  //       hp += (level * 3);
+  //       break;
+  //     case 18:
+  //       hp += (level * 4);
+  //       break;
+  //     default:
+  //   }
+  // } else {
+  //   switch (pc.con) {
+  //     case 15:
+  //       hp += (level);
+  //       break;
+  //     case 16:
+  //     case 17:
+  //     case 18:
+  //       hp += (level * 2);
+  //       break;
+  //     default:
+  //   }
+  // }
 
-  pc.currentHP = hp;
-  pc.maxHP = hp;
+  //pc.currentHP = hp;
+  //pc.maxHP = hp;
   pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
 
   //Spell stuff
@@ -162,145 +164,82 @@ function listify(spellsForLevel) {
   return list.slice(0, (list.length - 2));
 }
 
-// function setAttributes(pcClass) {
-//   let attributes = {};
-
-//   // Set minimums for class
-//   let mins = {};
+// function setHP(level, pcClass) {
+//   let hp;
 //   switch (pcClass) {
 //     case 'Fighter':
-//       mins.str = 9;
+//     case 'Paladin':
+//       if (level <= 9) {
+//         hp = calcHpPerLevel(level, 10);
+//       } else {
+//         hp = calcHpPerLevel(9, 10) + ((level - 9) * 3);
+//       }
 //       break;
 //     case 'Thief':
+//       if (level <= 10) {
+//         hp = calcHpPerLevel(level, 6);
+//       } else {
+//         hp = calcHpPerLevel(10, 6) + ((level - 10) * 2);
+//       }
+//       break;
 //     case 'Assassin':
-//       mins.dex = 9;
+//       if (level <= 15) {
+//         hp = calcHpPerLevel(level, 6);
+//       } else {
+//         hp = calcHpPerLevel(15, 6)
+//       }
 //       break;
 //     case 'Cleric':
-//       mins.wis = 9;
+//       if (level <= 9) {
+//         hp = calcHpPerLevel(level, 8);
+//       } else {
+//         hp = calcHpPerLevel(9, 8) + ((level - 9) * 2);
+//       }
 //       break;
 //     case 'Magic-User':
-//       mins.int = 9;
+//       if (level <= 11) {
+//         hp = calcHpPerLevel(level, 4);
+//       } else {
+//         hp = calcHpPerLevel(11, 4) + (level - 11);
+//       }
 //       break;
 //     case 'Monk':
-//       mins.str = 15;
-//       mins.wis = 15;
-//       mins.dex = 15;
-//       mins.con = 11;
+//       if (level <= 17) {
+//         hp = calcHpPerLevel(level, 4) + 4;
+//       } else {
+//         hp = calcHpPerLevel(17, 4) + 4;
+//       }
 //       break;
 //     case 'Druid':
-//       mins.wis = 12;
-//       mins.cha = 15;
-//       break;
-//     case 'Paladin':
-//       mins.str = 12;
-//       mins.int = 9;
-//       mins.wis = 13;
-//       mins.con = 9;
-//       mins.cha = 17;
+//       if (level <= 14) {
+//         hp = calcHpPerLevel(level, 8);
+//       } else {
+//         hp = calcHpPerLevel(14, 8)
+//       }
 //       break;
 //     case 'Ranger':
-//       mins.str = 13;
-//       mins.int = 13;
-//       mins.wis = 14;
-//       mins.con = 14;
+//       if (level <= 10) {
+//         hp = calcHpPerLevel(level, 8) + 8;
+//       } else {
+//         hp = calcHpPerLevel(10, 8) + ((level - 10) * 2);
+//       }
 //       break;
 //     default:
 //   }
-
-//   attributes.str = setAttribute(mins.str);
-//   attributes.int = setAttribute(mins.int);
-//   attributes.dex = setAttribute(mins.dex);
-//   attributes.con = setAttribute(mins.con);
-//   attributes.wis = setAttribute(mins.wis);
-//   attributes.cha = setAttribute(mins.cha);
-
-//   return attributes;
+//   return hp;
 // }
 
-// function setAttribute(minimum) {
-//   let score = rollDice(3, 6);
-//   while (score < minimum) {
-//     score = rollDice(3, 6);
+// function calcHpPerLevel(level, die) {
+//   let hp = die;
+//   if (level === 1) {
+//     return hp;
+//   } else {
+//     for (let i = 1; i < level; i++) {
+//       hp = hp + rollDice(1, die);
+//     }
+//     return hp;
 //   }
-//   return score;
 // }
-
-function setHP(level, pcClass) {
-  let hp;
-  switch (pcClass) {
-    case 'Fighter':
-    case 'Paladin':
-      if (level <= 9) {
-        hp = calcHpPerLevel(level, 10);
-      } else {
-        hp = calcHpPerLevel(9, 10) + ((level - 9) * 3);
-      }
-      break;
-    case 'Thief':
-      if (level <= 10) {
-        hp = calcHpPerLevel(level, 6);
-      } else {
-        hp = calcHpPerLevel(10, 6) + ((level - 10) * 2);
-      }
-      break;
-    case 'Assassin':
-      if (level <= 15) {
-        hp = calcHpPerLevel(level, 6);
-      } else {
-        hp = calcHpPerLevel(15, 6)
-      }
-      break;
-    case 'Cleric':
-      if (level <= 9) {
-        hp = calcHpPerLevel(level, 8);
-      } else {
-        hp = calcHpPerLevel(9, 8) + ((level - 9) * 2);
-      }
-      break;
-    case 'Magic-User':
-      if (level <= 11) {
-        hp = calcHpPerLevel(level, 4);
-      } else {
-        hp = calcHpPerLevel(11, 4) + (level - 11);
-      }
-      break;
-    case 'Monk':
-      if (level <= 17) {
-        hp = calcHpPerLevel(level, 4) + 4;
-      } else {
-        hp = calcHpPerLevel(17, 4) + 4;
-      }
-      break;
-    case 'Druid':
-      if (level <= 14) {
-        hp = calcHpPerLevel(level, 8);
-      } else {
-        hp = calcHpPerLevel(14, 8)
-      }
-      break;
-    case 'Ranger':
-      if (level <= 10) {
-        hp = calcHpPerLevel(level, 8) + 8;
-      } else {
-        hp = calcHpPerLevel(10, 8) + ((level - 10) * 2);
-      }
-      break;
-    default:
-  }
-  return hp;
-}
-
-function calcHpPerLevel(level, die) {
-  let hp = die;
-  if (level === 1) {
-    return hp;
-  } else {
-    for (let i = 1; i < level; i++) {
-      hp = hp + rollDice(1, die);
-    }
-    return hp;
-  }
-}
 
 function setStartingGold(pcClass) {
   let gold;

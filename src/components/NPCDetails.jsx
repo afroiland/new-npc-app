@@ -188,8 +188,6 @@ class NPCDetails extends Component {
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Max"
-              // here
-              //value={maxHP}
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
