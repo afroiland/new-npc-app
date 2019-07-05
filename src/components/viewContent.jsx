@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
+import { calcConBonus } from "./../functions/hp"
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";
@@ -28,6 +29,7 @@ class ViewContent extends Component {
     npcClass: "",
     race: "",
     currentHP: "",
+    maxHP: "",
     Lv1_HP: "",
     Lv2_HP: "",
     Lv3_HP: "",
@@ -155,9 +157,8 @@ class ViewContent extends Component {
                 npcClass={npcClass}
                 race={race}
                 currentHP={currentHP}
-                maxHP={Lv1_HP + Lv2_HP + Lv3_HP + Lv4_HP + Lv5_HP + Lv6_HP + Lv7_HP + Lv8_HP +
-                  Lv9_HP + Lv10_HP + Lv11_HP + Lv12_HP + Lv13_HP + Lv14_HP + Lv15_HP + Lv16_HP +
-                  Lv17_HP + Lv18_HP + Lv19_HP + Lv20_HP}
+                //
+                maxHP={this.calcMaxHP()}
                 status={status}
                 ac={ac}
                 thac0={thac0}
@@ -233,7 +234,7 @@ class ViewContent extends Component {
       npcClass: selectedNPC[0].class,
       race: selectedNPC[0].race,
       currentHP: selectedNPC[0].currentHP,
-      maxHP: selectedNPC[0].maxHP,
+      //maxHP: selectedNPC[0].maxHP,
       status: selectedNPC[0].status,
       ac: selectedNPC[0].ac,
       thac0: selectedNPC[0].thac0,
@@ -274,7 +275,7 @@ class ViewContent extends Component {
       npcClass: newNPC.npcClass,
       race: newNPC.race,
       currentHP: newNPC.currentHP,
-      maxHP: newNPC.maxHP,
+      //maxHP: newNPC.maxHP,
       status: "Normal",
       ac: newNPC.ac,
       thac0: newNPC.thac0,
@@ -327,7 +328,7 @@ class ViewContent extends Component {
         .then(res => {
           console.log("add res: ", res);
         });
-        // TODO: When NPCList gets updated upon NPC generation, try something like the follwing code to make that new NPC selected
+        // TODO: When NPCList gets updated upon NPC generation, try something like the following code to make that new NPC selected
         // this.setState({selectedNPC: state.name})
     }
   }
@@ -375,6 +376,13 @@ class ViewContent extends Component {
       selectedNPC: ""
     });
   }
+
+  calcMaxHP() {
+    console.log("getting hit");
+    return 1;
+  }
 }
+
+// calcConBonus() here???? maybe just put it in hp.js and import
 
 export default ViewContent;

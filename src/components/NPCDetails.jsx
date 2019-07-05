@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 
 class NPCDetails extends Component {
   render() {
+    console.log("this.props: ", this.props);
     const { ac, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name,
       notes, npcClass, probity, race, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, status, str, thac0, title, armor, weapon,
@@ -188,6 +189,7 @@ class NPCDetails extends Component {
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Max"
+              value={maxHP}
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
