@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
-import { calcConBonus } from "./../functions/hp"
+//import { calcConBonus } from "./../functions/hp"
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";
@@ -29,7 +29,6 @@ class ViewContent extends Component {
     npcClass: "",
     race: "",
     currentHP: "",
-    maxHP: "",
     Lv1_HP: "",
     Lv2_HP: "",
     Lv3_HP: "",
@@ -83,11 +82,10 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, Lv1_HP, Lv2_HP, Lv3_HP, Lv4_HP,
-      Lv5_HP, Lv6_HP, Lv7_HP, Lv8_HP, Lv9_HP, Lv10_HP, Lv11_HP, Lv12_HP, Lv13_HP, Lv14_HP, Lv15_HP, Lv16_HP, Lv17_HP,
-      Lv18_HP, Lv19_HP, Lv20_HP, status, ac, thac0, str, ex_str, int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2,
-      spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9,
-      memorized, gold, armor, weapon, items, probity, affiliation, notes, selectedNPC, searchString } = this.state;
+    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, status, ac, thac0, str, ex_str,
+      int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
+      spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
+      affiliation, notes, selectedNPC, searchString } = this.state;
     return (
       <div style={{height:'calc(100% - 48px)'}}>
         <Grid container style={{height:'100%'}}>

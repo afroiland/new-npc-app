@@ -1,4 +1,4 @@
-import { rollDice } from "./dice"
+//import { rollDice } from "./dice"
 
 export function getHP(level, pcClass) {
   let results = {
@@ -16,11 +16,11 @@ export function getHP(level, pcClass) {
 
   // }
 
-  switch (pcClass) {
-    case 'Fighter':
-    case 'Paladin':
+  // switch (pcClass) {
+  //   case 'Fighter':
+  //   case 'Paladin':
 
-  }
+  // }
 
   return results;
 }

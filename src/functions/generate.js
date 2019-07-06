@@ -35,18 +35,15 @@ export function generate(level, pcClass) {
  
   let hp = getHP(level, pcClass, pc.con);
   console.log("hp: ", hp);
-
-  let total = 0;
+  let currentHP = 0;
 
   for (let i = 1; i <= 20; i++) {
     let levelString = "Lv" + i + "_HP";
     pc[levelString] = hp[levelString];
-    total += hp[levelString];
-    console.log("total: ", total);
+    currentHP += hp[levelString];
   }
-
-  console.log("total outside of function: ", total);
-  pc.currentHP = total;
+  
+  pc.currentHP = currentHP;
 
   //Adjust HP based on con
   // if (pcClass === "Fighter" || pcClass === "Paladin" || pcClass === "Ranger") {
