@@ -49,7 +49,6 @@ class ViewContent extends Component {
     Lv18_HP: "",
     Lv19_HP: "",
     Lv20_HP: "",
-    maxHP: "",
     status: "",
     ac: "",
     thac0: "",
@@ -87,9 +86,9 @@ class ViewContent extends Component {
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
       affiliation, notes, selectedNPC, searchString } = this.state;
     return (
-      <div style={{height:'calc(100% - 48px)'}}>
-        <Grid container style={{height:'100%'}}>
-          <Grid item xs={2} style={{height:'100%'}}>
+      <div style={{ height: 'calc(100% - 48px)' }}>
+        <Grid container style={{ height: '100%' }}>
+          <Grid item xs={2} style={{ height: '100%' }}>
             <Paper style={{ marginLeft: 5, marginTop: 5, height: "calc(100% - 10px)" }}>
               <TextField
                 id="standard-search"
@@ -104,7 +103,7 @@ class ViewContent extends Component {
                 searchString={searchString} />
             </Paper>
           </Grid>
-          <Grid item xs={10} style={{height:'100%'}}>
+          <Grid item xs={10} style={{ height: '100%' }}>
             <Paper style={{ margin: 5 }}>
               <div style={{ height: 15 }}></div>
               <FormControl style={{ marginRight: 30 }}>
@@ -155,7 +154,6 @@ class ViewContent extends Component {
                 npcClass={npcClass}
                 race={race}
                 currentHP={currentHP}
-                //
                 maxHP={this.calcMaxHP()}
                 status={status}
                 ac={ac}
@@ -232,7 +230,26 @@ class ViewContent extends Component {
       npcClass: selectedNPC[0].class,
       race: selectedNPC[0].race,
       currentHP: selectedNPC[0].currentHP,
-      //maxHP: selectedNPC[0].maxHP,
+      Lv1_HP: selectedNPC[0].Lv1_HP,
+      Lv2_HP: selectedNPC[0].Lv2_HP,
+      Lv3_HP: selectedNPC[0].Lv3_HP,
+      Lv4_HP: selectedNPC[0].Lv4_HP,
+      Lv5_HP: selectedNPC[0].Lv5_HP,
+      Lv6_HP: selectedNPC[0].Lv6_HP,
+      Lv7_HP: selectedNPC[0].Lv7_HP,
+      Lv8_HP: selectedNPC[0].Lv8_HP,
+      Lv9_HP: selectedNPC[0].Lv9_HP,
+      Lv10_HP: selectedNPC[0].Lv10_HP,
+      Lv11_HP: selectedNPC[0].Lv11_HP,
+      Lv12_HP: selectedNPC[0].Lv12_HP,
+      Lv13_HP: selectedNPC[0].Lv13_HP,
+      Lv14_HP: selectedNPC[0].Lv14_HP,
+      Lv15_HP: selectedNPC[0].Lv15_HP,
+      Lv16_HP: selectedNPC[0].Lv16_HP,
+      Lv17_HP: selectedNPC[0].Lv17_HP,
+      Lv18_HP: selectedNPC[0].Lv18_HP,
+      Lv19_HP: selectedNPC[0].Lv19_HP,
+      Lv20_HP: selectedNPC[0].Lv20_HP,
       status: selectedNPC[0].status,
       ac: selectedNPC[0].ac,
       thac0: selectedNPC[0].thac0,
@@ -273,7 +290,26 @@ class ViewContent extends Component {
       npcClass: newNPC.npcClass,
       race: newNPC.race,
       currentHP: newNPC.currentHP,
-      //maxHP: newNPC.maxHP,
+      Lv1_HP: newNPC.Lv1_HP,
+      Lv2_HP: newNPC.Lv2_HP,
+      Lv3_HP: newNPC.Lv3_HP,
+      Lv4_HP: newNPC.Lv4_HP,
+      Lv5_HP: newNPC.Lv5_HP,
+      Lv6_HP: newNPC.Lv6_HP,
+      Lv7_HP: newNPC.Lv7_HP,
+      Lv8_HP: newNPC.Lv8_HP,
+      Lv9_HP: newNPC.Lv9_HP,
+      Lv10_HP: newNPC.Lv10_HP,
+      Lv11_HP: newNPC.Lv11_HP,
+      Lv12_HP: newNPC.Lv12_HP,
+      Lv13_HP: newNPC.Lv13_HP,
+      Lv14_HP: newNPC.Lv14_HP,
+      Lv15_HP: newNPC.Lv15_HP,
+      Lv16_HP: newNPC.Lv16_HP,
+      Lv17_HP: newNPC.Lv17_HP,
+      Lv18_HP: newNPC.Lv18_HP,
+      Lv19_HP: newNPC.Lv19_HP,
+      Lv20_HP: newNPC.Lv20_HP,
       status: "Normal",
       ac: newNPC.ac,
       thac0: newNPC.thac0,
@@ -327,8 +363,8 @@ class ViewContent extends Component {
         .then(res => {
           console.log("add res: ", res);
         });
-        // TODO: When NPCList gets updated upon NPC generation, try something like the following code to make that new NPC selected
-        // this.setState({selectedNPC: state.name})
+      // TODO: When NPCList gets updated upon NPC generation, try something like the following code to make that new NPC selected
+      // this.setState({selectedNPC: state.name})
     }
   }
 
@@ -377,8 +413,11 @@ class ViewContent extends Component {
   }
 
   calcMaxHP() {
-    //console.log("getting hit");
-    return 1;
+    console.log("this.state.Lv1_HP: ", this.state.Lv1_HP);
+    return this.state.Lv1_HP + this.state.Lv2_HP + this.state.Lv3_HP + this.state.Lv4_HP + this.state.Lv5_HP +
+      this.state.Lv6_HP + this.state.Lv7_HP + this.state.Lv8_HP + this.state.Lv9_HP + this.state.Lv10_HP +
+      this.state.Lv11_HP + this.state.Lv12_HP + this.state.Lv13_HP + this.state.Lv14_HP + this.state.Lv15_HP +
+      this.state.Lv16_HP + this.state.Lv17_HP + this.state.Lv18_HP + this.state.Lv19_HP + this.state.Lv20_HP;
   }
 }
 

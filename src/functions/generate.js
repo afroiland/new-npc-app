@@ -34,7 +34,6 @@ export function generate(level, pcClass) {
   pc.cha = attributes.cha;
  
   let hp = getHP(level, pcClass, pc.con);
-  //console.log("hp: ", hp);
   let currentHP = 0;
 
   for (let i = 1; i <= 20; i++) {
@@ -75,9 +74,7 @@ export function generate(level, pcClass) {
   //     default:
   //   }
   // }
-
-  //pc.currentHP = hp;
-  //pc.maxHP = hp;
+  
   pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
 
   //Spell stuff
