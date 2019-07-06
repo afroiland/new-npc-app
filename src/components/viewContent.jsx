@@ -307,6 +307,7 @@ class ViewContent extends Component {
 
   handleLevelUp = (state) => {
     console.log("level up state: ", state);
+    //Have modal pop up where the HP for the new level can be entered
   }
 
   handleSave = (state) => {
@@ -376,11 +377,13 @@ class ViewContent extends Component {
   }
 
   calcMaxHP() {
-    console.log("getting hit");
+    //console.log("getting hit");
     return 1;
   }
 }
 
-// calcConBonus() here???? maybe just put it in hp.js and import
+// TODO: calcConBonus() here???? maybe just put it in hp.js and import
+
+// TODO: remove thac0 calculation and put logic here
 
 export default ViewContent;
