@@ -3,7 +3,7 @@ import { rollDice } from "./dice";
 import { getName } from "./name";
 import { getTitle } from "./titles";
 import { setAttributes } from "./attributes";
-import { getHP } from "./hp";
+import { getHP, calcConBonus } from "./hp";
 import { calcThac0 } from "./thac0";
 import { calcAC } from "./ac";
 import { getArmor } from "./armor";
@@ -42,38 +42,7 @@ export function generate(level, pcClass) {
     currentHP += hp[levelString];
   }
 
-  pc.currentHP = currentHP;
-
-  //Adjust HP based on con
-  // if (pcClass === "Fighter" || pcClass === "Paladin" || pcClass === "Ranger") {
-  //   switch (pc.con) {
-  //     case 15:
-  //       hp += (level);
-  //       break;
-  //     case 16:
-  //       hp += (level * 2);
-  //       break;
-  //     case 17:
-  //       hp += (level * 3);
-  //       break;
-  //     case 18:
-  //       hp += (level * 4);
-  //       break;
-  //     default:
-  //   }
-  // } else {
-  //   switch (pc.con) {
-  //     case 15:
-  //       hp += (level);
-  //       break;
-  //     case 16:
-  //     case 17:
-  //     case 18:
-  //       hp += (level * 2);
-  //       break;
-  //     default:
-  //   }
-  // }
+  pc.currentHP = currentHP + calcConBonus(level, pcClass, pc.con);
   
   pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
 

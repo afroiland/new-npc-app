@@ -11,6 +11,7 @@ import axios from "axios";
 import { Paper, InputLabel } from "@material-ui/core";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { calcConBonus } from "../functions/hp";
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Civilian"];
@@ -29,6 +30,7 @@ class ViewContent extends Component {
     npcClass: "",
     race: "",
     currentHP: "",
+    //maxHP: "",
     Lv1_HP: "",
     Lv2_HP: "",
     Lv3_HP: "",
@@ -413,15 +415,20 @@ class ViewContent extends Component {
   }
 
   calcMaxHP() {
-    console.log("this.state.Lv1_HP: ", this.state.Lv1_HP);
-    return this.state.Lv1_HP + this.state.Lv2_HP + this.state.Lv3_HP + this.state.Lv4_HP + this.state.Lv5_HP +
+    let result = this.state.Lv1_HP + this.state.Lv2_HP + this.state.Lv3_HP + this.state.Lv4_HP + this.state.Lv5_HP +
       this.state.Lv6_HP + this.state.Lv7_HP + this.state.Lv8_HP + this.state.Lv9_HP + this.state.Lv10_HP +
       this.state.Lv11_HP + this.state.Lv12_HP + this.state.Lv13_HP + this.state.Lv14_HP + this.state.Lv15_HP +
-      this.state.Lv16_HP + this.state.Lv17_HP + this.state.Lv18_HP + this.state.Lv19_HP + this.state.Lv20_HP;
+      this.state.Lv16_HP + this.state.Lv17_HP + this.state.Lv18_HP + this.state.Lv19_HP + this.state.Lv20_HP +
+      calcConBonus(this.state.level, this.state.npcClass, this.state.con);
+
+    console.log("result1: ", result);
+    if (result !== undefined) {
+      return result;
+    }
+    console.log("result2: ", result);
+    //return result;
   }
 }
-
-// TODO: calcConBonus() here???? maybe just put it in hp.js and import
 
 // TODO: remove thac0 calculation and put logic here
 

@@ -42,7 +42,6 @@ export function getHP(level, pcClass) {
       generateHPBeyondFirstLvl(1, 8, 11, 2);
       break;
     default:
-
   }
 
   function generateHPBeyondFirstLvl(numberOfDice, typeOfDice, maxLevel, hpBeyondMaxLevel) {
@@ -58,10 +57,42 @@ export function getHP(level, pcClass) {
       }
     }
   }
-
   return results;
 }
 
 export function calcConBonus(level, pcClass, con) {
-  return 0;
+  let conBonus;
+
+  if (pcClass === "Fighter" || pcClass === "Paladin" || pcClass === "Ranger") {
+    switch (con) {
+      case 15:
+        conBonus += level;
+        break;
+      case 16:
+        conBonus += (level * 2);
+        break;
+      case 17:
+        conBonus += (level * 3);
+        break;
+      case 18:
+        conBonus += (level * 4);
+        break;
+      default:
+    }
+  } else {
+    switch (con) {
+      case 15:
+        conBonus += level;
+        break;
+      case 16:
+      case 17:
+      case 18:
+        conBonus += (level * 2);
+        break;
+      default:
+    }
+  }
+
+  console.log("conBonus: ", conBonus);
+  return conBonus;
 }
