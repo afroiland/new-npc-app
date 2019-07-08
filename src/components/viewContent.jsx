@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
+import { calcConBonus } from "../functions/hp";
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";
@@ -12,13 +13,15 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger"]
+const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Civilian"];
+//const tables = ["Test", "Marathea"];
 
 class ViewContent extends Component {
   _isMounted = false;
   state = {
     levelSelect: 1,
     classSelect: "Fighter",
+    tableSelect: "Marathea",
     NPCList: [],
     name: "",
     title: "",
@@ -26,7 +29,26 @@ class ViewContent extends Component {
     npcClass: "",
     race: "",
     currentHP: "",
-    maxHP: "",
+    Lv1_HP: 0,
+    Lv2_HP: 0,
+    Lv3_HP: 0,
+    Lv4_HP: 0,
+    Lv5_HP: 0,
+    Lv6_HP: 0,
+    Lv7_HP: 0,
+    Lv8_HP: 0,
+    Lv9_HP: 0,
+    Lv10_HP: 0,
+    Lv11_HP: 0,
+    Lv12_HP: 0,
+    Lv13_HP: 0,
+    Lv14_HP: 0,
+    Lv15_HP: 0,
+    Lv16_HP: 0,
+    Lv17_HP: 0,
+    Lv18_HP: 0,
+    Lv19_HP: 0,
+    Lv20_HP: 0,
     status: "",
     ac: "",
     thac0: "",
@@ -59,14 +81,14 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, maxHP, status, ac, thac0, str, ex_str, int,
-      dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, spellbookLvl_6,
-      spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity, affiliation, notes,
-      selectedNPC, searchString } = this.state;
+    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, status, ac, thac0, str, ex_str,
+      int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
+      spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
+      affiliation, notes, selectedNPC, searchString } = this.state;
     return (
-      <div style={{height:'calc(100% - 48px)'}}>
-        <Grid container style={{height:'100%'}}>
-          <Grid item xs={2} style={{height:'100%'}}>
+      <div style={{ height: 'calc(100% - 48px)' }}>
+        <Grid container style={{ height: '100%' }}>
+          <Grid item xs={2} style={{ height: '100%' }}>
             <Paper style={{ marginLeft: 5, marginTop: 5, height: "calc(100% - 10px)" }}>
               <TextField
                 id="standard-search"
@@ -81,7 +103,7 @@ class ViewContent extends Component {
                 searchString={searchString} />
             </Paper>
           </Grid>
-          <Grid item xs={10} style={{height:'100%'}}>
+          <Grid item xs={10} style={{ height: '100%' }}>
             <Paper style={{ margin: 5 }}>
               <div style={{ height: 15 }}></div>
               <FormControl style={{ marginRight: 30 }}>
@@ -110,6 +132,17 @@ class ViewContent extends Component {
                 onClick={() => this.handleSave(this.state)}>Save</Button>
               <Button variant='contained' color='primary' style={{ marginTop: 6 }}
                 onClick={() => this.handleClear()}>Clear</Button>
+
+              {/* <FormControl style={{ marginRight: 30 }}>
+                <InputLabel>Table</InputLabel>
+                <Select value={this.state.tableSelect}
+                  onChange={e => this.setState({ tableSelect: e.target.value })}
+                  style={{ width: "100px" }}
+                >
+                  {tables.map(table => <MenuItem key={table} value={table}>{table}</MenuItem>)}
+                </Select>
+              </FormControl> */}
+
               <br />
               <div style={{ height: 15 }}></div>
             </Paper>
@@ -121,7 +154,7 @@ class ViewContent extends Component {
                 npcClass={npcClass}
                 race={race}
                 currentHP={currentHP}
-                maxHP={maxHP}
+                maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
                 status={status}
                 ac={ac}
                 thac0={thac0}
@@ -159,6 +192,7 @@ class ViewContent extends Component {
 
   componentDidMount() {
     this._isMounted = true;
+    //determine schema from which to get NPCs
     axios.get('http://localhost:3001/getNPCs').then(res => {
       if (this._isMounted) {
         this.setState({ NPCList: res.data });
@@ -196,7 +230,26 @@ class ViewContent extends Component {
       npcClass: selectedNPC[0].class,
       race: selectedNPC[0].race,
       currentHP: selectedNPC[0].currentHP,
-      maxHP: selectedNPC[0].maxHP,
+      Lv1_HP: selectedNPC[0].Lv1_HP,
+      Lv2_HP: selectedNPC[0].Lv2_HP,
+      Lv3_HP: selectedNPC[0].Lv3_HP,
+      Lv4_HP: selectedNPC[0].Lv4_HP,
+      Lv5_HP: selectedNPC[0].Lv5_HP,
+      Lv6_HP: selectedNPC[0].Lv6_HP,
+      Lv7_HP: selectedNPC[0].Lv7_HP,
+      Lv8_HP: selectedNPC[0].Lv8_HP,
+      Lv9_HP: selectedNPC[0].Lv9_HP,
+      Lv10_HP: selectedNPC[0].Lv10_HP,
+      Lv11_HP: selectedNPC[0].Lv11_HP,
+      Lv12_HP: selectedNPC[0].Lv12_HP,
+      Lv13_HP: selectedNPC[0].Lv13_HP,
+      Lv14_HP: selectedNPC[0].Lv14_HP,
+      Lv15_HP: selectedNPC[0].Lv15_HP,
+      Lv16_HP: selectedNPC[0].Lv16_HP,
+      Lv17_HP: selectedNPC[0].Lv17_HP,
+      Lv18_HP: selectedNPC[0].Lv18_HP,
+      Lv19_HP: selectedNPC[0].Lv19_HP,
+      Lv20_HP: selectedNPC[0].Lv20_HP,
       status: selectedNPC[0].status,
       ac: selectedNPC[0].ac,
       thac0: selectedNPC[0].thac0,
@@ -237,7 +290,26 @@ class ViewContent extends Component {
       npcClass: newNPC.npcClass,
       race: newNPC.race,
       currentHP: newNPC.currentHP,
-      maxHP: newNPC.maxHP,
+      Lv1_HP: newNPC.Lv1_HP,
+      Lv2_HP: newNPC.Lv2_HP,
+      Lv3_HP: newNPC.Lv3_HP,
+      Lv4_HP: newNPC.Lv4_HP,
+      Lv5_HP: newNPC.Lv5_HP,
+      Lv6_HP: newNPC.Lv6_HP,
+      Lv7_HP: newNPC.Lv7_HP,
+      Lv8_HP: newNPC.Lv8_HP,
+      Lv9_HP: newNPC.Lv9_HP,
+      Lv10_HP: newNPC.Lv10_HP,
+      Lv11_HP: newNPC.Lv11_HP,
+      Lv12_HP: newNPC.Lv12_HP,
+      Lv13_HP: newNPC.Lv13_HP,
+      Lv14_HP: newNPC.Lv14_HP,
+      Lv15_HP: newNPC.Lv15_HP,
+      Lv16_HP: newNPC.Lv16_HP,
+      Lv17_HP: newNPC.Lv17_HP,
+      Lv18_HP: newNPC.Lv18_HP,
+      Lv19_HP: newNPC.Lv19_HP,
+      Lv20_HP: newNPC.Lv20_HP,
       status: "Normal",
       ac: newNPC.ac,
       thac0: newNPC.thac0,
@@ -271,6 +343,7 @@ class ViewContent extends Component {
 
   handleLevelUp = (state) => {
     console.log("level up state: ", state);
+    //TODO: Have modal pop up where the HP for the new level can be entered
   }
 
   handleSave = (state) => {
@@ -278,6 +351,7 @@ class ViewContent extends Component {
     for (let i = 0, j = state.NPCList.length; i < j; i++) {
       if (state.NPCList[i].name === state.name) {
         nameExists = true;
+        break;
       }
     }
     if (nameExists) {
@@ -290,8 +364,8 @@ class ViewContent extends Component {
         .then(res => {
           console.log("add res: ", res);
         });
-        // TODO: When NPCList gets updated upon NPC generation, try something like the follwing code to make that new NPC selected
-        // this.setState({selectedNPC: state.name})
+      // TODO: When NPCList gets updated upon NPC generation, try something like the following code to make that new NPC selected
+      // this.setState({selectedNPC: state.name})
     }
   }
 
@@ -307,7 +381,26 @@ class ViewContent extends Component {
       npcClass: "",
       race: "",
       currentHP: "",
-      maxHP: "",
+      Lv1_HP: 0,
+      Lv2_HP: 0,
+      Lv3_HP: 0,
+      Lv4_HP: 0,
+      Lv5_HP: 0,
+      Lv6_HP: 0,
+      Lv7_HP: 0,
+      Lv8_HP: 0,
+      Lv9_HP: 0,
+      Lv10_HP: 0,
+      Lv11_HP: 0,
+      Lv12_HP: 0,
+      Lv13_HP: 0,
+      Lv14_HP: 0,
+      Lv15_HP: 0,
+      Lv16_HP: 0,
+      Lv17_HP: 0,
+      Lv18_HP: 0,
+      Lv19_HP: 0,
+      Lv20_HP: 0,
       status: "",
       ac: "",
       thac0: "",
@@ -338,6 +431,21 @@ class ViewContent extends Component {
       selectedNPC: ""
     });
   }
+
+  calcMaxHP() {
+    let result = this.state.Lv1_HP + this.state.Lv2_HP + this.state.Lv3_HP + this.state.Lv4_HP + this.state.Lv5_HP +
+      this.state.Lv6_HP + this.state.Lv7_HP + this.state.Lv8_HP + this.state.Lv9_HP + this.state.Lv10_HP +
+      this.state.Lv11_HP + this.state.Lv12_HP + this.state.Lv13_HP + this.state.Lv14_HP + this.state.Lv15_HP +
+      this.state.Lv16_HP + this.state.Lv17_HP + this.state.Lv18_HP + this.state.Lv19_HP + this.state.Lv20_HP +
+      calcConBonus(this.state.level, this.state.npcClass, this.state.con);
+
+    if (result !== 0) {
+      return result;
+    }
+    return "";
+  }
 }
+
+// TODO: remove thac0 calculation and put logic here
 
 export default ViewContent;

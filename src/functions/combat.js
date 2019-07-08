@@ -84,6 +84,8 @@ export function fight(incomingGroupA, incomingGroupB) {
             }
           }
 
+          ///TODO: check if acting character has any combat spells memorized
+          
           // attack
           if (attackingGroup[i].thac0 <= rollDice(1, 20) - target.ac) {
             // attack succeeds
