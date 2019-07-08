@@ -31,26 +31,26 @@ class ViewContent extends Component {
     race: "",
     currentHP: "",
     //maxHP: "",
-    Lv1_HP: "",
-    Lv2_HP: "",
-    Lv3_HP: "",
-    Lv4_HP: "",
-    Lv5_HP: "",
-    Lv6_HP: "",
-    Lv7_HP: "",
-    Lv8_HP: "",
-    Lv9_HP: "",
-    Lv10_HP: "",
-    Lv11_HP: "",
-    Lv12_HP: "",
-    Lv13_HP: "",
-    Lv14_HP: "",
-    Lv15_HP: "",
-    Lv16_HP: "",
-    Lv17_HP: "",
-    Lv18_HP: "",
-    Lv19_HP: "",
-    Lv20_HP: "",
+    Lv1_HP: 0,
+    Lv2_HP: 0,
+    Lv3_HP: 0,
+    Lv4_HP: 0,
+    Lv5_HP: 0,
+    Lv6_HP: 0,
+    Lv7_HP: 0,
+    Lv8_HP: 0,
+    Lv9_HP: 0,
+    Lv10_HP: 0,
+    Lv11_HP: 0,
+    Lv12_HP: 0,
+    Lv13_HP: 0,
+    Lv14_HP: 0,
+    Lv15_HP: 0,
+    Lv16_HP: 0,
+    Lv17_HP: 0,
+    Lv18_HP: 0,
+    Lv19_HP: 0,
+    Lv20_HP: 0,
     status: "",
     ac: "",
     thac0: "",
@@ -83,6 +83,7 @@ class ViewContent extends Component {
   };
 
   render() {
+    console.log("viewContent rendering");
     const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, status, ac, thac0, str, ex_str,
       int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
@@ -156,7 +157,7 @@ class ViewContent extends Component {
                 npcClass={npcClass}
                 race={race}
                 currentHP={currentHP}
-                maxHP={this.calcMaxHP()}
+                maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
                 status={status}
                 ac={ac}
                 thac0={thac0}
@@ -345,7 +346,7 @@ class ViewContent extends Component {
 
   handleLevelUp = (state) => {
     console.log("level up state: ", state);
-    //Have modal pop up where the HP for the new level can be entered
+    //TODO: Have modal pop up where the HP for the new level can be entered
   }
 
   handleSave = (state) => {
@@ -353,6 +354,7 @@ class ViewContent extends Component {
     for (let i = 0, j = state.NPCList.length; i < j; i++) {
       if (state.NPCList[i].name === state.name) {
         nameExists = true;
+        break;
       }
     }
     if (nameExists) {
@@ -382,7 +384,27 @@ class ViewContent extends Component {
       npcClass: "",
       race: "",
       currentHP: "",
-      maxHP: "",
+      //maxHP: "",
+      Lv1_HP: 0,
+      Lv2_HP: 0,
+      Lv3_HP: 0,
+      Lv4_HP: 0,
+      Lv5_HP: 0,
+      Lv6_HP: 0,
+      Lv7_HP: 0,
+      Lv8_HP: 0,
+      Lv9_HP: 0,
+      Lv10_HP: 0,
+      Lv11_HP: 0,
+      Lv12_HP: 0,
+      Lv13_HP: 0,
+      Lv14_HP: 0,
+      Lv15_HP: 0,
+      Lv16_HP: 0,
+      Lv17_HP: 0,
+      Lv18_HP: 0,
+      Lv19_HP: 0,
+      Lv20_HP: 0,
       status: "",
       ac: "",
       thac0: "",
@@ -422,11 +444,11 @@ class ViewContent extends Component {
       calcConBonus(this.state.level, this.state.npcClass, this.state.con);
 
     console.log("result1: ", result);
-    if (result !== undefined) {
+    if (result !== 0) {
       return result;
     }
     console.log("result2: ", result);
-    //return result;
+    return result;
   }
 }
 

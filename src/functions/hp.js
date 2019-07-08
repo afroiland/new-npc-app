@@ -61,7 +61,7 @@ export function getHP(level, pcClass) {
 }
 
 export function calcConBonus(level, pcClass, con) {
-  let conBonus;
+  let conBonus = 0;
 
   if (pcClass === "Fighter" || pcClass === "Paladin" || pcClass === "Ranger") {
     switch (con) {
