@@ -93,6 +93,5 @@ export function calcConBonus(level, pcClass, con) {
     }
   }
 
-  console.log("conBonus: ", conBonus);
   return conBonus;
 }

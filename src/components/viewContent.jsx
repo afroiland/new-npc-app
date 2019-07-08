@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
-//import { calcConBonus } from "./../functions/hp"
+import { calcConBonus } from "../functions/hp";
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";
@@ -11,7 +11,6 @@ import axios from "axios";
 import { Paper, InputLabel } from "@material-ui/core";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { calcConBonus } from "../functions/hp";
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Civilian"];
@@ -30,7 +29,6 @@ class ViewContent extends Component {
     npcClass: "",
     race: "",
     currentHP: "",
-    //maxHP: "",
     Lv1_HP: 0,
     Lv2_HP: 0,
     Lv3_HP: 0,
@@ -83,7 +81,6 @@ class ViewContent extends Component {
   };
 
   render() {
-    console.log("viewContent rendering");
     const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, status, ac, thac0, str, ex_str,
       int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
@@ -384,7 +381,6 @@ class ViewContent extends Component {
       npcClass: "",
       race: "",
       currentHP: "",
-      //maxHP: "",
       Lv1_HP: 0,
       Lv2_HP: 0,
       Lv3_HP: 0,
@@ -443,12 +439,10 @@ class ViewContent extends Component {
       this.state.Lv16_HP + this.state.Lv17_HP + this.state.Lv18_HP + this.state.Lv19_HP + this.state.Lv20_HP +
       calcConBonus(this.state.level, this.state.npcClass, this.state.con);
 
-    console.log("result1: ", result);
     if (result !== 0) {
       return result;
     }
-    console.log("result2: ", result);
-    return result;
+    return "";
   }
 }
 
