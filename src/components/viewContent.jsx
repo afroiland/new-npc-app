@@ -3,6 +3,7 @@ import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
 import { calcConBonus } from "../functions/hp";
+import { calcAC } from "./../functions/ac";
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";
@@ -50,7 +51,6 @@ class ViewContent extends Component {
     Lv19_HP: 0,
     Lv20_HP: 0,
     status: "",
-    ac: "",
     thac0: "",
     str: "",
     ex_str: "",
@@ -81,7 +81,7 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, status, ac, thac0, str, ex_str,
+    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, status, thac0, str, ex_str,
       int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
       affiliation, notes, selectedNPC, searchString } = this.state;
@@ -156,7 +156,8 @@ class ViewContent extends Component {
                 currentHP={currentHP}
                 maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
                 status={status}
-                ac={ac}
+                //ac={calcAC(npcClass, level, armor, parseInt(dex)) !== 0 ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
+                ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
                 thac0={thac0}
                 gold={gold}
                 str={str}
@@ -251,7 +252,6 @@ class ViewContent extends Component {
       Lv19_HP: selectedNPC[0].Lv19_HP,
       Lv20_HP: selectedNPC[0].Lv20_HP,
       status: selectedNPC[0].status,
-      ac: selectedNPC[0].ac,
       thac0: selectedNPC[0].thac0,
       str: selectedNPC[0].str,
       ex_str: selectedNPC[0].ex_str,
@@ -311,7 +311,6 @@ class ViewContent extends Component {
       Lv19_HP: newNPC.Lv19_HP,
       Lv20_HP: newNPC.Lv20_HP,
       status: "Normal",
-      ac: newNPC.ac,
       thac0: newNPC.thac0,
       str: newNPC.str,
       ex_str: newNPC.ex_str,

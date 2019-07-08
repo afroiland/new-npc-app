@@ -5,7 +5,6 @@ import { getTitle } from "./titles";
 import { setAttributes } from "./attributes";
 import { getHP, calcConBonus } from "./hp";
 import { calcThac0 } from "./thac0";
-import { calcAC } from "./ac";
 import { getArmor } from "./armor";
 import { getWeapon } from "./weapons";
 
@@ -121,7 +120,6 @@ export function generate(level, pcClass) {
   pc.gold = setStartingGold(pcClass);
   pc.weapon = getWeapon(pcClass);
   pc.armor = getArmor(pcClass, pc.weapon);
-  pc.ac = calcAC(pc.npcClass, pc.level, pc.armor, pc.dex);
   pc.items = "";
   pc.notes = "";
   pc.probity = 0;
@@ -138,83 +136,6 @@ function listify(spellsForLevel) {
   }
   return list.slice(0, (list.length - 2));
 }
-
-// function setHP(level, pcClass) {
-//   let hp;
-//   switch (pcClass) {
-//     case 'Fighter':
-//     case 'Paladin':
-//       if (level <= 9) {
-//         hp = calcHpPerLevel(level, 10);
-//       } else {
-//         hp = calcHpPerLevel(9, 10) + ((level - 9) * 3);
-//       }
-//       break;
-//     case 'Thief':
-//       if (level <= 10) {
-//         hp = calcHpPerLevel(level, 6);
-//       } else {
-//         hp = calcHpPerLevel(10, 6) + ((level - 10) * 2);
-//       }
-//       break;
-//     case 'Assassin':
-//       if (level <= 15) {
-//         hp = calcHpPerLevel(level, 6);
-//       } else {
-//         hp = calcHpPerLevel(15, 6)
-//       }
-//       break;
-//     case 'Cleric':
-//       if (level <= 9) {
-//         hp = calcHpPerLevel(level, 8);
-//       } else {
-//         hp = calcHpPerLevel(9, 8) + ((level - 9) * 2);
-//       }
-//       break;
-//     case 'Magic-User':
-//       if (level <= 11) {
-//         hp = calcHpPerLevel(level, 4);
-//       } else {
-//         hp = calcHpPerLevel(11, 4) + (level - 11);
-//       }
-//       break;
-//     case 'Monk':
-//       if (level <= 17) {
-//         hp = calcHpPerLevel(level, 4) + 4;
-//       } else {
-//         hp = calcHpPerLevel(17, 4) + 4;
-//       }
-//       break;
-//     case 'Druid':
-//       if (level <= 14) {
-//         hp = calcHpPerLevel(level, 8);
-//       } else {
-//         hp = calcHpPerLevel(14, 8)
-//       }
-//       break;
-//     case 'Ranger':
-//       if (level <= 10) {
-//         hp = calcHpPerLevel(level, 8) + 8;
-//       } else {
-//         hp = calcHpPerLevel(10, 8) + ((level - 10) * 2);
-//       }
-//       break;
-//     default:
-//   }
-//   return hp;
-// }
-
-// function calcHpPerLevel(level, die) {
-//   let hp = die;
-//   if (level === 1) {
-//     return hp;
-//   } else {
-//     for (let i = 1; i < level; i++) {
-//       hp = hp + rollDice(1, die);
-//     }
-//     return hp;
-//   }
-// }
 
 function setStartingGold(pcClass) {
   let gold;
