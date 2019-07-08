@@ -57,6 +57,5 @@ export function calcAC(npcClass, level, armor, dex) {
       ac -= 4;
     }
   }
-  console.log("calculated AC: ", ac);
   return ac;
 }

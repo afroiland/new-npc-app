@@ -4,7 +4,7 @@ import { getName } from "./name";
 import { getTitle } from "./titles";
 import { setAttributes } from "./attributes";
 import { getHP, calcConBonus } from "./hp";
-import { calcThac0 } from "./thac0";
+//import { calcThac0 } from "./thac0";
 import { getArmor } from "./armor";
 import { getWeapon } from "./weapons";
 
@@ -13,6 +13,12 @@ const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Busine
 
 export function generate(level, pcClass) {
   let pc = { level: level, npcClass: pcClass };
+
+  // TODO: move this
+  if ( pcClass === "Civilian") {
+    pc.level = 0;
+    //this seems sketch
+  }
 
   pc.name = getName();
   pc.title = getTitle(pcClass, level);
@@ -33,17 +39,19 @@ export function generate(level, pcClass) {
   pc.cha = attributes.cha;
  
   let hp = getHP(level, pcClass, pc.con);
-  let currentHP = 0;
 
+  let currentHP = 0;
   for (let i = 1; i <= 20; i++) {
     let levelString = "Lv" + i + "_HP";
     pc[levelString] = hp[levelString];
     currentHP += hp[levelString];
   }
 
+  // TODO: This shouldn't be here, right?
   pc.currentHP = currentHP + calcConBonus(level, pcClass, pc.con);
   
-  pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
+  // TODO: Calculate Thac0 in component
+  //pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
 
   //Spell stuff
   if (pcClass === "Magic-User" || pcClass === "Cleric" || pcClass === "Druid" || pcClass === "Paladin" || pcClass === "Ranger") {
@@ -158,6 +166,9 @@ function setStartingGold(pcClass) {
       break;
     case 'Monk':
       gold = rollDice(5, 4);
+      break;
+    case 'Civilian':
+      gold = 1;
       break;
     default:
   }

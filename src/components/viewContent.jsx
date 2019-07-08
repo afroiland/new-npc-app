@@ -12,6 +12,7 @@ import axios from "axios";
 import { Paper, InputLabel } from "@material-ui/core";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { calcThac0 } from "../functions/thac0";
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Civilian"];
@@ -51,7 +52,6 @@ class ViewContent extends Component {
     Lv19_HP: 0,
     Lv20_HP: 0,
     status: "",
-    thac0: "",
     str: "",
     ex_str: "",
     int: "",
@@ -81,7 +81,7 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, status, thac0, str, ex_str,
+    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, status, str, ex_str,
       int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
       affiliation, notes, selectedNPC, searchString } = this.state;
@@ -158,7 +158,7 @@ class ViewContent extends Component {
                 status={status}
                 //ac={calcAC(npcClass, level, armor, parseInt(dex)) !== 0 ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
                 ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
-                thac0={thac0}
+                thac0={calcThac0(level, npcClass, str, ex_str) !== undefined ? calcThac0(level, npcClass, str, ex_str) : ""}
                 gold={gold}
                 str={str}
                 ex_str={ex_str}
@@ -252,7 +252,6 @@ class ViewContent extends Component {
       Lv19_HP: selectedNPC[0].Lv19_HP,
       Lv20_HP: selectedNPC[0].Lv20_HP,
       status: selectedNPC[0].status,
-      thac0: selectedNPC[0].thac0,
       str: selectedNPC[0].str,
       ex_str: selectedNPC[0].ex_str,
       int: selectedNPC[0].intel,
@@ -311,7 +310,6 @@ class ViewContent extends Component {
       Lv19_HP: newNPC.Lv19_HP,
       Lv20_HP: newNPC.Lv20_HP,
       status: "Normal",
-      thac0: newNPC.thac0,
       str: newNPC.str,
       ex_str: newNPC.ex_str,
       int: newNPC.int,
@@ -431,6 +429,7 @@ class ViewContent extends Component {
     });
   }
 
+  // TODO: Change this guy to be more like the calcThac0 logic?
   calcMaxHP() {
     let result = this.state.Lv1_HP + this.state.Lv2_HP + this.state.Lv3_HP + this.state.Lv4_HP + this.state.Lv5_HP +
       this.state.Lv6_HP + this.state.Lv7_HP + this.state.Lv8_HP + this.state.Lv9_HP + this.state.Lv10_HP +
@@ -444,7 +443,5 @@ class ViewContent extends Component {
     return "";
   }
 }
-
-// TODO: remove thac0 calculation and put logic here
 
 export default ViewContent;

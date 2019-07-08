@@ -23,6 +23,9 @@ export function calcThac0(level, pcClass, str, ex_str) {
     case 'Magic-User':
       thac0 = muThac0s[level - 1];
       break;
+    case 'Civilian':
+      thac0 = 20;
+      break;
     default:
   }
 
@@ -31,7 +34,7 @@ export function calcThac0(level, pcClass, str, ex_str) {
       thac0--;
     } else if (51 <= ex_str && ex_str <= 99) {
       thac0 -= 2;
-    } else if (ex_str === 100) {
+    } else if (parseInt(ex_str) === 100) {
       thac0 -= 3;
     }
   }

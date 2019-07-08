@@ -24,6 +24,7 @@ export function getArmor(pcClass, weapon) {
       break;
     case "Magic-User":
     case "Monk":
+    case "Civilian":
       armor = "None";
       canUseShield = false;
       break;
