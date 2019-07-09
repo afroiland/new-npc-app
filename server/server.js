@@ -61,12 +61,12 @@ app.post('/add', (req, res) => {
 
 app.put('/update', (req, res) => {
   console.log("update req body: ", req.body);
-  let sql = 'UPDATE new_schema.npcs SET level=?, title=?, class=?, race=?, currentHP=?, status=?, ac=?,\
+  let sql = 'UPDATE new_schema.npcs SET level=?, title=?, class=?, race=?, currentHP=?, status=?,\
   str=?, ex_str=?, intel=?, dex=?, con=?, wis=?, cha=?, memorized=?, SBLvl_1=?, SBLvl_2=?, SBLvl_3=?, SBLvl_4=?,\
   SBLvl_5=?, SBLvl_6=?, SBLvl_7=?, SBLvl_8=?, SBLvl_9=?, gold=?, armor=?, weapon=?, items=?, probity=?, affiliation=?,\
   notes=? WHERE name=?';
   db.query(sql, [req.body.level, req.body.title, req.body.npcClass, req.body.race, req.body.currentHP,
-  req.body.status, req.body.ac, req.body.str, req.body.ex_str, req.body.int, req.body.dex, req.body.con,
+  req.body.status, req.body.str, req.body.ex_str, req.body.int, req.body.dex, req.body.con,
   req.body.wis, req.body.cha, req.body.memorized, req.body.spellbookLvl_1, req.body.spellbookLvl_2, req.body.spellbookLvl_3,
   req.body.spellbookLvl_4, req.body.spellbookLvl_5, req.body.spellbookLvl_6, req.body.spellbookLvl_7, req.body.spellbookLvl_8,
   req.body.spellbookLvl_9, req.body.gold, req.body.armor, req.body.weapon, req.body.items, req.body.probity,
