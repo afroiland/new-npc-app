@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "./../functions/generate"
-import { calcConBonus } from "../functions/hp";
+import { calcConBonus } from "../functions/conBonus";
 import { calcAC } from "./../functions/ac";
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -134,6 +134,8 @@ class ViewContent extends Component {
               <Button variant='contained' color='primary' style={{ marginTop: 6 }}
                 onClick={() => this.handleClear()}>Clear</Button>
 
+              {/* The following represents a dropdown for selecting different tables from which to pull NPC data */}
+
               {/* <FormControl style={{ marginRight: 30 }}>
                 <InputLabel>Table</InputLabel>
                 <Select value={this.state.tableSelect}
@@ -157,7 +159,6 @@ class ViewContent extends Component {
                 currentHP={currentHP}
                 maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
                 status={status}
-                //ac={calcAC(npcClass, level, armor, parseInt(dex)) !== 0 ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
                 ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
                 thac0={calcThac0(level, npcClass, str, ex_str) !== undefined ? calcThac0(level, npcClass, str, ex_str) : ""}
                 gold={gold}

@@ -3,8 +3,8 @@ import { rollDice } from "./dice";
 import { getName } from "./name";
 import { getTitle } from "./titles";
 import { setAttributes } from "./attributes";
-import { getHP, calcConBonus } from "./hp";
-//import { calcThac0 } from "./thac0";
+import { getHP } from "./hp";
+import { calcConBonus } from "./conBonus";
 import { getArmor } from "./armor";
 import { getWeapon } from "./weapons";
 
@@ -49,9 +49,6 @@ export function generate(level, pcClass) {
 
   // TODO: This shouldn't be here, right?
   pc.currentHP = currentHP + calcConBonus(level, pcClass, pc.con);
-  
-  // TODO: Calculate Thac0 in component
-  //pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
 
   //Spell stuff
   if (pcClass === "Magic-User" || pcClass === "Cleric" || pcClass === "Druid" || pcClass === "Paladin" || pcClass === "Ranger") {
