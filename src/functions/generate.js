@@ -47,7 +47,7 @@ export function generate(level, pcClass) {
     currentHP += hp[levelString];
   }
 
-  // TODO: This shouldn't be here, right?
+  // TODO: This can be removed if/when a "damage" value is used
   pc.currentHP = currentHP + calcConBonus(level, pcClass, pc.con);
 
   //Spell stuff

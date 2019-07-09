@@ -204,6 +204,7 @@ class ViewContent extends Component {
   }
 
   componentDidUpdate() {
+    console.log("componentDidUpdate getting hit");
     axios.get('http://localhost:3001/getNPCs').then(res => {
       let resDatastring = JSON.stringify(res.data);
       let NPCListString = JSON.stringify(this.state.NPCList);
@@ -363,8 +364,8 @@ class ViewContent extends Component {
         .then(res => {
           console.log("add res: ", res);
         });
-      // TODO: When NPCList gets updated upon NPC generation, try something like the following code to make that new NPC selected
-      // this.setState({selectedNPC: state.name})
+      // TODO: Replace setTimeout (async/await, I'm guessing?)
+      setTimeout(() => {this.setState({selectedNPC: state.name} )}, 50);
     }
   }
 
