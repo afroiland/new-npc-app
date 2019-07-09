@@ -121,6 +121,7 @@ class ViewContent extends Component {
                   onChange={e => this.setState({ levelSelect: e.target.value })}
                   style={{ width: "75px" }}
                 >
+                  {/* TODO: Change level range based on class dropdown */}
                   {levelRange.map(level => <MenuItem key={level} value={level}>{level}</MenuItem>)}
                 </Select>
               </FormControl>

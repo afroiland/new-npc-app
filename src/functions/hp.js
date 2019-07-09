@@ -7,6 +7,12 @@ export function getHP(level, pcClass) {
     Lv16_HP: 0, Lv17_HP: 0, Lv18_HP: 0, Lv19_HP: 0, Lv20_HP: 0
   };
 
+  // TODO: Maybe clean this up a bit
+  if (pcClass === 'Civilian') {
+    results.Lv1_HP = 3;
+    return results;
+  }
+
   switch (pcClass) {
     case 'Fighter':
     case 'Paladin':
@@ -64,7 +70,7 @@ export function calcConBonus(level, pcClass, con) {
   let conBonus = 0;
 
   if (pcClass === "Fighter" || pcClass === "Paladin" || pcClass === "Ranger") {
-    switch (con) {
+    switch (parseInt(con)) {
       case 15:
         conBonus += level;
         break;
@@ -79,8 +85,20 @@ export function calcConBonus(level, pcClass, con) {
         break;
       default:
     }
+  } else if (pcClass === "Civilian") {
+    switch (parseInt(con)) {
+      case 15:
+        conBonus += 1;
+        break;
+      case 16:
+      case 17:
+      case 18:
+        conBonus += 2;
+        break;
+      default:
+    }
   } else {
-    switch (con) {
+    switch (parseInt(con)) {
       case 15:
         conBonus += level;
         break;

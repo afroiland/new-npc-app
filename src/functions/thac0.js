@@ -34,6 +34,7 @@ export function calcThac0(level, pcClass, str, ex_str) {
       thac0--;
     } else if (51 <= ex_str && ex_str <= 99) {
       thac0 -= 2;
+      // The following could be ex_str == 100 but that throws a linter warning
     } else if (parseInt(ex_str) === 100) {
       thac0 -= 3;
     }
