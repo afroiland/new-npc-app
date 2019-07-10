@@ -122,6 +122,7 @@ export function generate(level, pcClass) {
   }
 
   pc.race = "Human";
+  pc.age = rollDice(1, 14) + 17;
   pc.gold = setStartingGold(pcClass);
   pc.weapon = getWeapon(pcClass);
   pc.armor = getArmor(pcClass, pc.weapon);
