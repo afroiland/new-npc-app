@@ -35,6 +35,17 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('level')}
             />
           </Grid>
+          <Grid item style={{ padding: 5 }}>
+            <TextField
+              label="Age"
+              value={age}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              style={{ width: 65 }}
+              onChange={this.handleInputChange('age')}
+            />
+          </Grid>
           <Grid item style={{ padding: 5, flexGrow: 1 }}>
             <TextField
               label="Class"
