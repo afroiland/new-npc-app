@@ -11,7 +11,7 @@ class NPCList extends Component {
           textAlign: 'right',
           backgroundColor: (selectedNPC === npc.name) ? "#009688" : "",
         }} onClick={() => handleNameClick(npc.name)}>
-          <ListItemText primary={npc.name} secondary={"Lv" + npc.level + " " + npc.class} />
+          <ListItemText primary={npc.name} secondary={npc.class !== "Civilian" ? "Lv" + npc.level + " " + npc.class : "Civilian"} />
         </ListItem>)}
       </List>
     );

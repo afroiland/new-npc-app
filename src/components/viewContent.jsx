@@ -195,7 +195,7 @@ class ViewContent extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    //determine schema from which to get NPCs
+    //TODO: determine schema from which to get NPCs
     axios.get('http://localhost:3001/getNPCs').then(res => {
       if (this._isMounted) {
         this.setState({ NPCList: res.data });
@@ -204,7 +204,6 @@ class ViewContent extends Component {
   }
 
   componentDidUpdate() {
-    console.log("componentDidUpdate getting hit");
     axios.get('http://localhost:3001/getNPCs').then(res => {
       let resDatastring = JSON.stringify(res.data);
       let NPCListString = JSON.stringify(this.state.NPCList);
