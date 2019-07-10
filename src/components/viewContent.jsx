@@ -100,7 +100,7 @@ class ViewContent extends Component {
                 style={{ width: "95%" }}
                 onChange={e => this.handleSearchChange(e.target.value)}
               />
-              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
+              <NPCList list={this.sortByProbity(this.state.NPCList)} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
                 searchString={searchString} />
             </Paper>
           </Grid>
@@ -448,6 +448,22 @@ class ViewContent extends Component {
       return result;
     }
     return "";
+  }
+
+  sortByProbity(list) {
+    return list.sort(compare);
+
+    function compare(b, a) {
+      const probityA = a.probity;
+      const probityB = b.probity;
+      let comparison = 0;
+      if (probityA > probityB) {
+        comparison = 1;
+      } else if (probityA < probityB) {
+        comparison = -1;
+      }
+      return comparison;
+    }
   }
 }
 
