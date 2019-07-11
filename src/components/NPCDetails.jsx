@@ -7,7 +7,7 @@ class NPCDetails extends Component {
     //console.log("this.props: ", this.props);
     const { ac, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name, notes,
       npcClass, probity, race, age, gender, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
-      spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, status, str, thac0, title, armor, weapon,
+      spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, weapon,
       wis } = this.props;
     return (
       <div style={{width: 'calc(100% - 30px)'}}>
@@ -415,6 +415,18 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('spellbookLvl_9')}
             />
           </Grid>}
+
+          {abilities && <Grid item style={{ padding: 5, width: '100%' }}>
+            <TextField
+              label="Abilities"
+              value={abilities}
+              margin="normal"
+              variant="outlined"
+              multiline
+              style={{ width: '100%' }}
+            />
+          </Grid>}
+
         </Grid>
       </div>
     );

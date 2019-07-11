@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
-import { generate } from "./../functions/generate"
+import { generate } from "../functions/generate"
 import { calcConBonus } from "../functions/conBonus";
-import { calcAC } from "./../functions/ac";
+import { calcAC } from "../functions/ac";
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";
@@ -13,6 +13,7 @@ import { Paper, InputLabel } from "@material-ui/core";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { calcThac0 } from "../functions/thac0";
+import { determineAbilities } from '../functions/abilities';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Civilian"];
@@ -83,6 +84,7 @@ class ViewContent extends Component {
   };
 
   render() {
+    console.log("viewContent rendering");
     const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, status, str, ex_str,
       int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
@@ -161,10 +163,13 @@ class ViewContent extends Component {
                 age={age}
                 gender={gender}
                 currentHP={currentHP}
-                maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
+                //maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
+                maxHP={5}
                 status={status}
-                ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
-                thac0={calcThac0(level, npcClass, str, ex_str) !== undefined ? calcThac0(level, npcClass, str, ex_str) : ""}
+                //ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
+                ac={1}
+                //thac0={calcThac0(level, npcClass, str, ex_str) !== undefined ? calcThac0(level, npcClass, str, ex_str) : ""}
+                thac0={20}
                 gold={gold}
                 str={str}
                 ex_str={ex_str}
@@ -182,6 +187,7 @@ class ViewContent extends Component {
                 spellbookLvl_7={spellbookLvl_7}
                 spellbookLvl_8={spellbookLvl_8}
                 spellbookLvl_9={spellbookLvl_9}
+                //abilites={determineAbilities(npcClass, level, dex, race, armor)}
                 memorized={memorized}
                 armor={armor}
                 weapon={weapon}
@@ -208,6 +214,7 @@ class ViewContent extends Component {
   }
 
   componentDidUpdate() {
+    console.log("updating");
     axios.get('http://localhost:3001/getNPCs').then(res => {
       let resDatastring = JSON.stringify(res.data);
       let NPCListString = JSON.stringify(this.state.NPCList);
