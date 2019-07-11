@@ -5,8 +5,8 @@ import Grid from '@material-ui/core/Grid';
 class NPCDetails extends Component {
   render() {
     //console.log("this.props: ", this.props);
-    const { ac, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name,
-      notes, npcClass, probity, race, age, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
+    const { ac, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name, notes,
+      npcClass, probity, race, age, gender, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, status, str, thac0, title, armor, weapon,
       wis } = this.props;
     return (
@@ -42,8 +42,19 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 65 }}
+              style={{ width: 60 }}
               onChange={this.handleInputChange('age')}
+            />
+          </Grid>
+          <Grid item style={{ padding: 5 }}>
+            <TextField
+              label="Gen."
+              value={gender ? gender.toUpperCase() : ""}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              style={{ width: 60 }}
+              onChange={this.handleInputChange('gender')}
             />
           </Grid>
           <Grid item style={{ padding: 5, flexGrow: 1 }}>

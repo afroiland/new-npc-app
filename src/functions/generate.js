@@ -123,6 +123,7 @@ export function generate(level, pcClass) {
 
   pc.race = "Human";
   pc.age = rollDice(1, 14) + 17;
+  pc.gender = getGender();
   pc.gold = setStartingGold(pcClass);
   pc.weapon = getWeapon(pcClass);
   pc.armor = getArmor(pcClass, pc.weapon);
@@ -171,6 +172,20 @@ function setStartingGold(pcClass) {
     default:
   }
   return gold;
+}
+
+function getGender() {
+  let result;
+  let random = rollDice(1, 100);
+  if (random <= 46) {
+    result = "m";
+  } else if (random <= 92) {
+    result = "f";
+  } else {
+    result = "o";
+  }
+
+  return result;
 }
 
 function getAffiliation() {

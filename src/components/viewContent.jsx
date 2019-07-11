@@ -31,6 +31,7 @@ class ViewContent extends Component {
     npcClass: "",
     race: "",
     age: "",
+    gender: "",
     currentHP: "",
     Lv1_HP: 0,
     Lv2_HP: 0,
@@ -82,7 +83,7 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, age, currentHP, status, str, ex_str,
+    const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, status, str, ex_str,
       int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
       affiliation, notes, selectedNPC, searchString } = this.state;
@@ -158,6 +159,7 @@ class ViewContent extends Component {
                 npcClass={npcClass}
                 race={race}
                 age={age}
+                gender={gender}
                 currentHP={currentHP}
                 maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
                 status={status}
@@ -235,6 +237,7 @@ class ViewContent extends Component {
       npcClass: selectedNPC[0].class,
       race: selectedNPC[0].race,
       age: selectedNPC[0].age,
+      gender: selectedNPC[0].gender,
       currentHP: selectedNPC[0].currentHP,
       Lv1_HP: selectedNPC[0].Lv1_HP,
       Lv2_HP: selectedNPC[0].Lv2_HP,
@@ -294,6 +297,7 @@ class ViewContent extends Component {
       npcClass: newNPC.npcClass,
       race: newNPC.race,
       age: newNPC.age,
+      gender: newNPC.gender,
       currentHP: newNPC.currentHP,
       Lv1_HP: newNPC.Lv1_HP,
       Lv2_HP: newNPC.Lv2_HP,
@@ -384,6 +388,7 @@ class ViewContent extends Component {
       npcClass: "",
       race: "",
       age: "",
+      gender: "",
       currentHP: "",
       Lv1_HP: 0,
       Lv2_HP: 0,
