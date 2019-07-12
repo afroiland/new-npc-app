@@ -103,7 +103,8 @@ class ViewContent extends Component {
                 style={{ width: "95%" }}
                 onChange={e => this.handleSearchChange(e.target.value)}
               />
-              <NPCList list={this.sortByProbity(this.state.NPCList)} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
+              {/* <NPCList list={this.sortByProbity(this.state.NPCList)} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC} */}
+              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
                 searchString={searchString} />
             </Paper>
           </Grid>
@@ -163,13 +164,10 @@ class ViewContent extends Component {
                 age={age}
                 gender={gender}
                 currentHP={currentHP}
-                //maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
-                maxHP={5}
+                maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
                 status={status}
-                //ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
-                ac={1}
-                //thac0={calcThac0(level, npcClass, str, ex_str) !== undefined ? calcThac0(level, npcClass, str, ex_str) : ""}
-                thac0={20}
+                ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
+                thac0={calcThac0(level, npcClass, str, ex_str) !== undefined ? calcThac0(level, npcClass, str, ex_str) : ""}
                 gold={gold}
                 str={str}
                 ex_str={ex_str}
@@ -462,21 +460,21 @@ class ViewContent extends Component {
     return "";
   }
 
-  sortByProbity(list) {
-    return list.sort(compare);
+  // sortByProbity(list) {
+  //   return list.sort(compare);
 
-    function compare(b, a) {
-      const probityA = a.probity;
-      const probityB = b.probity;
-      let comparison = 0;
-      if (probityA > probityB) {
-        comparison = 1;
-      } else if (probityA < probityB) {
-        comparison = -1;
-      }
-      return comparison;
-    }
-  }
+  //   function compare(b, a) {
+  //     const probityA = a.probity;
+  //     const probityB = b.probity;
+  //     let comparison = 0;
+  //     if (probityA > probityB) {
+  //       comparison = 1;
+  //     } else if (probityA < probityB) {
+  //       comparison = -1;
+  //     }
+  //     return comparison;
+  //   }
+  // }
 }
 
 export default ViewContent;

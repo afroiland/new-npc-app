@@ -3,6 +3,7 @@ import { List, ListItem, ListItemText } from "@material-ui/core";
 
 class NPCList extends Component {
   render() {
+    console.log("NPCList props: ", this.props);
     const { list, handleNameClick, searchString, selectedNPC } = this.props;
     return (
       <List component="ul" style={{height: 'calc(100% - 95px)', overflow: 'auto'}}>
@@ -49,6 +50,22 @@ class NPCList extends Component {
       classes = "none"
     }
     return classes;
+  }
+
+  sortByProbity(list) {
+    return list.sort(compare);
+
+    function compare(b, a) {
+      const probityA = a.probity;
+      const probityB = b.probity;
+      let comparison = 0;
+      if (probityA > probityB) {
+        comparison = 1;
+      } else if (probityA < probityB) {
+        comparison = -1;
+      }
+      return comparison;
+    }
   }
 }
 

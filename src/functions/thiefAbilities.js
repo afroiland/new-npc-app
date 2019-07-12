@@ -1,4 +1,4 @@
-export function determineThiefAbilities(pcClass, level, race, dex, armor) {
+export function determineThiefAbilities(level, race, dex, armor) {
   console.log("getting hit");
   let thiefAbilities = {
     pickPockets: 0,
