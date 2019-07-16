@@ -103,7 +103,7 @@ class ViewContent extends Component {
                 style={{ width: "95%" }}
                 onChange={e => this.handleSearchChange(e.target.value)}
               />
-              {/* <NPCList list={this.sortByProbity(this.state.NPCList)} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC} */}
+              {/* <NPCList list={this.sortByProbity(this.state.NPCList) === this.state.NPCList ? this.state.NPCList : this.sortByProbity(this.state.NPCList)} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC} */}
               <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
                 searchString={searchString} />
             </Paper>
@@ -185,7 +185,7 @@ class ViewContent extends Component {
                 spellbookLvl_7={spellbookLvl_7}
                 spellbookLvl_8={spellbookLvl_8}
                 spellbookLvl_9={spellbookLvl_9}
-                //abilites={determineAbilities(npcClass, level, dex, race, armor)}
+                abilites={determineAbilities(npcClass, level, dex, race, armor)}
                 memorized={memorized}
                 armor={armor}
                 weapon={weapon}
@@ -461,7 +461,7 @@ class ViewContent extends Component {
   }
 
   // sortByProbity(list) {
-  //   return list.sort(compare);
+  //   let tempList = list.sort(compare);
 
   //   function compare(b, a) {
   //     const probityA = a.probity;
@@ -473,6 +473,13 @@ class ViewContent extends Component {
   //       comparison = -1;
   //     }
   //     return comparison;
+  //   }
+
+  //   // Tried the following to fix the looping bug, but did not work
+  //   if (list == tempList) {
+  //     return list;
+  //   } else {
+  //     return tempList;
   //   }
   // }
 }
