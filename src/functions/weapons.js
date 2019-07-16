@@ -31,6 +31,9 @@ export function getWeapon(pcClass) {
     case 'Monk':
       weapon = monkWeapons[rollDice(1, monkWeapons.length) - 1];
       break;
+    case 'Civilian':
+      weapon = "None";
+      break;
     default:
   }
   return weapon;

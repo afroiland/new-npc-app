@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
-import { generate } from "./../functions/generate"
-import { calcConBonus } from "../functions/hp";
+import { generate } from "../functions/generate"
+import { calcConBonus } from "../functions/conBonus";
+import { calcAC } from "../functions/ac";
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from "@material-ui/core/Grid";
@@ -11,6 +12,8 @@ import axios from "axios";
 import { Paper, InputLabel } from "@material-ui/core";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { calcThac0 } from "../functions/thac0";
+import { determineAbilities } from '../functions/abilities';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const classes = ["Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Civilian"];
@@ -28,6 +31,8 @@ class ViewContent extends Component {
     level: "",
     npcClass: "",
     race: "",
+    age: "",
+    gender: "",
     currentHP: "",
     Lv1_HP: 0,
     Lv2_HP: 0,
@@ -50,8 +55,6 @@ class ViewContent extends Component {
     Lv19_HP: 0,
     Lv20_HP: 0,
     status: "",
-    ac: "",
-    thac0: "",
     str: "",
     ex_str: "",
     int: "",
@@ -81,7 +84,7 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, currentHP, status, ac, thac0, str, ex_str,
+    const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, status, str, ex_str,
       int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
       affiliation, notes, selectedNPC, searchString } = this.state;
@@ -99,6 +102,7 @@ class ViewContent extends Component {
                 style={{ width: "95%" }}
                 onChange={e => this.handleSearchChange(e.target.value)}
               />
+              {/* <NPCList list={this.sortByProbity(this.state.NPCList) === this.state.NPCList ? this.state.NPCList : this.sortByProbity(this.state.NPCList)} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC} */}
               <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
                 searchString={searchString} />
             </Paper>
@@ -121,6 +125,7 @@ class ViewContent extends Component {
                   onChange={e => this.setState({ levelSelect: e.target.value })}
                   style={{ width: "75px" }}
                 >
+                  {/* TODO: Change level range based on class dropdown */}
                   {levelRange.map(level => <MenuItem key={level} value={level}>{level}</MenuItem>)}
                 </Select>
               </FormControl>
@@ -132,6 +137,8 @@ class ViewContent extends Component {
                 onClick={() => this.handleSave(this.state)}>Save</Button>
               <Button variant='contained' color='primary' style={{ marginTop: 6 }}
                 onClick={() => this.handleClear()}>Clear</Button>
+
+              {/* The following represents a dropdown for selecting different tables from which to pull NPC data */}
 
               {/* <FormControl style={{ marginRight: 30 }}>
                 <InputLabel>Table</InputLabel>
@@ -153,11 +160,13 @@ class ViewContent extends Component {
                 level={level}
                 npcClass={npcClass}
                 race={race}
+                age={age}
+                gender={gender}
                 currentHP={currentHP}
                 maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
                 status={status}
-                ac={ac}
-                thac0={thac0}
+                ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
+                thac0={calcThac0(level, npcClass, str, ex_str) !== undefined ? calcThac0(level, npcClass, str, ex_str) : ""}
                 gold={gold}
                 str={str}
                 ex_str={ex_str}
@@ -175,6 +184,7 @@ class ViewContent extends Component {
                 spellbookLvl_7={spellbookLvl_7}
                 spellbookLvl_8={spellbookLvl_8}
                 spellbookLvl_9={spellbookLvl_9}
+                abilites={determineAbilities(npcClass, level, race, dex)}
                 memorized={memorized}
                 armor={armor}
                 weapon={weapon}
@@ -192,7 +202,7 @@ class ViewContent extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    //determine schema from which to get NPCs
+    //TODO: determine schema from which to get NPCs
     axios.get('http://localhost:3001/getNPCs').then(res => {
       if (this._isMounted) {
         this.setState({ NPCList: res.data });
@@ -201,6 +211,7 @@ class ViewContent extends Component {
   }
 
   componentDidUpdate() {
+    //console.log("updating");
     axios.get('http://localhost:3001/getNPCs').then(res => {
       let resDatastring = JSON.stringify(res.data);
       let NPCListString = JSON.stringify(this.state.NPCList);
@@ -229,6 +240,8 @@ class ViewContent extends Component {
       title: selectedNPC[0].title,
       npcClass: selectedNPC[0].class,
       race: selectedNPC[0].race,
+      age: selectedNPC[0].age,
+      gender: selectedNPC[0].gender,
       currentHP: selectedNPC[0].currentHP,
       Lv1_HP: selectedNPC[0].Lv1_HP,
       Lv2_HP: selectedNPC[0].Lv2_HP,
@@ -251,8 +264,6 @@ class ViewContent extends Component {
       Lv19_HP: selectedNPC[0].Lv19_HP,
       Lv20_HP: selectedNPC[0].Lv20_HP,
       status: selectedNPC[0].status,
-      ac: selectedNPC[0].ac,
-      thac0: selectedNPC[0].thac0,
       str: selectedNPC[0].str,
       ex_str: selectedNPC[0].ex_str,
       int: selectedNPC[0].intel,
@@ -289,6 +300,8 @@ class ViewContent extends Component {
       title: newNPC.title,
       npcClass: newNPC.npcClass,
       race: newNPC.race,
+      age: newNPC.age,
+      gender: newNPC.gender,
       currentHP: newNPC.currentHP,
       Lv1_HP: newNPC.Lv1_HP,
       Lv2_HP: newNPC.Lv2_HP,
@@ -311,8 +324,6 @@ class ViewContent extends Component {
       Lv19_HP: newNPC.Lv19_HP,
       Lv20_HP: newNPC.Lv20_HP,
       status: "Normal",
-      ac: newNPC.ac,
-      thac0: newNPC.thac0,
       str: newNPC.str,
       ex_str: newNPC.ex_str,
       int: newNPC.int,
@@ -364,8 +375,8 @@ class ViewContent extends Component {
         .then(res => {
           console.log("add res: ", res);
         });
-      // TODO: When NPCList gets updated upon NPC generation, try something like the following code to make that new NPC selected
-      // this.setState({selectedNPC: state.name})
+      // TODO: Replace setTimeout (async/await, I'm guessing?)
+      setTimeout(() => {this.setState({selectedNPC: state.name} )}, 50);
     }
   }
 
@@ -380,6 +391,8 @@ class ViewContent extends Component {
       level: "",
       npcClass: "",
       race: "",
+      age: "",
+      gender: "",
       currentHP: "",
       Lv1_HP: 0,
       Lv2_HP: 0,
@@ -432,6 +445,7 @@ class ViewContent extends Component {
     });
   }
 
+  // TODO: Change this guy to be more like the calcThac0 logic?
   calcMaxHP() {
     let result = this.state.Lv1_HP + this.state.Lv2_HP + this.state.Lv3_HP + this.state.Lv4_HP + this.state.Lv5_HP +
       this.state.Lv6_HP + this.state.Lv7_HP + this.state.Lv8_HP + this.state.Lv9_HP + this.state.Lv10_HP +
@@ -444,8 +458,29 @@ class ViewContent extends Component {
     }
     return "";
   }
-}
 
-// TODO: remove thac0 calculation and put logic here
+  // sortByProbity(list) {
+  //   let tempList = list.sort(compare);
+
+  //   function compare(b, a) {
+  //     const probityA = a.probity;
+  //     const probityB = b.probity;
+  //     let comparison = 0;
+  //     if (probityA > probityB) {
+  //       comparison = 1;
+  //     } else if (probityA < probityB) {
+  //       comparison = -1;
+  //     }
+  //     return comparison;
+  //   }
+
+  //   // Tried the following to fix the looping bug, but did not work
+  //   if (list == tempList) {
+  //     return list;
+  //   } else {
+  //     return tempList;
+  //   }
+  // }
+}
 
 export default ViewContent;

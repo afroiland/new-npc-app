@@ -3,9 +3,8 @@ import { rollDice } from "./dice";
 import { getName } from "./name";
 import { getTitle } from "./titles";
 import { setAttributes } from "./attributes";
-import { getHP, calcConBonus } from "./hp";
-import { calcThac0 } from "./thac0";
-import { calcAC } from "./ac";
+import { getHP } from "./hp";
+import { calcConBonus } from "./conBonus";
 import { getArmor } from "./armor";
 import { getWeapon } from "./weapons";
 
@@ -14,6 +13,12 @@ const affiliations = ["None", "Oriyama Clan", "Order of the White Iris", "Busine
 
 export function generate(level, pcClass) {
   let pc = { level: level, npcClass: pcClass };
+
+  // TODO: move this
+  if ( pcClass === "Civilian") {
+    pc.level = 0;
+    //this seems sketch
+  }
 
   pc.name = getName();
   pc.title = getTitle(pcClass, level);
@@ -34,17 +39,16 @@ export function generate(level, pcClass) {
   pc.cha = attributes.cha;
  
   let hp = getHP(level, pcClass, pc.con);
-  let currentHP = 0;
 
+  let currentHP = 0;
   for (let i = 1; i <= 20; i++) {
     let levelString = "Lv" + i + "_HP";
     pc[levelString] = hp[levelString];
     currentHP += hp[levelString];
   }
 
+  // TODO: This can be removed if/when a "damage" value is used
   pc.currentHP = currentHP + calcConBonus(level, pcClass, pc.con);
-  
-  pc.thac0 = calcThac0(level, pcClass, pc.str, pc.ex_str);
 
   //Spell stuff
   if (pcClass === "Magic-User" || pcClass === "Cleric" || pcClass === "Druid" || pcClass === "Paladin" || pcClass === "Ranger") {
@@ -118,10 +122,11 @@ export function generate(level, pcClass) {
   }
 
   pc.race = "Human";
+  pc.age = rollDice(1, 14) + 17;
+  pc.gender = getGender();
   pc.gold = setStartingGold(pcClass);
   pc.weapon = getWeapon(pcClass);
   pc.armor = getArmor(pcClass, pc.weapon);
-  pc.ac = calcAC(pc.npcClass, pc.level, pc.armor, pc.dex);
   pc.items = "";
   pc.notes = "";
   pc.probity = 0;
@@ -138,83 +143,6 @@ function listify(spellsForLevel) {
   }
   return list.slice(0, (list.length - 2));
 }
-
-// function setHP(level, pcClass) {
-//   let hp;
-//   switch (pcClass) {
-//     case 'Fighter':
-//     case 'Paladin':
-//       if (level <= 9) {
-//         hp = calcHpPerLevel(level, 10);
-//       } else {
-//         hp = calcHpPerLevel(9, 10) + ((level - 9) * 3);
-//       }
-//       break;
-//     case 'Thief':
-//       if (level <= 10) {
-//         hp = calcHpPerLevel(level, 6);
-//       } else {
-//         hp = calcHpPerLevel(10, 6) + ((level - 10) * 2);
-//       }
-//       break;
-//     case 'Assassin':
-//       if (level <= 15) {
-//         hp = calcHpPerLevel(level, 6);
-//       } else {
-//         hp = calcHpPerLevel(15, 6)
-//       }
-//       break;
-//     case 'Cleric':
-//       if (level <= 9) {
-//         hp = calcHpPerLevel(level, 8);
-//       } else {
-//         hp = calcHpPerLevel(9, 8) + ((level - 9) * 2);
-//       }
-//       break;
-//     case 'Magic-User':
-//       if (level <= 11) {
-//         hp = calcHpPerLevel(level, 4);
-//       } else {
-//         hp = calcHpPerLevel(11, 4) + (level - 11);
-//       }
-//       break;
-//     case 'Monk':
-//       if (level <= 17) {
-//         hp = calcHpPerLevel(level, 4) + 4;
-//       } else {
-//         hp = calcHpPerLevel(17, 4) + 4;
-//       }
-//       break;
-//     case 'Druid':
-//       if (level <= 14) {
-//         hp = calcHpPerLevel(level, 8);
-//       } else {
-//         hp = calcHpPerLevel(14, 8)
-//       }
-//       break;
-//     case 'Ranger':
-//       if (level <= 10) {
-//         hp = calcHpPerLevel(level, 8) + 8;
-//       } else {
-//         hp = calcHpPerLevel(10, 8) + ((level - 10) * 2);
-//       }
-//       break;
-//     default:
-//   }
-//   return hp;
-// }
-
-// function calcHpPerLevel(level, die) {
-//   let hp = die;
-//   if (level === 1) {
-//     return hp;
-//   } else {
-//     for (let i = 1; i < level; i++) {
-//       hp = hp + rollDice(1, die);
-//     }
-//     return hp;
-//   }
-// }
 
 function setStartingGold(pcClass) {
   let gold;
@@ -238,9 +166,26 @@ function setStartingGold(pcClass) {
     case 'Monk':
       gold = rollDice(5, 4);
       break;
+    case 'Civilian':
+      gold = 1;
+      break;
     default:
   }
   return gold;
+}
+
+function getGender() {
+  let result;
+  let random = rollDice(1, 100);
+  if (random <= 46) {
+    result = "m";
+  } else if (random <= 92) {
+    result = "f";
+  } else {
+    result = "o";
+  }
+
+  return result;
 }
 
 function getAffiliation() {
