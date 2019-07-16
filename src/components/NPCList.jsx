@@ -3,7 +3,7 @@ import { List, ListItem, ListItemText } from "@material-ui/core";
 
 class NPCList extends Component {
   render() {
-    console.log("NPCList props: ", this.props);
+    //console.log("NPCList props: ", this.props);
     const { list, handleNameClick, searchString, selectedNPC } = this.props;
     return (
       <List component="ul" style={{height: 'calc(100% - 95px)', overflow: 'auto'}}>

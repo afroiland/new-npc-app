@@ -1,5 +1,6 @@
-// Numbers represent Pick Pockets, Open Locks, F/RT, Move Silently, Hide in S, Hear Noise, Climb W and Read Languages, respectively
+// Numbers in arrays represent Pick Pockets, Open Locks, F/RT, Move Silently, Hide in S, Hear Noise, Climb W and Read Lang, respectively
 const baseNumbers = {
+  Lv0: [0, 0, 0, 0, 0, 0, 0, 0],
   Lv1: [30, 25, 20, 15, 10, 10, 85, 0],
   Lv2: [35, 29, 25, 21, 15, 10, 86, 0],
   Lv3: [40, 33, 30, 27, 20, 15, 87, 0],
@@ -19,9 +20,7 @@ const baseNumbers = {
   Lv17: [125, 99, 99, 99, 99, 55, 99, 80]
 }
 
-
-export function determineThiefAbilities(pcClass, level, race, dex, armor) {
-  console.log("getting hit");
+export function determineThiefAbilities(pcClass, level, race, dex) {
   let thiefAbilities = {
     pickPockets: 0,
     openLocks: 0,
@@ -33,76 +32,107 @@ export function determineThiefAbilities(pcClass, level, race, dex, armor) {
     readLanguages: 0
   };
 
-  //adjustment for Assassins
+  // Adjust base level for assassins
   let baseLevel;
   if (pcClass === 'Thief') {
     baseLevel = level;
-  } else if (pcClass === 'Assassin') {
-    baseLevel = level - 3;
+  } else if (pcClass === 'Assassin' && level > 2) {
+    baseLevel = level - 2;
+  } else if (pcClass === 'Assassin' && level <= 2) {
+    baseLevel = 0;
   }
 
-  thiefAbilities.pickPockets = baseNumbers["Lv" + level][0];
-  thiefAbilities.openLocks = baseNumbers["Lv" + level][1];
-  thiefAbilities.findRemoveTraps = baseNumbers["Lv" + level][2];
-  thiefAbilities.moveSilently = baseNumbers["Lv" + level][3];
-  thiefAbilities.hideInShadows = baseNumbers["Lv" + level][4];
-  thiefAbilities.hearNoise = baseNumbers["Lv" + level][5];
-  thiefAbilities.climbWalls = baseNumbers["Lv" + level][6];
-  thiefAbilities.readLanguages = baseNumbers["Lv" + level][7];
+  // Set base levels
+  thiefAbilities.pickPockets = baseNumbers['Lv' + baseLevel][0];
+  thiefAbilities.openLocks = baseNumbers['Lv' + baseLevel][1];
+  thiefAbilities.findRemoveTraps = baseNumbers['Lv' + baseLevel][2];
+  thiefAbilities.moveSilently = baseNumbers['Lv' + baseLevel][3];
+  thiefAbilities.hideInShadows = baseNumbers['Lv' + baseLevel][4];
+  thiefAbilities.hearNoise = baseNumbers['Lv' + baseLevel][5];
+  thiefAbilities.climbWalls = baseNumbers['Lv' + baseLevel][6];
+  thiefAbilities.readLanguages = baseNumbers['Lv' + baseLevel][7];
 
+  // Apply bonuses and penalties for race
   switch (race) {
     case 'Dwarf':
-      //
+      thiefAbilities.openLocks += 10;
+      thiefAbilities.findRemoveTraps += 15;
+      thiefAbilities.climbWalls -= 10;
+      thiefAbilities.readLanguages -= 5;
       break;
     case 'Elf':
-      //
+      thiefAbilities.pickPockets += 5;
+      thiefAbilities.openLocks -= 5;
+      thiefAbilities.moveSilently += 5;
+      thiefAbilities.hideInShadows += 10;
+      thiefAbilities.hearNoise += 5;
       break;
     case 'Half-Elf':
-      //
+      thiefAbilities.pickPockets += 10;
+      thiefAbilities.hideInShadows += 5;
       break;
     case 'Halfling':
-      //
+      thiefAbilities.pickPockets += 5;
+      thiefAbilities.openLocks += 5;
+      thiefAbilities.findRemoveTraps += 5;
+      thiefAbilities.moveSilently += 10;
+      thiefAbilities.hideInShadows += 15;
+      thiefAbilities.hearNoise += 5;
+      thiefAbilities.climbWalls -= 15;
+      thiefAbilities.readLanguages -= 5;
       break;
     case 'Half-Orc':
-      //
+      thiefAbilities.pickPockets -= 5;
+      thiefAbilities.openLocks += 5;
+      thiefAbilities.findRemoveTraps += 5;
+      thiefAbilities.hearNoise += 5;
+      thiefAbilities.climbWalls += 5;
+      thiefAbilities.readLanguages -= 10;
       break;
     default:
   }
 
+  // Apply bonuses and penalties for dexterity
   switch (dex) {
-    case 9:
-      //
+    case '9':
+        thiefAbilities.pickPockets -= 15;
+        thiefAbilities.openLocks -= 10;
+        thiefAbilities.findRemoveTraps -= 10;
+        thiefAbilities.moveSilently -= 20;
+        thiefAbilities.hideInShadows -= 10;
       break;
-    case 9:
-      //
+    case '10':
+        thiefAbilities.pickPockets -= 10;
+        thiefAbilities.openLocks -= 5;
+        thiefAbilities.findRemoveTraps -= 10;
+        thiefAbilities.moveSilently -= 15;
+        thiefAbilities.hideInShadows -= 5;
       break;
-    case 10:
-      //
+    case '11':
+        thiefAbilities.pickPockets -= 5;
+        thiefAbilities.findRemoveTraps -= 5;
+        thiefAbilities.moveSilently -= 10;
       break;
-    case 11:
-      //
+    case '12':
+        thiefAbilities.moveSilently -= 5;
       break;
-    case 12:
-      //
+    case '16':
+        thiefAbilities.openLocks += 5;
       break;
-    case 13:
-      //
+    case '17':
+        thiefAbilities.pickPockets += 5;
+        thiefAbilities.openLocks += 10;
+        thiefAbilities.moveSilently += 5;
+        thiefAbilities.hideInShadows += 5;
       break;
-    case 14:
-      //
+    case '18':
+        thiefAbilities.pickPockets += 10;
+        thiefAbilities.openLocks += 15;
+        thiefAbilities.findRemoveTraps += 5;
+        thiefAbilities.moveSilently += 10;
+        thiefAbilities.hideInShadows += 10;
       break;
-    case 15:
-      //
-      break;
-    case 16:
-      //
-      break;
-    case 17:
-      //
-      break;
-    case 18:
-      //
-      break;
+    default:
   }
 
   console.log("thiefAbilities: ", thiefAbilities);

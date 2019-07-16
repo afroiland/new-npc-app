@@ -84,7 +84,6 @@ class ViewContent extends Component {
   };
 
   render() {
-    console.log("viewContent rendering");
     const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, status, str, ex_str,
       int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
@@ -185,7 +184,7 @@ class ViewContent extends Component {
                 spellbookLvl_7={spellbookLvl_7}
                 spellbookLvl_8={spellbookLvl_8}
                 spellbookLvl_9={spellbookLvl_9}
-                abilites={determineAbilities(npcClass, level, dex, race, armor)}
+                abilites={determineAbilities(npcClass, level, race, dex)}
                 memorized={memorized}
                 armor={armor}
                 weapon={weapon}
@@ -212,7 +211,7 @@ class ViewContent extends Component {
   }
 
   componentDidUpdate() {
-    console.log("updating");
+    //console.log("updating");
     axios.get('http://localhost:3001/getNPCs').then(res => {
       let resDatastring = JSON.stringify(res.data);
       let NPCListString = JSON.stringify(this.state.NPCList);
