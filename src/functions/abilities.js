@@ -10,7 +10,7 @@ export function determineAbilities(pcClass, level, race, dex, armor) {
       break;
     case "Thief":
     case "Assassin":
-      results = determineThiefAbilities(level, race, dex, armor);
+      results = determineThiefAbilities(pcClass, level, race, dex, armor);
       break;
     case "Paladin":
       //results = determinePaladinAbilities(level);
