@@ -1,6 +1,7 @@
 // Numbers in arrays represent Pick Pockets, Open Locks, F/RT, Move Silently, Hide in S, Hear Noise, Climb W and Read Lang, respectively
 const baseNumbers = {
-  Lv0: [0, 0, 0, 0, 0, 0, 0, 0],
+  Lv1Assassin: [20, 17, 10, 3, 0, 5, 83, 0],
+  Lv2Assassin: [25, 21, 15, 9, 5, 5, 84, 0],
   Lv1: [30, 25, 20, 15, 10, 10, 85, 0],
   Lv2: [35, 29, 25, 21, 15, 10, 86, 0],
   Lv3: [40, 33, 30, 27, 20, 15, 87, 0],
@@ -39,7 +40,7 @@ export function determineThiefAbilities(pcClass, level, race, dex) {
   } else if (pcClass === 'Assassin' && level > 2) {
     baseLevel = level - 2;
   } else if (pcClass === 'Assassin' && level <= 2) {
-    baseLevel = 0;
+    baseLevel = level + 'Assassin';
   }
 
   // Set base levels
@@ -93,7 +94,7 @@ export function determineThiefAbilities(pcClass, level, race, dex) {
   }
 
   // Apply bonuses and penalties for dexterity
-  switch (dex) {
+  switch (dex.toString()) {
     case '9':
         thiefAbilities.pickPockets -= 15;
         thiefAbilities.openLocks -= 10;
