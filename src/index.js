@@ -5,6 +5,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
+import { createStore } from 'redux';
+
+const store = createStore();
+
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
