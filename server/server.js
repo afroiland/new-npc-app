@@ -38,19 +38,16 @@ app.get('/getNPCs', (req, res) => {
 
 app.post('/add', (req, res) => {
   console.log("add req body: ", req.body);
-  let sql = 'INSERT INTO new_schema.npcs (name, level, title, class, race, age, gender, currentHP, Lv1_HP, Lv2_HP, Lv3_HP, Lv4_HP, Lv5_HP, \
-    Lv6_HP, Lv7_HP, Lv8_HP, Lv9_HP, Lv10_HP, Lv11_HP, Lv12_HP, Lv13_HP, Lv14_HP, Lv15_HP, Lv16_HP, Lv17_HP, Lv18_HP, Lv19_HP, Lv20_HP, \
+  let sql = 'INSERT INTO new_schema.npcs (name, level, title, class, race, age, gender, currentHP, HP_by_lvl, \
     status, str, ex_str, intel, dex, con, wis, cha, memorized, SBLvl_1, SBLvl_2, SBLvl_3, SBLvl_4, SBLvl_5, SBLvl_6, \
     SBLvl_7, SBLvl_8, SBLvl_9, gold, armor, weapon, items, probity, affiliation, notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, \
-    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
   db.query(sql, [req.body.name, req.body.level, req.body.title, req.body.npcClass, req.body.race, req.body.age, req.body.gender,
-  req.body.currentHP, req.body.Lv1_HP, req.body.Lv2_HP, req.body.Lv3_HP, req.body.Lv4_HP, req.body.Lv5_HP, req.body.Lv6_HP,
-  req.body.Lv7_HP, req.body.Lv8_HP, req.body.Lv9_HP, req.body.Lv10_HP, req.body.Lv11_HP, req.body.Lv12_HP, req.body.Lv13_HP,
-  req.body.Lv14_HP, req.body.Lv15_HP, req.body.Lv16_HP, req.body.Lv17_HP, req.body.Lv18_HP, req.body.Lv19_HP, req.body.Lv20_HP,
-  req.body.status, req.body.str, req.body.ex_str, req.body.int, req.body.dex, req.body.con, req.body.wis, req.body.cha, req.body.memorized,
-  req.body.spellbookLvl_1, req.body.spellbookLvl_2, req.body.spellbookLvl_3, req.body.spellbookLvl_4, req.body.spellbookLvl_5,
-  req.body.spellbookLvl_6, req.body.spellbookLvl_7, req.body.spellbookLvl_8, req.body.spellbookLvl_9, req.body.gold, req.body.armor,
-  req.body.weapon, req.body.items, req.body.probity, req.body.affiliation, req.body.notes], (err, result) => {
+  req.body.currentHP, req.body.hp_by_lvl.toString(), req.body.status, req.body.str, req.body.ex_str, req.body.int, req.body.dex,
+  req.body.con, req.body.wis, req.body.cha, req.body.memorized, req.body.spellbookLvl_1, req.body.spellbookLvl_2,
+  req.body.spellbookLvl_3, req.body.spellbookLvl_4, req.body.spellbookLvl_5, req.body.spellbookLvl_6, req.body.spellbookLvl_7,
+  req.body.spellbookLvl_8, req.body.spellbookLvl_9, req.body.gold, req.body.armor, req.body.weapon, req.body.items,
+  req.body.probity, req.body.affiliation, req.body.notes], (err, result) => {
     if (err) {
       console.log("error: ", err);
       throw err;

@@ -38,17 +38,10 @@ export function generate(level, pcClass) {
   pc.wis = attributes.wis;
   pc.cha = attributes.cha;
  
-  let hp = getHP(level, pcClass, pc.con);
-
-  let currentHP = 0;
-  for (let i = 1; i <= 20; i++) {
-    let levelString = "Lv" + i + "_HP";
-    pc[levelString] = hp[levelString];
-    currentHP += hp[levelString];
-  }
+  pc.hp_by_lvl = getHP(level, pcClass, pc.con);
 
   // TODO: This can be removed if/when a "damage" value is used
-  pc.currentHP = currentHP + calcConBonus(level, pcClass, pc.con);
+  pc.currentHP = pc.hp_by_lvl.reduce((a, b) => a + b, 0) + calcConBonus(level, pcClass, pc.con);
 
   //Spell stuff
   if (pcClass === "Magic-User" || pcClass === "Cleric" || pcClass === "Druid" || pcClass === "Paladin" || pcClass === "Ranger") {
