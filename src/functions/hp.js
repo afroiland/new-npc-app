@@ -3,13 +3,10 @@ import { rollDice } from "./dice"
 export function getHP(level, pcClass) {
   let results = [];
 
-  // TODO: Maybe clean this up a bit
-  if (pcClass === 'Civilian') {
-    results[0] = 3;
-    return results;
-  }
-
   switch (pcClass) {
+    case 'Civilian':
+      results[0] = 3;
+      break;
     case 'Fighter':
     case 'Paladin':
       results[0] = 10;
@@ -48,7 +45,7 @@ export function getHP(level, pcClass) {
 
   function generateHPBeyondFirstLvl(typeOfDice, maxLevel, hpBeyondMaxLevel) {
     for (let i = 1; i <= 19; i++) {
-      if (i <= level) {
+      if (i < level) {
         if (i <= maxLevel) {
           // Could insert logic here to avoid characters getting 1 HP for a level
           results[i] = rollDice(1, typeOfDice);
