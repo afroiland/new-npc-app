@@ -83,7 +83,6 @@ class ViewContent extends Component {
                 style={{ width: "95%" }}
                 onChange={e => this.handleSearchChange(e.target.value)}
               />
-              {/* <NPCList list={this.sortByProbity(this.state.NPCList) === this.state.NPCList ? this.state.NPCList : this.sortByProbity(this.state.NPCList)} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC} */}
               <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
                 searchString={searchString} />
             </Paper>
@@ -186,7 +185,7 @@ class ViewContent extends Component {
     //TODO: determine schema from which to get NPCs
     axios.get('http://localhost:3001/getNPCs').then(res => {
       if (this._isMounted) {
-        this.setState({ NPCList: res.data });
+        this.setState({ NPCList: this.sortByProbity(res.data) });
       }
     });
   }
@@ -194,11 +193,10 @@ class ViewContent extends Component {
   componentDidUpdate() {
     //console.log("updating");
     axios.get('http://localhost:3001/getNPCs').then(res => {
-      let resDatastring = JSON.stringify(res.data);
-      let NPCListString = JSON.stringify(this.state.NPCList);
-      let NPCListHasChanged = resDatastring !== NPCListString;
+      let sortedResData = this.sortByProbity(res.data);
+      let NPCListHasChanged = JSON.stringify(sortedResData) !== JSON.stringify(this.state.NPCList);
       if (this._isMounted && NPCListHasChanged) {
-        this.setState({ NPCList: res.data });
+        this.setState({ NPCList: sortedResData });
       }
     });
   }
@@ -374,34 +372,25 @@ class ViewContent extends Component {
     let result = this.state.hp_by_lvl.reduce((a, b) => parseInt(a) + parseInt(b), 0) +
       calcConBonus(this.state.level, this.state.npcClass, this.state.con);
 
-    if (result !== 0) {
-      return result;
-    }
-    return "";
+    return result !== 0 ? result : "";
   }
 
-  // sortByProbity(list) {
-  //   let tempList = list.sort(compare);
+  sortByProbity(list) {
+    let tempList = list.sort(compare);
+    return tempList;
 
-  //   function compare(b, a) {
-  //     const probityA = a.probity;
-  //     const probityB = b.probity;
-  //     let comparison = 0;
-  //     if (probityA > probityB) {
-  //       comparison = 1;
-  //     } else if (probityA < probityB) {
-  //       comparison = -1;
-  //     }
-  //     return comparison;
-  //   }
-
-  //   // Tried the following to fix the looping bug, but did not work
-  //   if (list == tempList) {
-  //     return list;
-  //   } else {
-  //     return tempList;
-  //   }
-  // }
+    function compare(b, a) {
+      const probityA = a.probity;
+      const probityB = b.probity;
+      let comparison = 0;
+      if (probityA > probityB) {
+        comparison = 1;
+      } else if (probityA < probityB) {
+        comparison = -1;
+      }
+      return comparison;
+    }
+  }
 }
 
 export default ViewContent;
