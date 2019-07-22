@@ -164,7 +164,7 @@ class ViewContent extends Component {
                 spellbookLvl_7={spellbookLvl_7}
                 spellbookLvl_8={spellbookLvl_8}
                 spellbookLvl_9={spellbookLvl_9}
-                abilites={determineAbilities(npcClass, level, race, dex)}
+                abilities={determineAbilities(npcClass, level, race, dex)}
                 memorized={memorized}
                 armor={armor}
                 weapon={weapon}

@@ -44,6 +44,7 @@ export function determineThiefAbilities(pcClass, level, race, dex) {
   }
 
   // Set base levels
+  // TODO: This will bug for thieves level 18+ (and assassins at 20+)
   thiefAbilities.pickPockets = baseNumbers['Lv' + baseLevel][0];
   thiefAbilities.openLocks = baseNumbers['Lv' + baseLevel][1];
   thiefAbilities.findRemoveTraps = baseNumbers['Lv' + baseLevel][2];
