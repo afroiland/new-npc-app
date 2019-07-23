@@ -43,6 +43,7 @@ export function calcAC(npcClass, level, armor, dex) {
         ac = 2;
         break;
       default:
+        ac = 10;
     }
     if (dex === 15) {
       ac--;
