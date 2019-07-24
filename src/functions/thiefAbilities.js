@@ -137,6 +137,6 @@ export function determineThiefAbilities(pcClass, level, race, dex) {
     default:
   }
 
-  console.log("thiefAbilities: ", thiefAbilities);
+  //console.log("thiefAbilities: ", thiefAbilities);
   return thiefAbilities;
 }

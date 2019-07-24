@@ -5,10 +5,10 @@ import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 
 class NPCDetails extends Component {
   render() {
-    console.log("this.props: ", this.props);
-    if (this.props.abilities) {
-      console.log("abilities object: ", Object.entries(this.props.abilities));
-    }
+    //console.log("this.props: ", this.props);
+    // if (this.props.abilities) {
+    //   console.log("abilities object: ", Object.entries(this.props.abilities));
+    // }
     const { ac, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name, notes,
       npcClass, probity, race, age, gender, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, weapon,
