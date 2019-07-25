@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { List, ListItem, ListItemText } from "@material-ui/core";
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 class NPCList extends Component {
   render() {
     //console.log("NPCList props: ", this.props);
     const { list, handleNameClick, searchString, selectedNPC } = this.props;
     return (
-      <List component="ul" style={{height: 'calc(100% - 95px)', overflow: 'auto'}}>
+      <SimpleBar style={{height: 'calc(100% - 95px)', overflow: 'auto'}}>
+      {/* <List component="ul" style={{height: 'calc(100% - 95px)', overflow: 'auto'}}> */}
         {list.map(npc => <ListItem dense button key={npc.name} style={{
           display: this.determineDisplay(npc, searchString),
           textAlign: 'right',
@@ -15,7 +18,8 @@ class NPCList extends Component {
           {/* <ListItemText primary={npc.name} secondary={npc.class !== "Civilian" ? "Lv" + npc.level + " " + npc.class : "Civilian"} /> */}
           <ListItemText primary={npc.name} secondary={npc.title} />
         </ListItem>)}
-      </List>
+        {/* </List> */}
+      </SimpleBar>
     );
   }
 
