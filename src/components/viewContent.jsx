@@ -147,7 +147,7 @@ class ViewContent extends Component {
                 maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
                 ac_adj={ac_adj}
                 status={status}
-                ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
+                ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex), ac_adj) : ""}
                 thac0={calcThac0(level, npcClass, str, ex_str) !== undefined ? calcThac0(level, npcClass, str, ex_str) : ""}
                 gold={gold}
                 str={str}
