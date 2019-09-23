@@ -35,6 +35,7 @@ class ViewContent extends Component {
     gender: "",
     currentHP: "",
     hp_by_lvl: [],
+    ac_adj: "",
     status: "",
     str: "",
     ex_str: "",
@@ -65,7 +66,7 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, status, str, ex_str,
+    const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, ac_adj, status, str, ex_str,
       int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
       affiliation, notes, selectedNPC, searchString } = this.state;
@@ -111,8 +112,8 @@ class ViewContent extends Component {
               </FormControl>
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
                 onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
-              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-                onClick={() => this.handleLevelUp(this.state)}>Level Up</Button>
+              {/* <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+                onClick={() => this.handleLevelUp(this.state)}>Level Up</Button> */}
               <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
                 onClick={() => this.handleSave(this.state)}>Save</Button>
               <Button variant='contained' color='primary' style={{ marginTop: 6 }}
@@ -144,6 +145,7 @@ class ViewContent extends Component {
                 gender={gender}
                 currentHP={currentHP}
                 maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
+                ac_adj={ac_adj}
                 status={status}
                 ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex)) : ""}
                 thac0={calcThac0(level, npcClass, str, ex_str) !== undefined ? calcThac0(level, npcClass, str, ex_str) : ""}
@@ -223,6 +225,7 @@ class ViewContent extends Component {
       gender: selectedNPC[0].gender,
       currentHP: selectedNPC[0].currentHP,
       hp_by_lvl: selectedNPC[0].hp_by_lvl.split(','),
+      ac_adj: selectedNPC[0].ac_adj,
       status: selectedNPC[0].status,
       str: selectedNPC[0].str,
       ex_str: selectedNPC[0].ex_str,
@@ -264,6 +267,7 @@ class ViewContent extends Component {
       gender: newNPC.gender,
       currentHP: newNPC.currentHP,
       hp_by_lvl: newNPC.hp_by_lvl,
+      ac_adj: "",
       status: "Normal",
       str: newNPC.str,
       ex_str: newNPC.ex_str,
@@ -336,6 +340,7 @@ class ViewContent extends Component {
       gender: "",
       currentHP: "",
       hp_by_lvl: [],
+      ac_adj: "",
       status: "",
       ac: "",
       thac0: "",

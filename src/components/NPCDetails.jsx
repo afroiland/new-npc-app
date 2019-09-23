@@ -9,7 +9,7 @@ class NPCDetails extends Component {
     // if (this.props.abilities) {
     //   console.log("abilities object: ", Object.entries(this.props.abilities));
     // }
-    const { ac, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name, notes,
+    const { ac, ac_adj, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name, notes,
       npcClass, probity, race, age, gender, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, weapon,
       wis } = this.props;
@@ -244,6 +244,19 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('ac')}
             />
           </Grid>
+
+          <Grid item style={{ padding: 5 }}>
+            <TextField
+              label="AC+/-"
+              value={ac_adj}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              style={{ width: 65 }}
+              onChange={this.handleInputChange('ac_adj')}
+            />
+          </Grid>
+
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Thac0"
