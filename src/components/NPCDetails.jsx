@@ -11,8 +11,8 @@ class NPCDetails extends Component {
     // }
     const { ac, ac_adj, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name, notes,
       npcClass, probity, race, age, gender, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
-      spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, weapon,
-      wis } = this.props;
+      spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, att_adj,
+      weapon, wis } = this.props;
     return (
       <div style={{ width: 'calc(100% - 30px)' }}>
         {/* <div style={{flexGrow: 1}}> */}
@@ -244,7 +244,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('ac')}
             />
           </Grid>
-
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="AC+/-"
@@ -256,7 +255,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('ac_adj')}
             />
           </Grid>
-
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Thac0"
@@ -268,6 +266,18 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('thac0')}
             />
           </Grid>
+          <Grid item style={{ padding: 5 }}>
+            <TextField
+              label="Att Adj"
+              value={att_adj}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              style={{ width: 75 }}
+              onChange={this.handleInputChange('att_adj')}
+            />
+          </Grid>
+
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Probity"

@@ -56,6 +56,7 @@ class ViewContent extends Component {
     memorized: "",
     gold: "",
     armor: "",
+    att_adj: "",
     weapon: "",
     items: "",
     probity: "",
@@ -68,7 +69,7 @@ class ViewContent extends Component {
   render() {
     const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, ac_adj, status, str, ex_str,
       int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
-      spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, weapon, items, probity,
+      spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, att_adj, weapon, items, probity,
       affiliation, notes, selectedNPC, searchString } = this.state;
     return (
       <div style={{ height: 'calc(100% - 48px)' }}>
@@ -147,8 +148,9 @@ class ViewContent extends Component {
                 maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
                 ac_adj={ac_adj}
                 status={status}
-                ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex), ac_adj) : ""}
-                thac0={calcThac0(level, npcClass, str, ex_str) !== undefined ? calcThac0(level, npcClass, str, ex_str) : ""}
+                ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex), parseInt(ac_adj)) : ""}
+                thac0={calcThac0(level, npcClass, str, ex_str, parseInt(att_adj)) !== undefined ?
+                  calcThac0(level, npcClass, str, ex_str, parseInt(att_adj)) : ""}
                 gold={gold}
                 str={str}
                 ex_str={ex_str}
@@ -169,6 +171,7 @@ class ViewContent extends Component {
                 abilities={determineAbilities(npcClass, level, race, dex)}
                 memorized={memorized}
                 armor={armor}
+                att_adj={att_adj}
                 weapon={weapon}
                 items={items}
                 probity={probity}
@@ -246,6 +249,7 @@ class ViewContent extends Component {
       memorized: selectedNPC[0].memorized,
       gold: selectedNPC[0].gold,
       armor: selectedNPC[0].armor,
+      att_adj: selectedNPC[0].att_adj,
       weapon: selectedNPC[0].weapon,
       items: selectedNPC[0].items,
       probity: selectedNPC[0].probity,
@@ -288,6 +292,7 @@ class ViewContent extends Component {
       memorized: newNPC.memorized,
       gold: newNPC.gold,
       armor: newNPC.armor,
+      att_adj: "",
       weapon: newNPC.weapon,
       items: newNPC.items,
       probity: newNPC.probity,
@@ -363,6 +368,7 @@ class ViewContent extends Component {
       memorized: null,
       gold: "",
       armor: "",
+      att_adj: "",
       weapon: "",
       items: "",
       probity: "",
