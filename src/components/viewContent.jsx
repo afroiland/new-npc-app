@@ -16,7 +16,7 @@ import { calcThac0 } from "../functions/thac0";
 import { determineAbilities } from '../functions/abilities';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-const classes = ["Civilian", "Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger"];
+const classes = ["Civilian", "Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Monster"];
 //const tables = ["Test", "Marathea"];
 
 class ViewContent extends Component {
@@ -35,7 +35,7 @@ class ViewContent extends Component {
     gender: "",
     currentHP: "",
     hp_by_lvl: [],
-    ac_adj: "",
+    ac_adj: 0,
     status: "",
     str: "",
     ex_str: "",
@@ -56,7 +56,7 @@ class ViewContent extends Component {
     memorized: "",
     gold: "",
     armor: "",
-    att_adj: "",
+    att_adj: 0,
     weapon: "",
     items: "",
     probity: "",
@@ -271,7 +271,7 @@ class ViewContent extends Component {
       gender: newNPC.gender,
       currentHP: newNPC.currentHP,
       hp_by_lvl: newNPC.hp_by_lvl,
-      ac_adj: "",
+      ac_adj: 0,
       status: "Normal",
       str: newNPC.str,
       ex_str: newNPC.ex_str,
@@ -292,7 +292,7 @@ class ViewContent extends Component {
       memorized: newNPC.memorized,
       gold: newNPC.gold,
       armor: newNPC.armor,
-      att_adj: "",
+      att_adj: 0,
       weapon: newNPC.weapon,
       items: newNPC.items,
       probity: newNPC.probity,
@@ -345,7 +345,7 @@ class ViewContent extends Component {
       gender: "",
       currentHP: "",
       hp_by_lvl: [],
-      ac_adj: "",
+      ac_adj: 0,
       status: "",
       ac: "",
       thac0: "",
@@ -368,7 +368,7 @@ class ViewContent extends Component {
       memorized: null,
       gold: "",
       armor: "",
-      att_adj: "",
+      att_adj: 0,
       weapon: "",
       items: "",
       probity: "",

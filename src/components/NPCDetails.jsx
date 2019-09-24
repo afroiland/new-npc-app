@@ -277,7 +277,6 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('att_adj')}
             />
           </Grid>
-
           <Grid item style={{ padding: 5 }}>
             <TextField
               label="Probity"

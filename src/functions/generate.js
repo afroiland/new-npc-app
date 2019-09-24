@@ -114,12 +114,12 @@ export function generate(level, pcClass) {
     pc.spellbookLvl_9 = "";
   }
 
-  pc.race = "Human";
+  pc.race = pcClass == "Monster" ? "" : "Human";
   pc.age = rollDice(1, 14) + 17;
   pc.gender = getGender();
   pc.gold = setStartingGold(pcClass);
-  pc.weapon = getWeapon(pcClass);
-  pc.armor = getArmor(pcClass, pc.weapon);
+  pc.weapon = pcClass == "Monster" ? "" : getWeapon(pcClass);
+  pc.armor = pcClass == "Monster" ? "" : getArmor(pcClass, pc.weapon);
   pc.items = "";
   pc.notes = "";
   pc.probity = 0;
@@ -163,6 +163,8 @@ function setStartingGold(pcClass) {
       gold = 1;
       break;
     default:
+      gold = 0;
+      break;
   }
   return gold;
 }
