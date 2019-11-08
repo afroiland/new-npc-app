@@ -40,6 +40,9 @@ export function getHP(level, pcClass) {
       results[0] = 16;
       generateHPBeyondFirstLvl(8, 11, 2);
       break;
+    case 'Monster':
+      generateMonsterHP(level);
+      break;
     default:
   }
 
@@ -55,5 +58,12 @@ export function getHP(level, pcClass) {
       }
     }
   }
+
+  function generateMonsterHP(level) {
+    for (let i = 0; i < level; i++) {
+      results[i] = rollDice(1, 8);
+    }
+  }
+
   return results;
 }

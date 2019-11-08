@@ -3,12 +3,13 @@ const thiefThac0s = [20, 20, 20, 20, 19, 19, 19, 19, 16, 16, 16, 16, 14, 14, 14,
 const clericThac0s = [20, 20, 20, 18, 18, 18, 16, 16, 16, 14, 14, 14, 12, 12, 12, 10, 10, 10, 9, 9];
 const muThac0s = [20, 20, 20, 20, 20, 19, 19, 19, 19, 19, 16, 16, 16, 16, 16, 13, 13, 13, 13, 13];
 
-export function calcThac0(level, pcClass, str, ex_str) {
+export function calcThac0(level, pcClass, str, ex_str, att_adj) {
   let thac0;
   switch (pcClass) {
     case 'Fighter':
     case 'Paladin':
     case 'Ranger':
+    case 'Monster':
       thac0 = fighterThac0s[level - 1];
       break;
     case 'Thief':
@@ -38,6 +39,10 @@ export function calcThac0(level, pcClass, str, ex_str) {
     } else if (parseInt(ex_str) === 100) {
       thac0 -= 3;
     }
+  }
+
+  if (att_adj) {
+    thac0 -= att_adj;
   }
 
   return thac0;

@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 
 class NPCDetails extends Component {
   render() {
     //console.log("this.props: ", this.props);
-    const { ac, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name, notes,
+    // if (this.props.abilities) {
+    //   console.log("abilities object: ", Object.entries(this.props.abilities));
+    // }
+    const { ac, ac_adj, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name, notes,
       npcClass, probity, race, age, gender, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
-      spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, weapon,
-      wis } = this.props;
+      spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, att_adj,
+      weapon, wis } = this.props;
     return (
-      <div style={{width: 'calc(100% - 30px)'}}>
-      {/* <div style={{flexGrow: 1}}> */}
+      <div style={{ width: 'calc(100% - 30px)' }}>
+        {/* <div style={{flexGrow: 1}}> */}
         <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '100%' }}>
           {/* <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: 500 }}> */}
           <Grid item style={{ padding: 5, flexGrow: 1 }}>
@@ -242,6 +246,17 @@ class NPCDetails extends Component {
           </Grid>
           <Grid item style={{ padding: 5 }}>
             <TextField
+              label="AC+/-"
+              value={ac_adj}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              style={{ width: 65 }}
+              onChange={this.handleInputChange('ac_adj')}
+            />
+          </Grid>
+          <Grid item style={{ padding: 5 }}>
+            <TextField
               label="Thac0"
               value={thac0}
               margin="normal"
@@ -249,6 +264,17 @@ class NPCDetails extends Component {
               inputProps={{ style: { textAlign: "center" } }}
               style={{ width: 75 }}
               onChange={this.handleInputChange('thac0')}
+            />
+          </Grid>
+          <Grid item style={{ padding: 5 }}>
+            <TextField
+              label="Att Adj"
+              value={att_adj}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              style={{ width: 75 }}
+              onChange={this.handleInputChange('att_adj')}
             />
           </Grid>
           <Grid item style={{ padding: 5 }}>
@@ -417,14 +443,21 @@ class NPCDetails extends Component {
           </Grid>}
 
           {abilities && <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
+            {/* <TextField
               label="Abilities"
-              value={abilities}
+              value={JSON.stringify(abilities)}
               margin="normal"
               variant="outlined"
               multiline
               style={{ width: '100%' }}
-            />
+            /> */}
+            <List style={{ border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4 }}>
+              {Object.entries(abilities).map(ability => <ListItem dense key={ability[0]}>
+                <ListItemText>
+                  <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{ability[0] + ' ' + ability[1]}</Typography>
+                </ListItemText>
+              </ListItem>)}
+            </List>
           </Grid>}
 
         </Grid>
