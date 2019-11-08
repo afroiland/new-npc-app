@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { List, ListItem, ListItemText } from "@material-ui/core";
+//import { List } from "@material-ui/core";
+import { ListItem, ListItemText } from "@material-ui/core";
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
