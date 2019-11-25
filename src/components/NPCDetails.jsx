@@ -246,7 +246,7 @@ class NPCDetails extends Component {
           </Grid>
           <Grid item style={{ padding: 5 }}>
             <TextField
-              label="AC+/-"
+              label="AC Adj"
               value={ac_adj}
               margin="normal"
               variant="outlined"
