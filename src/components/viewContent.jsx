@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
-import { Paper, InputLabel } from "@material-ui/core";
+import { Paper, InputLabel, CssBaseline } from "@material-ui/core";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { calcThac0 } from "../functions/thac0";
@@ -64,14 +64,53 @@ class ViewContent extends Component {
     affiliation: "",
     notes: "",
     selectedNPC: "",
-    searchString: ""
+    searchString: "",
+    
+    secondaryCharacter: {
+      name: "",
+      title: "",
+      level: "",
+      npcClass: "",
+      race: "",
+      age: "",
+      gender: "",
+      currentHP: "",
+      hp_by_lvl: [],
+      ac_adj: 0,
+      status: "",
+      str: "",
+      ex_str: "",
+      int: "",
+      dex: "",
+      con: "",
+      wis: "",
+      cha: "",
+      spellbookLvl_1: "",
+      spellbookLvl_2: "",
+      spellbookLvl_3: "",
+      spellbookLvl_4: "",
+      spellbookLvl_5: "",
+      spellbookLvl_6: "",
+      spellbookLvl_7: "",
+      spellbookLvl_8: "",
+      spellbookLvl_9: "",
+      memorized: "",
+      gold: "",
+      armor: "",
+      att_adj: 0,
+      weapon: "",
+      items: "",
+      probity: "",
+      affiliation: "",
+      notes: "",
+    }
   };
 
   render() {
     const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, ac_adj, status, str, ex_str,
       int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, att_adj, weapon, items, probity,
-      affiliation, notes, selectedNPC, searchString } = this.state;
+      affiliation, notes, selectedNPC, searchString, secondaryCharacter } = this.state;
     return (
       <div style={{ display: 'flex', height: 'calc(100% - 48px)' }}>
 
@@ -90,7 +129,7 @@ class ViewContent extends Component {
               searchString={searchString} />
           </Paper>
         </div>
-        
+
         <div style={{ flex: '10' }}>
           <Paper style={{ margin: 5 }}>
             <div style={{ height: 15 }}></div>
@@ -187,48 +226,51 @@ class ViewContent extends Component {
             </div>
 
             <div style={{ flex: '1' }}>
-            {/* <Paper style={{ marginRight: 5, height: '100%', overflow: 'auto' }}>
+              {/* <Paper style={{ marginRight: 5, height: '100%' }}>
                 <NPCDetails handleChange={this.handleChange}
-                  name={name}
-                  title={title}
-                  level={level}
-                  npcClass={npcClass}
-                  race={race}
-                  age={age}
-                  gender={gender}
-                  currentHP={currentHP}
+                  name={secondaryCharacter.name}
+                  title={secondaryCharacter.title}
+                  level={secondaryCharacter.level}
+                  npcClass={secondaryCharacter.npcClass}
+                  race={secondaryCharacter.race}
+                  age={secondaryCharacter.age}
+                  gender={secondaryCharacter.gender}
+                  currentHP={secondaryCharacter.currentHP}
                   maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
-                  ac_adj={ac_adj}
-                  status={status}
-                  ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex), parseInt(ac_adj)) : ""}
-                  thac0={calcThac0(level, npcClass, str, ex_str, parseInt(att_adj)) !== undefined ?
-                    calcThac0(level, npcClass, str, ex_str, parseInt(att_adj)) : ""}
-                  gold={gold}
-                  str={str}
-                  ex_str={ex_str}
-                  int={int}
-                  dex={dex}
-                  con={con}
-                  wis={wis}
-                  cha={cha}
-                  spellbookLvl_1={spellbookLvl_1}
-                  spellbookLvl_2={spellbookLvl_2}
-                  spellbookLvl_3={spellbookLvl_3}
-                  spellbookLvl_4={spellbookLvl_4}
-                  spellbookLvl_5={spellbookLvl_5}
-                  spellbookLvl_6={spellbookLvl_6}
-                  spellbookLvl_7={spellbookLvl_7}
-                  spellbookLvl_8={spellbookLvl_8}
-                  spellbookLvl_9={spellbookLvl_9}
-                  abilities={determineAbilities(npcClass, level, race, dex)}
-                  memorized={memorized}
-                  armor={armor}
-                  att_adj={att_adj}
-                  weapon={weapon}
-                  items={items}
-                  probity={probity}
-                  affiliation={affiliation}
-                  notes={notes}
+                  ac_adj={secondaryCharacter.ac_adj}
+                  status={secondaryCharacter.status}
+                  ac={secondaryCharacter.npcClass !== "" ? calcAC(secondaryCharacter.npcClass, secondaryCharacter.level,
+                    secondaryCharacter.armor, parseInt(secondaryCharacter.dex), parseInt(secondaryCharacter.ac_adj)) : ""}
+                  thac0={calcThac0(secondaryCharacter.level, secondaryCharacter.npcClass, secondaryCharacter.str,
+                    secondaryCharacter.ex_str, parseInt(secondaryCharacter.att_adj)) !== undefined ?
+                    calcThac0(secondaryCharacter.level, secondaryCharacter.npcClass, secondaryCharacter.str,
+                    secondaryCharacter.ex_str, parseInt(secondaryCharacter.att_adj)) : ""}
+                  gold={secondaryCharacter.gold}
+                  str={secondaryCharacter.str}
+                  ex_str={secondaryCharacter.ex_str}
+                  int={secondaryCharacter.int}
+                  dex={secondaryCharacter.dex}
+                  con={secondaryCharacter.con}
+                  wis={secondaryCharacter.wis}
+                  cha={secondaryCharacter.cha}
+                  spellbookLvl_1={secondaryCharacter.spellbookLvl_1}
+                  spellbookLvl_2={secondaryCharacter.spellbookLvl_2}
+                  spellbookLvl_3={secondaryCharacter.spellbookLvl_3}
+                  spellbookLvl_4={secondaryCharacter.spellbookLvl_4}
+                  spellbookLvl_5={secondaryCharacter.spellbookLvl_5}
+                  spellbookLvl_6={secondaryCharacter.spellbookLvl_6}
+                  spellbookLvl_7={secondaryCharacter.spellbookLvl_7}
+                  spellbookLvl_8={secondaryCharacter.spellbookLvl_8}
+                  spellbookLvl_9={secondaryCharacter.spellbookLvl_9}
+                  abilities={determineAbilities(secondaryCharacter.npcClass, secondaryCharacter.level, secondaryCharacter.race, secondaryCharacter.dex)}
+                  memorized={secondaryCharacter.memorized}
+                  armor={secondaryCharacter.armor}
+                  att_adj={secondaryCharacter.att_adj}
+                  weapon={secondaryCharacter.weapon}
+                  items={secondaryCharacter.items}
+                  probity={secondaryCharacter.probity}
+                  affiliation={secondaryCharacter.affiliation}
+                  notes={secondaryCharacter.notes}
                 />
               </Paper> */}
             </div>
@@ -270,6 +312,13 @@ class ViewContent extends Component {
   }
 
   handleNameClick = (name) => {
+    if (this.state.selectedNPC) {
+      console.log("There is a selected NPC");
+      //Shift all info from last selected NPC to secondary NPC object
+    } else {
+      //TODO: Delete this else stmt when above functionality is in place
+      console.log("There is not a selected NPC");
+    };
     let selectedNPC = this.state.NPCList.filter(obj => {
       return obj.name === name
     });
