@@ -18,7 +18,7 @@ class NPCDetails extends Component {
       <SimpleBar style={{ height: '100%' }}>
 
         <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
-          <div style={{ flex: '4' }}>
+          <div style={{ flex: '4', marginRight: '5px' }}>
             <TextField
               label="Name"
               value={name}
@@ -28,7 +28,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('name')}
             />
           </div>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="Level"
               value={level}
@@ -38,7 +38,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('level')}
             />
           </div>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="Age"
               value={age}
@@ -61,7 +61,7 @@ class NPCDetails extends Component {
         </div>
 
         <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
-          <div style={{ flex: '5' }}>
+          <div style={{ flex: '5', marginRight: '5px' }}>
             <TextField
               label="Class"
               value={npcClass}
@@ -71,7 +71,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('npcClass')}
             />
           </div>
-          <div style={{ flex: '5' }}>
+          <div style={{ flex: '5', marginRight: '5px' }}>
             <TextField
               label="Title"
               value={title}
@@ -94,7 +94,7 @@ class NPCDetails extends Component {
         </div>
 
         <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
-          <div style={{ flex: '3' }}>
+          <div style={{ flex: '3', marginRight: '5px' }}>
             <TextField
               label="Race"
               value={race}
@@ -104,7 +104,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('race')}
             />
           </div>
-          <div style={{ flex: '3' }}>
+          <div style={{ flex: '3', marginRight: '5px' }}>
             <TextField
               label="Affiliation"
               value={affiliation}
@@ -128,7 +128,7 @@ class NPCDetails extends Component {
         </div>
 
         <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="Str"
               value={str}
@@ -139,7 +139,7 @@ class NPCDetails extends Component {
             />
           </div>
           {
-            this.showEx_str() && <div style={{ flex: '1' }}>
+            this.showEx_str() && <div style={{ flex: '1', marginRight: '5px' }}>
               <TextField
                 label="/"
                 value={ex_str}
@@ -150,7 +150,7 @@ class NPCDetails extends Component {
               />
             </div>
           }
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="Int"
               value={int}
@@ -160,7 +160,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('int')}
             />
           </div>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="Wis"
               value={wis}
@@ -170,7 +170,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('wis')}
             />
           </div>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="Dex"
               value={dex}
@@ -180,7 +180,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('dex')}
             />
           </div>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="Con"
               value={con}
@@ -203,7 +203,7 @@ class NPCDetails extends Component {
         </div>
 
         <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="HP"
               value={currentHP}
@@ -213,7 +213,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('currentHP')}
             />
           </div>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="Max"
               value={maxHP}
@@ -223,7 +223,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('maxHP')}
             />
           </div>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="AC"
               value={ac}
@@ -233,7 +233,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('ac')}
             />
           </div>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="AC Adj"
               value={ac_adj}
@@ -243,7 +243,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('ac_adj')}
             />
           </div>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="Thac0"
               value={thac0}
@@ -266,7 +266,7 @@ class NPCDetails extends Component {
         </div>
 
         <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="Weapon"
               value={weapon}
@@ -276,7 +276,7 @@ class NPCDetails extends Component {
               onChange={this.handleInputChange('weapon')}
             />
           </div>
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
               label="Armor"
               value={armor}
