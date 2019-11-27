@@ -6,7 +6,6 @@ import { calcConBonus } from "../functions/conBonus";
 import { calcAC } from "../functions/ac";
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
-// import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
 import { Paper, InputLabel } from "@material-ui/core";
@@ -14,7 +13,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { calcThac0 } from "../functions/thac0";
 import { determineAbilities } from '../functions/abilities';
-import SimpleBar from 'simplebar-react';
+//import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
@@ -75,9 +74,8 @@ class ViewContent extends Component {
       affiliation, notes, selectedNPC, searchString } = this.state;
     return (
       <div style={{ display: 'flex', height: 'calc(100% - 48px)' }}>
-        {/* <Grid container style={{ height: '100%' }}> */}
+
         <div style={{ flex: '2', height: '100%' }}>
-          {/* <Grid item xs={2} style={{ height: '100%' }}> */}
           <Paper style={{ marginLeft: 5, marginTop: 5, height: "calc(100% - 10px)" }}>
             <TextField
               id="standard-search"
@@ -91,9 +89,8 @@ class ViewContent extends Component {
             <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
               searchString={searchString} />
           </Paper>
-          {/* </Grid> */}
         </div>
-        {/* <Grid item xs={10} style={{ height: '100%' }}> */}
+        
         <div style={{ flex: '10' }}>
           <Paper style={{ margin: 5 }}>
             <div style={{ height: 15 }}></div>
@@ -143,7 +140,6 @@ class ViewContent extends Component {
 
           <div style={{ height: 'calc(100% - 90px)', display: 'flex' }}>
             <div style={{ height: '100%', flex: '1' }}>
-              {/* <Paper style={{ marginLeft: 5, marginRight: 5, height: 'calc(100% - 93px)', overflow: 'auto' }}> */}
               <Paper style={{ marginLeft: 5, marginRight: 5, height: '100%', overflow: 'auto' }}>
                 <NPCDetails handleChange={this.handleChange}
                   name={name}
@@ -191,6 +187,50 @@ class ViewContent extends Component {
             </div>
 
             <div style={{ flex: '1' }}>
+            {/* <Paper style={{ marginLeft: 5, marginRight: 5, height: '100%', overflow: 'auto' }}>
+                <NPCDetails handleChange={this.handleChange}
+                  name={name}
+                  title={title}
+                  level={level}
+                  npcClass={npcClass}
+                  race={race}
+                  age={age}
+                  gender={gender}
+                  currentHP={currentHP}
+                  maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
+                  ac_adj={ac_adj}
+                  status={status}
+                  ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex), parseInt(ac_adj)) : ""}
+                  thac0={calcThac0(level, npcClass, str, ex_str, parseInt(att_adj)) !== undefined ?
+                    calcThac0(level, npcClass, str, ex_str, parseInt(att_adj)) : ""}
+                  gold={gold}
+                  str={str}
+                  ex_str={ex_str}
+                  int={int}
+                  dex={dex}
+                  con={con}
+                  wis={wis}
+                  cha={cha}
+                  spellbookLvl_1={spellbookLvl_1}
+                  spellbookLvl_2={spellbookLvl_2}
+                  spellbookLvl_3={spellbookLvl_3}
+                  spellbookLvl_4={spellbookLvl_4}
+                  spellbookLvl_5={spellbookLvl_5}
+                  spellbookLvl_6={spellbookLvl_6}
+                  spellbookLvl_7={spellbookLvl_7}
+                  spellbookLvl_8={spellbookLvl_8}
+                  spellbookLvl_9={spellbookLvl_9}
+                  abilities={determineAbilities(npcClass, level, race, dex)}
+                  memorized={memorized}
+                  armor={armor}
+                  att_adj={att_adj}
+                  weapon={weapon}
+                  items={items}
+                  probity={probity}
+                  affiliation={affiliation}
+                  notes={notes}
+                />
+              </Paper> */}
             </div>
 
           </div>

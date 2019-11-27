@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import TextField from '@material-ui/core/TextField';
-//import Grid from '@material-ui/core/Grid';
-import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
+//import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
@@ -16,13 +15,8 @@ class NPCDetails extends Component {
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, att_adj,
       weapon, wis } = this.props;
     return (
-      <SimpleBar style={{height: '100%', overflow: 'auto'}}>
-        {/* <div style={{ width: 'calc(100% - 30px)' }}> */}
-        {/* <div style={{flexGrow: 1}}> */}
-        {/* <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '100%' }}> */}
-        {/* <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: 500 }}> */}
-        {/* <Grid item style={{ padding: 5, flexGrow: 1 }}> */}
-        <div style={{ display: 'flex' }}>
+      <SimpleBar style={{ height: '100%', overflow: 'auto' }}>
+        <div style={{ display: 'flex', margin: '10px 10px 0px 10px' }}>
           <div style={{ flex: '4' }}>
             <TextField
               label="Name"
@@ -40,7 +34,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 65 }}
               onChange={this.handleInputChange('level')}
             />
           </div>
@@ -51,7 +44,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 60 }}
               onChange={this.handleInputChange('age')}
             />
           </div>
@@ -62,13 +54,12 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 60 }}
               onChange={this.handleInputChange('gender')}
             />
           </div>
         </div>
 
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', margin: '0px 10px 0px 10px' }}>
           <div style={{ flex: '5' }}>
             <TextField
               label="Class"
@@ -96,13 +87,12 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 80 }}
               onChange={this.handleInputChange('probity')}
             />
           </div>
         </div>
 
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', margin: '10px' }}>
           <div style={{ flex: '3' }}>
             <TextField
               label="Race"
@@ -110,7 +100,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               style={{ width: '100%' }}
-              // style={{ width: 100 }}
               onChange={this.handleInputChange('race')}
             />
           </div>
@@ -137,7 +126,7 @@ class NPCDetails extends Component {
           </div>
         </div>
 
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', margin: '10px' }}>
           <div style={{ flex: '1' }}>
             <TextField
               label="Str"
@@ -145,7 +134,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 55 }}
               onChange={this.handleInputChange('str')}
             />
           </div>
@@ -157,7 +145,6 @@ class NPCDetails extends Component {
                 margin="normal"
                 variant="outlined"
                 inputProps={{ style: { textAlign: "center" } }}
-                //style={{ width: 55 }}
                 onChange={this.handleInputChange('ex_str')}
               />
             </div>
@@ -169,7 +156,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 55 }}
               onChange={this.handleInputChange('int')}
             />
           </div>
@@ -180,7 +166,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 55 }}
               onChange={this.handleInputChange('wis')}
             />
           </div>
@@ -191,7 +176,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 55 }}
               onChange={this.handleInputChange('dex')}
             />
           </div>
@@ -202,7 +186,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 55 }}
               onChange={this.handleInputChange('con')}
             />
           </div>
@@ -213,18 +196,12 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 55 }}
               onChange={this.handleInputChange('cha')}
             />
           </div>
         </div>
 
-
-
-
-
-
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', margin: '10px' }}>
           <div style={{ flex: '1' }}>
             <TextField
               label="HP"
@@ -232,7 +209,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 60 }}
               onChange={this.handleInputChange('currentHP')}
             />
           </div>
@@ -243,7 +219,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 60 }}
               onChange={this.handleInputChange('maxHP')}
             />
           </div>
@@ -254,7 +229,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 50 }}
               onChange={this.handleInputChange('ac')}
             />
           </div>
@@ -265,7 +239,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 65 }}
               onChange={this.handleInputChange('ac_adj')}
             />
           </div>
@@ -276,7 +249,6 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 75 }}
               onChange={this.handleInputChange('thac0')}
             />
           </div>
@@ -287,13 +259,12 @@ class NPCDetails extends Component {
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              //style={{ width: 75 }}
               onChange={this.handleInputChange('att_adj')}
             />
           </div>
         </div>
 
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', margin: '10px' }}>
           <div style={{ flex: '1' }}>
             <TextField
               label="Weapon"
@@ -332,7 +303,7 @@ class NPCDetails extends Component {
           margin="normal"
           variant="outlined"
           multiline
-          style={{ width: '100%' }}
+          style={{ width: '100%', margin: '10px' }}
           onChange={this.handleInputChange('items')}
         />
         <TextField
@@ -341,7 +312,7 @@ class NPCDetails extends Component {
           margin="normal"
           variant="outlined"
           multiline
-          style={{ width: '100%' }}
+          style={{ width: '100%', margin: '10px' }}
           onChange={this.handleInputChange('notes')}
         />
         {
@@ -353,7 +324,7 @@ class NPCDetails extends Component {
             variant="outlined"
             multiline
             rowsMax="15"
-            style={{ width: '100%' }}
+            style={{ width: '100%', margin: '10px' }}
             onChange={this.handleInputChange('memorized')}
           />
         }
@@ -365,7 +336,7 @@ class NPCDetails extends Component {
             margin="normal"
             variant="outlined"
             multiline
-            style={{ width: '100%' }}
+            style={{ width: '100%', margin: '10px' }}
             onChange={this.handleInputChange('spellbookLvl_1')}
           />
         }
@@ -377,7 +348,7 @@ class NPCDetails extends Component {
             margin="normal"
             variant="outlined"
             multiline
-            style={{ width: '100%' }}
+            style={{ width: '100%', margin: '10px' }}
             onChange={this.handleInputChange('spellbookLvl_2')}
           />
         }
@@ -389,7 +360,7 @@ class NPCDetails extends Component {
             margin="normal"
             variant="outlined"
             multiline
-            style={{ width: '100%' }}
+            style={{ width: '100%', margin: '10px' }}
             onChange={this.handleInputChange('spellbookLvl_3')}
           />
         }
@@ -401,7 +372,7 @@ class NPCDetails extends Component {
             margin="normal"
             variant="outlined"
             multiline
-            style={{ width: '100%' }}
+            style={{ width: '100%', margin: '10px' }}
             onChange={this.handleInputChange('spellbookLvl_4')}
           />
         }
@@ -413,7 +384,7 @@ class NPCDetails extends Component {
             margin="normal"
             variant="outlined"
             multiline
-            style={{ width: '100%' }}
+            style={{ width: '100%', margin: '10px' }}
             onChange={this.handleInputChange('spellbookLvl_5')}
           />
         }
@@ -425,7 +396,7 @@ class NPCDetails extends Component {
             margin="normal"
             variant="outlined"
             multiline
-            style={{ width: '100%' }}
+            style={{ width: '100%', margin: '10px' }}
             onChange={this.handleInputChange('spellbookLvl_6')}
           />
         }
@@ -437,7 +408,7 @@ class NPCDetails extends Component {
             margin="normal"
             variant="outlined"
             multiline
-            style={{ width: '100%' }}
+            style={{ width: '100%', margin: '10px' }}
             onChange={this.handleInputChange('spellbookLvl_7')}
           />
         }
@@ -449,7 +420,7 @@ class NPCDetails extends Component {
             margin="normal"
             variant="outlined"
             multiline
-            style={{ width: '100%' }}
+            style={{ width: '100%', margin: '10px' }}
             onChange={this.handleInputChange('spellbookLvl_8')}
           />
         }
@@ -461,21 +432,22 @@ class NPCDetails extends Component {
             margin="normal"
             variant="outlined"
             multiline
-            style={{ width: '100%' }}
+            style={{ width: '100%', margin: '10px' }}
             onChange={this.handleInputChange('spellbookLvl_9')}
           />
         }
+        {
+          abilities &&
+          <TextField
+            label="Abilities"
+            value={JSON.stringify(abilities)}
+            margin="normal"
+            variant="outlined"
+            multiline
+            style={{ width: '100%', margin: '10px' }}
+          />
+        }
 
-        {/* {
-          abilities && 
-            {/* <TextField
-              label="Abilities"
-              value={JSON.stringify(abilities)}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%' }}
-            /> */}
         {/* <List style={{ border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4 }}>
               {Object.entries(abilities).map(ability => <ListItem dense key={ability[0]}>
                 <ListItemText>
