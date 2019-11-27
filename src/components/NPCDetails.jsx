@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
+//import Grid from '@material-ui/core/Grid';
 import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 class NPCDetails extends Component {
   render() {
@@ -14,11 +16,14 @@ class NPCDetails extends Component {
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, att_adj,
       weapon, wis } = this.props;
     return (
-      <div style={{ width: 'calc(100% - 30px)' }}>
+      <div>
+        {/* <div style={{ width: 'calc(100% - 30px)' }}> */}
         {/* <div style={{flexGrow: 1}}> */}
-        <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '100%' }}>
-          {/* <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: 500 }}> */}
-          <Grid item style={{ padding: 5, flexGrow: 1 }}>
+        {/* <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '100%' }}> */}
+        {/* <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: 500 }}> */}
+        {/* <Grid item style={{ padding: 5, flexGrow: 1 }}> */}
+        <div style={{ display: 'flex' }}>
+          <div style={{ flex: '4' }}>
             <TextField
               label="Name"
               value={name}
@@ -27,41 +32,44 @@ class NPCDetails extends Component {
               style={{ width: '100%' }}
               onChange={this.handleInputChange('name')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
+          </div>
+          <div style={{ flex: '1' }}>
             <TextField
               label="Level"
               value={level}
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 65 }}
+              //style={{ width: 65 }}
               onChange={this.handleInputChange('level')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
+          </div>
+          <div style={{ flex: '1' }}>
             <TextField
               label="Age"
               value={age}
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 60 }}
+              //style={{ width: 60 }}
               onChange={this.handleInputChange('age')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
+          </div>
+          <div style={{ flex: '1' }}>
             <TextField
               label="Gen."
               value={gender ? gender.toUpperCase() : ""}
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 60 }}
+              //style={{ width: 60 }}
               onChange={this.handleInputChange('gender')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5, flexGrow: 1 }}>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex' }}>
+          <div style={{ flex: '5' }}>
             <TextField
               label="Class"
               value={npcClass}
@@ -70,8 +78,8 @@ class NPCDetails extends Component {
               style={{ width: '100%' }}
               onChange={this.handleInputChange('npcClass')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5, flexGrow: 1 }}>
+          </div>
+          <div style={{ flex: '5' }}>
             <TextField
               label="Title"
               value={title}
@@ -80,8 +88,22 @@ class NPCDetails extends Component {
               style={{ width: '100%' }}
               onChange={this.handleInputChange('title')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5, flexGrow: 1 }}>
+          </div>
+          <div style={{ flex: '2' }}>
+            <TextField
+              label="Probity"
+              value={probity}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              //style={{ width: 80 }}
+              onChange={this.handleInputChange('probity')}
+            />
+          </div>
+        </div>
+
+        <div style={{ display: 'flex' }}>
+          <div style={{ flex: '3' }}>
             <TextField
               label="Race"
               value={race}
@@ -91,8 +113,8 @@ class NPCDetails extends Component {
               // style={{ width: 100 }}
               onChange={this.handleInputChange('race')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5, flexGrow: 1 }}>
+          </div>
+          <div style={{ flex: '3' }}>
             <TextField
               label="Affiliation"
               value={affiliation}
@@ -101,85 +123,8 @@ class NPCDetails extends Component {
               style={{ width: '100%' }}
               onChange={this.handleInputChange('affiliation')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
-            <TextField
-              label="Str"
-              value={str}
-              margin="normal"
-              variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 55 }}
-              onChange={this.handleInputChange('str')}
-            />
-          </Grid>
-          {this.showEx_str() && <Grid item style={{ padding: 5 }}>
-            <TextField
-              label="/"
-              value={ex_str}
-              margin="normal"
-              variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 55 }}
-              onChange={this.handleInputChange('ex_str')}
-            />
-          </Grid>}
-          <Grid item style={{ padding: 5 }}>
-            <TextField
-              label="Int"
-              value={int}
-              margin="normal"
-              variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 55 }}
-              onChange={this.handleInputChange('int')}
-            />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
-            <TextField
-              label="Wis"
-              value={wis}
-              margin="normal"
-              variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 55 }}
-              onChange={this.handleInputChange('wis')}
-            />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
-            <TextField
-              label="Dex"
-              value={dex}
-              margin="normal"
-              variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 55 }}
-              onChange={this.handleInputChange('dex')}
-            />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
-            <TextField
-              label="Con"
-              value={con}
-              margin="normal"
-              variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 55 }}
-              onChange={this.handleInputChange('con')}
-            />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
-            <TextField
-              label="Cha"
-              value={cha}
-              margin="normal"
-              variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 55 }}
-              onChange={this.handleInputChange('cha')}
-            />
-          </Grid>
-          <Grid item style={{ padding: 5, flexGrow: 1 }}>
+          </div>
+          <div style={{ flex: '2' }}>
             <TextField
               label="Gold"
               value={gold}
@@ -189,106 +134,167 @@ class NPCDetails extends Component {
               style={{ width: '100%' }}
               onChange={this.handleInputChange('gold')}
             />
-          </Grid>
-          {/* <Grid item style={{ padding: 5, flexGrow: 1 }}>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex' }}>
+          <div style={{ flex: '1' }}>
             <TextField
-              label="Affiliation"
-              value={affiliation}
+              label="Str"
+              value={str}
               margin="normal"
               variant="outlined"
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('affiliation')}
+              inputProps={{ style: { textAlign: "center" } }}
+              //style={{ width: 55 }}
+              onChange={this.handleInputChange('str')}
             />
-          </Grid> */}
-          <Grid item style={{ padding: 5, flexGrow: 1 }}>
+          </div>
+          {
+            this.showEx_str() && <div style={{ flex: '1' }}>
+              <TextField
+                label="/"
+                value={ex_str}
+                margin="normal"
+                variant="outlined"
+                inputProps={{ style: { textAlign: "center" } }}
+                //style={{ width: 55 }}
+                onChange={this.handleInputChange('ex_str')}
+              />
+            </div>
+          }
+          <div style={{ flex: '1' }}>
             <TextField
-              label="Status"
-              value={status}
+              label="Int"
+              value={int}
               margin="normal"
               variant="outlined"
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('status')}
+              inputProps={{ style: { textAlign: "center" } }}
+              //style={{ width: 55 }}
+              onChange={this.handleInputChange('int')}
             />
-          </Grid>
-          <div style={{ width: '100%' }}></div>
-          <Grid item style={{ padding: 5 }}>
+          </div>
+          <div style={{ flex: '1' }}>
+            <TextField
+              label="Wis"
+              value={wis}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              //style={{ width: 55 }}
+              onChange={this.handleInputChange('wis')}
+            />
+          </div>
+          <div style={{ flex: '1' }}>
+            <TextField
+              label="Dex"
+              value={dex}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              //style={{ width: 55 }}
+              onChange={this.handleInputChange('dex')}
+            />
+          </div>
+          <div style={{ flex: '1' }}>
+            <TextField
+              label="Con"
+              value={con}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              //style={{ width: 55 }}
+              onChange={this.handleInputChange('con')}
+            />
+          </div>
+          <div style={{ flex: '1' }}>
+            <TextField
+              label="Cha"
+              value={cha}
+              margin="normal"
+              variant="outlined"
+              inputProps={{ style: { textAlign: "center" } }}
+              //style={{ width: 55 }}
+              onChange={this.handleInputChange('cha')}
+            />
+          </div>
+        </div>
+
+
+
+
+
+
+        <div style={{ display: 'flex' }}>
+          <div style={{ flex: '1' }}>
             <TextField
               label="HP"
               value={currentHP}
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 60 }}
+              //style={{ width: 60 }}
               onChange={this.handleInputChange('currentHP')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
+          </div>
+          <div style={{ flex: '1' }}>
             <TextField
               label="Max"
               value={maxHP}
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 60 }}
+              //style={{ width: 60 }}
               onChange={this.handleInputChange('maxHP')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
+          </div>
+          <div style={{ flex: '1' }}>
             <TextField
               label="AC"
               value={ac}
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 50 }}
+              //style={{ width: 50 }}
               onChange={this.handleInputChange('ac')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
+          </div>
+          <div style={{ flex: '1' }}>
             <TextField
               label="AC Adj"
               value={ac_adj}
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 65 }}
+              //style={{ width: 65 }}
               onChange={this.handleInputChange('ac_adj')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
+          </div>
+          <div style={{ flex: '1' }}>
             <TextField
               label="Thac0"
               value={thac0}
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 75 }}
+              //style={{ width: 75 }}
               onChange={this.handleInputChange('thac0')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
+          </div>
+          <div style={{ flex: '1' }}>
             <TextField
               label="Att Adj"
               value={att_adj}
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 75 }}
+              //style={{ width: 75 }}
               onChange={this.handleInputChange('att_adj')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5 }}>
-            <TextField
-              label="Probity"
-              value={probity}
-              margin="normal"
-              variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
-              style={{ width: 80 }}
-              onChange={this.handleInputChange('probity')}
-            />
-          </Grid>
-          <Grid item style={{ padding: 5, flexGrow: 1 }}>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex' }}>
+          <div style={{ flex: '1' }}>
             <TextField
               label="Weapon"
               value={weapon}
@@ -297,8 +303,8 @@ class NPCDetails extends Component {
               style={{ width: '100%' }}
               onChange={this.handleInputChange('weapon')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5, flexGrow: 1 }}>
+          </div>
+          <div style={{ flex: '1' }}>
             <TextField
               label="Armor"
               value={armor}
@@ -307,142 +313,161 @@ class NPCDetails extends Component {
               style={{ width: '100%' }}
               onChange={this.handleInputChange('armor')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5, width: '100%' }}>
+          </div>
+          <div style={{ flex: '1' }}>
             <TextField
-              label="Items"
-              value={items}
+              label="Status"
+              value={status}
               margin="normal"
               variant="outlined"
-              multiline
               style={{ width: '100%' }}
-              onChange={this.handleInputChange('items')}
+              onChange={this.handleInputChange('status')}
             />
-          </Grid>
-          <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
-              label="Notes"
-              value={notes}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('notes')}
-            />
-          </Grid>
-          {memorized && <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
-              label="Memorized Spells"
-              value={memorized}
-              margin="normal"
-              variant="outlined"
-              multiline
-              rowsMax="15"
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('memorized')}
-            />
-          </Grid>}
-          {spellbookLvl_1 && <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
-              label="Spellbook: Level 1"
-              value={spellbookLvl_1}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('spellbookLvl_1')}
-            />
-          </Grid>}
-          {spellbookLvl_2 && <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
-              label="Spellbook: Level 2"
-              value={spellbookLvl_2}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('spellbookLvl_2')}
-            />
-          </Grid>}
-          {spellbookLvl_3 && <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
-              label="Spellbook: Level 3"
-              value={spellbookLvl_3}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('spellbookLvl_3')}
-            />
-          </Grid>}
-          {spellbookLvl_4 && <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
-              label="Spellbook: Level 4"
-              value={spellbookLvl_4}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('spellbookLvl_4')}
-            />
-          </Grid>}
-          {spellbookLvl_5 && <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
-              label="Spellbook: Level 5"
-              value={spellbookLvl_5}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('spellbookLvl_5')}
-            />
-          </Grid>}
-          {spellbookLvl_6 && <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
-              label="Spellbook: Level 6"
-              value={spellbookLvl_6}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('spellbookLvl_6')}
-            />
-          </Grid>}
-          {spellbookLvl_7 && <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
-              label="Spellbook: Level 7"
-              value={spellbookLvl_7}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('spellbookLvl_7')}
-            />
-          </Grid>}
-          {spellbookLvl_8 && <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
-              label="Spellbook: Level 8"
-              value={spellbookLvl_8}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('spellbookLvl_8')}
-            />
-          </Grid>}
-          {spellbookLvl_9 && <Grid item style={{ padding: 5, width: '100%' }}>
-            <TextField
-              label="Spellbook: Level 9"
-              value={spellbookLvl_9}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%' }}
-              onChange={this.handleInputChange('spellbookLvl_9')}
-            />
-          </Grid>}
+          </div>
+        </div>
 
-          {abilities && <Grid item style={{ padding: 5, width: '100%' }}>
+        <TextField
+          label="Items"
+          value={items}
+          margin="normal"
+          variant="outlined"
+          multiline
+          style={{ width: '100%' }}
+          onChange={this.handleInputChange('items')}
+        />
+        <TextField
+          label="Notes"
+          value={notes}
+          margin="normal"
+          variant="outlined"
+          multiline
+          style={{ width: '100%' }}
+          onChange={this.handleInputChange('notes')}
+        />
+        {
+          memorized &&
+          <TextField
+            label="Memorized Spells"
+            value={memorized}
+            margin="normal"
+            variant="outlined"
+            multiline
+            rowsMax="15"
+            style={{ width: '100%' }}
+            onChange={this.handleInputChange('memorized')}
+          />
+        }
+        {
+          spellbookLvl_1 &&
+          <TextField
+            label="Spellbook: Level 1"
+            value={spellbookLvl_1}
+            margin="normal"
+            variant="outlined"
+            multiline
+            style={{ width: '100%' }}
+            onChange={this.handleInputChange('spellbookLvl_1')}
+          />
+        }
+        {
+          spellbookLvl_2 &&
+          <TextField
+            label="Spellbook: Level 2"
+            value={spellbookLvl_2}
+            margin="normal"
+            variant="outlined"
+            multiline
+            style={{ width: '100%' }}
+            onChange={this.handleInputChange('spellbookLvl_2')}
+          />
+        }
+        {
+          spellbookLvl_3 &&
+          <TextField
+            label="Spellbook: Level 3"
+            value={spellbookLvl_3}
+            margin="normal"
+            variant="outlined"
+            multiline
+            style={{ width: '100%' }}
+            onChange={this.handleInputChange('spellbookLvl_3')}
+          />
+        }
+        {
+          spellbookLvl_4 &&
+          <TextField
+            label="Spellbook: Level 4"
+            value={spellbookLvl_4}
+            margin="normal"
+            variant="outlined"
+            multiline
+            style={{ width: '100%' }}
+            onChange={this.handleInputChange('spellbookLvl_4')}
+          />
+        }
+        {
+          spellbookLvl_5 &&
+          <TextField
+            label="Spellbook: Level 5"
+            value={spellbookLvl_5}
+            margin="normal"
+            variant="outlined"
+            multiline
+            style={{ width: '100%' }}
+            onChange={this.handleInputChange('spellbookLvl_5')}
+          />
+        }
+        {
+          spellbookLvl_6 &&
+          <TextField
+            label="Spellbook: Level 6"
+            value={spellbookLvl_6}
+            margin="normal"
+            variant="outlined"
+            multiline
+            style={{ width: '100%' }}
+            onChange={this.handleInputChange('spellbookLvl_6')}
+          />
+        }
+        {
+          spellbookLvl_7 &&
+          <TextField
+            label="Spellbook: Level 7"
+            value={spellbookLvl_7}
+            margin="normal"
+            variant="outlined"
+            multiline
+            style={{ width: '100%' }}
+            onChange={this.handleInputChange('spellbookLvl_7')}
+          />
+        }
+        {
+          spellbookLvl_8 &&
+          <TextField
+            label="Spellbook: Level 8"
+            value={spellbookLvl_8}
+            margin="normal"
+            variant="outlined"
+            multiline
+            style={{ width: '100%' }}
+            onChange={this.handleInputChange('spellbookLvl_8')}
+          />
+        }
+        {
+          spellbookLvl_9 &&
+          <TextField
+            label="Spellbook: Level 9"
+            value={spellbookLvl_9}
+            margin="normal"
+            variant="outlined"
+            multiline
+            style={{ width: '100%' }}
+            onChange={this.handleInputChange('spellbookLvl_9')}
+          />
+        }
+
+        {/* {
+          abilities && 
             {/* <TextField
               label="Abilities"
               value={JSON.stringify(abilities)}
@@ -451,17 +476,15 @@ class NPCDetails extends Component {
               multiline
               style={{ width: '100%' }}
             /> */}
-            <List style={{ border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4 }}>
+        {/* <List style={{ border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4 }}>
               {Object.entries(abilities).map(ability => <ListItem dense key={ability[0]}>
                 <ListItemText>
                   <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{ability[0] + ' ' + ability[1]}</Typography>
                 </ListItemText>
               </ListItem>)}
-            </List>
-          </Grid>}
+            </List> */}
 
-        </Grid>
-      </div>
+      </div >
     );
   }
 

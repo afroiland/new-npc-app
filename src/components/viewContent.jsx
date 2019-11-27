@@ -6,7 +6,7 @@ import { calcConBonus } from "../functions/conBonus";
 import { calcAC } from "../functions/ac";
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
-import Grid from "@material-ui/core/Grid";
+// import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
 import { Paper, InputLabel } from "@material-ui/core";
@@ -14,6 +14,8 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { calcThac0 } from "../functions/thac0";
 import { determineAbilities } from '../functions/abilities';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const classes = ["Civilian", "Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Monster"];
@@ -72,57 +74,60 @@ class ViewContent extends Component {
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, att_adj, weapon, items, probity,
       affiliation, notes, selectedNPC, searchString } = this.state;
     return (
-      <div style={{ height: 'calc(100% - 48px)' }}>
-        <Grid container style={{ height: '100%' }}>
-          <Grid item xs={2} style={{ height: '100%' }}>
-            <Paper style={{ marginLeft: 5, marginTop: 5, height: "calc(100% - 10px)" }}>
-              <TextField
-                id="standard-search"
-                label="Search..."
-                type="search"
-                className="textList"
-                margin="normal"
-                style={{ width: "95%" }}
-                onChange={e => this.handleSearchChange(e.target.value)}
-              />
-              <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
-                searchString={searchString} />
-            </Paper>
-          </Grid>
-          <Grid item xs={10} style={{ height: '100%' }}>
-            <Paper style={{ margin: 5 }}>
-              <div style={{ height: 15 }}></div>
-              <FormControl style={{ marginRight: 30 }}>
-                <InputLabel>Class</InputLabel>
-                <Select value={this.state.classSelect}
-                  onChange={e => this.setState({ classSelect: e.target.value })}
-                  style={{ width: "150px" }}
-                >
-                  {classes.map(pcClass => <MenuItem key={pcClass} value={pcClass}>{pcClass}</MenuItem>)}
-                </Select>
-              </FormControl>
-              <FormControl style={{ marginRight: 30 }}>
-                <InputLabel>Level</InputLabel>
-                <Select value={this.state.levelSelect}
-                  onChange={e => this.setState({ levelSelect: e.target.value })}
-                  style={{ width: "75px" }}
-                >
-                  {/* TODO: Change level range based on class dropdown */}
-                  {levelRange.map(level => <MenuItem key={level} value={level}>{level}</MenuItem>)}
-                </Select>
-              </FormControl>
-              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-                onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
-              {/* <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+      <div style={{ display: 'flex', height: 'calc(100% - 48px)' }}>
+        {/* <Grid container style={{ height: '100%' }}> */}
+        <div style={{ flex: '2', height: '100%' }}>
+          {/* <Grid item xs={2} style={{ height: '100%' }}> */}
+          <Paper style={{ marginLeft: 5, marginTop: 5, height: "calc(100% - 10px)" }}>
+            <TextField
+              id="standard-search"
+              label="Search..."
+              type="search"
+              className="textList"
+              margin="normal"
+              style={{ width: "95%" }}
+              onChange={e => this.handleSearchChange(e.target.value)}
+            />
+            <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
+              searchString={searchString} />
+          </Paper>
+          {/* </Grid> */}
+        </div>
+        {/* <Grid item xs={10} style={{ height: '100%' }}> */}
+        <div style={{ flex: '10' }}>
+          <Paper style={{ margin: 5 }}>
+            <div style={{ height: 15 }}></div>
+            <FormControl style={{ marginRight: 30 }}>
+              <InputLabel>Class</InputLabel>
+              <Select value={this.state.classSelect}
+                onChange={e => this.setState({ classSelect: e.target.value })}
+                style={{ width: "150px" }}
+              >
+                {classes.map(pcClass => <MenuItem key={pcClass} value={pcClass}>{pcClass}</MenuItem>)}
+              </Select>
+            </FormControl>
+            <FormControl style={{ marginRight: 30 }}>
+              <InputLabel>Level</InputLabel>
+              <Select value={this.state.levelSelect}
+                onChange={e => this.setState({ levelSelect: e.target.value })}
+                style={{ width: "75px" }}
+              >
+                {/* TODO: Change level range based on class dropdown */}
+                {levelRange.map(level => <MenuItem key={level} value={level}>{level}</MenuItem>)}
+              </Select>
+            </FormControl>
+            <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+              onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
+            {/* <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
                 onClick={() => this.handleLevelUp(this.state)}>Level Up</Button> */}
-              <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-                onClick={() => this.handleSave(this.state)}>Save</Button>
-              <Button variant='contained' color='primary' style={{ marginTop: 6 }}
-                onClick={() => this.handleClear()}>Clear</Button>
+            <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
+              onClick={() => this.handleSave(this.state)}>Save</Button>
+            <Button variant='contained' color='primary' style={{ marginTop: 6 }}
+              onClick={() => this.handleClear()}>Clear</Button>
 
-              {/* The following represents a dropdown for selecting different tables from which to pull NPC data */}
+            {/* The following represents a dropdown for selecting different tables from which to pull NPC data */}
 
-              {/* <FormControl style={{ marginRight: 30 }}>
+            {/* <FormControl style={{ marginRight: 30 }}>
                 <InputLabel>Table</InputLabel>
                 <Select value={this.state.tableSelect}
                   onChange={e => this.setState({ tableSelect: e.target.value })}
@@ -132,55 +137,65 @@ class ViewContent extends Component {
                 </Select>
               </FormControl> */}
 
-              <br />
-              <div style={{ height: 15 }}></div>
-            </Paper>
-            <Paper style={{ marginLeft: 5, marginRight: 5, height: 'calc(100% - 93px)', overflow: 'auto' }}>
-              <NPCDetails handleChange={this.handleChange}
-                name={name}
-                title={title}
-                level={level}
-                npcClass={npcClass}
-                race={race}
-                age={age}
-                gender={gender}
-                currentHP={currentHP}
-                maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
-                ac_adj={ac_adj}
-                status={status}
-                ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex), parseInt(ac_adj)) : ""}
-                thac0={calcThac0(level, npcClass, str, ex_str, parseInt(att_adj)) !== undefined ?
-                  calcThac0(level, npcClass, str, ex_str, parseInt(att_adj)) : ""}
-                gold={gold}
-                str={str}
-                ex_str={ex_str}
-                int={int}
-                dex={dex}
-                con={con}
-                wis={wis}
-                cha={cha}
-                spellbookLvl_1={spellbookLvl_1}
-                spellbookLvl_2={spellbookLvl_2}
-                spellbookLvl_3={spellbookLvl_3}
-                spellbookLvl_4={spellbookLvl_4}
-                spellbookLvl_5={spellbookLvl_5}
-                spellbookLvl_6={spellbookLvl_6}
-                spellbookLvl_7={spellbookLvl_7}
-                spellbookLvl_8={spellbookLvl_8}
-                spellbookLvl_9={spellbookLvl_9}
-                abilities={determineAbilities(npcClass, level, race, dex)}
-                memorized={memorized}
-                armor={armor}
-                att_adj={att_adj}
-                weapon={weapon}
-                items={items}
-                probity={probity}
-                affiliation={affiliation}
-                notes={notes}
-              />
-            </Paper>
-          </Grid>
-        </Grid>
+            <br />
+            <div style={{ height: 15 }}></div>
+          </Paper>
+
+          <div style={{ height: 'calc(100% - 90px)', display: 'flex' }}>
+            <div style={{ height: '100%', flex: '1', overflow: 'hidden' }}>
+              {/* <Paper style={{ marginLeft: 5, marginRight: 5, height: 'calc(100% - 93px)', overflow: 'auto' }}> */}
+              <Paper style={{ marginLeft: 5, marginRight: 5, height: '100%', overflow: 'auto' }}>
+                <NPCDetails handleChange={this.handleChange}
+                  name={name}
+                  title={title}
+                  level={level}
+                  npcClass={npcClass}
+                  race={race}
+                  age={age}
+                  gender={gender}
+                  currentHP={currentHP}
+                  maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
+                  ac_adj={ac_adj}
+                  status={status}
+                  ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex), parseInt(ac_adj)) : ""}
+                  thac0={calcThac0(level, npcClass, str, ex_str, parseInt(att_adj)) !== undefined ?
+                    calcThac0(level, npcClass, str, ex_str, parseInt(att_adj)) : ""}
+                  gold={gold}
+                  str={str}
+                  ex_str={ex_str}
+                  int={int}
+                  dex={dex}
+                  con={con}
+                  wis={wis}
+                  cha={cha}
+                  spellbookLvl_1={spellbookLvl_1}
+                  spellbookLvl_2={spellbookLvl_2}
+                  spellbookLvl_3={spellbookLvl_3}
+                  spellbookLvl_4={spellbookLvl_4}
+                  spellbookLvl_5={spellbookLvl_5}
+                  spellbookLvl_6={spellbookLvl_6}
+                  spellbookLvl_7={spellbookLvl_7}
+                  spellbookLvl_8={spellbookLvl_8}
+                  spellbookLvl_9={spellbookLvl_9}
+                  abilities={determineAbilities(npcClass, level, race, dex)}
+                  memorized={memorized}
+                  armor={armor}
+                  att_adj={att_adj}
+                  weapon={weapon}
+                  items={items}
+                  probity={probity}
+                  affiliation={affiliation}
+                  notes={notes}
+                />
+              </Paper>
+            </div>
+
+            <div style={{ flex: '1' }}>
+            </div>
+
+          </div>
+
+        </div>
       </div>
     );
   }
@@ -326,7 +341,7 @@ class ViewContent extends Component {
           console.log("add res: ", res);
         });
       // TODO: Replace setTimeout (async/await, I'm guessing?)
-      setTimeout(() => {this.setState({selectedNPC: state.name} )}, 50);
+      setTimeout(() => { this.setState({ selectedNPC: state.name }) }, 50);
     }
   }
 
