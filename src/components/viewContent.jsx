@@ -142,7 +142,7 @@ class ViewContent extends Component {
           </Paper>
 
           <div style={{ height: 'calc(100% - 90px)', display: 'flex' }}>
-            <div style={{ height: '100%', flex: '1', overflow: 'hidden' }}>
+            <div style={{ height: '100%', flex: '1' }}>
               {/* <Paper style={{ marginLeft: 5, marginRight: 5, height: 'calc(100% - 93px)', overflow: 'auto' }}> */}
               <Paper style={{ marginLeft: 5, marginRight: 5, height: '100%', overflow: 'auto' }}>
                 <NPCDetails handleChange={this.handleChange}

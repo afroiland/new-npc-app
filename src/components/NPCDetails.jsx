@@ -16,7 +16,7 @@ class NPCDetails extends Component {
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, att_adj,
       weapon, wis } = this.props;
     return (
-      <div>
+      <SimpleBar style={{height: '100%', overflow: 'auto'}}>
         {/* <div style={{ width: 'calc(100% - 30px)' }}> */}
         {/* <div style={{flexGrow: 1}}> */}
         {/* <Grid container spacing={24} justify="flex-start" style={{ marginTop: 5, marginLeft: 20, width: '100%' }}> */}
@@ -484,7 +484,7 @@ class NPCDetails extends Component {
               </ListItem>)}
             </List> */}
 
-      </div >
+      </SimpleBar>
     );
   }
 
