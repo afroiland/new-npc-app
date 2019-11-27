@@ -15,8 +15,9 @@ class NPCDetails extends Component {
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, att_adj,
       weapon, wis } = this.props;
     return (
-      <SimpleBar style={{ height: '100%', overflow: 'auto' }}>
-        <div style={{ display: 'flex', margin: '10px 10px 0px 10px' }}>
+      <SimpleBar style={{ height: '100%' }}>
+
+        <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
           <div style={{ flex: '4' }}>
             <TextField
               label="Name"
@@ -59,7 +60,7 @@ class NPCDetails extends Component {
           </div>
         </div>
 
-        <div style={{ display: 'flex', margin: '0px 10px 0px 10px' }}>
+        <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
           <div style={{ flex: '5' }}>
             <TextField
               label="Class"
@@ -92,7 +93,7 @@ class NPCDetails extends Component {
           </div>
         </div>
 
-        <div style={{ display: 'flex', margin: '10px' }}>
+        <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
           <div style={{ flex: '3' }}>
             <TextField
               label="Race"
@@ -126,7 +127,7 @@ class NPCDetails extends Component {
           </div>
         </div>
 
-        <div style={{ display: 'flex', margin: '10px' }}>
+        <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
           <div style={{ flex: '1' }}>
             <TextField
               label="Str"
@@ -201,7 +202,7 @@ class NPCDetails extends Component {
           </div>
         </div>
 
-        <div style={{ display: 'flex', margin: '10px' }}>
+        <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
           <div style={{ flex: '1' }}>
             <TextField
               label="HP"
@@ -264,7 +265,7 @@ class NPCDetails extends Component {
           </div>
         </div>
 
-        <div style={{ display: 'flex', margin: '10px' }}>
+        <div style={{ display: 'flex', margin: '0px 10px 0px 10px', height: '70px' }}>
           <div style={{ flex: '1' }}>
             <TextField
               label="Weapon"
@@ -297,155 +298,172 @@ class NPCDetails extends Component {
           </div>
         </div>
 
-        <TextField
-          label="Items"
-          value={items}
-          margin="normal"
-          variant="outlined"
-          multiline
-          style={{ width: '100%', margin: '10px' }}
-          onChange={this.handleInputChange('items')}
-        />
-        <TextField
-          label="Notes"
-          value={notes}
-          margin="normal"
-          variant="outlined"
-          multiline
-          style={{ width: '100%', margin: '10px' }}
-          onChange={this.handleInputChange('notes')}
-        />
-        {
-          memorized &&
+        <div style={{ display: 'flex', margin: '0px 10px 0px 10px' }}>
           <TextField
-            label="Memorized Spells"
-            value={memorized}
+            label="Items"
+            value={items}
             margin="normal"
             variant="outlined"
             multiline
-            rowsMax="15"
-            style={{ width: '100%', margin: '10px' }}
-            onChange={this.handleInputChange('memorized')}
+            style={{ width: '100%' }}
+            onChange={this.handleInputChange('items')}
           />
+        </div>
+
+        <div style={{ margin: '0px 10px 0px 10px' }}>
+          <TextField
+            label="Notes"
+            value={notes}
+            margin="normal"
+            variant="outlined"
+            multiline
+            style={{ width: '100%', marginTop: '7px' }}
+            onChange={this.handleInputChange('notes')}
+          />
+        </div>
+
+        {
+          memorized && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <TextField
+              label="Memorized Spells"
+              value={memorized}
+              margin="normal"
+              variant="outlined"
+              multiline
+              rowsMax="15"
+              style={{ width: '100%', marginTop: '7px' }}
+              onChange={this.handleInputChange('memorized')}
+            />
+          </div>
         }
         {
-          spellbookLvl_1 &&
-          <TextField
-            label="Spellbook: Level 1"
-            value={spellbookLvl_1}
-            margin="normal"
-            variant="outlined"
-            multiline
-            style={{ width: '100%', margin: '10px' }}
-            onChange={this.handleInputChange('spellbookLvl_1')}
-          />
+          spellbookLvl_1 && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <TextField
+              label="Spellbook: Level 1"
+              value={spellbookLvl_1}
+              margin="normal"
+              variant="outlined"
+              multiline
+              style={{ width: '100%', marginTop: '7px' }}
+              onChange={this.handleInputChange('spellbookLvl_1')}
+            />
+          </div>
         }
         {
-          spellbookLvl_2 &&
-          <TextField
-            label="Spellbook: Level 2"
-            value={spellbookLvl_2}
-            margin="normal"
-            variant="outlined"
-            multiline
-            style={{ width: '100%', margin: '10px' }}
-            onChange={this.handleInputChange('spellbookLvl_2')}
-          />
+          spellbookLvl_2 && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <TextField
+              label="Spellbook: Level 2"
+              value={spellbookLvl_2}
+              margin="normal"
+              variant="outlined"
+              multiline
+              style={{ width: '100%', marginTop: '7px' }}
+              onChange={this.handleInputChange('spellbookLvl_2')}
+            />
+          </div>
         }
         {
-          spellbookLvl_3 &&
-          <TextField
-            label="Spellbook: Level 3"
-            value={spellbookLvl_3}
-            margin="normal"
-            variant="outlined"
-            multiline
-            style={{ width: '100%', margin: '10px' }}
-            onChange={this.handleInputChange('spellbookLvl_3')}
-          />
+          spellbookLvl_3 && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <TextField
+              label="Spellbook: Level 3"
+              value={spellbookLvl_3}
+              margin="normal"
+              variant="outlined"
+              multiline
+              style={{ width: '100%', marginTop: '7px' }}
+              onChange={this.handleInputChange('spellbookLvl_3')}
+            />
+          </div>
         }
         {
-          spellbookLvl_4 &&
-          <TextField
-            label="Spellbook: Level 4"
-            value={spellbookLvl_4}
-            margin="normal"
-            variant="outlined"
-            multiline
-            style={{ width: '100%', margin: '10px' }}
-            onChange={this.handleInputChange('spellbookLvl_4')}
-          />
+          spellbookLvl_4 && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <TextField
+              label="Spellbook: Level 4"
+              value={spellbookLvl_4}
+              margin="normal"
+              variant="outlined"
+              multiline
+              style={{ width: '100%', marginTop: '7px' }}
+              onChange={this.handleInputChange('spellbookLvl_4')}
+            />
+          </div>
         }
         {
-          spellbookLvl_5 &&
-          <TextField
-            label="Spellbook: Level 5"
-            value={spellbookLvl_5}
-            margin="normal"
-            variant="outlined"
-            multiline
-            style={{ width: '100%', margin: '10px' }}
-            onChange={this.handleInputChange('spellbookLvl_5')}
-          />
+          spellbookLvl_5 && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <TextField
+              label="Spellbook: Level 5"
+              value={spellbookLvl_5}
+              margin="normal"
+              variant="outlined"
+              multiline
+              style={{ width: '100%', marginTop: '7px' }}
+              onChange={this.handleInputChange('spellbookLvl_5')}
+            />
+          </div>
         }
         {
-          spellbookLvl_6 &&
-          <TextField
-            label="Spellbook: Level 6"
-            value={spellbookLvl_6}
-            margin="normal"
-            variant="outlined"
-            multiline
-            style={{ width: '100%', margin: '10px' }}
-            onChange={this.handleInputChange('spellbookLvl_6')}
-          />
+          spellbookLvl_6 && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <TextField
+              label="Spellbook: Level 6"
+              value={spellbookLvl_6}
+              margin="normal"
+              variant="outlined"
+              multiline
+              style={{ width: '100%', marginTop: '7px' }}
+              onChange={this.handleInputChange('spellbookLvl_6')}
+            />
+          </div>
         }
         {
-          spellbookLvl_7 &&
-          <TextField
-            label="Spellbook: Level 7"
-            value={spellbookLvl_7}
-            margin="normal"
-            variant="outlined"
-            multiline
-            style={{ width: '100%', margin: '10px' }}
-            onChange={this.handleInputChange('spellbookLvl_7')}
-          />
+          spellbookLvl_7 && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <TextField
+              label="Spellbook: Level 7"
+              value={spellbookLvl_7}
+              margin="normal"
+              variant="outlined"
+              multiline
+              style={{ width: '100%', marginTop: '7px' }}
+              onChange={this.handleInputChange('spellbookLvl_7')}
+            />
+          </div>
         }
         {
-          spellbookLvl_8 &&
-          <TextField
-            label="Spellbook: Level 8"
-            value={spellbookLvl_8}
-            margin="normal"
-            variant="outlined"
-            multiline
-            style={{ width: '100%', margin: '10px' }}
-            onChange={this.handleInputChange('spellbookLvl_8')}
-          />
+          spellbookLvl_8 && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <TextField
+              label="Spellbook: Level 8"
+              value={spellbookLvl_8}
+              margin="normal"
+              variant="outlined"
+              multiline
+              style={{ width: '100%', marginTop: '7px' }}
+              onChange={this.handleInputChange('spellbookLvl_8')}
+            />
+          </div>
         }
         {
-          spellbookLvl_9 &&
-          <TextField
-            label="Spellbook: Level 9"
-            value={spellbookLvl_9}
-            margin="normal"
-            variant="outlined"
-            multiline
-            style={{ width: '100%', margin: '10px' }}
-            onChange={this.handleInputChange('spellbookLvl_9')}
-          />
+          spellbookLvl_9 && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <TextField
+              label="Spellbook: Level 9"
+              value={spellbookLvl_9}
+              margin="normal"
+              variant="outlined"
+              multiline
+              style={{ width: '100%', marginTop: '7px' }}
+              onChange={this.handleInputChange('spellbookLvl_9')}
+            />
+          </div>
         }
         {
-          abilities &&
-          <TextField
-            label="Abilities"
-            value={JSON.stringify(abilities)}
-            margin="normal"
-            variant="outlined"
-            multiline
-            style={{ width: '100%', margin: '10px' }}
-          />
+          abilities && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <TextField
+              label="Abilities"
+              value={JSON.stringify(abilities)}
+              margin="normal"
+              variant="outlined"
+              multiline
+              style={{ width: '100%', marginTop: '7px' }}
+            />
+          </div>
         }
 
         {/* <List style={{ border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4 }}>
