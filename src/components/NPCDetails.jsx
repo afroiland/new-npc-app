@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TextField from '@material-ui/core/TextField';
+import Abilities from './abilities';
 //import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
@@ -10,10 +11,10 @@ class NPCDetails extends Component {
     // if (this.props.abilities) {
     //   console.log("abilities object: ", Object.entries(this.props.abilities));
     // }
-    const { ac, ac_adj, affiliation, cha, con, currentHP, dex, ex_str, gold, int, isPrimary, items, level, maxHP, memorized,
-      name, notes, npcClass, probity, race, age, gender, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4,
-      spellbookLvl_5, spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title,
-      armor, att_adj, weapon, wis } = this.props;
+    const { abilities, ac, ac_adj, affiliation, cha, con, currentHP, dex, ex_str, gold, int, isPrimary, items, level,
+      maxHP, memorized, name, notes, npcClass, probity, race, age, gender, spellbookLvl_1, spellbookLvl_2,
+      spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9,
+      status, str, thac0, title, armor, att_adj, weapon, wis } = this.props;
     return (
       <SimpleBar style={{ height: '100%' }}>
 
@@ -473,7 +474,7 @@ class NPCDetails extends Component {
             />
           </div>
         }
-        {
+        {/* {
           abilities && <div style={{ margin: '0px 10px 0px 10px' }}>
             <TextField
               label="Abilities"
@@ -485,15 +486,10 @@ class NPCDetails extends Component {
               inputProps={{ readOnly: !isPrimary }}
             />
           </div>
+        } */}
+        {
+          abilities && <Abilities abilities={abilities} />
         }
-
-        {/* <List style={{ border: "1px solid rgba(255, 255, 255, 0.23)", borderRadius: 4 }}>
-              {Object.entries(abilities).map(ability => <ListItem dense key={ability[0]}>
-                <ListItemText>
-                  <Typography style={{ color: "rgba(255, 255, 255, 0.7)" }}>{ability[0] + ' ' + ability[1]}</Typography>
-                </ListItemText>
-              </ListItem>)}
-            </List> */}
 
       </SimpleBar>
     );
