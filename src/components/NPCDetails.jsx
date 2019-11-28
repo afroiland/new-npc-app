@@ -6,14 +6,14 @@ import 'simplebar/dist/simplebar.min.css';
 
 class NPCDetails extends Component {
   render() {
-    //console.log("this.props: ", this.props);
+    console.log("this.props: ", this.props);
     // if (this.props.abilities) {
     //   console.log("abilities object: ", Object.entries(this.props.abilities));
     // }
-    const { ac, ac_adj, affiliation, cha, con, currentHP, dex, ex_str, gold, int, items, level, maxHP, memorized, name, notes,
-      npcClass, probity, race, age, gender, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
-      spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title, armor, att_adj,
-      weapon, wis } = this.props;
+    const { ac, ac_adj, affiliation, cha, con, currentHP, dex, ex_str, gold, int, isPrimary, items, level, maxHP, memorized,
+      name, notes, npcClass, probity, race, age, gender, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4,
+      spellbookLvl_5, spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, abilities, status, str, thac0, title,
+      armor, att_adj, weapon, wis } = this.props;
     return (
       <SimpleBar style={{ height: '100%' }}>
 

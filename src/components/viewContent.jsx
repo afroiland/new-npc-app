@@ -8,13 +8,11 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
-import { Paper, InputLabel, CssBaseline } from "@material-ui/core";
+import { Paper, InputLabel } from "@material-ui/core";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { calcThac0 } from "../functions/thac0";
 import { determineAbilities } from '../functions/abilities';
-//import SimpleBar from 'simplebar-react';
-import 'simplebar/dist/simplebar.min.css';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const classes = ["Civilian", "Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Monster"];
@@ -221,6 +219,7 @@ class ViewContent extends Component {
                   probity={probity}
                   affiliation={affiliation}
                   notes={notes}
+                  isPrimary={true}
                 />
               </Paper>
             </div>
@@ -271,6 +270,7 @@ class ViewContent extends Component {
                   probity={secondaryCharacter.probity}
                   affiliation={secondaryCharacter.affiliation}
                   notes={secondaryCharacter.notes}
+                  isPrimary={false}
                 />
               </Paper>
             </div>
