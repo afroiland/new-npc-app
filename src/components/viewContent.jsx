@@ -225,8 +225,8 @@ class ViewContent extends Component {
               </Paper>
             </div>
 
-            <div style={{ flex: '1' }}>
-              {/* <Paper style={{ marginRight: 5, height: '100%' }}>
+            <div className='secondaryCharacter' style={{ flex: '1' }}>
+              <Paper style={{ marginRight: 5, height: '100%' }}>
                 <NPCDetails handleChange={this.handleChange}
                   name={secondaryCharacter.name}
                   title={secondaryCharacter.title}
@@ -272,7 +272,7 @@ class ViewContent extends Component {
                   affiliation={secondaryCharacter.affiliation}
                   notes={secondaryCharacter.notes}
                 />
-              </Paper> */}
+              </Paper>
             </div>
 
           </div>
