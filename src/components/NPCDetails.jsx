@@ -26,6 +26,7 @@ class NPCDetails extends Component {
               variant="outlined"
               style={{ width: '100%' }}
               onChange={this.handleInputChange('name')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
           <div style={{ flex: '1', marginRight: '5px' }}>
@@ -34,7 +35,7 @@ class NPCDetails extends Component {
               value={level}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('level')}
             />
           </div>
@@ -44,17 +45,17 @@ class NPCDetails extends Component {
               value={age}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('age')}
             />
           </div>
           <div style={{ flex: '1' }}>
             <TextField
-              label="Gen."
+              label="Gender"
               value={gender ? gender.toUpperCase() : ""}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('gender')}
             />
           </div>
@@ -69,6 +70,7 @@ class NPCDetails extends Component {
               variant="outlined"
               style={{ width: '100%' }}
               onChange={this.handleInputChange('npcClass')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
           <div style={{ flex: '5', marginRight: '5px' }}>
@@ -79,6 +81,7 @@ class NPCDetails extends Component {
               variant="outlined"
               style={{ width: '100%' }}
               onChange={this.handleInputChange('title')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
           <div style={{ flex: '2' }}>
@@ -87,7 +90,7 @@ class NPCDetails extends Component {
               value={probity}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('probity')}
             />
           </div>
@@ -102,6 +105,7 @@ class NPCDetails extends Component {
               variant="outlined"
               style={{ width: '100%' }}
               onChange={this.handleInputChange('race')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
           <div style={{ flex: '3', marginRight: '5px' }}>
@@ -112,6 +116,7 @@ class NPCDetails extends Component {
               variant="outlined"
               style={{ width: '100%' }}
               onChange={this.handleInputChange('affiliation')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
           <div style={{ flex: '2' }}>
@@ -120,7 +125,7 @@ class NPCDetails extends Component {
               value={gold}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               style={{ width: '100%' }}
               onChange={this.handleInputChange('gold')}
             />
@@ -134,7 +139,7 @@ class NPCDetails extends Component {
               value={str}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('str')}
             />
           </div>
@@ -145,7 +150,7 @@ class NPCDetails extends Component {
                 value={ex_str}
                 margin="normal"
                 variant="outlined"
-                inputProps={{ style: { textAlign: "center" } }}
+                inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
                 onChange={this.handleInputChange('ex_str')}
               />
             </div>
@@ -156,7 +161,7 @@ class NPCDetails extends Component {
               value={int}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('int')}
             />
           </div>
@@ -166,7 +171,7 @@ class NPCDetails extends Component {
               value={wis}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('wis')}
             />
           </div>
@@ -176,7 +181,7 @@ class NPCDetails extends Component {
               value={dex}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('dex')}
             />
           </div>
@@ -186,7 +191,7 @@ class NPCDetails extends Component {
               value={con}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('con')}
             />
           </div>
@@ -196,7 +201,7 @@ class NPCDetails extends Component {
               value={cha}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('cha')}
             />
           </div>
@@ -209,17 +214,17 @@ class NPCDetails extends Component {
               value={currentHP}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('currentHP')}
             />
           </div>
           <div style={{ flex: '1', marginRight: '5px' }}>
             <TextField
-              label="Max"
+              label="Max HP"
               value={maxHP}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('maxHP')}
             />
           </div>
@@ -229,7 +234,7 @@ class NPCDetails extends Component {
               value={ac}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('ac')}
             />
           </div>
@@ -239,7 +244,7 @@ class NPCDetails extends Component {
               value={ac_adj}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('ac_adj')}
             />
           </div>
@@ -249,7 +254,7 @@ class NPCDetails extends Component {
               value={thac0}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('thac0')}
             />
           </div>
@@ -259,7 +264,7 @@ class NPCDetails extends Component {
               value={att_adj}
               margin="normal"
               variant="outlined"
-              inputProps={{ style: { textAlign: "center" } }}
+              inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
               onChange={this.handleInputChange('att_adj')}
             />
           </div>
@@ -274,6 +279,7 @@ class NPCDetails extends Component {
               variant="outlined"
               style={{ width: '100%' }}
               onChange={this.handleInputChange('weapon')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
           <div style={{ flex: '1', marginRight: '5px' }}>
@@ -284,6 +290,7 @@ class NPCDetails extends Component {
               variant="outlined"
               style={{ width: '100%' }}
               onChange={this.handleInputChange('armor')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
           <div style={{ flex: '1' }}>
@@ -294,6 +301,7 @@ class NPCDetails extends Component {
               variant="outlined"
               style={{ width: '100%' }}
               onChange={this.handleInputChange('status')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         </div>
@@ -307,6 +315,7 @@ class NPCDetails extends Component {
             multiline
             style={{ width: '100%' }}
             onChange={this.handleInputChange('items')}
+            inputProps={{ readOnly: !isPrimary }}
           />
         </div>
 
@@ -319,6 +328,7 @@ class NPCDetails extends Component {
             multiline
             style={{ width: '100%', marginTop: '7px' }}
             onChange={this.handleInputChange('notes')}
+            inputProps={{ readOnly: !isPrimary }}
           />
         </div>
 
@@ -333,6 +343,7 @@ class NPCDetails extends Component {
               rowsMax="15"
               style={{ width: '100%', marginTop: '7px' }}
               onChange={this.handleInputChange('memorized')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         }
@@ -346,6 +357,7 @@ class NPCDetails extends Component {
               multiline
               style={{ width: '100%', marginTop: '7px' }}
               onChange={this.handleInputChange('spellbookLvl_1')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         }
@@ -359,6 +371,7 @@ class NPCDetails extends Component {
               multiline
               style={{ width: '100%', marginTop: '7px' }}
               onChange={this.handleInputChange('spellbookLvl_2')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         }
@@ -372,6 +385,7 @@ class NPCDetails extends Component {
               multiline
               style={{ width: '100%', marginTop: '7px' }}
               onChange={this.handleInputChange('spellbookLvl_3')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         }
@@ -385,6 +399,7 @@ class NPCDetails extends Component {
               multiline
               style={{ width: '100%', marginTop: '7px' }}
               onChange={this.handleInputChange('spellbookLvl_4')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         }
@@ -398,6 +413,7 @@ class NPCDetails extends Component {
               multiline
               style={{ width: '100%', marginTop: '7px' }}
               onChange={this.handleInputChange('spellbookLvl_5')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         }
@@ -411,6 +427,7 @@ class NPCDetails extends Component {
               multiline
               style={{ width: '100%', marginTop: '7px' }}
               onChange={this.handleInputChange('spellbookLvl_6')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         }
@@ -424,6 +441,7 @@ class NPCDetails extends Component {
               multiline
               style={{ width: '100%', marginTop: '7px' }}
               onChange={this.handleInputChange('spellbookLvl_7')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         }
@@ -437,6 +455,7 @@ class NPCDetails extends Component {
               multiline
               style={{ width: '100%', marginTop: '7px' }}
               onChange={this.handleInputChange('spellbookLvl_8')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         }
@@ -450,6 +469,7 @@ class NPCDetails extends Component {
               multiline
               style={{ width: '100%', marginTop: '7px' }}
               onChange={this.handleInputChange('spellbookLvl_9')}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         }
@@ -462,6 +482,7 @@ class NPCDetails extends Component {
               variant="outlined"
               multiline
               style={{ width: '100%', marginTop: '7px' }}
+              inputProps={{ readOnly: !isPrimary }}
             />
           </div>
         }

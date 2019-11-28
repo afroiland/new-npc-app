@@ -314,7 +314,6 @@ class ViewContent extends Component {
 
   handleNameClick = (name) => {
     if (this.state.selectedNPC) {
-
       //Shift all info from last selected NPC to secondary NPC object
       let secondaryCharacter = {};
       Object.keys(this.state).forEach(element => {
@@ -325,11 +324,8 @@ class ViewContent extends Component {
       this.setState({
         secondaryCharacter: secondaryCharacter
       })
-
-    } else {
-      //TODO: Delete this else stmt when above functionality is in place
-      console.log("There is not a selected NPC");
     };
+
     let selectedNPC = this.state.NPCList.filter(obj => {
       return obj.name === name
     });
