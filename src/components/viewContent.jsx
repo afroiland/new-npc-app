@@ -131,9 +131,9 @@ class ViewContent extends Component {
         </div>
 
         <div style={{ flex: '10' }}>
-          <Paper style={{ margin: 5 }}>
+          <Paper style={{ margin: 5, textAlign: 'left' }}>
             <div style={{ height: 15 }}></div>
-            <FormControl style={{ marginRight: 30 }}>
+            <FormControl style={{ marginLeft: 30, marginRight: 30 }}>
               <InputLabel>Class</InputLabel>
               <Select value={this.state.classSelect}
                 onChange={e => this.setState({ classSelect: e.target.value })}
