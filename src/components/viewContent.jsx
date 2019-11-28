@@ -63,7 +63,7 @@ class ViewContent extends Component {
     notes: "",
     selectedNPC: "",
     searchString: "",
-    
+
     secondaryCharacter: {
       name: "",
       title: "",
@@ -112,7 +112,8 @@ class ViewContent extends Component {
     return (
       <div style={{ display: 'flex', height: 'calc(100% - 48px)' }}>
 
-        <div style={{ flex: '2', height: '100%' }}>
+        {/* <div style={{ flex: '2', height: '100%' }}> */}
+        <div className='searchDiv'>
           <Paper style={{ marginLeft: 5, marginTop: 5, height: "calc(100% - 10px)" }}>
             <TextField
               id="standard-search"
@@ -243,7 +244,7 @@ class ViewContent extends Component {
                   thac0={calcThac0(secondaryCharacter.level, secondaryCharacter.npcClass, secondaryCharacter.str,
                     secondaryCharacter.ex_str, parseInt(secondaryCharacter.att_adj)) !== undefined ?
                     calcThac0(secondaryCharacter.level, secondaryCharacter.npcClass, secondaryCharacter.str,
-                    secondaryCharacter.ex_str, parseInt(secondaryCharacter.att_adj)) : ""}
+                      secondaryCharacter.ex_str, parseInt(secondaryCharacter.att_adj)) : ""}
                   gold={secondaryCharacter.gold}
                   str={secondaryCharacter.str}
                   ex_str={secondaryCharacter.ex_str}
@@ -313,8 +314,18 @@ class ViewContent extends Component {
 
   handleNameClick = (name) => {
     if (this.state.selectedNPC) {
-      console.log("There is a selected NPC");
+
       //Shift all info from last selected NPC to secondary NPC object
+      let secondaryCharacter = {};
+      Object.keys(this.state).forEach(element => {
+        secondaryCharacter[element] = this.state[element];
+      });
+      console.log('secondaryCharacter: ', secondaryCharacter);
+
+      this.setState({
+        secondaryCharacter: secondaryCharacter
+      })
+
     } else {
       //TODO: Delete this else stmt when above functionality is in place
       console.log("There is not a selected NPC");

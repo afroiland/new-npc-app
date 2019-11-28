@@ -45,6 +45,11 @@
   display: block;
 }
 
+.searchDiv {
+  flex: 2;
+  height: 100%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -57,5 +62,8 @@
 @media screen and (max-width: 1000px) {
   .secondaryCharacter {
     display: none;
+  }
+  .searchDiv {
+    flex: 3;
   }
 }
