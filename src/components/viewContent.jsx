@@ -13,7 +13,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { calcMaxHP } from '../functions/maxhp';
 import { calcThac0 } from "../functions/thac0";
-import { determineAbilities } from '../functions/abilities';
+import { determineAbilities } from '../functions/abilities/determineAbilities';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const classes = ["Civilian", "Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Monster"];
@@ -293,7 +293,7 @@ class ViewContent extends Component {
     this._isMounted = false;
   }
 
-  
+
   //*********************************************All Handler Functions*********************************************
 
   handleSearchChange = (newSearchString) => {

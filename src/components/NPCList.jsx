@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import { List } from "@material-ui/core";
 import { ListItem, ListItemText } from "@material-ui/core";
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
@@ -10,16 +9,13 @@ class NPCList extends Component {
     const { list, handleNameClick, searchString, selectedNPC } = this.props;
     return (
       <SimpleBar style={{height: 'calc(100% - 95px)', overflow: 'auto'}}>
-      {/* <List component="ul" style={{height: 'calc(100% - 95px)', overflow: 'auto'}}> */}
         {list.map(npc => <ListItem dense button key={npc.name} style={{
           display: this.determineDisplay(npc, searchString),
           textAlign: 'right',
           backgroundColor: (selectedNPC === npc.name) ? "#009688" : "",
         }} onClick={() => handleNameClick(npc.name)}>
-          {/* <ListItemText primary={npc.name} secondary={npc.class !== "Civilian" ? "Lv" + npc.level + " " + npc.class : "Civilian"} /> */}
           <ListItemText primary={npc.name} secondary={npc.title} />
         </ListItem>)}
-        {/* </List> */}
       </SimpleBar>
     );
   }
@@ -56,22 +52,6 @@ class NPCList extends Component {
       classes = "none"
     }
     return classes;
-  }
-
-  sortByProbity(list) {
-    return list.sort(compare);
-
-    function compare(b, a) {
-      const probityA = a.probity;
-      const probityB = b.probity;
-      let comparison = 0;
-      if (probityA > probityB) {
-        comparison = 1;
-      } else if (probityA < probityB) {
-        comparison = -1;
-      }
-      return comparison;
-    }
   }
 }
 

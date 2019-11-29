@@ -7,7 +7,7 @@ import 'simplebar/dist/simplebar.min.css';
 
 class NPCDetails extends Component {
   render() {
-    console.log("this.props: ", this.props);
+    //console.log("this.props: ", this.props);
     // if (this.props.abilities) {
     //   console.log("abilities object: ", Object.entries(this.props.abilities));
     // }

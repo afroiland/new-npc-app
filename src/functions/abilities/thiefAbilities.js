@@ -1,4 +1,4 @@
-// Numbers in arrays represent Pick Pockets, Open Locks, F/RT, Move Silently, Hide in S, Hear Noise, Climb W and Read Lang, respectively
+// Numbers in arrays represent (respectively): Pick Pockets, Open Locks, F/RT, Move Silently, Hide in S, Hear Noise, Climb W, Read Lang
 const baseNumbers = {
   Lv1Assassin: [20, 17, 10, 3, 0, 5, 83, 0],
   Lv2Assassin: [25, 21, 15, 9, 5, 5, 84, 0],
