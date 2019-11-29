@@ -141,14 +141,14 @@ export function determineThiefAbilities(pcClass, level, race, dex) {
   console.log("thief abilities object: ", thiefAbilities);
 
   //Take the info in the object and make it an array of strings before returning it
-  thiefAbilitiesArray[0] = "Pick Pockets: " + thiefAbilities.pickPockets.toString() + "%";
-  thiefAbilitiesArray[1] = "Open Locks: " + thiefAbilities.openLocks.toString() + "%";
-  thiefAbilitiesArray[2] = "Find and Remove Traps: " + thiefAbilities.findRemoveTraps.toString() + "%";
-  thiefAbilitiesArray[3] = "Move Silently: " + thiefAbilities.moveSilently.toString() + "%";
-  thiefAbilitiesArray[4] = "Hide in Shadows: " + thiefAbilities.hideInShadows.toString() + "%";
-  thiefAbilitiesArray[5] = "Hear Noise: " + thiefAbilities.hearNoise.toString() + "%";
-  thiefAbilitiesArray[6] = "Climb Walls: " + thiefAbilities.climbWalls.toString() + "%";
-  thiefAbilitiesArray[7] = "Read Languages: " + thiefAbilities.readLanguages.toString() + "%";
+  thiefAbilitiesArray[0] = "Pick Pockets:   " + thiefAbilities.pickPockets.toString() + "%";
+  thiefAbilitiesArray[1] = "Open Locks:   " + thiefAbilities.openLocks.toString() + "%";
+  thiefAbilitiesArray[2] = "Find and Remove Traps:   " + thiefAbilities.findRemoveTraps.toString() + "%";
+  thiefAbilitiesArray[3] = "Move Silently:   " + thiefAbilities.moveSilently.toString() + "%";
+  thiefAbilitiesArray[4] = "Hide in Shadows:   " + thiefAbilities.hideInShadows.toString() + "%";
+  thiefAbilitiesArray[5] = "Hear Noise:   " + thiefAbilities.hearNoise.toString() + "%";
+  thiefAbilitiesArray[6] = "Climb Walls:   " + thiefAbilities.climbWalls.toString() + "%";
+  thiefAbilitiesArray[7] = "Read Languages:   " + thiefAbilities.readLanguages.toString() + "%";
 
   console.log("thiefAbilitiesArray: ", thiefAbilitiesArray);
   return thiefAbilitiesArray;
