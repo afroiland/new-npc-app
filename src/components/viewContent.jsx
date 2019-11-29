@@ -111,7 +111,6 @@ class ViewContent extends Component {
     return (
       <div style={{ display: 'flex', height: 'calc(100% - 48px)' }}>
 
-        {/* <div style={{ flex: '2', height: '100%' }}> */}
         <div className='searchDiv'>
           <Paper style={{ marginLeft: 5, marginTop: 5, height: "calc(100% - 10px)" }}>
             <TextField
@@ -153,7 +152,7 @@ class ViewContent extends Component {
             <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
               onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
             {/* <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-                onClick={() => this.handleLevelUp(this.state)}>Level Up</Button> */}
+                onClick={() => this.handleRestore(this.state)}>Restore</Button> */}
             <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
               onClick={() => this.handleSave(this.state)}>Save</Button>
             <Button variant='contained' color='primary' style={{ marginTop: 6 }}
@@ -237,7 +236,7 @@ class ViewContent extends Component {
                   currentHP={secondaryCharacter.currentHP}
                   maxHP={calcMaxHP(secondaryCharacter.hp_by_lvl, secondaryCharacter.level, secondaryCharacter.npcClass,
                     secondaryCharacter.con) !== 0 ? calcMaxHP(secondaryCharacter.hp_by_lvl, secondaryCharacter.level,
-                    secondaryCharacter.npcClass, secondaryCharacter.con) : ""}
+                      secondaryCharacter.npcClass, secondaryCharacter.con) : ""}
                   ac_adj={secondaryCharacter.ac_adj}
                   status={secondaryCharacter.status}
                   ac={secondaryCharacter.npcClass !== "" ? calcAC(secondaryCharacter.npcClass, secondaryCharacter.level,
@@ -276,9 +275,7 @@ class ViewContent extends Component {
                 />
               </Paper>
             </div>
-
           </div>
-
         </div>
       </div>
     );
@@ -314,21 +311,18 @@ class ViewContent extends Component {
   }
 
   handleNameClick = (name) => {
-    if (this.state.selectedNPC) {
-      //Shift all info from last selected NPC to secondary NPC object
-      let secondaryCharacter = {};
-      Object.keys(this.state).forEach(element => {
-        //temp fix:
-        if (element != 'NPCList') {
+    //Shift info from most recently selected NPC to secondary NPC object
+    let secondaryCharacter = {};
+    Object.keys(this.state).forEach(element => {
+      if (element !== 'NPCList' && element !== 'classSelect' && element !== 'levelSelect' &&
+        element !== 'searchString' && element !== 'secondaryCharacter' && element !== 'selectedNPC' &&
+        element !== 'tableSelect') {
         secondaryCharacter[element] = this.state[element];
-        }
-      });
-      console.log('secondaryCharacter: ', secondaryCharacter);
-
-      this.setState({
-        secondaryCharacter: secondaryCharacter
-      })
-    };
+      }
+    });
+    this.setState({
+      secondaryCharacter: secondaryCharacter
+    });
 
     let selectedNPC = this.state.NPCList.filter(obj => {
       return obj.name === name
@@ -417,9 +411,8 @@ class ViewContent extends Component {
     });
   }
 
-  handleLevelUp = (state) => {
-    console.log("level up state: ", state);
-    //TODO: Have modal pop up where the HP for the new level can be entered
+  handleRestore = (state) => {
+    console.log("restore state: ", state);
   }
 
   handleSave = (state) => {
