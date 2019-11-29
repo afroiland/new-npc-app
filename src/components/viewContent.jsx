@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "../functions/generate"
-import { calcConBonus } from "../functions/conBonus";
 import { calcAC } from "../functions/ac";
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -11,6 +10,7 @@ import axios from "axios";
 import { Paper, InputLabel } from "@material-ui/core";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { calcMaxHP } from '../functions/maxhp';
 import { calcThac0 } from "../functions/thac0";
 import { determineAbilities } from '../functions/abilities';
 
@@ -63,7 +63,6 @@ class ViewContent extends Component {
     notes: "",
     selectedNPC: "",
     searchString: "",
-
     secondaryCharacter: {
       name: "",
       title: "",
@@ -105,8 +104,8 @@ class ViewContent extends Component {
   };
 
   render() {
-    const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, ac_adj, status, str, ex_str,
-      int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
+    const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, hp_by_lvl, ac_adj, status,
+      str, ex_str, int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, att_adj, weapon, items, probity,
       affiliation, notes, selectedNPC, searchString, secondaryCharacter } = this.state;
     return (
@@ -188,7 +187,7 @@ class ViewContent extends Component {
                   age={age}
                   gender={gender}
                   currentHP={currentHP}
-                  maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
+                  maxHP={calcMaxHP(hp_by_lvl, level, npcClass, con) !== 0 ? calcMaxHP(hp_by_lvl, level, npcClass, con) : ""}
                   ac_adj={ac_adj}
                   status={status}
                   ac={npcClass !== "" ? calcAC(npcClass, level, armor, parseInt(dex), parseInt(ac_adj)) : ""}
@@ -236,7 +235,9 @@ class ViewContent extends Component {
                   age={secondaryCharacter.age}
                   gender={secondaryCharacter.gender}
                   currentHP={secondaryCharacter.currentHP}
-                  maxHP={this.calcMaxHP() !== 0 ? this.calcMaxHP() : ""}
+                  maxHP={calcMaxHP(secondaryCharacter.hp_by_lvl, secondaryCharacter.level, secondaryCharacter.npcClass,
+                    secondaryCharacter.con) !== 0 ? calcMaxHP(secondaryCharacter.hp_by_lvl, secondaryCharacter.level,
+                    secondaryCharacter.npcClass, secondaryCharacter.con) : ""}
                   ac_adj={secondaryCharacter.ac_adj}
                   status={secondaryCharacter.status}
                   ac={secondaryCharacter.npcClass !== "" ? calcAC(secondaryCharacter.npcClass, secondaryCharacter.level,
@@ -317,7 +318,10 @@ class ViewContent extends Component {
       //Shift all info from last selected NPC to secondary NPC object
       let secondaryCharacter = {};
       Object.keys(this.state).forEach(element => {
+        //temp fix:
+        if (element != 'NPCList') {
         secondaryCharacter[element] = this.state[element];
+        }
       });
       console.log('secondaryCharacter: ', secondaryCharacter);
 
@@ -487,14 +491,6 @@ class ViewContent extends Component {
       notes: "",
       selectedNPC: ""
     });
-  }
-
-  // TODO: Change this guy to be more like the calcThac0 logic?
-  calcMaxHP() {
-    let result = this.state.hp_by_lvl.reduce((a, b) => parseInt(a) + parseInt(b), 0) +
-      calcConBonus(this.state.level, this.state.npcClass, this.state.con);
-
-    return result !== 0 ? result : "";
   }
 
   sortByProbity(list) {
