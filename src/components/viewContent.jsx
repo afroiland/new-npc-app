@@ -22,8 +22,7 @@ class ViewContent extends Component {
   _isMounted = false;
   state = {
     levelSelect: 1,
-    classSelect: "Fighter",
-    tableSelect: "Marathea",
+    classSelect: "Thief",
     NPCList: [],
     name: "",
     title: "",
@@ -130,7 +129,7 @@ class ViewContent extends Component {
         <div style={{ flex: '10' }}>
           <Paper style={{ margin: 5, textAlign: 'left' }}>
             <div style={{ height: 15 }}></div>
-            <FormControl style={{ marginLeft: 30, marginRight: 30 }}>
+            <FormControl style={{ marginLeft: 20, marginRight: 20 }}>
               <InputLabel>Class</InputLabel>
               <Select value={this.state.classSelect}
                 onChange={e => this.setState({ classSelect: e.target.value })}
@@ -294,7 +293,7 @@ class ViewContent extends Component {
   }
 
 
-  //*********************************************All Handler Functions*********************************************
+  //********************************************* HANDLER FUNCTIONS *********************************************
 
   handleSearchChange = (newSearchString) => {
     this.setState({ searchString: newSearchString });
@@ -305,8 +304,7 @@ class ViewContent extends Component {
     let secondaryCharacter = {};
     Object.keys(this.state).forEach(element => {
       if (element !== 'NPCList' && element !== 'classSelect' && element !== 'levelSelect' &&
-        element !== 'searchString' && element !== 'secondaryCharacter' && element !== 'selectedNPC' &&
-        element !== 'tableSelect') {
+        element !== 'searchString' && element !== 'secondaryCharacter' && element !== 'selectedNPC') {
         secondaryCharacter[element] = this.state[element];
       }
     });

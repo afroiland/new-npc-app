@@ -488,7 +488,9 @@ class NPCDetails extends Component {
           </div>
         } */}
         {
-          abilities && <Abilities abilities={abilities} />
+          abilities && <div style={{ margin: '0px 10px 0px 10px' }}>
+            <Abilities abilities={abilities} />
+          </div>
         }
 
       </SimpleBar>

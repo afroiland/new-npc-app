@@ -137,6 +137,8 @@ export function determineThiefAbilities(pcClass, level, race, dex) {
     default:
   }
 
+  //TODO: Take the info in the object and make it an array of strings before returning it
+
   //console.log("thiefAbilities: ", thiefAbilities);
   return thiefAbilities;
 }
