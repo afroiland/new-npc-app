@@ -3,6 +3,7 @@ import NPCList from "./NPCList";
 import NPCDetails from "./NPCDetails";
 import { generate } from "../functions/generate"
 import { calcAC } from "../functions/ac";
+import { sortNPCList } from '../functions/sortNPCList';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
@@ -16,7 +17,6 @@ import { determineAbilities } from '../functions/abilities';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const classes = ["Civilian", "Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Monster"];
-//const tables = ["Test", "Marathea"];
 
 class ViewContent extends Component {
   _isMounted = false;
@@ -151,33 +151,19 @@ class ViewContent extends Component {
             </FormControl>
             <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
               onClick={() => this.handleGenerate(levelSelect, classSelect)}>Generate</Button>
-            {/* <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
-                onClick={() => this.handleRestore(this.state)}>Restore</Button> */}
             <Button variant='contained' color='primary' style={{ marginRight: 20, marginTop: 6 }}
               onClick={() => this.handleSave(this.state)}>Save</Button>
             <Button variant='contained' color='primary' style={{ marginTop: 6 }}
               onClick={() => this.handleClear()}>Clear</Button>
-
-            {/* The following represents a dropdown for selecting different tables from which to pull NPC data */}
-
-            {/* <FormControl style={{ marginRight: 30 }}>
-                <InputLabel>Table</InputLabel>
-                <Select value={this.state.tableSelect}
-                  onChange={e => this.setState({ tableSelect: e.target.value })}
-                  style={{ width: "100px" }}
-                >
-                  {tables.map(table => <MenuItem key={table} value={table}>{table}</MenuItem>)}
-                </Select>
-              </FormControl> */}
-
             <br />
             <div style={{ height: 15 }}></div>
           </Paper>
 
           <div style={{ height: 'calc(100% - 90px)', width: '100%', display: 'flex' }}>
-            <div style={{ height: '100%', flex: '1' }}>
+            <div className='primaryCharacter' style={{ height: '100%', flex: '1' }}>
               <Paper style={{ marginLeft: 5, marginRight: 5, height: '100%' }}>
-                <NPCDetails handleChange={this.handleChange}
+                <NPCDetails
+                  handleChange={this.handleChange}
                   name={name}
                   title={title}
                   level={level}
@@ -225,7 +211,7 @@ class ViewContent extends Component {
 
             <div className='secondaryCharacter' style={{ flex: '1' }}>
               <Paper style={{ marginRight: 5, height: '100%' }}>
-                <NPCDetails handleChange={this.handleChange}
+                <NPCDetails
                   name={secondaryCharacter.name}
                   title={secondaryCharacter.title}
                   level={secondaryCharacter.level}
@@ -286,7 +272,7 @@ class ViewContent extends Component {
     //TODO: determine schema from which to get NPCs
     axios.get('http://localhost:3001/getNPCs').then(res => {
       if (this._isMounted) {
-        this.setState({ NPCList: this.sortByProbity(res.data) });
+        this.setState({ NPCList: sortNPCList(res.data, 'probity') });
       }
     });
   }
@@ -294,7 +280,8 @@ class ViewContent extends Component {
   componentDidUpdate() {
     //console.log("updating");
     axios.get('http://localhost:3001/getNPCs').then(res => {
-      let sortedResData = this.sortByProbity(res.data);
+      // let sortedResData = this.sortByProbity(res.data);
+      let sortedResData = sortNPCList(res.data, 'probity');
       let NPCListHasChanged = JSON.stringify(sortedResData) !== JSON.stringify(this.state.NPCList);
       if (this._isMounted && NPCListHasChanged) {
         this.setState({ NPCList: sortedResData });
@@ -305,6 +292,9 @@ class ViewContent extends Component {
   componentWillUnmount() {
     this._isMounted = false;
   }
+
+  
+  //*********************************************All Handler Functions*********************************************
 
   handleSearchChange = (newSearchString) => {
     this.setState({ searchString: newSearchString });
@@ -411,10 +401,6 @@ class ViewContent extends Component {
     });
   }
 
-  handleRestore = (state) => {
-    console.log("restore state: ", state);
-  }
-
   handleSave = (state) => {
     let nameExists = false;
     for (let i = 0, j = state.NPCList.length; i < j; i++) {
@@ -484,23 +470,6 @@ class ViewContent extends Component {
       notes: "",
       selectedNPC: ""
     });
-  }
-
-  sortByProbity(list) {
-    let tempList = list.sort(compare);
-    return tempList;
-
-    function compare(b, a) {
-      const probityA = a.probity;
-      const probityB = b.probity;
-      let comparison = 0;
-      if (probityA > probityB) {
-        comparison = 1;
-      } else if (probityA < probityB) {
-        comparison = -1;
-      }
-      return comparison;
-    }
   }
 }
 
