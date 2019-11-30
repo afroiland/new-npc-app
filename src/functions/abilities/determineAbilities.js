@@ -1,5 +1,6 @@
 import { determineThiefAbilities } from './thiefAbilities';
 import { determinePaladinAbilities } from './paladinAbilities';
+import { determineDruidAbilities } from './druidAbilities';
 
 export function determineAbilities(pcClass, level, race, dex) {
   let results;
@@ -7,6 +8,9 @@ export function determineAbilities(pcClass, level, race, dex) {
   switch (pcClass) {
     case "Fighter":
     case "Cleric":
+      //Might change but
+      results = ["Turn Undead"];
+      break;
     case "Magic-User":
       break;
     case "Thief":
@@ -20,7 +24,7 @@ export function determineAbilities(pcClass, level, race, dex) {
       //results = determineMonkAbilities(level);
       break;
     case "Druid":
-      //results = determineDruidAbilities(level);
+      results = determineDruidAbilities(level);
       break;
     case "Ranger":
       //results = determineRangerAbilities(level);

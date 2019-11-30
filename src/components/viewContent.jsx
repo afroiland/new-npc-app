@@ -22,7 +22,7 @@ class ViewContent extends Component {
   _isMounted = false;
   state = {
     levelSelect: 1,
-    classSelect: "Thief",
+    classSelect: "Fighter",
     NPCList: [],
     name: "",
     title: "",
