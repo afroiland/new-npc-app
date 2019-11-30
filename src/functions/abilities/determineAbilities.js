@@ -1,6 +1,7 @@
 import { determineThiefAbilities } from './thiefAbilities';
 import { determinePaladinAbilities } from './paladinAbilities';
 import { determineDruidAbilities } from './druidAbilities';
+import { determineRangerAbilities } from './rangerAbilities';
 
 export function determineAbilities(pcClass, level, race, dex) {
   let results;
@@ -27,7 +28,7 @@ export function determineAbilities(pcClass, level, race, dex) {
       results = determineDruidAbilities(level);
       break;
     case "Ranger":
-      //results = determineRangerAbilities(level);
+      results = determineRangerAbilities(level);
       break;
     default:
   }
