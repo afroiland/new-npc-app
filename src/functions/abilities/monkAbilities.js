@@ -1,14 +1,63 @@
 import { determineThiefAbilities } from './thiefAbilities';
 
 export function determineMonkAbilities(level, dex) {
-  //determine thiefAbilities (excluding pick pockets and read languages)
-  let monkAbilities = determineThiefAbilities('Thief', level, 'Human', dex);
-  console.log("monkAbilities: ", monkAbilities);
+  let nonThiefMonkAbilities = [];
 
-  let filteredMonkAbilities = monkAbilities.filter(e => !e.includes("Read Languages") && !e.includes("Pick Pockets"));
-  console.log("filteredMonkAbilities: ", filteredMonkAbilities);
+  nonThiefMonkAbilities.push("Chance to Stun or Kill with Nonweapon Attacks", "Chance to Deflect Missiles");
 
+  if (level >= 2) {
+    nonThiefMonkAbilities.push("+" + Math.floor(level / 2) + " Dmg with Weapon Attacks");
+  }
+
+  if (level >= 3) {
+    nonThiefMonkAbilities.push("Speak with Animals");
+  }
+
+  if (level >= 4) {
+    nonThiefMonkAbilities.push("Resist ESP:   " + (62 + level * 2) + "%");
+  }
+
+  if (level >= 5) {
+    nonThiefMonkAbilities.push("Immunity to Disease, Haste and Slow Effects");
+  }
+
+  if (level >= 6) {
+    nonThiefMonkAbilities.push("Feign Death for " + level * 2 + " Turns");
+  }
+
+  if (level >= 7) {
+    nonThiefMonkAbilities.push("Heal Self 1d4+" + (level - 6) + ", 1x/Day");
+  }
+
+  if (level >= 8) {
+    nonThiefMonkAbilities.push("Speak with Plants");
+  }
+
+  if (level >= 9) {
+    nonThiefMonkAbilities.push("Resist Charm, Suggestion, etc.:  " + (5 + level * 5) + "%");
+  }
+
+  if (level >= 10) {
+    nonThiefMonkAbilities.push("Resist Telepathic / Mind Blast Attacks as if Int=18");
+  }
+
+  if (level >= 11) {
+    nonThiefMonkAbilities.push("Immunity to All Poison");
+  }
+
+  if (level >= 12) {
+    nonThiefMonkAbilities.push("Immunity to Geas and Quest Spells");
+  }
+
+  if (level >= 13) {
+    nonThiefMonkAbilities.push("Omae Wa Mou Shindeiru");
+  }
+
+  let monkThiefAbilities = determineThiefAbilities('Thief', level, 'Human', dex).filter(e => !e.includes("Read Languages") && !e.includes("Pick Pockets"));
+
+  let monkAbilities = nonThiefMonkAbilities.concat(monkThiefAbilities);
   
+  monkAbilities.push("(For More Info, See PH pg 30-32)");
 
-  return filteredMonkAbilities;
+  return monkAbilities;
 }

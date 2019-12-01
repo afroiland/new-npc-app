@@ -20,10 +20,10 @@ class Abilities extends Component {
 
 function formatAbilities(abilitiesArray) {
   let result = "";
-  console.log("abilitiesArray: ", abilitiesArray);
+  //console.log("abilitiesArray: ", abilitiesArray);
 
   for (let i = 0; i < abilitiesArray.length; i++) {
-    console.log(abilitiesArray[i]);
+    //console.log(abilitiesArray[i]);
     result += abilitiesArray[i];
     if (i !== abilitiesArray.length - 1) {
       result += "\n";
