@@ -12,7 +12,6 @@ export function determineAbilities(pcClass, level, race, dex) {
     case "Magic-User":
       break;
     case "Cleric":
-      //Might change but
       results = ["Turn Undead"];
       break;
     case "Thief":

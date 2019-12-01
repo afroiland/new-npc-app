@@ -53,6 +53,7 @@ export function determineMonkAbilities(level, dex) {
     nonThiefMonkAbilities.push("Omae Wa Mou Shindeiru");
   }
 
+  // Monks get thief abilities excluding Read Languages and Pick Pockets
   let monkThiefAbilities = determineThiefAbilities('Thief', level, 'Human', dex).filter(e => !e.includes("Read Languages") && !e.includes("Pick Pockets"));
 
   let monkAbilities = nonThiefMonkAbilities.concat(monkThiefAbilities);
