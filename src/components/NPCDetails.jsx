@@ -334,7 +334,8 @@ class NPCDetails extends Component {
         </div>
 
         {
-          memorized && <div style={{ margin: '0px 10px 0px 10px' }}>
+          // memorized && <div style={{ margin: '0px 10px 0px 10px' }}>
+          this.showMemd() && <div style={{ margin: '0px 10px 0px 10px' }}>
             <TextField
               label="Memorized Spells"
               value={memorized}
@@ -506,6 +507,26 @@ class NPCDetails extends Component {
     if ((npcClass === "Fighter" || npcClass === "Paladin" || npcClass === "Ranger") && str > 17) {
       return true;
     }
+  }
+
+  showMemd() {
+    const { npcClass, level } = this.props;
+    const spellcastersAtLvl1 = ['Magic-User', 'Ceric', 'Druid'];
+    let result = false;
+
+    if (spellcastersAtLvl1.includes(npcClass)) {
+      result = true;
+    }
+
+    if (npcClass === "Paladin" && level >= 9) {
+      result = true;
+    }
+
+    if (npcClass === "Ranger" && level >= 8) {
+      result = true;
+    }
+
+    return result;
   }
 }
 

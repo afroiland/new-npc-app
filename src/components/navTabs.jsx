@@ -25,8 +25,9 @@ class NavTabs extends Component {
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
+            centered
           >
-            <Tab label="NPCs" style={{minWidth: '175px', marginLeft: '180px'}} />
+            <Tab label="NPCs" style={{minWidth: '175px'}} />
             <Tab label="PCs" style={{minWidth: '175px'}} />
             <Tab label="Combat" style={{minWidth: '175px'}} />
           </Tabs>

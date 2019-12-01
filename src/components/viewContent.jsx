@@ -271,7 +271,7 @@ class ViewContent extends Component {
     this._isMounted = true;
     //console.log("this.props compDidMount?: ", this.props);
     //debugger;
-    let route = this.props.source === 'NPCs' ? 'http://localhost:3001/getNPCs' : 'http://localhost:3001/getPCs'
+    let route = this.props.source === 'NPCs' ? 'http://localhost:3001/getNPCs' : 'http://localhost:3001/getPCs';
     axios.get(route).then(res => {
       if (this._isMounted) {
         this.setState({ NPCList: sortNPCList(res.data, 'probity') });
@@ -281,7 +281,7 @@ class ViewContent extends Component {
 
   componentDidUpdate() {
     //console.log("updating");
-    let route = this.props.source === 'NPCs' ? 'http://localhost:3001/getNPCs' : 'http://localhost:3001/getPCs'
+    let route = this.props.source === 'NPCs' ? 'http://localhost:3001/getNPCs' : 'http://localhost:3001/getPCs';
     axios.get(route).then(res => {
       // let sortedResData = this.sortByProbity(res.data);
       let sortedResData = sortNPCList(res.data, 'probity');
@@ -413,12 +413,14 @@ class ViewContent extends Component {
       }
     }
     if (nameExists) {
-      axios.put("http://localhost:3001/update", state)
+      let route = this.props.source === 'NPCs' ? 'http://localhost:3001/updateNPC' : 'http://localhost:3001/updatePC';
+      axios.put(route, state)
         .then(res => {
           console.log("update res: ", res);
         });
     } else {
-      axios.post("http://localhost:3001/add", state)
+      let route = this.props.source === 'NPCs' ? 'http://localhost:3001/addNPC' : 'http://localhost:3001/addPC';
+      axios.post(route, state)
         .then(res => {
           console.log("add res: ", res);
         });
