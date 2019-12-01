@@ -46,7 +46,7 @@
 }
 
 .searchDiv {
-  flex: 2;
+  width: 171px;
   height: 100%;
 }
 
@@ -62,8 +62,5 @@
 @media screen and (max-width: 1000px) {
   .secondaryCharacter {
     display: none;
-  }
-  .searchDiv {
-    flex: 2.5;
   }
 }

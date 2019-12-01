@@ -22,7 +22,7 @@ class ViewContent extends Component {
   _isMounted = false;
   state = {
     levelSelect: 1,
-    classSelect: "Monk",
+    classSelect: "Fighter",
     NPCList: [],
     name: "",
     title: "",
@@ -103,6 +103,7 @@ class ViewContent extends Component {
   };
 
   render() {
+    //  TODO: delete this console.log("viewContent props: ", this.props);
     const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, hp_by_lvl, ac_adj, status,
       str, ex_str, int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, att_adj, weapon, items, probity,
@@ -268,8 +269,10 @@ class ViewContent extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    //TODO: determine schema from which to get NPCs
-    axios.get('http://localhost:3001/getNPCs').then(res => {
+    //console.log("this.props compDidMount?: ", this.props);
+    //debugger;
+    let route = this.props.source === 'NPCs' ? 'http://localhost:3001/getNPCs' : 'http://localhost:3001/getPCs'
+    axios.get(route).then(res => {
       if (this._isMounted) {
         this.setState({ NPCList: sortNPCList(res.data, 'probity') });
       }
@@ -278,7 +281,8 @@ class ViewContent extends Component {
 
   componentDidUpdate() {
     //console.log("updating");
-    axios.get('http://localhost:3001/getNPCs').then(res => {
+    let route = this.props.source === 'NPCs' ? 'http://localhost:3001/getNPCs' : 'http://localhost:3001/getPCs'
+    axios.get(route).then(res => {
       // let sortedResData = this.sortByProbity(res.data);
       let sortedResData = sortNPCList(res.data, 'probity');
       let NPCListHasChanged = JSON.stringify(sortedResData) !== JSON.stringify(this.state.NPCList);
@@ -400,6 +404,7 @@ class ViewContent extends Component {
   }
 
   handleSave = (state) => {
+    console.log("handleSave props?: ", this.props);
     let nameExists = false;
     for (let i = 0, j = state.NPCList.length; i < j; i++) {
       if (state.NPCList[i].name === state.name) {

@@ -28,11 +28,13 @@ class NavTabs extends Component {
             centered
           >
             <Tab label="NPCs" />
+            <Tab label="PCs" />
             <Tab label="Combat" />
           </Tabs>
         </AppBar>
-          {value === 0 && <ViewContent />}
-          {value === 1 && <Combat />}
+          {value === 0 && <ViewContent source='NPCs' />}
+          {value === 1 && <ViewContent source='PCs' />}
+          {value === 2 && <Combat />}
       </div>
     );
   }
