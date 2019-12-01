@@ -30,7 +30,7 @@ export function calcThac0(level, pcClass, str, ex_str, att_adj) {
     default:
   }
 
-  if (str >= 17) {
+  if (str >= 17 && pcClass !== 'Monk') {
     if (0 <= ex_str && ex_str <= 50) {
       thac0--;
     } else if (51 <= ex_str && ex_str <= 99) {

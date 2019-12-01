@@ -1,64 +1,64 @@
 import { determineThiefAbilities } from './thiefAbilities';
 
 export function determineMonkAbilities(level, dex) {
-  let nonThiefMonkAbilities = [];
+  let monkNonThiefAbilities = [];
 
-  nonThiefMonkAbilities.push("Chance to Stun or Kill with Nonweapon Attacks", "Chance to Deflect Missiles");
+  monkNonThiefAbilities.push("Chance to Stun or Kill with Nonweapon Attacks", "Chance to Deflect Missiles");
 
   if (level >= 2) {
-    nonThiefMonkAbilities.push("+" + Math.floor(level / 2) + " Dmg with Weapon Attacks");
+    monkNonThiefAbilities.push("+" + Math.floor(level / 2) + " Dmg with Weapon Attacks");
   }
 
   if (level >= 3) {
-    nonThiefMonkAbilities.push("Speak with Animals");
+    monkNonThiefAbilities.push("Speak with Animals");
   }
 
   if (level >= 4) {
-    nonThiefMonkAbilities.push("Resist ESP:   " + (62 + level * 2) + "%");
+    monkNonThiefAbilities.push("Resist ESP:   " + (62 + level * 2) + "%");
   }
 
   if (level >= 5) {
-    nonThiefMonkAbilities.push("Immunity to Disease, Haste and Slow Effects");
+    monkNonThiefAbilities.push("Immunity to Disease, Haste and Slow Effects");
   }
 
   if (level >= 6) {
-    nonThiefMonkAbilities.push("Feign Death for " + level * 2 + " Turns");
+    monkNonThiefAbilities.push("Feign Death for " + level * 20 + " Mins");
   }
 
   if (level >= 7) {
-    nonThiefMonkAbilities.push("Heal Self 1d4+" + (level - 6) + ", 1x/Day");
+    monkNonThiefAbilities.push("Heal Self 1d4+" + (level - 6) + ", 1x/Day");
   }
 
   if (level >= 8) {
-    nonThiefMonkAbilities.push("Speak with Plants");
+    monkNonThiefAbilities.push("Speak with Plants");
   }
 
   if (level >= 9) {
-    nonThiefMonkAbilities.push("Resist Charm, Suggestion, etc.:  " + (5 + level * 5) + "%");
+    monkNonThiefAbilities.push("Resist Charm, Suggestion, etc.:  " + (5 + level * 5) + "%");
   }
 
   if (level >= 10) {
-    nonThiefMonkAbilities.push("Resist Telepathic / Mind Blast Attacks as if Int=18");
+    monkNonThiefAbilities.push("Resist Telepathic / Mind Blast Attacks as if Int=18");
   }
 
   if (level >= 11) {
-    nonThiefMonkAbilities.push("Immunity to All Poison");
+    monkNonThiefAbilities.push("Immunity to All Poison");
   }
 
   if (level >= 12) {
-    nonThiefMonkAbilities.push("Immunity to Geas and Quest Spells");
+    monkNonThiefAbilities.push("Immunity to Geas and Quest Spells");
   }
 
   if (level >= 13) {
-    nonThiefMonkAbilities.push("Omae Wa Mou Shindeiru");
+    monkNonThiefAbilities.push("Omae Wa Mou Shindeiru");
   }
 
   // Monks get thief abilities excluding Read Languages and Pick Pockets
   let monkThiefAbilities = determineThiefAbilities('Thief', level, 'Human', dex).filter(e => !e.includes("Read Languages") && !e.includes("Pick Pockets"));
 
-  let monkAbilities = nonThiefMonkAbilities.concat(monkThiefAbilities);
+  let monkAbilities = monkNonThiefAbilities.concat(monkThiefAbilities);
   
-  monkAbilities.push("(For More Info, See PH pg 30-32)");
+  monkAbilities.push("(Full Explanation of Monk Abilities: PH pgs. 30-32)");
 
   return monkAbilities;
 }
