@@ -5,7 +5,6 @@ import 'simplebar/dist/simplebar.min.css';
 
 class NPCList extends Component {
   render() {
-    //console.log("NPCList props: ", this.props);
     const { list, handleNameClick, searchString, selectedNPC } = this.props;
     return (
       <SimpleBar style={{height: 'calc(100% - 95px)', overflow: 'auto'}}>
@@ -22,7 +21,6 @@ class NPCList extends Component {
 
   determineDisplay = (npc, searchString) => {
     let classes = "";
-    // classes += npc.name === this.props.selectedNPC ? "selected " : "notSelected ";
 
     let allWordList = "";
     allWordList += npc.name;
@@ -45,10 +43,8 @@ class NPCList extends Component {
     allWordList += npc.affiliation;
     allWordList += npc.notes;
     if (allWordList.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())) {
-      // classes += "notHidden";
       classes = "block"
     } else {
-      // classes += "hidden";
       classes = "none"
     }
     return classes;

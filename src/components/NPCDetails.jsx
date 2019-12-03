@@ -475,19 +475,6 @@ class NPCDetails extends Component {
             />
           </div>
         }
-        {/* {
-          abilities && <div style={{ margin: '0px 10px 0px 10px' }}>
-            <TextField
-              label="Abilities"
-              value={JSON.stringify(abilities)}
-              margin="normal"
-              variant="outlined"
-              multiline
-              style={{ width: '100%', marginTop: '7px' }}
-              inputProps={{ readOnly: !isPrimary }}
-            />
-          </div>
-        } */}
         {
           abilities && <div style={{ margin: '0px 10px 0px 10px' }}>
             <Abilities abilities={abilities} />
@@ -511,7 +498,7 @@ class NPCDetails extends Component {
 
   showMemd() {
     const { npcClass, level } = this.props;
-    const spellcastersAtLvl1 = ['Magic-User', 'Ceric', 'Druid'];
+    const spellcastersAtLvl1 = ['Magic-User', 'Cleric', 'Druid'];
     let result = false;
 
     if (spellcastersAtLvl1.includes(npcClass)) {
