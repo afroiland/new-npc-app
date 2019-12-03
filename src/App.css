@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   background-color: DimGrey;
-  /* color: white; */
   height: 100%;
 }
 
@@ -33,7 +32,6 @@
 }
 
 .notSelected {
-  /* color: white; */
   color: black;
 }
 
