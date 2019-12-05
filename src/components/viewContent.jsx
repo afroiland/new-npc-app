@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { calcMaxHP } from '../functions/maxhp';
 import { calcThac0 } from "../functions/thac0";
 import { determineAbilities } from '../functions/abilities/determineAbilities';
+import { sampleData } from '../sampleData';
 
 const levelRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const classes = ["Civilian", "Fighter", "Magic-User", "Cleric", "Thief", "Monk", "Assassin", "Druid", "Paladin", "Ranger", "Monster"];
@@ -103,7 +104,6 @@ class ViewContent extends Component {
   };
 
   render() {
-    //  TODO: delete this console.log("viewContent props: ", this.props);
     const { levelSelect, classSelect, name, title, level, npcClass, race, age, gender, currentHP, hp_by_lvl, ac_adj, status,
       str, ex_str, int, dex, con, wis, cha, spellbookLvl_1, spellbookLvl_2, spellbookLvl_3, spellbookLvl_4, spellbookLvl_5,
       spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9, memorized, gold, armor, att_adj, weapon, items, probity,
@@ -269,12 +269,14 @@ class ViewContent extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    //console.log("this.props compDidMount?: ", this.props);
-    //debugger;
     let route = this.props.source === 'NPCs' ? 'http://localhost:3001/getNPCs' : 'http://localhost:3001/getPCs';
     axios.get(route).then(res => {
       if (this._isMounted) {
         this.setState({ NPCList: sortNPCList(res.data, 'probity') });
+      }
+    }, error => {
+      if (this._isMounted) {
+        this.setState({ NPCList: sampleData })
       }
     });
   }
@@ -283,7 +285,6 @@ class ViewContent extends Component {
     //console.log("updating");
     let route = this.props.source === 'NPCs' ? 'http://localhost:3001/getNPCs' : 'http://localhost:3001/getPCs';
     axios.get(route).then(res => {
-      // let sortedResData = this.sortByProbity(res.data);
       let sortedResData = sortNPCList(res.data, 'probity');
       let NPCListHasChanged = JSON.stringify(sortedResData) !== JSON.stringify(this.state.NPCList);
       if (this._isMounted && NPCListHasChanged) {
