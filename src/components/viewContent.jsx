@@ -405,7 +405,7 @@ class ViewContent extends Component {
   }
 
   handleSave = (state) => {
-    console.log("handleSave props?: ", this.props);
+    //console.log("handleSave props?: ", this.props);
     let nameExists = false;
     for (let i = 0, j = state.NPCList.length; i < j; i++) {
       if (state.NPCList[i].name === state.name) {
