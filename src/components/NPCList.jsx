@@ -1,25 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import { ListItem, ListItemText } from "@material-ui/core";
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
-class NPCList extends Component {
-  render() {
-    const { list, handleNameClick, searchString, selectedNPC } = this.props;
-    return (
-      <SimpleBar style={{height: 'calc(100% - 95px)', overflow: 'auto'}}>
-        {list.map(npc => <ListItem dense button key={npc.name} style={{
-          display: this.determineDisplay(npc, searchString),
-          textAlign: 'right',
-          backgroundColor: (selectedNPC === npc.name) ? "#009688" : "",
-        }} onClick={() => handleNameClick(npc.name)}>
-          <ListItemText primary={npc.name} secondary={npc.title} />
-        </ListItem>)}
-      </SimpleBar>
-    );
-  }
+const NPCList = ({ list, handleNameClick, searchString, selectedNPC }) => {
 
-  determineDisplay = (npc, searchString) => {
+  const determineDisplay = (npc, searchString) => {
     let classes = "";
 
     let allWordList = "";
@@ -49,6 +35,18 @@ class NPCList extends Component {
     }
     return classes;
   }
-}
+
+  return (
+    <SimpleBar style={{ height: 'calc(100% - 95px)', overflow: 'auto' }}>
+      {list.map(npc => <ListItem dense button key={npc.name} style={{
+        display: determineDisplay(npc, searchString),
+        textAlign: 'right',
+        backgroundColor: (selectedNPC === npc.name) ? "#009688" : "",
+      }} onClick={() => handleNameClick(npc.name)}>
+        <ListItemText primary={npc.name} secondary={npc.title} />
+      </ListItem>)}
+    </SimpleBar>
+  );
+};
 
 export default NPCList;
