@@ -9,10 +9,6 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
   spellbookLvl_3, spellbookLvl_4, spellbookLvl_5, spellbookLvl_6, spellbookLvl_7, spellbookLvl_8, spellbookLvl_9,
   status, str, thac0, title, armor, att_adj, weapon, wis }) => {
 
-  const handleInputChange = name => event => {
-    handleChange(name, event.target.value);
-  }
-
   const showEx_str = () => {
     if ((npcClass === "Fighter" || npcClass === "Paladin" || npcClass === "Ranger") && str > 17) {
       return true;
@@ -45,7 +41,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             style={{ width: '100%' }}
-            onChange={handleInputChange('name')}
+            onChange={event => handleChange('name', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -56,7 +52,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('level')}
+            onChange={event => handleChange('level', event.target.value)}
           />
         </div>
         <div style={{ flex: '1', marginRight: '5px' }}>
@@ -66,7 +62,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('age')}
+            onChange={event => handleChange('age', event.target.value)}
           />
         </div>
         <div style={{ flex: '1' }}>
@@ -76,7 +72,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('gender')}
+            onChange={event => handleChange('gender', event.target.value)}
           />
         </div>
       </div>
@@ -89,7 +85,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             style={{ width: '100%' }}
-            onChange={handleInputChange('npcClass')}
+            onChange={event => handleChange('npcClass', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -100,7 +96,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             style={{ width: '100%' }}
-            onChange={handleInputChange('title')}
+            onChange={event => handleChange('title', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -111,7 +107,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('probity')}
+            onChange={event => handleChange('probity', event.target.value)}
           />
         </div>
       </div>
@@ -124,7 +120,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             style={{ width: '100%' }}
-            onChange={handleInputChange('race')}
+            onChange={event => handleChange('race', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -135,7 +131,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             style={{ width: '100%' }}
-            onChange={handleInputChange('affiliation')}
+            onChange={event => handleChange('affiliation', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -147,7 +143,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
             style={{ width: '100%' }}
-            onChange={handleInputChange('gold')}
+            onChange={event => handleChange('gold', event.target.value)}
           />
         </div>
       </div>
@@ -160,7 +156,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('str')}
+            onChange={event => handleChange('str', event.target.value)}
           />
         </div>
         {
@@ -171,7 +167,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
               margin="normal"
               variant="outlined"
               inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-              onChange={handleInputChange('ex_str')}
+              onChange={event => handleChange('ex_str', event.target.value)}
             />
           </div>
         }
@@ -182,7 +178,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('int')}
+            onChange={event => handleChange('int', event.target.value)}
           />
         </div>
         <div style={{ flex: '1', marginRight: '5px' }}>
@@ -192,7 +188,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('wis')}
+            onChange={event => handleChange('wis', event.target.value)}
           />
         </div>
         <div style={{ flex: '1', marginRight: '5px' }}>
@@ -202,7 +198,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('dex')}
+            onChange={event => handleChange('dex', event.target.value)}
           />
         </div>
         <div style={{ flex: '1', marginRight: '5px' }}>
@@ -212,7 +208,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('con')}
+            onChange={event => handleChange('con', event.target.value)}
           />
         </div>
         <div style={{ flex: '1' }}>
@@ -222,7 +218,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('cha')}
+            onChange={event => handleChange('cha', event.target.value)}
           />
         </div>
       </div>
@@ -235,7 +231,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('currentHP')}
+            onChange={event => handleChange('currentHP', event.target.value)}
           />
         </div>
         <div style={{ flex: '1', marginRight: '5px' }}>
@@ -244,8 +240,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             value={maxHP}
             margin="normal"
             variant="outlined"
-            inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('maxHP')}
+            inputProps={{ style: { textAlign: "center" } }}
           />
         </div>
         <div style={{ flex: '1', marginRight: '5px' }}>
@@ -254,8 +249,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             value={ac}
             margin="normal"
             variant="outlined"
-            inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('ac')}
+            inputProps={{ style: { textAlign: "center" } }}
           />
         </div>
         <div style={{ flex: '1', marginRight: '5px' }}>
@@ -265,7 +259,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('ac_adj')}
+            onChange={event => handleChange('ac_adj', event.target.value)}
           />
         </div>
         <div style={{ flex: '1', marginRight: '5px' }}>
@@ -274,8 +268,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             value={thac0}
             margin="normal"
             variant="outlined"
-            inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('thac0')}
+            inputProps={{ style: { textAlign: "center" } }}
           />
         </div>
         <div style={{ flex: '1' }}>
@@ -285,7 +278,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             inputProps={{ style: { textAlign: "center" }, readOnly: !isPrimary }}
-            onChange={handleInputChange('att_adj')}
+            onChange={event => handleChange('att_adj', event.target.value)}
           />
         </div>
       </div>
@@ -298,7 +291,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             style={{ width: '100%' }}
-            onChange={handleInputChange('weapon')}
+            onChange={event => handleChange('weapon', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -309,7 +302,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             style={{ width: '100%' }}
-            onChange={handleInputChange('armor')}
+            onChange={event => handleChange('armor', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -320,7 +313,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             margin="normal"
             variant="outlined"
             style={{ width: '100%' }}
-            onChange={handleInputChange('status')}
+            onChange={event => handleChange('status', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -334,7 +327,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
           variant="outlined"
           multiline
           style={{ width: '100%' }}
-          onChange={handleInputChange('items')}
+          onChange={event => handleChange('items', event.target.value)}
           inputProps={{ readOnly: !isPrimary }}
         />
       </div>
@@ -347,7 +340,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
           variant="outlined"
           multiline
           style={{ width: '100%', marginTop: '7px' }}
-          onChange={handleInputChange('notes')}
+          onChange={event => handleChange('notes', event.target.value)}
           inputProps={{ readOnly: !isPrimary }}
         />
       </div>
@@ -362,7 +355,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             multiline
             rowsMax="15"
             style={{ width: '100%', marginTop: '7px' }}
-            onChange={handleInputChange('memorized')}
+            onChange={event => handleChange('memorized', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -376,7 +369,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             variant="outlined"
             multiline
             style={{ width: '100%', marginTop: '7px' }}
-            onChange={handleInputChange('spellbookLvl_1')}
+            onChange={event => handleChange('spellbookLvl_1', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -390,7 +383,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             variant="outlined"
             multiline
             style={{ width: '100%', marginTop: '7px' }}
-            onChange={handleInputChange('spellbookLvl_2')}
+            onChange={event => handleChange('spellbookLvl_2', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -404,7 +397,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             variant="outlined"
             multiline
             style={{ width: '100%', marginTop: '7px' }}
-            onChange={handleInputChange('spellbookLvl_3')}
+            onChange={event => handleChange('spellbookLvl_3', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -418,7 +411,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             variant="outlined"
             multiline
             style={{ width: '100%', marginTop: '7px' }}
-            onChange={handleInputChange('spellbookLvl_4')}
+            onChange={event => handleChange('spellbookLvl_4', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -432,7 +425,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             variant="outlined"
             multiline
             style={{ width: '100%', marginTop: '7px' }}
-            onChange={handleInputChange('spellbookLvl_5')}
+            onChange={event => handleChange('spellbookLvl_5', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -446,7 +439,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             variant="outlined"
             multiline
             style={{ width: '100%', marginTop: '7px' }}
-            onChange={handleInputChange('spellbookLvl_6')}
+            onChange={event => handleChange('spellbookLvl_6', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -460,7 +453,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             variant="outlined"
             multiline
             style={{ width: '100%', marginTop: '7px' }}
-            onChange={handleInputChange('spellbookLvl_7')}
+            onChange={event => handleChange('spellbookLvl_7', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -474,7 +467,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             variant="outlined"
             multiline
             style={{ width: '100%', marginTop: '7px' }}
-            onChange={handleInputChange('spellbookLvl_8')}
+            onChange={event => handleChange('spellbookLvl_8', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
@@ -488,7 +481,7 @@ const NPCDetails = ({ abilities, ac, ac_adj, affiliation, cha, con, currentHP, d
             variant="outlined"
             multiline
             style={{ width: '100%', marginTop: '7px' }}
-            onChange={handleInputChange('spellbookLvl_9')}
+            onChange={event => handleChange('spellbookLvl_9', event.target.value)}
             inputProps={{ readOnly: !isPrimary }}
           />
         </div>
