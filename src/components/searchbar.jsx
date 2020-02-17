@@ -2,7 +2,7 @@ import React from 'react';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 
-const SearchBar = (classes, handleSearchChange) => {
+const SearchBar = (classes, handleSearchChange) => (
   <div className={classes.search}>
     <div className={classes.searchIcon}>
       <SearchIcon />
@@ -16,6 +16,6 @@ const SearchBar = (classes, handleSearchChange) => {
       onChange={e => handleSearchChange(e.target.value)}
     />
   </div>
-};
+);
 
 export default SearchBar;

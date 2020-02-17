@@ -120,7 +120,7 @@ class ViewContent extends Component {
               className="textList"
               margin="normal"
               style={{ width: "95%" }}
-              onChange={e => this.handleSearchChange(e.target.value)}
+              onChange={event => this.handleSearchChange(event.target.value)}
             />
             <NPCList list={this.state.NPCList} handleNameClick={this.handleNameClick} selectedNPC={selectedNPC}
               searchString={searchString} />
@@ -133,7 +133,7 @@ class ViewContent extends Component {
             <FormControl style={{ marginLeft: 20, marginRight: 20 }}>
               <InputLabel>Class</InputLabel>
               <Select value={this.state.classSelect}
-                onChange={e => this.setState({ classSelect: e.target.value })}
+                onChange={event => this.setState({ classSelect: event.target.value })}
                 style={{ width: "150px" }}
               >
                 {classes.map(pcClass => <MenuItem key={pcClass} value={pcClass}>{pcClass}</MenuItem>)}
@@ -142,7 +142,7 @@ class ViewContent extends Component {
             <FormControl style={{ marginRight: 30 }}>
               <InputLabel>Level</InputLabel>
               <Select value={this.state.levelSelect}
-                onChange={e => this.setState({ levelSelect: e.target.value })}
+                onChange={event => this.setState({ levelSelect: event.target.value })}
                 style={{ width: "75px" }}
               >
                 {/* TODO: Change level range based on class dropdown */}
@@ -248,7 +248,8 @@ class ViewContent extends Component {
                   spellbookLvl_7={secondaryCharacter.spellbookLvl_7}
                   spellbookLvl_8={secondaryCharacter.spellbookLvl_8}
                   spellbookLvl_9={secondaryCharacter.spellbookLvl_9}
-                  abilities={determineAbilities(secondaryCharacter.npcClass, secondaryCharacter.level, secondaryCharacter.race, secondaryCharacter.dex)}
+                  abilities={determineAbilities(secondaryCharacter.npcClass, secondaryCharacter.level,
+                    secondaryCharacter.race, secondaryCharacter.dex)}
                   memorized={secondaryCharacter.memorized}
                   armor={secondaryCharacter.armor}
                   att_adj={secondaryCharacter.att_adj}
@@ -405,7 +406,6 @@ class ViewContent extends Component {
   }
 
   handleSave = (state) => {
-    //console.log("handleSave props?: ", this.props);
     let nameExists = false;
     for (let i = 0, j = state.NPCList.length; i < j; i++) {
       if (state.NPCList[i].name === state.name) {
