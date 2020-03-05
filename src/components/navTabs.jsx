@@ -4,6 +4,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import ViewContent from "./viewContent";
 import Combat from "./combat";
+import Initiative from "./initiative";
 
 class NavTabs extends Component {
   state = {
@@ -30,11 +31,13 @@ class NavTabs extends Component {
             <Tab label="NPCs" style={{minWidth: '175px'}} />
             <Tab label="PCs" style={{minWidth: '175px'}} />
             <Tab label="Combat" style={{minWidth: '175px'}} />
+            <Tab label="Initiative" style={{minWidth: '175px'}} />
           </Tabs>
         </AppBar>
           {value === 0 && <ViewContent source='NPCs' />}
           {value === 1 && <ViewContent source='PCs' />}
           {value === 2 && <Combat />}
+          {value === 3 && <Initiative />}
       </div>
     );
   }

@@ -1,0 +1,1 @@
+import { rollDice } from './dice';
